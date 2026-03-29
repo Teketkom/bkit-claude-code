@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   bkend.ai file storage — upload (presigned URL), download (CDN), visibility levels, buckets.
-  Triggers: bkend file, upload, download, presigned URL, storage, 파일 업로드, 스토리지.
+  Triggers: bkend file, upload, download, presigned URL, storage, 파일 업로드, 스토리지, загрузка файлов, хранилище.
 user-invocable: false
 agent: bkit:bkend-expert
 allowed-tools:

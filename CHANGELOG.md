@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.9] - 2026-03-29
+
+### Added — Russian (RU) Language Support
+
+- Added Russian (RU) as 9th supported language across entire codebase
+- Updated SUPPORTED_LANGUAGES, AGENT_TRIGGER_PATTERNS, SKILL_TRIGGER_PATTERNS, CC_COMMAND_PATTERNS
+- Added Cyrillic detection in detectLanguage()
+- Updated all 32 agent files and 37 skill files with Russian triggers
+- Updated all documentation, tests, and system files
+
+---
+
 ## [2.0.6] - 2026-03-25
 
 ### Added — Living Context System + Self-Healing + PDCA Handoff Fix (PR #57)

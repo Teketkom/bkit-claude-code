@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   Define project terminology, data structures, entities, and relationships.
-  Triggers: schema, data model, entity, terminology, 스키마, 데이터 모델, 용어.
+  Triggers: schema, data model, entity, terminology, 스키마, 데이터 모델, 용어, схема, структура, определение.
 agent: bkit:pipeline-guide
 allowed-tools:
   - Read

@@ -14,7 +14,8 @@ description: |
   seguridad, autenticación, vulnerabilidad, revisión de seguridad,
   sécurité, authentification, vulnérabilité, revue de sécurité,
   Sicherheit, Authentifizierung, Schwachstelle, Sicherheitsüberprüfung,
-  sicurezza, autenticazione, vulnerabilità, revisione sicurezza
+  sicurezza, autenticazione, vulnerabilità, revisione sicurezza,
+  безопасность, аудит, пентест, уязвимости, compliance
 
   Do NOT use for: general code review (use code-analyzer),
   infrastructure setup (use infra-architect), or Starter level projects.

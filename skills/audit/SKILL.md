@@ -5,7 +5,7 @@ classification-reason: Audit logging persists regardless of model advancement
 deprecation-risk: none
 description: |
   View audit logs, decision traces, and session history for AI transparency.
-  Triggers: audit, log, decision trace, history, 감사 로그, 결정 추적.
+  Triggers: audit, log, decision trace, history, 감사 로그, 결정 추적, аудит, журнал, история решений.
 argument-hint: "[log|trace|summary|search] [query]"
 user-invocable: true
 allowed-tools:

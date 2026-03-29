@@ -5,7 +5,7 @@ classification-reason: Combines workflow automation with capability-dependent fe
 deprecation-risk: low
 description: |
   Brainstorming-enhanced PDCA planning with intent discovery and YAGNI review.
-  Triggers: plan-plus, brainstorm, plan plus, intent, 브레인스토밍, 플랜플러스.
+  Triggers: plan-plus, brainstorm, plan plus, intent, 브레인스토밍, 플랜플러스, мозговой штурм, планирование, план плюс.
 argument-hint: "[feature]"
 user-invocable: true
 allowed-tools:

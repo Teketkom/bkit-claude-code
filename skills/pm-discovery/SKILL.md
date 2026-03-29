@@ -5,7 +5,7 @@ classification-reason: PM process orchestration independent of model capability 
 deprecation-risk: none
 description: |
   PM Agent Team — automated product discovery, strategy, and PRD generation with 4 PM agents.
-  Triggers: pm, PRD, product discovery, PM 분석, 제품 기획, PM analysis.
+  Triggers: pm, PRD, product discovery, PM 분석, 제품 기획, PM analysis, продуктовый анализ, открытие продукта, ПМ.
 argument-hint: "[feature]"
 user-invocable: true
 agents:

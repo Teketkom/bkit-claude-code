@@ -5,7 +5,7 @@ classification-reason: Checkpoint and rollback management persists regardless of
 deprecation-risk: none
 description: |
   Manage PDCA checkpoints and rollback — create, list, restore for safe recovery.
-  Triggers: rollback, checkpoint, restore, undo, 롤백, 체크포인트, 복원.
+  Triggers: rollback, checkpoint, restore, undo, 롤백, 체크포인트, 복원, откат, контрольная точка, восстановление.
 argument-hint: "[list|to|phase|reset] [target]"
 user-invocable: true
 allowed-tools:

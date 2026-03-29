@@ -5,7 +5,7 @@ classification-reason: Specialized domain knowledge with limited model overlap
 deprecation-risk: low
 description: |
   Enterprise-grade systems with microservices, Kubernetes, Terraform, and AI Native methodology.
-  Triggers: microservices, k8s, terraform, monorepo, AI native, 마이크로서비스, init enterprise.
+  Triggers: microservices, k8s, terraform, monorepo, AI native, 마이크로서비스, init enterprise, энтерпрайз, масштаб, микросервисы.
 argument-hint: "[init|guide|help]"
 agents:
   default: bkit:enterprise-expert

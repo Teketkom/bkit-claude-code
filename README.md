@@ -48,7 +48,7 @@ Context injection occurs at six distinct layers:
 Layer 1: hooks.json (Global)     → SessionStart, UserPromptSubmit, PreCompact, PostCompact, PreToolUse, PostToolUse, Stop, StopFailure + 10 more (18 events)
 Layer 2: Skill Frontmatter       → Domain-specific hooks (deprecated in v1.4.4, use hooks.json)
 Layer 3: Agent Frontmatter       → Task-specific hooks with constraints
-Layer 4: Description Triggers    → Semantic matching in 8 languages
+Layer 4: Description Triggers    → Semantic matching in 9 languages
 Layer 5: Scripts (21 modules)    → Actual Node.js execution logic with unified handlers
 Layer 6: Plugin Data Backup      → ${CLAUDE_PLUGIN_DATA} persistent state management
 ```
@@ -71,7 +71,7 @@ Layer 6: Plugin Data Backup      → ${CLAUDE_PLUGIN_DATA} persistent state mana
 - **Skills 2.0 Complete Integration (v1.6.0)** - 19 ENH items (ENH-85~103), Skill Evals framework with 28 eval definitions, Skill Classification (Workflow/Capability/Hybrid), A/B testing, template-validator, frontmatter hooks migration, context:fork deprecation, PM Agent Team integration
 - **Executive Summary & Preview UX (v1.5.9)** - Auto-generated 4-perspective summaries (Problem/Solution/Function & UX Effect/Core Value), AskUserQuestion with rich Markdown previews, ENH-74~81 CC v2.1.69 compatibility, 199 exports
 - **Studio Support & Path Registry (v1.5.8)** - Centralized state file path management (`lib/core/paths.js`), PDCA doc path registry, config cleanup (dead keys removed, missing keys added), state directory migration to `.bkit/{state,runtime,snapshots}/`, auto-migration with EXDEV fallback, 190 exports
-- **/simplify + /batch PDCA Integration (v1.5.7)** - CC built-in /simplify and /batch commands integrated into PDCA Check→Report flow, CC_COMMAND_PATTERNS 8-language awareness, HTTP Hooks documentation, English conversion for 3 stop scripts
+- **/simplify + /batch PDCA Integration (v1.5.7)** - CC built-in /simplify and /batch commands integrated into PDCA Check→Report flow, CC_COMMAND_PATTERNS 9-language awareness, HTTP Hooks documentation, English conversion for 3 stop scripts
 - **Auto-Memory Integration (v1.5.6)** - CC v2.1.59 auto-memory official support, /copy guidance, multi-agent memory optimization, ENH-48~51 enhancements, 186 exports
 - **Plan Plus Skill (v1.5.5)** - Brainstorming-enhanced PDCA planning with intent discovery, alternatives exploration, and YAGNI review
 - **bkend MCP Accuracy Fix (v1.5.4)** - MCP tool coverage 19→28+, accurate tool names, dynamic Base URL, search_docs workflow
@@ -90,7 +90,7 @@ Layer 6: Plugin Data Backup      → ${CLAUDE_PLUGIN_DATA} persistent state mana
 - **Evaluator-Optimizer Pattern** - Automatic iteration cycles from Anthropic's agent architecture
 - **9-Stage Development Pipeline** - From schema design to deployment
 - **3 Project Levels** - Starter (static), Dynamic (fullstack), Enterprise (microservices)
-- **Multilingual Support** - 8 languages (EN, KO, JA, ZH, ES, FR, DE, IT)
+- **Multilingual Support** - 9 languages (EN, KO, JA, ZH, ES, FR, DE, IT, RU)
 - **37 Skills** - Domain-specific knowledge (18 Workflow / 18 Capability / 1 Hybrid)
 - **32 Agents** - Specialized AI assistants (11 opus / 19 sonnet / 2 haiku) including CTO/PM Team + PDCA Eval agents
 - **21 Hook Scripts** - Hook execution with unified handlers across 18 event types
@@ -515,6 +515,7 @@ bkit automatically detects your language from trigger keywords:
 | French | site web statique, débutant |
 | German | statische Webseite, Anfänger |
 | Italian | sito web statico, principiante |
+| Russian | статический сайт, начинающий, дизайн API |
 
 ### Setting Response Language
 
@@ -550,6 +551,7 @@ Add the `language` key to any settings file:
 | French | `"french"` |
 | German | `"german"` |
 | Italian | `"italian"` |
+| Russian | `"russian"` |
 
 > **Note**: Trigger keywords work in any language. The `language` setting only affects Claude's response language.
 

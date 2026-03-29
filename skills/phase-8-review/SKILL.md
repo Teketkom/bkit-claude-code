@@ -5,7 +5,7 @@ classification-reason: Process automation persists regardless of model advanceme
 deprecation-risk: none
 description: |
   Verify codebase quality — architecture consistency, convention compliance, gap analysis.
-  Triggers: code review, architecture check, quality, gap analysis, 코드 리뷰, 품질 검증.
+  Triggers: code review, architecture check, quality, gap analysis, 코드 리뷰, 품질 검증, тестирование, тесты, проверка.
 imports:
   - ${PLUGIN_ROOT}/templates/pipeline/phase-8-review.template.md
 hooks:

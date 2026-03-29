@@ -5,7 +5,7 @@ classification-reason: "Reports loaded skill inventory across core and project l
 deprecation-risk: none
 description: |
   Show loaded skill inventory — bkit core vs project-local, conflicts, coverage gaps.
-  Triggers: skill-status, skill list, 스킬 상태, 스킬 목록.
+  Triggers: skill-status, skill list, 스킬 상태, 스킬 목록, статус навыков, список скиллов.
 argument-hint: "/skill-status [--detail] [--conflicts]"
 user-invocable: true
 allowed-tools:

@@ -5,7 +5,7 @@ classification-reason: Specialized domain knowledge with limited model overlap
 deprecation-risk: low
 description: |
   Mobile app development guide — React Native, Flutter, Expo for cross-platform.
-  Triggers: mobile app, React Native, Flutter, Expo, iOS, Android, 모바일 앱.
+  Triggers: mobile app, React Native, Flutter, Expo, iOS, Android, 모바일 앱, мобильное приложение, мобильная разработка.
 agent: bkit:pipeline-guide
 allowed-tools:
   - Read

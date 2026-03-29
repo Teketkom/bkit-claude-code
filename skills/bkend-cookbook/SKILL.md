@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   bkend.ai project tutorials (todo to SaaS) and common error troubleshooting.
-  Triggers: bkend tutorial, cookbook, troubleshooting, 튜토리얼, 에러 해결.
+  Triggers: bkend tutorial, cookbook, troubleshooting, 튜토리얼, 에러 해결, руководство, рецепты, устранение ошибок.
 user-invocable: false
 agent: bkit:bkend-expert
 allowed-tools:

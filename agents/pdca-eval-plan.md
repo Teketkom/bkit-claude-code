@@ -4,6 +4,8 @@ description: |
   Plan 단계를 프로젝트 유형별로 평가하는 에이전트.
   v1.6.1 baseline vs Customized bkit 비교 분석 수행.
   평가 항목: 프로젝트 컨텍스트 인식도, 사용 가능 스킬 수, Plan 정확도.
+
+  Triggers: оценка плана, проверка планирования
 model: sonnet
 memory: project
 effort: medium

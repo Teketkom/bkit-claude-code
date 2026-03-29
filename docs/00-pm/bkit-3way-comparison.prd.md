@@ -16,7 +16,7 @@
 | **Forks** | 108 | — | — | — |
 | **License** | Apache 2.0 | Apache 2.0 | Apache 2.0 | 동일 |
 | **Required CC** | v2.1.78+ | v2.1.71+ | v2.1.71+ | — |
-| **Languages** | 8 (EN,KO,JA,ZH,ES,FR,DE,IT) | 8 | 8 | 동일 |
+| **Languages** | 9 (EN,KO,JA,ZH,ES,FR,DE,IT,RU) | 9 | 9 | 동일 |
 
 ---
 
@@ -94,7 +94,7 @@
 | Interactive Checkpoints (1-5) | ✅ | ✅ | 동일 |
 | 3 Architecture Options | ✅ | ✅ | 동일 |
 | Skill Evals (29개) | ✅ | ✅ | 동일 |
-| 8-Language Support | ✅ | ✅ | 동일 |
+| 9-Language Support | ✅ | ✅ | 동일 |
 | Cross-Project Isolation (v2.0.1) | ✅ | ✅ | 동일 |
 | **Living Context System (4-Layer)** | ❌ | ✅ | **Custom Only** |
 | **Self-Healing Engine** | ❌ | ✅ | **Custom Only** |

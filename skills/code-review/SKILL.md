@@ -5,7 +5,7 @@ classification-reason: Process automation persists regardless of model advanceme
 deprecation-risk: none
 description: |
   Code review — analyze quality, detect bugs, ensure best practices with actionable feedback.
-  Triggers: code review, quality check, bug detection, 코드 리뷰, 품질 검사.
+  Triggers: code review, quality check, bug detection, 코드 리뷰, 품질 검사, ревью кода, анализ, проверка.
 argument-hint: "[file|directory|pr]"
 user-invocable: true
 agent: bkit:code-analyzer

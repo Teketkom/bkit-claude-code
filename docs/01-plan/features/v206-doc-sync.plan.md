@@ -67,7 +67,7 @@ PR #57 introduced three major subsystems:
 | SC-1 | All version strings updated to 2.0.6 | 0 remaining 2.0.5 in target files |
 | SC-2 | Component counts accurate | 88 lib, 32 agents, 37 skills, 57 scripts, 11 subdirs |
 | SC-3 | CHANGELOG has complete v2.0.6 entry | All 3 subsystems documented |
-| SC-4 | All content in English | Except 8-language trigger keywords |
+| SC-4 | All content in English | Except 9-language trigger keywords |
 | SC-5 | Gap analysis 100% match | Design↔Implementation full alignment |
 
 ## Questions Resolved

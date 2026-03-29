@@ -188,7 +188,7 @@ After:  L0-L4 levels + trust score + emergency stop → Controllable AI
 - **Checkpoint/Rollback**: Automatic checkpoint on phase transitions, manual rollback support
 - **Destructive Detection**: 8 rules (rm -rf, git push --force, etc.) with blast radius analysis
 - **MCP Servers**: bkit-pdca (10 tools) + bkit-analysis (6 tools) for external integration
-- **Multi-Language Support**: 8 languages (EN, KO, JA, ZH, ES, FR, DE, IT)
+- **Multi-Language Support**: 9 languages (EN, KO, JA, ZH, ES, FR, DE, IT, RU)
 
 ---
 

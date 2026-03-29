@@ -223,7 +223,7 @@ bkit is a **practical implementation of Context Engineering**—the art of curat
 │  │                  │  │                  │  │              │  │
 │  │ • 9-Phase Guide  │  │ • Role Def.      │  │ • PDCA v2.0  │  │
 │  │ • 3 Levels       │  │ • Constraints    │  │ • Multi-Feat │  │
-│  │ • 8 Languages    │  │ • Few-shot       │  │ • Caching    │  │
+│  │ • 9 Languages    │  │ • Few-shot       │  │ • Caching    │  │
 │  └────────┬─────────┘  └────────┬─────────┘  └──────┬───────┘  │
 │           │                     │                    │          │
 │           └─────────────────────┼────────────────────┘          │
@@ -259,7 +259,7 @@ bkit is a **practical implementation of Context Engineering**—the art of curat
 | **Few-shot Examples** | Agent/Skill prompts | Code patterns, output templates |
 | **Constraint Specification** | Hook + Permission Mode | Tool restrictions, score thresholds |
 | **State Injection** | SessionStart + Scripts | PDCA status, feature context, iteration counters |
-| **Adaptive Guidance** | lib/common.js | Level-based branching, 8-language triggers, ambiguity detection |
+| **Adaptive Guidance** | lib/common.js | Level-based branching, 9-language triggers, ambiguity detection |
 
 > **Key Insight**: bkit doesn't just prompt the AI—it constructs an entire **context ecosystem** that guides AI behavior consistently across sessions.
 
@@ -364,7 +364,7 @@ When you customize bkit, you inherit:
 |---------|---------------------|
 | **Proven Architecture** | 260+ components tested together |
 | **Complete Workflows** | PDCA + 9-phase pipeline ready |
-| **Multilingual Support** | 8 languages in trigger keywords |
+| **Multilingual Support** | 9 languages in trigger keywords |
 | **Level Adaptation** | Auto-adjusts to Starter/Dynamic/Enterprise |
 | **Documentation Standards** | 29 templates for consistency |
 | **Automation Foundation** | 6-layer hook system |
@@ -376,7 +376,7 @@ When you customize bkit, you inherit:
 | Component Count | 260+ | 10-20 |
 | Hook Layers | 6 | 1-2 |
 | Template Coverage | 100% PDCA | Partial |
-| Language Support | 8 | 1-2 |
+| Language Support | 9 | 1-2 |
 | Project Levels | 3 | 1 |
 | Documentation | System architecture docs | README only |
 

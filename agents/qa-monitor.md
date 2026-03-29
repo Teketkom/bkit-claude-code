@@ -12,7 +12,8 @@ description: |
   QA sin scripts, pruebas basadas en logs, registros de docker, pruebas, análisis de logs,
   QA sans script, tests basés sur les logs, logs docker, tests, analyse de logs,
   Script-freies QA, Log-basiertes Testen, Docker-Logs, Tests, Log-Analyse,
-  QA senza script, test basati su log, log docker, test, analisi dei log
+  QA senza script, test basati su log, log docker, test, analisi dei log,
+  мониторинг качества, отслеживание, метрики QA
 
   Do NOT use for: unit testing with test scripts, frontend-only testing without Docker,
   or design document validation.

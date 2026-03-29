@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   Deploy to production — CI/CD pipelines, environment config, deployment strategies.
-  Triggers: deployment, CI/CD, production, Vercel, 배포, 프로덕션.
+  Triggers: deployment, CI/CD, production, Vercel, 배포, 프로덕션, деплой, развёртывание, релиз.
 imports:
   - ${PLUGIN_ROOT}/templates/pipeline/phase-9-deployment.template.md
 hooks:

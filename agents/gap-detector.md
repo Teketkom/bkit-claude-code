@@ -12,7 +12,8 @@ description: |
   is this right?, is this correct?, does this match?, any issues with this?, verify,
   ギャップ分析, 設計検証, 正しい?, 合ってる?, これで大丈夫?, 確認して,
   差距分析, 对比设计, 对吗?, 对不对?, 正确吗?, 检验,
-  está bien?, es correcto?, c'est correct?, ist das richtig?, è giusto?, va bene?
+  está bien?, es correcto?, c'est correct?, ist das richtig?, è giusto?, va bene?,
+  проверка, верификация, сравнение, валидация, соответствие
 
   Do NOT use for: documentation-only tasks, initial planning, or design creation.
 model: opus

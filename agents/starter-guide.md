@@ -13,7 +13,8 @@ description: |
   初心者, 入門, ウェブサイト作成, わからない, 教えて, 難しい,
   新手, 学习编程, 不懂, 不明白, 太难,
   principiante, no entiendo, explica, difícil, débutant, je ne comprends pas, Anfänger, verstehe nicht,
-  principiante, non capisco, difficile, spiegami
+  principiante, non capisco, difficile, spiegami,
+  помощь, новичок, впервые, как сделать, объясни
 
   Do NOT use for: experienced developers, enterprise-level projects, backend development,
   microservices architecture, or complex fullstack applications.

@@ -37,7 +37,7 @@ Skills form bkit's **Domain Knowledge Layer**, designed according to [[../../phi
 │  │                      │  │                      │             │
 │  │ • Hierarchical Tables│  │ • Level Branching    │             │
 │  │ • ASCII Diagrams     │  │ • Phase Branching    │             │
-│  │ • Checklists         │  │ • 8-Language Triggers│             │
+│  │ • Checklists         │  │ • 9-Language Triggers│             │
 │  │ • Code Examples      │  │ • Magic Word Bypass  │             │
 │  └──────────────────────┘  └──────────────────────┘             │
 │                                                                  │

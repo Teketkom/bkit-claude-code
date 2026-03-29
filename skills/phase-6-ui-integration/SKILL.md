@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   Implement frontend UI and integrate with backend APIs — state management and API clients.
-  Triggers: UI integration, frontend-backend, API client, 프론트엔드 통합, UI 구현.
+  Triggers: UI integration, frontend-backend, API client, 프론트엔드 통합, UI 구현, интеграция UI, фронтенд, реализация.
 imports:
   - ${PLUGIN_ROOT}/templates/pipeline/phase-6-ui.template.md
 hooks:

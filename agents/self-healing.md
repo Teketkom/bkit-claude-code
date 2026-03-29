@@ -1,10 +1,12 @@
 ---
 name: self-healing
-description: >
+description: |
   Living Context based Self-Healing agent.
   Detects errors from Slack/Sentry, loads 4-Layer context,
   fixes code with context-aware Claude Code, verifies with scenario runner,
   generates Auto PR or escalates to human.
+
+  Triggers: автовосстановление, ошибка, сломалось, не работает, починить
 model: opus
 effort: high
 maxTurns: 30

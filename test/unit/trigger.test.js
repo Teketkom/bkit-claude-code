@@ -37,7 +37,7 @@ assert('U-TRG-003', typeof mod.detectNewFeatureIntent === 'function', 'detectNew
 assert('U-TRG-004', typeof mod.extractFeatureNameFromRequest === 'function', 'extractFeatureNameFromRequest exported');
 assert('U-TRG-005', typeof mod.NEW_FEATURE_PATTERNS === 'object', 'NEW_FEATURE_PATTERNS exported');
 
-// --- matchImplicitAgentTrigger: 8 language triggers ---
+// --- matchImplicitAgentTrigger: 9 language triggers ---
 // EN
 const enResult = mod.matchImplicitAgentTrigger('please verify this code');
 assert('U-TRG-006', enResult !== null && enResult.agent.includes('gap-detector'), 'EN: verify -> gap-detector');
@@ -69,6 +69,10 @@ assert('U-TRG-012', deResult !== null && deResult.agent.includes('gap-detector')
 // IT
 const itResult = mod.matchImplicitAgentTrigger('per favore verificare il codice');
 assert('U-TRG-013', itResult !== null && itResult.agent.includes('gap-detector'), 'IT: verificare -> gap-detector');
+
+// RU
+const ruResult = mod.matchImplicitAgentTrigger('пожалуйста проверить код');
+assert('U-TRG-013b', ruResult !== null && ruResult.agent.includes('gap-detector'), 'RU: проверить -> gap-detector');
 
 // --- confidence threshold ---
 assert('U-TRG-014', enResult !== null && enResult.confidence >= 0.7, 'Confidence >= confidenceThreshold (0.7)');

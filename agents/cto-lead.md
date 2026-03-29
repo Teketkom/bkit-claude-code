@@ -15,7 +15,8 @@ description: |
   líder del equipo, decisión técnica, CTO, coordinación de equipo,
   chef d'équipe, décision technique, CTO, coordination d'équipe,
   Teamleiter, technische Entscheidung, CTO, Teamkoordination,
-  leader del team, decisione tecnica, CTO, coordinamento del team
+  leader del team, decisione tecnica, CTO, coordinamento del team,
+  команда, лид проекта, руководитель, CTO, координация команды
 
   Do NOT use for: simple single-file changes, Starter level projects,
   pure research tasks, or when Agent Teams is not available.

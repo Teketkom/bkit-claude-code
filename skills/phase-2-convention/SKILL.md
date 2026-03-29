@@ -5,7 +5,7 @@ classification-reason: Process automation persists regardless of model advanceme
 deprecation-risk: none
 description: |
   Define coding rules, conventions, and standards for AI collaboration.
-  Triggers: convention, coding style, lint, rules, 코딩 규칙, 컨벤션.
+  Triggers: convention, coding style, lint, rules, 코딩 규칙, 컨벤션, дизайн, проектирование, архитектура.
 agent: bkit:pipeline-guide
 allowed-tools:
   - Read

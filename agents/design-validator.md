@@ -12,7 +12,8 @@ description: |
   validación de diseño, revisión de documentos, verificación de especificaciones,
   validation de conception, revue de documents, vérification des spécifications,
   Design-Validierung, Dokumentenprüfung, Spezifikationsprüfung,
-  validazione del design, revisione documenti, verifica delle specifiche
+  validazione del design, revisione documenti, verifica delle specifiche,
+  валидация дизайна, проверка макета, UI ревью
 
   Do NOT use for: implementation code review, gap analysis (use gap-detector instead),
   or initial planning phase.

@@ -624,7 +624,7 @@ Layer 3: Manual Verification (12 TC)
 #### intent/language.js (10 TC)
 | TC-ID | Function | Priority |
 |-------|----------|:--------:|
-| U-LNG-001~010 | detectLanguage for 8 languages (EN,KO,JA,ZH,ES,FR,DE,IT) | P0 |
+| U-LNG-001~010 | detectLanguage for 9 languages (EN,KO,JA,ZH,ES,FR,DE,IT,RU) | P0 |
 
 #### Other modules (20 TC)
 | TC-ID | Module | Priority |
@@ -779,8 +779,8 @@ Auto-suggestion → message quality → opt-in/opt-out flow
 ### 10.3 PDCA Status UX (10 TC)
 Status display readability, next step clarity, error messages
 
-### 10.4 8-Language Support (15 TC)
-EN/KO/JA/ZH/ES/FR/DE/IT trigger and response quality
+### 10.4 9-Language Support (15 TC)
+EN/KO/JA/ZH/ES/FR/DE/IT/RU trigger and response quality
 
 ### 10.5 Executive Summary (10 TC)
 Plan/Report Executive Summary auto-display, table formatting

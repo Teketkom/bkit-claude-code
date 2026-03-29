@@ -5,7 +5,7 @@ classification-reason: Process automation persists regardless of model advanceme
 deprecation-risk: none
 description: |
   Core rules for bkit — PDCA methodology, level detection, agent triggering, quality standards.
-  Triggers: bkit rules, core rules, methodology, 핵심 규칙, PDCA 규칙.
+  Triggers: bkit rules, core rules, methodology, 핵심 규칙, PDCA 규칙, правила bkit, основные правила, методология.
 imports:
   - ${PLUGIN_ROOT}/templates/shared/naming-conventions.md
 # hooks: Managed by hooks/hooks.json (pre-write.js, unified-write-post.js) - GitHub #9354 workaround

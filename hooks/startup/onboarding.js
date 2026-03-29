@@ -150,26 +150,26 @@ function analyzeRequestAmbiguity(userRequest, context = {}) {
  */
 function getTriggerKeywordTable() {
   return `
-## 🎯 v1.4.0 Auto-Trigger Keywords (8 Languages Supported)
+## 🎯 v1.4.0 Auto-Trigger Keywords (9 Languages Supported)
 
 ### Agent Triggers
 | Keywords | Agent | Action |
 |----------|-------|--------|
-| verify, 검증, 確認, 验证, verificar, vérifier, prüfen, verificare | bkit:gap-detector | Run Gap analysis |
-| improve, 개선, 改善, 改进, mejorar, améliorer, verbessern, migliorare | bkit:pdca-iterator | Auto-improvement iteration |
-| analyze, 분석, 分析, 品質, analizar, analyser, analysieren, analizzare | bkit:code-analyzer | Code quality analysis |
-| report, 보고서, 報告, 报告, informe, rapport, Bericht, rapporto | bkit:report-generator | Generate completion report |
-| help, 도움, 助けて, 帮助, ayuda, aide, Hilfe, aiuto | bkit:starter-guide | Beginner guide |
-| bkend, BaaS, backend service, 백엔드 서비스, バックエンドサービス, 后端服务 | bkit:bkend-expert | Backend/BaaS expert |
-| pm, PRD, product discovery, PM 분석, 제품 기획, PM分析, PM-Analyse, analisi PM | bkit:pm-lead | PM Agent Team analysis |
+| verify, 검증, 確認, 验证, verificar, vérifier, prüfen, verificare, проверить | bkit:gap-detector | Run Gap analysis |
+| improve, 개선, 改善, 改进, mejorar, améliorer, verbessern, migliorare, улучшить | bkit:pdca-iterator | Auto-improvement iteration |
+| analyze, 분석, 分析, 品質, analizar, analyser, analysieren, analizzare, анализировать | bkit:code-analyzer | Code quality analysis |
+| report, 보고서, 報告, 报告, informe, rapport, Bericht, rapporto, отчёт | bkit:report-generator | Generate completion report |
+| help, 도움, 助けて, 帮助, ayuda, aide, Hilfe, aiuto, помощь | bkit:starter-guide | Beginner guide |
+| bkend, BaaS, backend service, 백엔드 서비스, バックエンドサービス, 后端服务, бэкенд | bkit:bkend-expert | Backend/BaaS expert |
+| pm, PRD, product discovery, PM 분석, 제품 기획, PM分析, PM-Analyse, analisi PM, PM-анализ | bkit:pm-lead | PM Agent Team analysis |
 
 ### Skill Triggers (Auto-detection)
 | Keywords | Skill | Level |
 |----------|-------|-------|
-| static site, 정적 웹, sitio estático, site statique | starter | Starter |
-| login, fullstack, 로그인, connexion, Anmeldung | dynamic | Dynamic |
-| microservices, k8s, 마이크로서비스, microservizi | enterprise | Enterprise |
-| mobile app, React Native, 모바일 앱, app mobile | mobile-app | All |
+| static site, 정적 웹, sitio estático, site statique, статический сайт | starter | Starter |
+| login, fullstack, 로그인, connexion, Anmeldung, логин | dynamic | Dynamic |
+| microservices, k8s, 마이크로서비스, microservizi, микросервисы | enterprise | Enterprise |
+| mobile app, React Native, 모바일 앱, app mobile, мобильное приложение | mobile-app | All |
 
 💡 Use natural language and the appropriate tool will be activated automatically.
 

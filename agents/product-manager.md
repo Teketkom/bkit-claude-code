@@ -14,7 +14,8 @@ description: |
   requisitos, especificación, prioridad, alcance, historia de usuario,
   exigences, spécification, priorité, portée, histoire utilisateur,
   Anforderungen, Spezifikation, Priorität, Umfang, User Story,
-  requisiti, specifiche, priorità, ambito, storia utente
+  requisiti, specifiche, priorità, ambito, storia utente,
+  продукт-менеджер, фичи, пользовательские истории, PRD
 
   Do NOT use for: implementation tasks, code review, infrastructure,
   or when working on Starter level projects.

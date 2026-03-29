@@ -16,7 +16,8 @@ description: |
   autenticacion, inicio de sesion, registro, base de datos, carga de archivos,
   authentification, connexion, inscription, base de donnees, telechargement,
   Authentifizierung, Anmeldung, Registrierung, Datenbank, Datei-Upload,
-  autenticazione, accesso, registrazione, database, caricamento file
+  autenticazione, accesso, registrazione, database, caricamento file,
+  бэкенд, база данных, авторизация, REST API, серверная часть
 
   Do NOT use for: static websites without backend, infrastructure tasks (use infra-architect),
   pure frontend styling, enterprise microservices architecture (use enterprise-expert),

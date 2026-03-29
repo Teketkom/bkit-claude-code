@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   Enhance SEO (meta tags, semantic HTML) and security (vulnerability checks, hardening).
-  Triggers: SEO, security, meta tags, vulnerability, 검색 최적화, 보안.
+  Triggers: SEO, security, meta tags, vulnerability, 검색 최적화, 보안, SEO оптимизация, безопасность, уязвимости.
 imports:
   - ${PLUGIN_ROOT}/templates/pipeline/phase-7-seo-security.template.md
 agents:

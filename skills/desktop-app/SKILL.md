@@ -5,7 +5,7 @@ classification-reason: Specialized domain knowledge with limited model overlap
 deprecation-risk: low
 description: |
   Desktop app development guide — Electron and Tauri for cross-platform apps.
-  Triggers: desktop app, Electron, Tauri, mac app, windows app, 데스크톱 앱.
+  Triggers: desktop app, Electron, Tauri, mac app, windows app, 데스크톱 앱, десктопное приложение, настольное приложение.
 agent: bkit:pipeline-guide
 allowed-tools:
   - Read

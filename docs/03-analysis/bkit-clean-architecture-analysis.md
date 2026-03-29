@@ -67,7 +67,7 @@ bkit-claude-code/                          # Plugin Root
 │   │   └── do-detector.js                 #   Do phase detection
 │   ├── intent/        (3 modules)         # [Layer 2] Intent Analysis
 │   │   ├── index.js                       #   Entry point (19 exports)
-│   │   ├── language.js                    #   8-language detection
+│   │   ├── language.js                    #   9-language detection
 │   │   ├── trigger.js                     #   Implicit trigger matching
 │   │   └── ambiguity.js                   #   Ambiguity scoring
 │   ├── task/          (4 modules)         # [Layer 2] Task Management
@@ -212,7 +212,7 @@ bkit-claude-code/                          # Plugin Root
 | **lib/pdca/commit-context.js** | L2 Use Case | Commit context loader | L1 (paths), L2 (context-loader) |
 | **lib/pdca/decision-record.js** | L2 Use Case | Decision record writer | L1 (paths), L2 (context-loader) |
 | **lib/pdca/deploy-gate.js** | L2 Use Case | Deploy quality gates | L2 (deploy-state-machine, ops-metrics) |
-| **lib/intent/language.js** | L2 Use Case | 8-language detection | None (leaf, pure logic) |
+| **lib/intent/language.js** | L2 Use Case | 9-language detection | None (leaf, pure logic) |
 | **lib/intent/trigger.js** | L2 Use Case | Implicit trigger matching | L2 (language), L1 (core) |
 | **lib/intent/ambiguity.js** | L2 Use Case | Ambiguity scoring | L1 (core) |
 | **lib/task/classification.js** | L2 Use Case | Task size classification | None (pure logic) |
@@ -561,7 +561,7 @@ The `lib/common.js` migration bridge re-exports 199 functions. Some of these may
 | bkit.config.json | Comprehensive configuration with documented thresholds |
 | lib/core/constants.js | 36 named constants, zero magic numbers in code |
 | lib/core/errors.js | Standardized error codes (BKIT_{DOMAIN}_{DETAIL}) |
-| 8-language trigger patterns | Explicit trigger keywords per agent/skill |
+| 9-language trigger patterns | Explicit trigger keywords per agent/skill |
 | Ambiguity scoring | calculateAmbiguityScore() triggers clarifying questions |
 | REQUIRED_SECTIONS | Template validator checks document structure |
 | Trust score computation | Weighted average of 6 components, not heuristic |

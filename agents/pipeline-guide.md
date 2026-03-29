@@ -13,7 +13,8 @@ description: |
   pipeline de desarrollo, fase, orden de desarrollo, por dónde empezar, qué hacer primero,
   pipeline de développement, phase, ordre de développement, par où commencer, que faire en premier,
   Entwicklungs-Pipeline, Phase, Entwicklungsreihenfolge, wo anfangen, was zuerst tun,
-  pipeline di sviluppo, fase, ordine di sviluppo, da dove iniziare, cosa fare prima
+  pipeline di sviluppo, fase, ordine di sviluppo, da dove iniziare, cosa fare prima,
+  пайплайн, этапы, фазы, порядок разработки
 
   Do NOT use for: ongoing implementation work, existing feature modifications, bug fixes,
   or when experienced developers want to proceed freely.

@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   bkend.ai onboarding — MCP setup, resource hierarchy, tenant/user model, first project.
-  Triggers: bkend quickstart, onboarding, setup, MCP, 시작하기, 온보딩.
+  Triggers: bkend quickstart, onboarding, setup, MCP, 시작하기, 온보딩, бэкенд, быстрый старт, серверная часть.
 user-invocable: false
 agent: bkit:bkend-expert
 allowed-tools:

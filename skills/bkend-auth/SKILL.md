@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   bkend.ai authentication — email/social login, JWT tokens, RBAC, session management.
-  Triggers: bkend auth, login, signup, JWT, RBAC, 인증, 로그인, 회원가입.
+  Triggers: bkend auth, login, signup, JWT, RBAC, 인증, 로그인, 회원가입, авторизация, вход, регистрация.
 user-invocable: false
 agent: bkit:bkend-expert
 allowed-tools:

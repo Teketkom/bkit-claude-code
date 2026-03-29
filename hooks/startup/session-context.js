@@ -215,7 +215,7 @@ function buildAutomationContext(triggerTable) {
 
   ctx += triggerTable;
   ctx += `\n\n## v1.4.0 Automation Features\n`;
-  ctx += `- 🎯 8-language auto-detection: EN, KO, JA, ZH, ES, FR, DE, IT\n`;
+  ctx += `- 🎯 9-language auto-detection: EN, KO, JA, ZH, ES, FR, DE, IT, RU\n`;
   ctx += `- 🤖 Implicit Agent/Skill triggers\n`;
   ctx += `- 📊 Ambiguity detection and clarifying question generation\n`;
   ctx += `- 🔄 Automatic PDCA phase progression\n\n`;

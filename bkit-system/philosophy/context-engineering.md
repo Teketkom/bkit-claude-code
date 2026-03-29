@@ -44,8 +44,8 @@ bkit is a **practical implementation of Context Engineering**, providing a syste
 │  │                     ConfigChange, PermissionRequest, Notification      │  │
 │  │  L2: Skill YAML ─→ PreToolUse, PostToolUse, Stop                      │  │
 │  │  L3: Agent YAML ─→ PreToolUse, PostToolUse                            │  │
-│  │  L4: Triggers   ─→ 8-language keyword detection (EN/KO/JA/ZH/ES/FR/  │  │
-│  │                     DE/IT)                                             │  │
+│  │  L4: Triggers   ─→ 9-language keyword detection (EN/KO/JA/ZH/ES/FR/  │  │
+│  │                     DE/IT/RU)                                          │  │
 │  │  L5: Scripts    ─→ 21 Node.js hook scripts                            │  │
 │  │  L6: Team Orch. ─→ CTO-led phase routing                             │  │
 │  └────────────────────────────────────────────────────────────────────────┘  │
@@ -92,7 +92,7 @@ bkit is a **practical implementation of Context Engineering**, providing a syste
 |--------|:-----:|:-------:|---------|
 | `lib/core/` | 13 | 61 | Platform, cache, I/O, debug, config, file, paths, constants, errors, state-store, ansi, hook-io |
 | `lib/pdca/` | 18 | 116 | State machine, workflow engine/parser, status, automation, tier, level, phase, lifecycle, resume, batch-orchestrator, feature-manager, backup-scheduler, do-detector, full-auto-do, template-validator |
-| `lib/intent/` | 4 | 19 | 8-language detection, trigger matching, ambiguity analysis |
+| `lib/intent/` | 4 | 19 | 9-language detection, trigger matching, ambiguity analysis |
 | `lib/task/` | 5 | 26 | Task classification, context, creation, tracking |
 | `lib/team/` | 9 | 40 | Coordinator, strategy, CTO logic, state-writer, communication, task-queue, orchestrator, hooks |
 | `lib/ui/` | 7 | 23 | Progress bar, workflow map, control panel, agent panel, impact view |
@@ -250,7 +250,7 @@ External tool integration via Model Context Protocol:
 | CE-1 | v1.0 | Basic skills and hooks |
 | CE-2 | v1.2 | Multi-language support, pipeline |
 | CE-3 | v1.3 | Agent Teams, iteration loop |
-| CE-4 | v1.4 | 8-language triggers, Skills 2.0 |
+| CE-4 | v1.4 | 9-language triggers, Skills 2.0 |
 | CE-5 | v1.5 | Modular lib architecture, PM Team |
 | CE-6 | v1.6 | 1M context, PLUGIN_DATA, 210 exports |
 | **CE-7** | **v2.0** | **State machine, workflow engine, controllable AI (L0-L4), audit system, quality gates, CLI dashboard, MCP servers, 76 modules, ~465 exports** |

@@ -7,7 +7,7 @@
 > **v1.5.0**: Claude Code Exclusive - Gemini CLI support removed
 > **v1.4.7**: Task Management Integration - triggerNextPdcaAction, Task Chain Auto-Creation
 > **v1.4.6**: Sub-agent call stability with `bkit:` prefix
-> **v1.4.5**: Archive action support, 8-language trigger system
+> **v1.4.5**: Archive action support, 9-language trigger system
 > **v1.4.4**: hooks-json-integration - all hooks centralized in hooks.json with unified handlers
 > **v1.4.2**: Added UserPromptSubmit (FR-04) and PreCompact (FR-07) hook events
 > **v1.4.1**: Added Context Engineering perspective - 5-Layer Hook System
@@ -43,7 +43,7 @@ Hooks are the core of bkit's **context injection system**, organized into 6 laye
 │           └── hooks: { PreToolUse, PostToolUse, Stop }          │
 │                                                                  │
 │  Layer 4: Description Triggers                                  │
-│           └── "Triggers:" keyword matching (8 languages)        │
+│           └── "Triggers:" keyword matching (9 languages)        │
 │                                                                  │
 │  Layer 5: Scripts (54 modules)                                  │
 │           └── Actual Node.js logic execution                    │
@@ -205,7 +205,7 @@ Global hooks are defined in `hooks/hooks.json` (v1.4.4 includes 6 hook events wi
 
 **Features** (FR-04):
 - Feature intent detection from user message
-- Implicit agent trigger matching (8 languages)
+- Implicit agent trigger matching (9 languages)
 - Implicit skill trigger matching
 - Ambiguity score calculation
 

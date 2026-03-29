@@ -121,7 +121,7 @@ const singleLine = mod.evaluateAgainstCriteria('single line content here', 'sing
 assert('U-RUN-039', singleLine.pass === false, 'Single line content fails');
 
 // Real content with trigger criteria
-const multiLinePrompt = 'Line 1\nLine 2\nLine 3\nLine 4\nLine 5\nLine 6\nLine 7\nLine 8\nLine 9\nLine 10\nThis tests trigger and keyword detection for implicit intent matching. The trigger patterns should match user requests across 8 languages.';
+const multiLinePrompt = 'Line 1\nLine 2\nLine 3\nLine 4\nLine 5\nLine 6\nLine 7\nLine 8\nLine 9\nLine 10\nThis tests trigger and keyword detection for implicit intent matching. The trigger patterns should match user requests across 9 languages.';
 const multiLineExpected = '## Expected Output\n\n1. Step one\n2. Step two\n3. Step three\n\nThe result should produce valid output.\n\nFollow the pattern and structure.\nMore template content here for good measure to pass length threshold.\nEven more content to be safe.';
 
 const realResult1 = mod.evaluateAgainstCriteria(multiLinePrompt, multiLineExpected, [

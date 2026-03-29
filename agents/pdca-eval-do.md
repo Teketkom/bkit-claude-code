@@ -4,6 +4,8 @@ description: |
   Do(Implementation) 단계를 프로젝트 유형별로 평가하는 에이전트.
   v1.6.1 baseline vs Customized bkit 비교 분석 수행.
   평가 항목: 구현 속도, 첫 시도 정확도, 피드백 수집, 런타임 스킬 확장.
+
+  Triggers: оценка реализации, проверка выполнения
 model: sonnet
 memory: project
 effort: medium

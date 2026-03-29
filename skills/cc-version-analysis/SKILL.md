@@ -5,7 +5,7 @@ classification-reason: Orchestrates multi-phase research and analysis pipeline i
 deprecation-risk: none
 description: |
   CC CLI version upgrade impact analysis — research changes, analyze bkit impact, generate report.
-  Triggers: cc-version-analysis, CC upgrade, version analysis, CC 버전 분석, 버전 영향.
+  Triggers: cc-version-analysis, CC upgrade, version analysis, CC 버전 분석, 버전 영향, версия Claude Code, анализ версий.
 argument-hint: "[from_version] [to_version]"
 user-invocable: true
 

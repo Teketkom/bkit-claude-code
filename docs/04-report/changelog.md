@@ -369,7 +369,7 @@ All notable changes and reports are documented here.
 ### Improvements
 - Documented all 28 library modules
 - Verified complete PDCA workflow (Plan→Design→Do→Check→Act→Report→Archive)
-- Confirmed 8-language support (EN, KO, JA, ZH, ES, FR, DE, IT)
+- Confirmed 9-language support (EN, KO, JA, ZH, ES, FR, DE, IT, RU)
 - Validated all 11 agent types
 - Confirmed all 9 hook definitions
 - Tested all 19 major skills

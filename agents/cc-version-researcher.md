@@ -14,7 +14,8 @@ description: |
   versión CC, actualización CLI, notas de versión,
   version CC, mise à jour CLI, notes de version,
   CC-Version, CLI-Update, Versionshinweise,
-  versione CC, aggiornamento CLI, note di rilascio
+  versione CC, aggiornamento CLI, note di rilascio,
+  версия Claude Code, обновления, совместимость
 
   Do NOT use for: bkit internal analysis (use bkit-impact-analyst),
   implementation tasks, or non-CC version topics.

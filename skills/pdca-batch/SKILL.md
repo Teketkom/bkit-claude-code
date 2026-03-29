@@ -5,7 +5,7 @@ classification-reason: Batch PDCA management persists regardless of model advanc
 deprecation-risk: none
 description: |
   Manage multiple PDCA features and batch operations.
-  Triggers: pdca-batch, batch, multiple features, 다중 기능, 배치.
+  Triggers: pdca-batch, batch, multiple features, 다중 기능, 배치, пакетная обработка, несколько функций, пакет.
 argument-hint: "[status|plan|manage]"
 user-invocable: true
 allowed-tools:

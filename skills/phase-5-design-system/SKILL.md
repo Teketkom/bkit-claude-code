@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   Build platform-independent design systems and consistent component libraries.
-  Triggers: design system, component library, design tokens, 디자인 시스템, 컴포넌트.
+  Triggers: design system, component library, design tokens, 디자인 시스템, 컴포넌트, дизайн-система, библиотека компонентов, токены дизайна.
 imports:
   - ${PLUGIN_ROOT}/templates/pipeline/phase-5-design-system.template.md
 hooks:

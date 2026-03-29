@@ -288,9 +288,9 @@ assert('U-OTH-102', typeof langMod.detectLanguage === 'function', 'detectLanguag
 assert('U-OTH-103', typeof langMod.matchMultiLangPattern === 'function', 'matchMultiLangPattern exported');
 assert('U-OTH-104', typeof langMod.getAllPatterns === 'function', 'getAllPatterns exported');
 assert('U-OTH-105', Array.isArray(langMod.SUPPORTED_LANGUAGES), 'SUPPORTED_LANGUAGES is array');
-assert('U-OTH-106', langMod.SUPPORTED_LANGUAGES.length === 8, '8 supported languages');
+assert('U-OTH-106', langMod.SUPPORTED_LANGUAGES.length === 9, '9 supported languages');
 
-// detectLanguage - 8 languages
+// detectLanguage - 9 languages
 assert('U-OTH-107', langMod.detectLanguage('hello world') === 'en', 'English detected');
 assert('U-OTH-108', langMod.detectLanguage('안녕하세요') === 'ko', 'Korean detected');
 assert('U-OTH-109', langMod.detectLanguage('こんにちは') === 'ja', 'Japanese detected');

@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   Design and implement backend APIs with Zero Script QA validation.
-  Triggers: API design, REST API, backend, endpoint, 백엔드 API, API 설계.
+  Triggers: API design, REST API, backend, endpoint, 백엔드 API, API 설계, API, интеграция, эндпоинты.
 imports:
   - ${PLUGIN_ROOT}/templates/pipeline/phase-4-api.template.md
   - ${PLUGIN_ROOT}/templates/shared/api-patterns.md

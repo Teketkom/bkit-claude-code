@@ -14,7 +14,7 @@
 >
 > **v1.3.1 Cross-Platform**: All hooks converted from Bash (.sh) to Node.js (.js) for Windows/Mac/Linux compatibility
 >
-> **v1.4.0**: 80+ lib/common.js functions, 8-language Intent Detection
+> **v1.4.0**: 80+ lib/common.js functions, 9-language Intent Detection
 >
 > **v1.4.1 Context Engineering**: Optimal token curation perspective for LLM reasoning, Response Report Rule
 >
@@ -65,7 +65,7 @@
 
 ### v1.5.7 (2026-02-28) - /simplify + /batch PDCA Integration
 - CC v2.1.63 /simplify and /batch commands integrated into PDCA Check→Report flow
-- CC_COMMAND_PATTERNS: 8-language CC built-in command awareness
+- CC_COMMAND_PATTERNS: 9-language CC built-in command awareness
 - HTTP hooks documentation and awareness
 - English conversion for 3 stop scripts
 - 184 exports (common.js bridge)
@@ -84,7 +84,7 @@
 
 ### v1.5.7 (2026-02-28) - /simplify + /batch PDCA Integration
 - CC v2.1.63 /simplify and /batch commands integrated into PDCA Check→Report flow
-- CC_COMMAND_PATTERNS: 8-language CC built-in command awareness
+- CC_COMMAND_PATTERNS: 9-language CC built-in command awareness
 - HTTP hooks documentation and awareness
 - English conversion for 3 stop scripts
 - 184 exports (+generateBatchTrigger, +shouldSuggestBatch)
@@ -334,7 +334,7 @@ The following skills were consolidated:
   - `detectNewFeatureIntent()` - Detect new feature request from user message
   - `matchImplicitAgentTrigger()` - Match message to agent trigger keywords
   - `matchImplicitSkillTrigger()` - Match message to skill trigger keywords
-  - **8-language support**: EN, KO, JA, ZH, ES, FR, DE, IT
+  - **9-language support**: EN, KO, JA, ZH, ES, FR, DE, IT, RU
 
 #### Ambiguity Detection (v1.4.0)
   - `calculateAmbiguityScore()` - Calculate ambiguity in user request

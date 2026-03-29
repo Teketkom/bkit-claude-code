@@ -6,7 +6,7 @@ deprecation-risk: none
 description: |
   By-The-Way: 작업 중 개선 제안을 즉시 수집하고 관리하는 스킬.
   Triggers: /btw, /btw list, /btw analyze, /btw promote, /btw stats
-  Keywords: btw, 개선, 제안, suggestion, improve, idea, feedback
+  Keywords: btw, 개선, 제안, suggestion, improve, idea, feedback, предложение, улучшение, идея, обратная связь
 argument-hint: "/btw {suggestion} | /btw list | /btw analyze | /btw promote {id} | /btw stats"
 user-invocable: true
 allowed-tools:

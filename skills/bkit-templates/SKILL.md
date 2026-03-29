@@ -5,7 +5,7 @@ classification-reason: Process automation persists regardless of model advanceme
 deprecation-risk: none
 description: |
   PDCA document templates — Plan, Design, Analysis, Report with consistent structure.
-  Triggers: template, plan document, design template, 템플릿, 문서 양식.
+  Triggers: template, plan document, design template, 템플릿, 문서 양식, шаблон, документ плана, шаблон дизайна.
 user-invocable: false
 ---
 

@@ -12,7 +12,7 @@
 >
 > **v1.4.4**: Commands deprecated → Skills migration, PDCA Skill integration (8 actions), hooks-json-integration (unified scripts)
 >
-> **v1.4.5**: `/pdca archive` action, 8-language trigger completion (ES/FR/DE/IT), internationalization (KO→EN translation)
+> **v1.4.5**: `/pdca archive` action, 9-language trigger completion (ES/FR/DE/IT/RU), internationalization (KO→EN translation)
 >
 > **v1.4.6**: Sub-agent call stability with `bkit:` prefix, all 11 agents updated
 >
@@ -26,7 +26,7 @@
 >
 > **v1.5.6**: CC v2.1.59 auto-memory integration, ENH-48~51, 182 exports
 >
-> **v1.5.7**: CC v2.1.63 /simplify + /batch + HTTP hooks PDCA integration, CC_COMMAND_PATTERNS 8-lang, English conversion
+> **v1.5.7**: CC v2.1.63 /simplify + /batch + HTTP hooks PDCA integration, CC_COMMAND_PATTERNS 9-lang, English conversion
 >
 > **v1.5.8**: Studio Support - Path Registry (lib/core/paths.js), state directory migration (.bkit/{state,runtime,snapshots}/), auto-migration with EXDEV fallback, 186 exports
 >
@@ -79,7 +79,7 @@ bkit is a practical implementation of **Context Engineering**. Context Engineeri
 │  │                  │  │                  │  │              │  │
 │  │ • 9-Phase Guide  │  │ • Role Def.      │  │ • PDCA v2.0  │  │
 │  │ • 3 Levels       │  │ • Constraints    │  │ • Multi-Feat │  │
-│  │ • 8 Languages    │  │ • Few-shot       │  │ • Caching    │  │
+│  │ • 9 Languages    │  │ • Few-shot       │  │ • Caching    │  │
 │  └────────┬─────────┘  └────────┬─────────┘  └──────┬───────┘  │
 │           │                     │                    │          │
 │           └─────────────────────┼────────────────────┘          │

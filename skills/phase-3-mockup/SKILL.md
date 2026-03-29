@@ -5,7 +5,7 @@ classification-reason: Highly likely to be subsumed by model's native capabiliti
 deprecation-risk: high
 description: |
   Create UI/UX mockups and HTML/CSS/JS prototypes without a designer.
-  Triggers: mockup, prototype, wireframe, UI design, 목업, 프로토타입.
+  Triggers: mockup, prototype, wireframe, UI design, 목업, 프로토타입, макет, прототип, каркас.
 agents:
   default: bkit:pipeline-guide
   frontend: bkit:frontend-architect

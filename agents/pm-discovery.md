@@ -7,7 +7,8 @@ description: |
 
   Triggers: opportunity, discovery, OST, customer needs, pain points,
   기회 발견, 고객 니즈, 페인포인트, 機会発見, 机会发现,
-  descubrimiento, découverte, Entdeckung, scoperta
+  descubrimiento, découverte, Entdeckung, scoperta,
+  исследование рынка, конкуренты, анализ потребностей
 
   Do NOT use for: implementation, code review, or strategy analysis.
 model: sonnet

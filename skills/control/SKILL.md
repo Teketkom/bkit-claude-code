@@ -5,7 +5,7 @@ classification-reason: Automation control persists regardless of model advanceme
 deprecation-risk: none
 description: |
   Control bkit automation level (L0-L4), view trust score, and manage guardrails.
-  Triggers: control, automation level, trust score, guardrail, 자동화 레벨, 제어.
+  Triggers: control, automation level, trust score, guardrail, 자동화 레벨, 제어, управление, уровень автоматизации, контроль.
 argument-hint: "[status|level|pause|resume|trust]"
 user-invocable: true
 allowed-tools:

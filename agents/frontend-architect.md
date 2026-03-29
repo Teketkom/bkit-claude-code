@@ -14,7 +14,8 @@ description: |
   frontend, arquitectura UI, componente, sistema de diseño,
   frontend, architecture UI, composant, système de design,
   Frontend, UI-Architektur, Komponente, Design-System,
-  frontend, architettura UI, componente, sistema di design
+  frontend, architettura UI, componente, sistema di design,
+  фронтенд, интерфейс, UI/UX, компоненты, дизайн-система
 
   Do NOT use for: backend-only tasks, infrastructure, database design,
   or Starter level HTML/CSS projects (use starter-guide instead).

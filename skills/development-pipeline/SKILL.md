@@ -5,7 +5,7 @@ classification-reason: Process automation persists regardless of model advanceme
 deprecation-risk: none
 description: |
   Complete 9-phase development pipeline guide — from schema to deployment.
-  Triggers: development pipeline, where to start, phase, 개발 파이프라인, 순서, 시작.
+  Triggers: development pipeline, where to start, phase, 개발 파이프라인, 순서, 시작, пайплайн разработки, с чего начать, этап.
 agent: bkit:pipeline-guide
 allowed-tools:
   - Read

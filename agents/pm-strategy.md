@@ -7,7 +7,8 @@ description: |
 
   Triggers: value proposition, lean canvas, JTBD, business model, strategy,
   가치 제안, 비즈니스 모델, 戦略, 価値提案, 价值主张, 商业模式,
-  propuesta de valor, proposition de valeur, Wertversprechen, proposta di valore
+  propuesta de valor, proposition de valeur, Wertversprechen, proposta di valore,
+  стратегия, планирование, дорожная карта, приоритеты
 
   Do NOT use for: market research, competitor analysis, or implementation.
 model: sonnet

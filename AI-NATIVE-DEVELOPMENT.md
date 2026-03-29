@@ -137,7 +137,7 @@ Context Engineering is the **systematic design of information flow to LLMs**—g
 **Key Practices**:
 - Design multi-layered context injection systems (18 hook events, 6 layers)
 - Build state management with declarative state machines (20 transitions, 9 guards)
-- Create adaptive triggers based on user intent (8-language, auto-detection)
+- Create adaptive triggers based on user intent (9-language, auto-detection)
 - Implement quality feedback loops with quality gates and metrics (M1-M10)
 
 **bkit v2.0.0 Implementation**:
@@ -195,7 +195,7 @@ bkit implements **Context Engineering**—the systematic curation of context tok
 │  Layer 1: Domain Knowledge   │ 37 Skills (structured knowledge)  │
 │  Layer 2: Behavioral Rules   │ 32 Agents (role + constraints)    │
 │  Layer 3: State Management   │ State machine, workflow engine    │
-│  Layer 4: Dynamic Injection  │ Intent detection, 8-lang triggers │
+│  Layer 4: Dynamic Injection  │ Intent detection, 9-lang triggers │
 │  Layer 5: Controllable AI    │ L0-L4 automation, trust score     │
 │  Layer 6: Quality & Audit    │ 7 gates, M1-M10 metrics, audit   │
 │  Layer 7: Feedback Loop      │ Match Rate → Iteration (max 5)   │

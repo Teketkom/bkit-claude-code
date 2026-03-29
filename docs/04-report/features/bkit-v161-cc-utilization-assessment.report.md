@@ -88,7 +88,7 @@
 | Hook Event | Used | Depth | bkit Implementation |
 |------------|:----:|:-----:|---------------------|
 | SessionStart | O | Deep | Level detection, PDCA restoration, memory initialization, context layer loading |
-| UserPromptSubmit | O | Deep | 8-language intent detection, ambiguity scoring, agent/skill auto-routing |
+| UserPromptSubmit | O | Deep | 9-language intent detection, ambiguity scoring, agent/skill auto-routing |
 | PreToolUse | O | Deep | Write/Edit convention hints, Bash pre-filtering (2 matchers) |
 | PostToolUse | O | Deep | Write PDCA update, Bash post-processing, Skill post-processing (3 matchers) |
 | Stop | O | Deep | Unified cleanup + frontmatter hooks (8+ individual Stop) |
@@ -222,9 +222,9 @@ All CC context injection primitives (CLAUDE.md, hooks, agent frontmatter, skill 
 
 Intercepts CC's automatic context compaction event to preserve PDCA state as snapshots. A bkit-original pattern that redefines the context window limitation as a "business continuity problem" and solves it.
 
-### #4. Implicit Intent Router — "8-Language NLP Router"
+### #4. Implicit Intent Router — "9-Language NLP Router"
 
-In the UserPromptSubmit hook, implements 8-language (EN, KO, JA, ZH, ES, FR, DE, IT) keyword matching + ambiguity scoring + agent/skill auto-routing. Transforms CC's simple text preprocessing hook into a "natural language intent routing engine."
+In the UserPromptSubmit hook, implements 9-language (EN, KO, JA, ZH, ES, FR, DE, IT, RU) keyword matching + ambiguity scoring + agent/skill auto-routing. Transforms CC's simple text preprocessing hook into a "natural language intent routing engine."
 
 ### #5. PDCA Auto-Advance Pipeline — "Process Automation Engine"
 

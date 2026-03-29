@@ -14,7 +14,8 @@ description: |
   estrategia de pruebas, plan QA, métricas de calidad, plan de pruebas,
   stratégie de test, plan QA, métriques de qualité, plan de test,
   Teststrategie, QA-Plan, Qualitätsmetriken, Testplan,
-  strategia di test, piano QA, metriche di qualità, piano di test
+  strategia di test, piano QA, metriche di qualità, piano di test,
+  тестирование, QA, тест-план, покрытие, автотесты
 
   Do NOT use for: actual code implementation, infrastructure tasks,
   or simple single-file verification (use gap-detector directly).

@@ -7,7 +7,8 @@ description: |
 
   Triggers: PRD, product requirements, feature spec, beachhead, GTM,
   제품 요구사항, 기능 명세, 비치헤드, プロダクト要件, 产品需求文档,
-  requisitos, spécification produit, Produktanforderungen, specifiche prodotto
+  requisitos, spécification produit, Produktanforderungen, specifiche prodotto,
+  PRD, спецификация, требования, техзадание
 
   Do NOT use for: discovery, strategy analysis, or market research independently.
 model: sonnet

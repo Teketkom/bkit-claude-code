@@ -14,7 +14,7 @@
 > **v1.6.1**: CTO Orchestration Redesign, P0 Bug Fixes (4), Config-Code Sync, 3-Tier Agent Security, 208 exports, CC v2.1.71
 > **v1.6.2**: CC v2.1.78 Integration, 210 exports, 49 scripts
 > **v1.4.6**: Sub-agent call stability with `bkit:` prefix
-> **v1.4.5**: `/pdca archive` action, 8-language trigger completion
+> **v1.4.5**: `/pdca archive` action, 9-language trigger completion
 > **v1.4.4**: hooks-json-integration, unified handlers (unified-stop.js, unified-bash-pre.js, etc.)
 > **v1.4.2**: Added UserPromptSubmit + PreCompact hooks, Context Engineering library modules
 > **v1.4.1**: Added Context Engineering perspective - State Management Layer via lib/common.js
@@ -52,10 +52,10 @@ Scripts and `lib/common.js` form bkit's **State Management Layer**, implementing
 │                                                                  │
 │  ┌──────────────────────┐  ┌──────────────────────┐             │
 │  │   Intent Detection   │  │   Ambiguity          │             │
-│  │   (8 Languages)      │  │   Detection          │             │
+│  │   (9 Languages)      │  │   Detection          │             │
 │  │                      │  │                      │             │
 │  │  EN, KO, JA, ZH      │  │  • Score calculation │             │
-│  │  ES, FR, DE, IT      │  │  • Clarifying Qs     │             │
+│  │  ES, FR, DE, IT, RU  │  │  • Clarifying Qs     │             │
 │  │                      │  │  • Magic Word Bypass │             │
 │  └──────────────────────┘  └──────────────────────┘             │
 │                                                                  │
@@ -303,7 +303,7 @@ common.switchFeatureContext('auth', 'payment');   // Switch context
 const ctx = common.getFeatureContext('auth');     // Get feature context
 
 // ═══════════════════════════════════════════════════════════════════
-// Intent Detection (v1.4.0 - 8 languages)
+// Intent Detection (v1.4.0 - 9 languages)
 // ═══════════════════════════════════════════════════════════════════
 common.detectNewFeatureIntent('새 로그인 기능 만들어줘');  // { feature, confidence }
 common.matchImplicitAgentTrigger('검증해줘');     // 'gap-detector'

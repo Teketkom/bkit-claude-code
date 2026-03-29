@@ -5,7 +5,7 @@ classification-reason: Pattern guidance may overlap with model's built-in knowle
 deprecation-risk: medium
 description: |
   bkend.ai database — CRUD, column types, filtering, sorting, relations, indexing.
-  Triggers: bkend table, CRUD, column, filter, sort, relation, 테이블, 데이터.
+  Triggers: bkend table, CRUD, column, filter, sort, relation, 테이블, 데이터, таблица, данные, фильтрация.
 user-invocable: false
 agent: bkit:bkend-expert
 allowed-tools:

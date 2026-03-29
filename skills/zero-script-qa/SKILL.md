@@ -5,7 +5,7 @@ classification-reason: Process automation persists regardless of model advanceme
 deprecation-risk: none
 description: |
   Zero Script QA — test without scripts using structured JSON logging and Docker monitoring.
-  Triggers: zero-script-qa, log testing, docker logs, QA, 제로 스크립트 QA.
+  Triggers: zero-script-qa, log testing, docker logs, QA, 제로 스크립트 QA, тестирование без скриптов, логи, контроль качества.
 context: fork
 agent: bkit:qa-monitor
 user-invocable: true

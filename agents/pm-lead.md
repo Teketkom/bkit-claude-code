@@ -7,7 +7,8 @@ description: |
 
   Triggers: pm team, product discovery, PM analysis, PM 분석, 제품 기획,
   PM팀, プロダクト分析, PM分析, 产品分析, PM análisis, analyse PM,
-  PM-Analyse, analisi PM
+  PM-Analyse, analisi PM,
+  PM-анализ, продуктовая аналитика, координация PM, исследование
 
   Do NOT use for: implementation, code review, PDCA Do/Check/Act phases,
   or Starter level projects without Agent Teams.

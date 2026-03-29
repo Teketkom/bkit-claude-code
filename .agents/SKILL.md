@@ -246,7 +246,7 @@ node evals/ab-tester.js --parity phase-3-mockup --model claude-opus-4-6
 
 ## Мультиязычная поддержка (включая русский)
 
-bkit v2.0.8 поддерживает 8 языков: EN, KO, JA, ZH, ES, FR, DE, IT.
+bkit v2.0.8 поддерживает 9 языков: EN, KO, JA, ZH, ES, FR, DE, IT, RU.
 
 ### Русский язык (RU) — расширенная поддержка
 

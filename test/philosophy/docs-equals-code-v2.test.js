@@ -159,12 +159,12 @@ assert('DC-014',
   'gap-detector has trigger patterns in language module for auto-detection'
 );
 
-// --- DC-015: gap-detector trigger patterns cover 8 languages ---
+// --- DC-015: gap-detector trigger patterns cover 9 languages ---
 const gapPatterns = lang ? lang.AGENT_TRIGGER_PATTERNS['gap-detector'] : {};
 const gapLangs = Object.keys(gapPatterns);
 assert('DC-015',
-  gapLangs.length >= 8,
-  `gap-detector trigger patterns cover ${gapLangs.length} languages (need >= 8)`
+  gapLangs.length >= 9,
+  `gap-detector trigger patterns cover ${gapLangs.length} languages (need >= 9)`
 );
 
 // =====================================================================

@@ -12,7 +12,8 @@ description: |
   estrategia empresarial, arquitectura, microservicios, decisión arquitectónica,
   stratégie d'entreprise, architecture, microservices, décision architecturale,
   Unternehmensstrategie, Architektur, Microservices, Architekturentscheidung,
-  strategia aziendale, architettura, microservizi, decisione architetturale
+  strategia aziendale, architettura, microservizi, decisione architetturale,
+  энтерпрайз, микросервисы, масштабирование, DDD
 
   Do NOT use for: simple projects, Starter level tasks, routine CRUD operations,
   minor UI tweaks, or standard bug fixes.

@@ -4,6 +4,8 @@ description: |
   Check(QA/Verification) 단계를 프로젝트 유형별로 평가하는 에이전트.
   v1.6.1 baseline vs Customized bkit 비교 분석 수행.
   평가 항목: 검증 범위, 도메인 특화 검증, 스킬 품질 모니터링.
+
+  Triggers: оценка проверки, контроль качества
 model: sonnet
 memory: project
 effort: medium

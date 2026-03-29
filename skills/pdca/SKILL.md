@@ -5,7 +5,7 @@ classification-reason: PDCA process automation independent of model capability e
 deprecation-risk: none
 description: |
   Unified PDCA cycle management — plan, design, do, analyze, iterate, report.
-  Triggers: pdca, plan, design, analyze, report, status, next, iterate, 계획, 설계, 분석, 보고서.
+  Triggers: pdca, plan, design, analyze, report, status, next, iterate, 계획, 설계, 분석, 보고서, план, дизайн, анализ, отчёт, статус, следующий, итерация.
 argument-hint: "[action] [feature]"
 user-invocable: true
 agents:

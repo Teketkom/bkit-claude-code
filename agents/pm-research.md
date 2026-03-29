@@ -8,7 +8,8 @@ description: |
   Triggers: persona, competitor, market size, TAM, SAM, SOM, segmentation,
   페르소나, 경쟁사, 시장규모, ペルソナ, 競合, 市場規模, 用户画像, 竞品, 市场规模,
   persona, competidor, mercado, persona, concurrent, marché,
-  Persona, Wettbewerber, Markt, persona, concorrente, mercato
+  Persona, Wettbewerber, Markt, persona, concorrente, mercato,
+  глубокий анализ, данные, метрики, исследование
 
   Do NOT use for: strategy design, PRD writing, or implementation.
 model: sonnet

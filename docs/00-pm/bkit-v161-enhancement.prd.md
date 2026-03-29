@@ -90,7 +90,7 @@ SEC-03 (no disallowed)   ░░░░              ██████      ░�
 | Section | Content |
 |---------|---------|
 | **Problem** | 1. No AI skill quality measurement (quality degrades silently). 2. Multi-agent coordination breaks at scale. 3. High team adoption barrier (command memorization). |
-| **Solution** | 1. Skill Evals Framework (28/28 automated pass/fail). 2. Differentiated orchestration patterns (leader/council/swarm/watchdog). 3. 8-language intent detection with ambiguity resolution. |
+| **Solution** | 1. Skill Evals Framework (28/28 automated pass/fail). 2. Differentiated orchestration patterns (leader/council/swarm/watchdog). 3. 9-language intent detection with ambiguity resolution. |
 | **UVP** | The only CC plugin that makes AI-assisted development auditable, measurable, and team-adoptable — with PDCA discipline enforced as code. |
 | **Unfair Advantage** | PDCA-native architecture + 37 consecutive CC-compatible releases + Apache 2.0 + Eval data flywheel |
 | **Customer Segments** | Primary: CC power users (tech leads, 5-50 person teams). Secondary: Enterprise (50-500 engineers). Tertiary: CC plugin developers. |

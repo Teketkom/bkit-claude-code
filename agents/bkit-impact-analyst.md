@@ -15,7 +15,8 @@ description: |
   impacto bkit, análisis de arquitectura,
   impact bkit, analyse d'architecture,
   bkit-Auswirkung, Architekturanalyse,
-  impatto bkit, analisi dell'architettura
+  impatto bkit, analisi dell'architettura,
+  анализ влияния, воздействие изменений, оценка
 
   Do NOT use for: external CC research (use cc-version-researcher),
   code implementation, or non-bkit analysis.

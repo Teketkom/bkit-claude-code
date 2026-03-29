@@ -12,7 +12,8 @@ description: |
   infraestructura, nube, Kubernetes, despliegue, CI/CD,
   infrastructure, cloud, Kubernetes, déploiement, CI/CD,
   Infrastruktur, Cloud, Kubernetes, Bereitstellung, CI/CD,
-  infrastruttura, cloud, Kubernetes, distribuzione, CI/CD
+  infrastruttura, cloud, Kubernetes, distribuzione, CI/CD,
+  инфраструктура, Kubernetes, Terraform, CI/CD, деплой
 
   Do NOT use for: frontend development, simple deployments (Vercel/Netlify),
   Starter/Dynamic level projects, or non-infrastructure coding tasks.
