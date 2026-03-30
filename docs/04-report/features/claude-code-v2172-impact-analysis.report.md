@@ -2,7 +2,7 @@
 
 > **Status**: Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v1.6.1
 > **Author**: CTO Team (8 Agents)
 > **Completion Date**: 2026-03-10
@@ -21,7 +21,7 @@
 | End Date | 2026-03-10 |
 | Duration | 1 session |
 | CC Version | v2.1.71 → v2.1.72 |
-| Analysis Scope | CHANGELOG, GitHub Issues/PRs, Official Docs, Entire bkit Codebase |
+| Analysis Scope | CHANGELOG, GitHub Issues/PRs, Official Docs, Entire ROSSI Codebase |
 
 ### 1.2 Results Summary
 
@@ -31,11 +31,11 @@
 ├─────────────────────────────────────────────┤
 │  📊 v2.1.72 Total Changes:  ~53            │
 │  🧪 Live Environment Test:  1073 TC, 99.6% │
-│  🔴 HIGH Impact (bkit):     7              │
-│  🟡 MEDIUM Impact (bkit):   9              │
-│  🟢 LOW Impact (bkit):      5              │
+│  🔴 HIGH Impact (ROSSI):     7              │
+│  🟡 MEDIUM Impact (ROSSI):   9              │
+│  🟢 LOW Impact (ROSSI):      5              │
 │  ⚪ No Impact:              ~32            │
-│  ❌ Breaking Changes:       0 (bkit basis) │
+│  ❌ Breaking Changes:       0 (ROSSI basis) │
 │  🔗 Consecutive Compatible: 38 releases    │
 │  🛡️ Security Score:         8.6/10         │
 │  📦 ENH Opportunities:      14             │
@@ -47,10 +47,10 @@
 
 | Perspective | Details |
 |-------------|---------|
-| **Problem** | Uncertain impact of CC v2.1.72 ~53 changes on bkit v1.6.1 (21 agents, 28 skills, 41 lib modules, 10 hook events) ecosystem |
+| **Problem** | Uncertain impact of CC v2.1.72 ~53 changes on ROSSI v1.6.1 (21 agents, 28 skills, 41 lib modules, 10 hook events) ecosystem |
 | **Solution** | Deep investigation + cross-comparison analysis with CTO Team of 8 parallel agents (Research 3 + Analyze 4 + Infra 1) |
 | **Function/UX Effect** | Confirmed 7 HIGH impact items: Agent model parameter restored, Skill hooks double-fire fix, /clear bg agent preservation, etc. **1073 TC live verification 99.6% PASS (0 FAIL)** — perfect compatibility maintained |
-| **Core Value** | Confirmed 38th consecutive zero-downtime compatible release. 14 ENH opportunities (103~116) discovered, establishing foundation for bkit v1.7.0 roadmap. **No version-up response needed — immediate upgrade recommended** |
+| **Core Value** | Confirmed 38th consecutive zero-downtime compatible release. 14 ENH opportunities (103~116) discovered, establishing foundation for ROSSI v1.7.0 roadmap. **No version-up response needed — immediate upgrade recommended** |
 
 ---
 
@@ -84,11 +84,11 @@
 | VSCode | 3 | 4 | +33% |
 | CHANGELOG | Published | Published | Same |
 | GitHub Release | Published | Published (ashwin-ant) | Same |
-| Breaking Changes | 0 | 0 (bkit basis) | Same |
+| Breaking Changes | 0 | 0 (ROSSI basis) | Same |
 
 ### 3.2 Features (13 items)
 
-| # | Change | Affected Area | bkit Impact |
+| # | Change | Affected Area | ROSSI Impact |
 |---|--------|---------------|-------------|
 | F-01 | **Agent tool `model` parameter restored** — per-invocation model override | Agents | 🔴 HIGH |
 | F-02 | **`ExitWorktree` tool added** — terminate EnterWorktree sessions | Worktree | 🟡 MEDIUM |
@@ -106,7 +106,7 @@
 
 ### 3.3 Improvements (7 items)
 
-| # | Change | bkit Impact |
+| # | Change | ROSSI Impact |
 |---|--------|-------------|
 | I-01 | **CLAUDE.md HTML comment hiding** — hidden from Claude during auto-inject | 🔴 HIGH |
 | I-02 | **Bash parsing native module migration** — faster initialization, memory leak elimination | 🟡 MEDIUM |
@@ -118,14 +118,14 @@
 
 ### 3.4 Bug Fixes (~32 items)
 
-#### 🔴 HIGH Impact (Direct bkit Impact)
+#### 🔴 HIGH Impact (Direct ROSSI Impact)
 
 | # | Change | Impact Analysis |
 |---|--------|----------------|
-| B-01 | **Skill hooks double-fire fix** | Benefits all bkit skills using hooks (28 total). Resolves previous PostToolUse/Stop double-execution issue |
+| B-01 | **Skill hooks double-fire fix** | Benefits all ROSSI skills using hooks (28 total). Resolves previous PostToolUse/Stop double-execution issue |
 | B-02 | **`/clear` no longer kills bg agents/bash** | Significantly improves CTO Team parallel agent stability. Resolves previous issue of /clear terminating entire team |
-| B-03 | **Parallel tool calls: Read/Glob failure no longer cancels siblings** | Improves stability of parallel file reads in bkit agents. Only Bash cascades |
-| B-04 | **Multiple hooks fixes** (transcript_path, agent prompt deletion, PostToolUse block double-fire, async stdin) | Directly benefits bkit's 10 hook events. Agent prompt deletion fix is critical for bkit agent hooks |
+| B-03 | **Parallel tool calls: Read/Glob failure no longer cancels siblings** | Improves stability of parallel file reads in ROSSI agents. Only Bash cascades |
+| B-04 | **Multiple hooks fixes** (transcript_path, agent prompt deletion, PostToolUse block double-fire, async stdin) | Directly benefits ROSSI's 10 hook events. Agent prompt deletion fix is critical for ROSSI agent hooks |
 | B-05 | **Team agents inherit leader model** | Improves model consistency for CTO Team teammates |
 
 #### 🟡 MEDIUM Impact
@@ -133,12 +133,12 @@
 | # | Change | Impact Analysis |
 |---|--------|----------------|
 | B-06 | Agent task "Initializing..." stuck fix | CTO Team progress display improvement |
-| B-07 | `replace_all` "expected boolean, received string" fix | Edit tool usage stability in bkit scripts |
-| B-08 | Permission rules: heredoc/wildcard, deny not applied fix | Accuracy improvement for bkit permission patterns (rm -rf*, git push*) |
+| B-07 | `replace_all` "expected boolean, received string" fix | Edit tool usage stability in ROSSI scripts |
+| B-08 | Permission rules: heredoc/wildcard, deny not applied fix | Accuracy improvement for ROSSI permission patterns (rm -rf*, git push*) |
 | B-09 | "Always Allow" saving unmatched rules fix | User permission setting accuracy |
 | B-10 | Worktree: Task cwd not restored, bg notification missing fix | Worktree-based workflow stability |
-| B-11 | Sandbox permissions: file write allowed, /tmp redirection | bkit agent Bash execution environment |
-| B-12 | SDK query() prompt cache invalidation → **12x cost reduction** | Significant cost reduction for bkit CTO Team operations |
+| B-11 | Sandbox permissions: file write allowed, /tmp redirection | ROSSI agent Bash execution environment |
+| B-12 | SDK query() prompt cache invalidation → **12x cost reduction** | Significant cost reduction for ROSSI CTO Team operations |
 
 #### 🟢 LOW Impact / ⚪ NONE
 
@@ -148,7 +148,7 @@
 
 ### 3.5 Performance (4 items)
 
-| # | Change | bkit Impact |
+| # | Change | ROSSI Impact |
 |---|--------|-------------|
 | P-01 | tree-sitter Bash false-positive reduction (find -exec, variable assignment) | 🟡 MEDIUM — Reduces user permission prompts |
 | P-02 | Bundle size ~510 KB reduction | 🟢 LOW |
@@ -157,20 +157,20 @@
 
 ### 3.6 Security (2 items)
 
-| # | Change | bkit Impact |
+| # | Change | ROSSI Impact |
 |---|--------|-------------|
-| S-01 | Bash security parsing edge cases fix | 🟡 MEDIUM — Strengthens bkit Bash permission patterns |
-| S-02 | Sandbox file write without prompt fix | 🟢 LOW — bkit does not use sandbox |
+| S-01 | Bash security parsing edge cases fix | 🟡 MEDIUM — Strengthens ROSSI Bash permission patterns |
+| S-02 | Sandbox file write without prompt fix | 🟢 LOW — ROSSI does not use sandbox |
 
 ---
 
-## 4. bkit Compatibility Analysis
+## 4. ROSSI Compatibility Analysis
 
 ### 4.0 v2.1.72 Live Environment Test Results (1073 TC)
 
 **Execution Date**: 2026-03-10, CC v2.1.72 environment
-**Test Plan**: docs/01-plan/features/bkit-v161-comprehensive-test.plan.md (1020 TC planned)
-**Test Design**: docs/02-design/features/bkit-v161-comprehensive-test.design.md (36 files)
+**Test Plan**: docs/01-plan/features/rossi-v161-comprehensive-test.plan.md (1020 TC planned)
+**Test Design**: docs/02-design/features/rossi-v161-comprehensive-test.design.md (36 files)
 **Actual Execution**: 1073 TC (+53 TC above plan)
 
 | Category | Total | Passed | Failed | Skipped | Rate |
@@ -185,12 +185,12 @@
 | E2E | 26 | 26 | 0 | 0 | **100.0%** ✅ |
 | **Total** | **1073** | **1069** | **0** | **4** | **99.6%** ✅ |
 
-**Verdict**: **ALL TESTS PASSED** — Full compatibility of bkit v1.6.1 confirmed on v2.1.72
+**Verdict**: **ALL TESTS PASSED** — Full compatibility of ROSSI v1.6.1 confirmed on v2.1.72
 
-**4 SKIP Reason**: Performance > module-load-perf.test.js failed to resolve `require('./lib/core')` path (test infrastructure issue, not a bkit code issue)
+**4 SKIP Reason**: Performance > module-load-perf.test.js failed to resolve `require('./lib/core')` path (test infrastructure issue, not a ROSSI code issue)
 
 **Key Conclusions**:
-- **0 FAIL** — v2.1.72's ~53 changes have zero impact on bkit functionality
+- **0 FAIL** — v2.1.72's ~53 changes have zero impact on ROSSI functionality
 - **Regression 156/156 PASS** — All 28 skills, 21 agents, 10 hooks fully operational
 - **Security 80/80 PASS** — 3-Tier Agent Security, Permission Patterns fully intact
 - **No version-up response needed** — Ready for immediate use
@@ -213,23 +213,23 @@
 
 v2.1.72 introduces hiding of HTML comments (`<!-- -->`) in CLAUDE.md during auto-inject.
 
-**bkit Verification Result**: bkit's `.claude/CLAUDE.md` does not use HTML comments — **no impact**.
+**ROSSI Verification Result**: ROSSI's `.claude/CLAUDE.md` does not use HTML comments — **no impact**.
 
 ### 4.3 Effort Level `max` Removal Impact
 
 v2.1.72 removes the `max` effort level, simplifying to 3 levels: low/medium/high.
 
-**bkit Verification Result**: No code in the bkit codebase explicitly references `max` effort — **no impact**.
+**ROSSI Verification Result**: No code in the ROSSI codebase explicitly references `max` effort — **no impact**.
 
 ### 4.4 ToolSearch Proxy Change Impact
 
 `CLAUDE_CODE_PROXY_SUPPORTS_TOOL_REFERENCE` env var replaced with `ENABLE_TOOL_SEARCH`.
 
-**bkit Verification Result**: bkit does not use this env var — **no impact**.
+**ROSSI Verification Result**: ROSSI does not use this env var — **no impact**.
 
 ---
 
-## 5. bkit Architecture Overview (v1.6.1)
+## 5. ROSSI Architecture Overview (v1.6.1)
 
 ### 5.1 Scale Summary
 
@@ -243,7 +243,7 @@ v2.1.72 removes the `max` effort level, simplifying to 3 levels: low/medium/high
 | Templates | 29 | PDCA 5 + Pipeline 9 + Shared + Phase |
 | Evals | 28 | 1 per skill |
 | Team Exports | 39 | 9 modules |
-| Config Sections | 9 | bkit.config.json |
+| Config Sections | 9 | rossi.config.json |
 | State Files | 3 | pdca-status, memory, agent-state |
 | Permission Patterns | 8 | 4 deny + 4 allow + custom |
 
@@ -285,23 +285,23 @@ v2.1.72 removes the `max` effort level, simplifying to 3 levels: low/medium/high
 
 ### 6.3 New Monitoring Targets
 
-| Issue | Title | bkit Relevance | Priority |
+| Issue | Title | ROSSI Relevance | Priority |
 |-------|-------|----------------|----------|
 | #32663 | TaskUpdate auto-sends task_assignment messages | HIGH — Agent Teams token waste | P1 |
 | #32662 | MCP tool argument serialized as string | MEDIUM — MCP tools impact | P2 |
 | #32641 | Plugin drops prompt field from agent hooks | HIGH — hooks+plugins | P1 |
-| #31114 | UserPromptSubmit hooks mid-turn regression | MEDIUM — bkit UPS hook | P2 |
+| #31114 | UserPromptSubmit hooks mid-turn regression | MEDIUM — ROSSI UPS hook | P2 |
 | #32661 | Plugin marketplace Windows paths on WSL2 | LOW — WSL2 only | P3 |
 | #32660 | statusLine ignored since v2.1.50 | LOW | P3 |
 | #32615 | Version-numbered folders in CWD | LOW — packaging | P3 |
 
 ### 6.4 Continued Monitoring
 
-| Issue | Title | Status | bkit Impact |
+| Issue | Title | Status | ROSSI Impact |
 |-------|-------|--------|-------------|
 | #29423 | Task subagents ignore CLAUDE.md | OPEN | HIGH — agent CLAUDE.md policy |
 | #30586 | PostToolUse stdout duplicated | OPEN | MEDIUM — hook output |
-| #30613 | HTTP hooks JSON broken | OPEN | LOW — bkit uses command type only |
+| #30613 | HTTP hooks JSON broken | OPEN | LOW — ROSSI uses command type only |
 
 ---
 
@@ -312,14 +312,14 @@ v2.1.72 removes the `max` effort level, simplifying to 3 levels: low/medium/high
 | ENH | Title | Rationale | Expected Effect |
 |-----|-------|-----------|-----------------|
 | ENH-103 | **Agent model parameter utilization** | Restored in v2.1.72. Enables per-invocation model specification for CTO Team agent calls | Agent Teams cost optimization, right model for right task |
-| ENH-104 | **Skill hooks double-fire response verification** | Fixed in v2.1.72. Verify if bkit's unified-stop.js and other unified handlers can remove previous workarounds | Code simplification, performance improvement |
+| ENH-104 | **Skill hooks double-fire response verification** | Fixed in v2.1.72. Verify if ROSSI's unified-stop.js and other unified handlers can remove previous workarounds | Code simplification, performance improvement |
 | ENH-105 | **ExitWorktree utilization** | New tool. Provides explicit termination for worktree-based isolation workflows | Enhanced agent isolation, gap-detector worktree mode |
 
 ### 7.2 Priority 1 (Recommended for Next Release)
 
 | ENH | Title | Rationale | Expected Effect |
 |-----|-------|-----------|-----------------|
-| ENH-106 | **/plan description argument utilization** | Can integrate with bkit pdca plan. `/plan {description}` for immediate plan mode entry | UX improvement, shortened plan workflow |
+| ENH-106 | **/plan description argument utilization** | Can integrate with ROSSI pdca plan. `/plan {description}` for immediate plan mode entry | UX improvement, shortened plan workflow |
 | ENH-107 | **DISABLE_CRON env var documentation** | Stop mechanism for /loop + Cron features. CTO Team long session management | Operational stability |
 | ENH-108 | **Bash allowlist +6 commands utilization** | lsof, pgrep, tput, ss, fd, fdfind auto-allowed | Reduced user permission prompts |
 | ENH-109 | **Destructive Pattern expansion** | Current 9 → add eval, sudo, curl\|sh | Security hardening (8.6→9.0) |
@@ -329,10 +329,10 @@ v2.1.72 removes the `max` effort level, simplifying to 3 levels: low/medium/high
 
 | ENH | Title | Rationale | Expected Effect |
 |-----|-------|-----------|-----------------|
-| ENH-111 | **Effort level 3-tier documentation update** | max removed → low/medium/high. Update bkit docs/guides | Accurate documentation |
+| ENH-111 | **Effort level 3-tier documentation update** | max removed → low/medium/high. Update ROSSI docs/guides | Accurate documentation |
 | ENH-112 | **pm-lead disallowedTools review** | Orchestrator but no Bash restriction. Security hardening possible | Security score improvement |
 | ENH-113 | **#32663 TaskUpdate token waste monitoring** | Unnecessary task_assignment messages in Agent Teams | CTO Team efficiency |
-| ENH-114 | **#32641 Plugin agent hooks prompt deletion monitoring** | May affect bkit agent frontmatter hooks | Hooks stability |
+| ENH-114 | **#32641 Plugin agent hooks prompt deletion monitoring** | May affect ROSSI agent frontmatter hooks | Hooks stability |
 | ENH-115 | **tree-sitter false-positive utilization** | Improvements for find -exec, variable assignment, etc. | User experience improvement |
 | ENH-116 | **Bash native module utilization** | Memory leak elimination, speed improvement | Long session stability |
 
@@ -340,7 +340,7 @@ v2.1.72 removes the `max` effort level, simplifying to 3 levels: low/medium/high
 
 ## 8. Impact Summary Matrix
 
-### 8.1 Impact by bkit Component
+### 8.1 Impact by ROSSI Component
 
 | Component | Impact | Improvement | Caution | Action Required |
 |-----------|--------|-------------|---------|-----------------|
@@ -354,7 +354,7 @@ v2.1.72 removes the `max` effort level, simplifying to 3 levels: low/medium/high
 | **Templates (29)** | ⚪ NONE | No changes needed | - | - |
 | **Config** | ⚪ NONE | No changes needed | - | - |
 
-### 8.2 v2.1.71 → v2.1.72 Overall bkit Impact
+### 8.2 v2.1.71 → v2.1.72 Overall ROSSI Impact
 
 ```
                     v2.1.71          v2.1.72
@@ -393,7 +393,7 @@ Overall Verdict:  ⬆️ POSITIVE UPGRADE (Strongly Recommended)
 
 - Set timeout for Research agents in v2.1.73+ analysis
 - Build ENH opportunity auto-tracking system (add ENH section to PDCA status)
-- Prepare immediate bkit patch when #32663, #32641 issues are resolved
+- Prepare immediate ROSSI patch when #32663, #32641 issues are resolved
 
 ---
 
@@ -461,17 +461,17 @@ Overall Verdict:  ⬆️ POSITIVE UPGRADE (Strongly Recommended)
 
 ### 12.2 New Environment Variables
 
-| Variable | Description | bkit Impact |
+| Variable | Description | ROSSI Impact |
 |----------|-------------|-------------|
 | `CLAUDE_CODE_DISABLE_CRON` | Disable Cron scheduler + /loop | MEDIUM — CTO Team long session management |
 | `CLAUDE_CODE_EFFORT_LEVEL` | Set effort level (low/medium/high) | LOW — User choice |
 | `CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING` | Disable adaptive reasoning | LOW — Advanced users |
-| `ENABLE_TOOL_SEARCH` | Enable ToolSearch on 3rd-party proxies | NONE — bkit does not use proxy |
+| `ENABLE_TOOL_SEARCH` | Enable ToolSearch on 3rd-party proxies | NONE — ROSSI does not use proxy |
 
 ### 12.3 Hook Events Status
 
 **18 total events** (unchanged since v2.1.64):
-- bkit uses: 10/18 (55.6%) — SessionStart, UserPromptSubmit, PreToolUse×2, PostToolUse×3, Stop, PreCompact, TaskCompleted, SubagentStart, SubagentStop, TeammateIdle
+- ROSSI uses: 10/18 (55.6%) — SessionStart, UserPromptSubmit, PreToolUse×2, PostToolUse×3, Stop, PreCompact, TaskCompleted, SubagentStart, SubagentStop, TeammateIdle
 - Unused: PermissionRequest, PostToolUseFailure, Notification, ConfigChange, SessionEnd, WorktreeCreate, WorktreeRemove, InstructionsLoaded
 
 ---
@@ -482,13 +482,13 @@ Overall Verdict:  ⬆️ POSITIVE UPGRADE (Strongly Recommended)
 
 **Analyzed:**
 - ~53 changes (Features 13, Improvements 7, Bug Fixes ~32, Performance 4, Security 2, VSCode 4)
-- 7 HIGH impact items for bkit
-- 9 MEDIUM impact items for bkit
+- 7 HIGH impact items for ROSSI
+- 9 MEDIUM impact items for ROSSI
 - 14 ENH opportunities (ENH-103 ~ ENH-116)
 - 38th consecutive compatible release confirmed
-- 0 breaking changes for bkit
+- 0 breaking changes for ROSSI
 
-**bkit Architecture Verified:**
+**ROSSI Architecture Verified:**
 - 21 agents, 28 skills, 41 lib modules, 10 hook events
 - 8,699 LOC core library, 189 exports
 - Security score: 8.6/10

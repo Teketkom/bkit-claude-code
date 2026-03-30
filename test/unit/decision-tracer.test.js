@@ -9,7 +9,7 @@ const path = require('path');
 const os = require('os');
 
 // Set up tmp dir and mock platform before requiring module
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bkit-decision-test-'));
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ROSSI-decision-test-'));
 
 const platformPath = require.resolve('../../lib/core/platform');
 const origPlatform = require(platformPath);
@@ -52,7 +52,7 @@ mod.recordDecision({
 });
 
 const today = new Date().toISOString().slice(0, 10);
-const decisionsFilePath = path.join(tmpDir, '.bkit', 'decisions', `${today}.jsonl`);
+const decisionsFilePath = path.join(tmpDir, '.rossi', 'decisions', `${today}.jsonl`);
 assert('DC-001', fs.existsSync(decisionsFilePath), 'recordDecision creates JSONL file');
 
 const content = fs.readFileSync(decisionsFilePath, 'utf-8').trim();

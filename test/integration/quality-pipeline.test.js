@@ -31,8 +31,8 @@ function assert(id, condition, description) {
 }
 
 // Setup: Override PROJECT_DIR for isolated testing
-const TEST_DIR = path.join(os.tmpdir(), `bkit-quality-test-${process.pid}-${Date.now()}`);
-fs.mkdirSync(path.join(TEST_DIR, '.bkit', 'state'), { recursive: true });
+const TEST_DIR = path.join(os.tmpdir(), `ROSSI-quality-test-${process.pid}-${Date.now()}`);
+fs.mkdirSync(path.join(TEST_DIR, '.rossi', 'state'), { recursive: true });
 
 const platform = require(path.join(PROJECT_ROOT, 'lib/core/platform'));
 const origProjectDir = platform.PROJECT_DIR;

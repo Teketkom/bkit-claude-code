@@ -1,13 +1,13 @@
-# bkit v2.0.8 — CC v2.1.86 대응 개선 완료 보고서
+# ROSSI v2.0.8 — CC v2.1.86 대응 개선 완료 보고서
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v2.0.8
 > **Author**: Report Workflow
 > **Completion Date**: 2026-03-28
 > **PDCA Cycle**: #26
-> **Branch**: feat/bkit-v208-cc-v2186-improvements
+> **Branch**: feat/rossi-v208-cc-v2186-improvements
 
 ---
 
@@ -17,7 +17,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| **기능** | bkit v2.0.8 — Skills Description 250자 최적화 + Hook `if` 필드 문서화 + 버전업 |
+| **기능** | ROSSI v2.0.8 — Skills Description 250자 최적화 + Hook `if` 필드 문서화 + 버전업 |
 | **시작일** | 2026-03-28 |
 | **완료일** | 2026-03-28 |
 | **기간** | 1 session |
@@ -30,7 +30,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  bkit v2.0.8 완료 성과                                  │
+│  ROSSI v2.0.8 완료 성과                                  │
 ├──────────────────────────────────────────────────────┤
 │  📊 변경 파일:              46개                       │
 │  📝 순 LOC:                +134 / -485 (순감 -351)     │
@@ -47,9 +47,9 @@
 
 | 관점 | 내용 |
 |------|------|
-| **문제** | CC v2.1.86의 /skills description 250자 cap으로 bkit 34/36 skills 핵심 정보 잘림. Hook `if` 필드 미문서화 |
+| **문제** | CC v2.1.86의 /skills description 250자 cap으로 ROSSI 34/36 skills 핵심 정보 잘림. Hook `if` 필드 미문서화 |
 | **해결 방법** | 35 skills description을 250자 이내로 최적화. Hook `if` 필드 + Org Policy 문서화. v2.0.8 버전업 |
-| **기능/UX 효과** | /skills 목록에서 모든 bkit skill의 핵심 목적이 한눈에 파악 가능. 향후 hook 설계에 `if` 활용 기반 확보 |
+| **기능/UX 효과** | /skills 목록에서 모든 ROSSI skill의 핵심 목적이 한눈에 파악 가능. 향후 hook 설계에 `if` 활용 기반 확보 |
 | **핵심 가치** | Skill discoverability 대폭 개선 + CC v2.1.86 완전 대응 + 52개 연속 호환 유지 + 순 LOC -351 (코드 간결화) |
 
 ---
@@ -77,15 +77,15 @@
 
 | 항목 | 내용 |
 |------|------|
-| **파일** | bkit-system/philosophy/context-engineering.md |
-| **내용** | Permission rule syntax 설명, 지원 events 4개, bkit 현재 상태, 권장 사항, matcher vs if 차이 |
+| **파일** | rossi-system/philosophy/context-engineering.md |
+| **내용** | Permission rule syntax 설명, 지원 events 4개, ROSSI 현재 상태, 권장 사항, matcher vs if 차이 |
 | **LOC** | +39줄 |
 
 ### 2.3 ENH-164: Org Policy 문서화 (P3) ✅
 
 | 항목 | 내용 |
 |------|------|
-| **파일** | bkit-system/philosophy/context-engineering.md (ENH-160과 동일) |
+| **파일** | rossi-system/philosophy/context-engineering.md (ENH-160과 동일) |
 | **내용** | managed-settings.json org policy, plugin blocking 주의사항 |
 | **LOC** | +9줄 |
 
@@ -93,13 +93,13 @@
 
 | 파일 | Before | After |
 |------|--------|-------|
-| bkit.config.json | 2.0.6 | 2.0.8 |
+| rossi.config.json | 2.0.6 | 2.0.8 |
 | .claude-plugin/plugin.json | 2.0.6 | 2.0.8 |
 | hooks/hooks.json | v2.0.6 | v2.0.8 |
 | hooks/startup/session-context.js | v2.0.6 | v2.0.8 |
 | hooks/session-start.js | v2.0.6 | v2.0.8 |
 | README.md | v2.0.8 항목 추가 | ✅ |
-| bkit-system/README.md | v2.0.8 항목 추가 | ✅ |
+| rossi-system/README.md | v2.0.8 항목 추가 | ✅ |
 | 3x overview files | 헤더 버전 업데이트 | ✅ |
 
 ---
@@ -131,20 +131,20 @@
 | # | 파일 | 변경 유형 |
 |---|------|----------|
 | 1 | .claude-plugin/plugin.json | version bump |
-| 2 | bkit.config.json | version bump |
+| 2 | rossi.config.json | version bump |
 | 3 | hooks/hooks.json | version bump |
 | 4 | hooks/startup/session-context.js | version bump |
 | 5 | hooks/session-start.js | version bump |
 | 6 | README.md | v2.0.8 항목 추가 |
-| 7 | bkit-system/README.md | v2.0.8 항목 + 헤더 |
-| 8 | bkit-system/philosophy/context-engineering.md | ENH-160 + ENH-164 |
+| 7 | rossi-system/README.md | v2.0.8 항목 + 헤더 |
+| 8 | rossi-system/philosophy/context-engineering.md | ENH-160 + ENH-164 |
 
 ### Overview Files (3 files)
 | # | 파일 | 변경 유형 |
 |---|------|----------|
-| 9 | bkit-system/components/agents/_agents-overview.md | 헤더 version |
-| 10 | bkit-system/components/scripts/_scripts-overview.md | 헤더 version |
-| 11 | bkit-system/components/skills/_skills-overview.md | 헤더 version |
+| 9 | rossi-system/components/agents/_agents-overview.md | 헤더 version |
+| 10 | rossi-system/components/scripts/_scripts-overview.md | 헤더 version |
+| 11 | rossi-system/components/skills/_skills-overview.md | 헤더 version |
 
 ### Skills (35 files)
 | # | Skill | 변경 유형 |
@@ -159,10 +159,10 @@
 
 | Phase | 문서 | 경로 |
 |-------|------|------|
-| Plan | Plan Plus 계획 | docs/01-plan/features/bkit-v208-cc-v2186-improvements.plan.md |
-| Design | 상세 설계 | docs/02-design/features/bkit-v208-cc-v2186-improvements.design.md |
+| Plan | Plan Plus 계획 | docs/01-plan/features/rossi-v208-cc-v2186-improvements.plan.md |
+| Design | 상세 설계 | docs/02-design/features/rossi-v208-cc-v2186-improvements.design.md |
 | Analysis | 영향 분석 보고서 | docs/04-report/features/cc-v2185-v2186-impact-analysis.report.md |
-| Report | 이 문서 | docs/04-report/features/bkit-v208-cc-v2186-improvements.report.md |
+| Report | 이 문서 | docs/04-report/features/rossi-v208-cc-v2186-improvements.report.md |
 
 ---
 
@@ -177,7 +177,7 @@
 
 ## 7. 권장 후속 조치
 
-1. **PR 생성**: `feat/bkit-v208-cc-v2186-improvements` → `main`
+1. **PR 생성**: `feat/rossi-v208-cc-v2186-improvements` → `main`
 2. **ENH-134 (P0)**: Skills effort frontmatter — 36 skills에 effort 필드 추가 (별도 릴리스)
 3. **ENH-138 (P1)**: --bare CI/CD 가이드 — B-86-5 (--bare MCP fix) 반영
 4. **CC 권장 버전**: v2.1.86+ (config writes fix, Read tool 토큰 절감)

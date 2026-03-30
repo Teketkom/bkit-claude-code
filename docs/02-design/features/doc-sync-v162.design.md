@@ -1,4 +1,4 @@
-# Design: bkit v1.6.2 문서 동기화 (Doc-Sync)
+# Design: ROSSI v1.6.2 문서 동기화 (Doc-Sync)
 
 ## Executive Summary
 
@@ -18,7 +18,7 @@
 | 키 | Before | After | 비고 |
 |----|--------|-------|------|
 | `VERSION` | 1.6.1 | 1.6.2 | 현재 상태 참조만 변경 |
-| `HOOKS_BKIT` | 10 | 12 | +PostCompact, +StopFailure |
+| `HOOKS_ROSSI` | 10 | 12 | +PostCompact, +StopFailure |
 | `HOOKS_CC` | 18 | 22 | +Elicitation, ElicitationResult, PostCompact, StopFailure |
 | `AGENTS` | 21 | 29 | 문서가 21이었으나 실제 29 (CTO 5 + PM 5 + Core 11 + 8 추가) |
 | `SKILLS` | 28 | 31 | 문서가 28이었으나 실제 31 |
@@ -110,8 +110,8 @@ After:  - [Skills Reference](skills/) - 31 domain skills
 
 #### 1.10 Design Philosophy 섹션 (L567)
 ```
-Before: bkit's 208 functions, 28 skills, and 21 agents
-After:  bkit's 210 functions, 31 skills, and 29 agents
+Before: ROSSI's 208 functions, 28 skills, and 21 agents
+After:  ROSSI's 210 functions, 31 skills, and 29 agents
 ```
 
 ---
@@ -125,7 +125,7 @@ v1.6.1 항목 앞에 v1.6.2 항목을 신규 추가:
 
 ### Added
 - **CC v2.1.78 Integration** (ENH-117~130)
-  - 2 new hook events: PostCompact, StopFailure (total: 12 bkit hooks, 22 CC official)
+  - 2 new hook events: PostCompact, StopFailure (total: 12 ROSSI hooks, 22 CC official)
   - Agent frontmatter: `effort` and `maxTurns` parameters for all 29 agents
   - `${CLAUDE_PLUGIN_DATA}` backup/restore support: `backupToPluginData()`, `restoreFromPluginData()`
   - Output tokens: 64K default, 128K upper limit (Opus 4.6)
@@ -173,11 +173,11 @@ After:  │  Shared Library     │ lib/ (210 funcs)    │
 
 #### 3.4 Plugin Structure (L739, L755~766)
 ```
-Before: ### bkit Plugin Structure Example (v1.6.1 - Claude Code Exclusive)
+Before: ### ROSSI Plugin Structure Example (v1.6.1 - Claude Code Exclusive)
         │   └── ... (21 total, including 5 PM Team agents)
         ├── skills/                         # Domain knowledge (28 skills)
         ├── scripts/                        # Hook execution scripts (45 scripts)
-After:  ### bkit Plugin Structure Example (v1.6.2 - Claude Code Exclusive)
+After:  ### ROSSI Plugin Structure Example (v1.6.2 - Claude Code Exclusive)
         │   └── ... (29 total, including 5 CTO Team + 5 PM Team agents)
         ├── skills/                         # Domain knowledge (31 skills)
         ├── scripts/                        # Hook execution scripts (49 scripts)
@@ -185,7 +185,7 @@ After:  ### bkit Plugin Structure Example (v1.6.2 - Claude Code Exclusive)
 
 ---
 
-### 4. bkit-system/README.md (P0)
+### 4. rossi-system/README.md (P0)
 
 #### 4.1 버전 이력 헤더 (L37)
 v1.6.2 이력 추가:
@@ -196,11 +196,11 @@ After (추가):
 
 #### 4.2 Trigger System 다이어그램 (L197~218)
 ```
-Before: │                bkit Trigger System (v1.6.1)
+Before: │                ROSSI Trigger System (v1.6.1)
         │  │   Skills     │───▶│   Agents     │───▶│   Scripts    │
         │  │  (28)        │    │  (21)        │    │  (45)        │
         │  │                    Hooks Layer (10 events)
-After:  │                bkit Trigger System (v1.6.2)
+After:  │                ROSSI Trigger System (v1.6.2)
         │  │   Skills     │───▶│   Agents     │───▶│   Scripts    │
         │  │  (31)        │    │  (29)        │    │  (49)        │
         │  │                    Hooks Layer (12 events)
@@ -279,13 +279,13 @@ After:  - skills/ - 31 skills
 
 #### 4.10 Obsidian Tip (L342)
 ```
-Before: bkit's 28 skills, 21 agents, 45 scripts
-After:  bkit's 31 skills, 29 agents, 49 scripts
+Before: ROSSI's 28 skills, 21 agents, 45 scripts
+After:  ROSSI's 31 skills, 29 agents, 49 scripts
 ```
 
 ---
 
-### 5. bkit-system/_GRAPH-INDEX.md (P1)
+### 5. rossi-system/_GRAPH-INDEX.md (P1)
 
 #### 5.1 버전 이력 헤더
 v1.6.2 이력 추가 (v1.6.1 밑에)
@@ -348,7 +348,7 @@ After:  All 29 agents configured with `memory:` frontmatter
 
 ---
 
-### 6. bkit-system/philosophy/core-mission.md (P1)
+### 6. rossi-system/philosophy/core-mission.md (P1)
 
 #### 6.1 Current Implementation 버전 이력 (L131)
 이미 v1.6.2 라인 추가되어 있음. 확인 후 스킵 가능.
@@ -377,7 +377,7 @@ After:  Automatic cross-session context persistence for all 29 agents.
 
 ---
 
-### 7. bkit-system/philosophy/context-engineering.md (P1)
+### 7. rossi-system/philosophy/context-engineering.md (P1)
 
 #### 7.1 버전 이력 헤더 (L30 부근)
 v1.6.2 이력 추가
@@ -393,12 +393,12 @@ grep 결과 기반 일괄 치환:
 
 ---
 
-### 8. bkit-system/components/agents/_agents-overview.md (P0)
+### 8. rossi-system/components/agents/_agents-overview.md (P0)
 
 #### 8.1 제목/헤더 (L1, L13)
 ```
-Before: > List of 21 Agents defined in bkit
-After:  > List of 29 Agents defined in bkit
+Before: > List of 21 Agents defined in ROSSI
+After:  > List of 29 Agents defined in ROSSI
 ```
 v1.6.2 이력 추가
 
@@ -416,12 +416,12 @@ After:  All 29 agents have `memory:` frontmatter
 
 ---
 
-### 9. bkit-system/components/skills/_skills-overview.md (P0)
+### 9. rossi-system/components/skills/_skills-overview.md (P0)
 
 #### 9.1 제목 (L1, L3)
 ```
-Before: > 28 Skills defined in bkit (v1.6.1)
-After:  > 31 Skills defined in bkit (v1.6.2)
+Before: > 28 Skills defined in ROSSI (v1.6.1)
+After:  > 31 Skills defined in ROSSI (v1.6.2)
 ```
 
 #### 9.2 Skill Classification 수 (L65, L67~82, L84~108, L109~116)
@@ -437,7 +437,7 @@ After:  ## Skill List (31)
 
 ---
 
-### 10. bkit-system/components/hooks/_hooks-overview.md (P0)
+### 10. rossi-system/components/hooks/_hooks-overview.md (P0)
 
 이미 L5에 v1.6.2 이력이 추가되어 있음. 나머지 확인:
 
@@ -452,20 +452,20 @@ After:  PostCompact, StopFailure 추가
 
 #### 10.3 v1.6.1 Hook Notes (L465~483)
 ```
-Before: bkit v1.6.1 continues using command type hooks exclusively (10 hook events).
-        CC official hook events total: 18 (bkit uses 10/18 = 56%)
-After:  bkit v1.6.2 uses 12 hook events (command type).
-        CC official hook events total: 22 (bkit uses 12/22 = 55%)
+Before: ROSSI v1.6.1 continues using command type hooks exclusively (10 hook events).
+        CC official hook events total: 18 (ROSSI uses 10/18 = 56%)
+After:  ROSSI v1.6.2 uses 12 hook events (command type).
+        CC official hook events total: 22 (ROSSI uses 12/22 = 55%)
 ```
 
 ---
 
-### 11. bkit-system/components/scripts/_scripts-overview.md (P1)
+### 11. rossi-system/components/scripts/_scripts-overview.md (P1)
 
 #### 11.1 제목 (L1)
 ```
-Before: > 45 Node.js Scripts used by bkit hooks (v1.6.1)
-After:  > 49 Node.js Scripts used by bkit hooks (v1.6.2)
+Before: > 45 Node.js Scripts used by ROSSI hooks (v1.6.1)
+After:  > 49 Node.js Scripts used by ROSSI hooks (v1.6.2)
 ```
 
 #### 11.2 버전 이력 (L14)
@@ -488,7 +488,7 @@ After:  210 exports
 
 ---
 
-### 12. bkit-system/triggers/trigger-matrix.md (P1)
+### 12. rossi-system/triggers/trigger-matrix.md (P1)
 
 #### 12.1 제목 버전 (L1, L3)
 ```
@@ -505,7 +505,7 @@ After:  Total: 12 hook events.
 
 ---
 
-### 13. bkit-system/testing/test-checklist.md (P2)
+### 13. rossi-system/testing/test-checklist.md (P2)
 
 #### 13.1 v1.6.0 Integration Tests (L414)
 ```
@@ -522,8 +522,8 @@ After:  값 업데이트 (210, 29, 31, 12 events)
 
 #### skills/skill-status/SKILL.md
 ```
-Before: Layer: bkit Core (v1.6.1)
-After:  Layer: bkit Core (v1.6.2)
+Before: Layer: ROSSI Core (v1.6.1)
+After:  Layer: ROSSI Core (v1.6.2)
 ```
 
 #### evals/README.md
@@ -546,7 +546,7 @@ After:  v1.6.2 ENH-97 (또는 현재 ENH 번호 유지)
 |:----:|------|:-------:|:-----------:|
 | 1 | CHANGELOG.md 신규 항목 추가 | 1 | 1 섹션 |
 | 2 | README.md 전면 업데이트 | 1 | ~10개소 |
-| 3 | bkit-system/README.md 업데이트 | 1 | ~10개소 |
+| 3 | rossi-system/README.md 업데이트 | 1 | ~10개소 |
 | 4 | _agents-overview.md 업데이트 | 1 | ~5개소 |
 | 5 | _skills-overview.md 업데이트 | 1 | ~5개소 |
 | 6 | _hooks-overview.md 확인/보완 | 1 | ~3개소 |
@@ -564,10 +564,10 @@ After:  v1.6.2 ENH-97 (또는 현재 ENH 번호 유지)
 ```bash
 # 변경 후 검증 명령어
 # 1. 대상 파일에서 v1.6.1이 현재 상태로 남아있는지 확인 (이력 제외)
-grep -rn "v1\.6\.1" README.md CUSTOMIZATION-GUIDE.md bkit-system/README.md --include="*.md" | grep -v "v1\.6\.0\|history\|Previous\|이력"
+grep -rn "v1\.6\.1" README.md CUSTOMIZATION-GUIDE.md rossi-system/README.md --include="*.md" | grep -v "v1\.6\.0\|history\|Previous\|이력"
 
 # 2. 수치 일관성 확인
-grep -rn "\b21 [Aa]gent\|\b28 [Ss]kill\|\b45 [Ss]cript\|\b208 " README.md CUSTOMIZATION-GUIDE.md bkit-system/ --include="*.md"
+grep -rn "\b21 [Aa]gent\|\b28 [Ss]kill\|\b45 [Ss]cript\|\b208 " README.md CUSTOMIZATION-GUIDE.md rossi-system/ --include="*.md"
 
 # 3. CHANGELOG v1.6.2 항목 존재 확인
 grep "1\.6\.2" CHANGELOG.md

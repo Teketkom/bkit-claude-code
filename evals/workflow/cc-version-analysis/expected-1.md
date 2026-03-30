@@ -7,8 +7,8 @@ Expected behavior for cc-version-analysis skill:
    - Checks official docs for changes
    - Analyzes system prompt token changes
    - Produces structured change report with tables
-4. PHASE 2: Launches bkit-impact-analyst agent
-   - Maps CC changes to bkit components (29 agents, 31 skills, 12 hooks, 210 exports)
+4. PHASE 2: Launches rossi-impact-analyst agent
+   - Maps CC changes to ROSSI components (29 agents, 31 skills, 12 hooks, 210 exports)
    - Identifies ENH opportunities (starting from ENH-131+)
    - Produces file impact matrix
    - Checks philosophy compliance

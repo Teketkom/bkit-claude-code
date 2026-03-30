@@ -1,7 +1,7 @@
 # PR #55 테스트 커버리지 완료 보고서
 
 > **Feature**: pr55-test-coverage
-> **Project**: bkit-claude-code
+> **Project**: rossi-cto-agent-kit
 > **Version**: v2.0.5
 > **Author**: Claude Opus 4.6
 > **Date**: 2026-03-23

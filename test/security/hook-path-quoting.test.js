@@ -5,8 +5,8 @@
  * Ensures all hook commands in hooks.json properly quote ${CLAUDE_PLUGIN_ROOT} paths
  * to prevent bash syntax errors with special characters in paths.
  *
- * @version bkit v2.0.4
- * @see https://github.com/popup-studio-ai/bkit-claude-code/issues/53
+ * @version ROSSI v2.0.4
+ * @see https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53
  */
 
 const fs = require('fs');

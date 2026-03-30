@@ -4,7 +4,7 @@
  * Unit Tests for lib/pdca/workflow-parser.js
  * 25 TC | YAML parsing, validation, file operations, edge cases
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');
@@ -173,7 +173,7 @@ console.log('\n--- Section 2: validateWorkflow ---');
 console.log('\n--- Section 3: loadWorkflowFile ---');
 
 // Create a tmp directory with test workflow files
-const tmpDir = path.join(os.tmpdir(), `bkit-wp-test-${Date.now()}`);
+const tmpDir = path.join(os.tmpdir(), `ROSSI-wp-test-${Date.now()}`);
 fs.mkdirSync(tmpDir, { recursive: true });
 
 // WP-015: Load valid JSON workflow file

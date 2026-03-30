@@ -319,7 +319,7 @@ async function runTests() {
       assertPerformance(
         'loadConfig',
         () => {
-          common.loadConfig('bkit.config.json');
+          common.loadConfig('rossi.config.json');
         },
         PERFORMANCE_THRESHOLDS.loadConfig,
         ITERATIONS.loadConfig

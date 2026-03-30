@@ -33,7 +33,7 @@ tools:
   - WebSearch
 skills:
   - pdca
-  - bkit-rules
+  - rossi-rules
 hooks:
   Stop:
     - type: command

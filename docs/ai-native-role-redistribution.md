@@ -492,4 +492,4 @@ That is the direction IT organizations must pursue in the AI Native era.
 
 > **Written**: 2026-02-13
 > **Based on**: Actual collaboration data from 126 Claude Code sessions / 260 hours / 13 days
-> **Methodology**: bkit PDCA (Plan-Do-Check-Act) + CTO Team Orchestration
+> **Methodology**: ROSSI PDCA (Plan-Do-Check-Act) + CTO Team Orchestration

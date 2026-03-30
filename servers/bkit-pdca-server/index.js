@@ -2,10 +2,10 @@
 'use strict';
 
 /**
- * bkit-pdca-server: PDCA status, documents, and metrics MCP server.
+ * rossi-pdca-server: PDCA status, documents, and metrics MCP server.
  *
  * Lightweight JSON-RPC 2.0 over stdio — no external dependencies.
- * Reads .bkit/ state files and docs/ markdown files.
+ * Reads .rossi/ state files and docs/ markdown files.
  */
 
 const fs = require('fs');
@@ -16,8 +16,8 @@ const readline = require('readline');
 // Utilities
 // ---------------------------------------------------------------------------
 
-const ROOT = process.env.BKIT_ROOT || process.cwd();
-const BKIT_DIR = path.join(ROOT, '.bkit');
+const ROOT = process.env.ROSSI_ROOT || process.cwd();
+const ROSSI_DIR = path.join(ROOT, '.rossi');
 const DOCS_DIR = path.join(ROOT, 'docs');
 
 const PHASE_MAP = {
@@ -28,11 +28,11 @@ const PHASE_MAP = {
 };
 
 function statePath(filename) {
-  return path.join(BKIT_DIR, 'state', filename);
+  return path.join(ROSSI_DIR, 'state', filename);
 }
 
 function auditPath(filename) {
-  return path.join(BKIT_DIR, 'audit', filename);
+  return path.join(ROSSI_DIR, 'audit', filename);
 }
 
 function docsPath(phase, feature) {
@@ -76,7 +76,7 @@ function errResponse(code, message, details) {
 
 const TOOLS = [
   {
-    name: 'bkit_pdca_status',
+    name: 'rossi_pdca_status',
     description: 'Read current PDCA status. Optionally filter by feature name for detail.',
     inputSchema: {
       type: 'object',
@@ -87,7 +87,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_pdca_history',
+    name: 'rossi_pdca_history',
     description: 'Read PDCA history events with optional limit and since filters.',
     inputSchema: {
       type: 'object',
@@ -100,7 +100,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_feature_list',
+    name: 'rossi_feature_list',
     description: 'List active, completed, or archived features.',
     inputSchema: {
       type: 'object',
@@ -112,7 +112,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_feature_detail',
+    name: 'rossi_feature_detail',
     description: 'Get detailed info for a single feature (phase, metrics, timestamps, documents).',
     inputSchema: {
       type: 'object',
@@ -124,7 +124,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_plan_read',
+    name: 'rossi_plan_read',
     description: 'Read the Plan document (docs/01-plan/features/{feature}.plan.md).',
     inputSchema: {
       type: 'object',
@@ -134,7 +134,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_design_read',
+    name: 'rossi_design_read',
     description: 'Read the Design document (docs/02-design/features/{feature}.design.md).',
     inputSchema: {
       type: 'object',
@@ -144,7 +144,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_analysis_read',
+    name: 'rossi_analysis_read',
     description: 'Read the Analysis document (docs/03-analysis/{feature}.analysis.md).',
     inputSchema: {
       type: 'object',
@@ -154,7 +154,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_report_read',
+    name: 'rossi_report_read',
     description: 'Read the Report document (docs/04-report/features/{feature}.report.md).',
     inputSchema: {
       type: 'object',
@@ -164,7 +164,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_metrics_get',
+    name: 'rossi_metrics_get',
     description: 'Get latest quality metrics (M1-M10). Optionally filter by feature.',
     inputSchema: {
       type: 'object',
@@ -175,7 +175,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_metrics_history',
+    name: 'rossi_metrics_history',
     description: 'Get quality metrics history as a time series.',
     inputSchema: {
       type: 'object',
@@ -200,19 +200,19 @@ const TOOLS = [
 
 const RESOURCES = [
   {
-    uri: 'bkit://pdca/status',
+    uri: 'rossi://pdca/status',
     name: 'PDCA Current Status',
     description: 'Current PDCA status from pdca-status.json.',
     mimeType: 'application/json',
   },
   {
-    uri: 'bkit://quality/metrics',
+    uri: 'rossi://quality/metrics',
     name: 'Latest Quality Metrics',
     description: 'Latest quality metrics (M1-M10).',
     mimeType: 'application/json',
   },
   {
-    uri: 'bkit://audit/latest',
+    uri: 'rossi://audit/latest',
     name: 'Latest Audit Log',
     description: 'Today\'s audit log entries (last 20).',
     mimeType: 'application/json',
@@ -388,7 +388,7 @@ function handleResourcePdcaStatus() {
   const data = readJsonOrNull(statePath('pdca-status.json')) || {};
   return {
     contents: [{
-      uri: 'bkit://pdca/status',
+      uri: 'rossi://pdca/status',
       mimeType: 'application/json',
       text: JSON.stringify(data, null, 2),
     }],
@@ -399,7 +399,7 @@ function handleResourceQualityMetrics() {
   const data = readJsonOrNull(statePath('quality-metrics.json')) || { metrics: {} };
   return {
     contents: [{
-      uri: 'bkit://quality/metrics',
+      uri: 'rossi://quality/metrics',
       mimeType: 'application/json',
       text: JSON.stringify(data, null, 2),
     }],
@@ -420,7 +420,7 @@ function handleResourceAuditLatest() {
 
   return {
     contents: [{
-      uri: 'bkit://audit/latest',
+      uri: 'rossi://audit/latest',
       mimeType: 'application/json',
       text: JSON.stringify({ date: today, total: entries.length, entries: entries.slice(-20) }, null, 2),
     }],
@@ -432,22 +432,22 @@ function handleResourceAuditLatest() {
 // ---------------------------------------------------------------------------
 
 const TOOL_HANDLERS = {
-  bkit_pdca_status: handleBkitPdcaStatus,
-  bkit_pdca_history: handleBkitPdcaHistory,
-  bkit_feature_list: handleBkitFeatureList,
-  bkit_feature_detail: handleBkitFeatureDetail,
-  bkit_plan_read: (args) => handleDocRead('plan', args),
-  bkit_design_read: (args) => handleDocRead('design', args),
-  bkit_analysis_read: (args) => handleDocRead('analysis', args),
-  bkit_report_read: (args) => handleDocRead('report', args),
-  bkit_metrics_get: handleBkitMetricsGet,
-  bkit_metrics_history: handleBkitMetricsHistory,
+  rossi_pdca_status: handleBkitPdcaStatus,
+  rossi_pdca_history: handleBkitPdcaHistory,
+  rossi_feature_list: handleBkitFeatureList,
+  rossi_feature_detail: handleBkitFeatureDetail,
+  rossi_plan_read: (args) => handleDocRead('plan', args),
+  rossi_design_read: (args) => handleDocRead('design', args),
+  rossi_analysis_read: (args) => handleDocRead('analysis', args),
+  rossi_report_read: (args) => handleDocRead('report', args),
+  rossi_metrics_get: handleBkitMetricsGet,
+  rossi_metrics_history: handleBkitMetricsHistory,
 };
 
 const RESOURCE_HANDLERS = {
-  'bkit://pdca/status': handleResourcePdcaStatus,
-  'bkit://quality/metrics': handleResourceQualityMetrics,
-  'bkit://audit/latest': handleResourceAuditLatest,
+  'rossi://pdca/status': handleResourcePdcaStatus,
+  'rossi://quality/metrics': handleResourceQualityMetrics,
+  'rossi://audit/latest': handleResourceAuditLatest,
 };
 
 // ---------------------------------------------------------------------------
@@ -473,7 +473,7 @@ function handleMessage(msg) {
     case 'initialize':
       return jsonRpcOk(id, {
         protocolVersion: '2024-11-05',
-        serverInfo: { name: 'bkit-pdca-server', version: '2.0.4' },
+        serverInfo: { name: 'rossi-pdca-server', version: '2.0.4' },
         capabilities: { tools: {}, resources: {} },
       });
 
@@ -537,4 +537,4 @@ rl.on('close', () => {
   process.exit(0);
 });
 
-process.stderr.write('[bkit-pdca-server] Started (pid=' + process.pid + ')\n');
+process.stderr.write('[rossi-pdca-server] Started (pid=' + process.pid + ')\n');

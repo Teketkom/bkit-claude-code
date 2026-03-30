@@ -1,15 +1,15 @@
-# bkit - Vibecoding Kit
+# ROSSI CTO Agent Kit
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-v2.1.81+-purple.svg)](https://code.claude.com)
 [![Version](https://img.shields.io/badge/Version-2.0.6-green.svg)](CHANGELOG.md)
-[![Author](https://img.shields.io/badge/Author-POPUP%20STUDIO-orange.svg)](https://popupstudio.ai)
+[![Author](https://img.shields.io/badge/Author-POPUP%20STUDIO-orange.svg)](https://rossi.ru)
 
 > **PDCA methodology + CTO-Led Agent Teams + AI coding assistant mastery for AI-native development**
 
-bkit is a Claude Code plugin that transforms how you build software with AI. It provides structured development workflows, automatic documentation, and intelligent code assistance through the PDCA (Plan-Do-Check-Act) methodology.
+ROSSI is a Claude Code plugin that transforms how you build software with AI. It provides structured development workflows, automatic documentation, and intelligent code assistance through the PDCA (Plan-Do-Check-Act) methodology.
 
-![bkit Introduction](images/bkit-intro.png)
+![ROSSI Introduction](images/ROSSI-intro.png)
 
 ---
 
@@ -26,13 +26,13 @@ Context Engineering:
    to provide LLMs with optimal context for inference"
 ```
 
-**bkit is a practical implementation of Context Engineering**, providing a systematic context management system for Claude Code.
+**ROSSI is a practical implementation of Context Engineering**, providing a systematic context management system for Claude Code.
 
-### bkit's Context Engineering Architecture
+### ROSSI's Context Engineering Architecture
 
-![bkit Context Engineering Architecture](images/bkit-architecture.png)
+![ROSSI Context Engineering Architecture](images/ROSSI-architecture.png)
 
-bkit implements Context Engineering through three interconnected layers:
+ROSSI implements Context Engineering through three interconnected layers:
 
 | Layer | Components | Purpose |
 |-------|------------|---------|
@@ -53,33 +53,33 @@ Layer 5: Scripts (21 modules)    → Actual Node.js execution logic with unified
 Layer 6: Plugin Data Backup      → ${CLAUDE_PLUGIN_DATA} persistent state management
 ```
 
-> **Learn more**: See [Context Engineering Principles](bkit-system/philosophy/context-engineering.md) for detailed implementation.
+> **Learn more**: See [Context Engineering Principles](rossi-system/philosophy/context-engineering.md) for detailed implementation.
 
 ---
 
 ## Features
 
-![bkit Features](images/bkit-features.png)
+![ROSSI Features](images/ROSSI-features.png)
 
 - **CC v2.1.86 Compatibility + Skills Discoverability (v2.0.8)** - 34 skills description optimized for 250-char cap (/skills listing), Hook `if` conditional field documentation (CC v2.1.85+), Enterprise org policy documentation, CC v2.1.86+ recommended, 52 consecutive compatible releases (v2.1.34~v2.1.86)
 - **Living Context System + Self-Healing + PDCA Handoff Fix (v2.0.6)** - 4-Layer Living Context (`lib/context/` 7 modules), Self-Healing agent (opus) for automated error recovery, Deploy skill with 3-environment state machine, PDCA Handoff Loss Fix Phase 2+3 (PRD→Code context preservation 30-40% → 75-85%), 11 infrastructure templates (ArgoCD, Terraform, observability), 88 lib modules, 37 skills, 32 agents, 57 scripts
 - **PM Skills Integration + Interactive Checkpoints (v2.0.3)** - PM Agent Team expanded from 9→43 frameworks ([pm-skills](https://github.com/phuryn/pm-skills) MIT), PDCA Interactive Checkpoints 1~5 (AskUserQuestion-gated), code-analyzer Confidence-Based Filtering (≥80%), Design phase 3 Architecture Options (Minimal/Clean/Pragmatic), btw CTO Team Integration, pm-prd template v2.0 with Execution Deliverables (Pre-mortem, User/Job Stories, Test Scenarios, Stakeholder Map, Growth Loops)
-- **Cross-Project Isolation Fix (v2.0.1)** - PLUGIN_DATA backup/restore project identity guard via meta.json, globalCache project namespace, prevents cross-project PDCA state leakage ([#48](https://github.com/popup-studio-ai/bkit-claude-code/issues/48))
-- **AI Native Development OS (v2.0.0)** - Declarative PDCA state machine (20 transitions), YAML workflow DSL (3 presets), L0-L4 controllable AI automation, CLI dashboard (progress-bar, workflow-map, control-panel), audit logging + decision tracing, quality gates (7 stages), checkpoint/rollback, destructive operation detector (8 rules), MCP servers (bkit-pdca + bkit-analysis), 3,175+ TC, ~620+ exports, 88 lib modules, 37 skills, 32 agents, 18 hook events
+- **Cross-Project Isolation Fix (v2.0.1)** - PLUGIN_DATA backup/restore project identity guard via meta.json, globalCache project namespace, prevents cross-project PDCA state leakage ([#48](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/48))
+- **AI Native Development OS (v2.0.0)** - Declarative PDCA state machine (20 transitions), YAML workflow DSL (3 presets), L0-L4 controllable AI automation, CLI dashboard (progress-bar, workflow-map, control-panel), audit logging + decision tracing, quality gates (7 stages), checkpoint/rollback, destructive operation detector (8 rules), MCP servers (rossi-pdca + rossi-analysis), 3,175+ TC, ~620+ exports, 88 lib modules, 37 skills, 32 agents, 18 hook events
 - **CC v2.1.78 Full Integration (v1.6.2)** - 14 ENH items (ENH-117~130), PostCompact/StopFailure hooks, ${CLAUDE_PLUGIN_DATA} persistent backup, agent effort/maxTurns, 1M context default, 128K output, 1186 TC (99.7%), 260+ exports, 54 scripts, CC v2.1.78 recommended
 - **CTO Orchestration Redesign + Quality Hardening (v1.6.1)** - Main Session as CTO pattern (CC v2.1.69+ compatibility), P0 bug fixes (4), Config-Code synchronization, 3-Tier Agent Security Model, 1073 TC comprehensive test (99.6% pass), CE Level 5 assessment (88/100), 72 files ~1,400 LOC
 - **Skills 2.0 Complete Integration (v1.6.0)** - 19 ENH items (ENH-85~103), Skill Evals framework with 28 eval definitions, Skill Classification (Workflow/Capability/Hybrid), A/B testing, template-validator, frontmatter hooks migration, context:fork deprecation, PM Agent Team integration
 - **Executive Summary & Preview UX (v1.5.9)** - Auto-generated 4-perspective summaries (Problem/Solution/Function & UX Effect/Core Value), AskUserQuestion with rich Markdown previews, ENH-74~81 CC v2.1.69 compatibility, 199 exports
-- **Studio Support & Path Registry (v1.5.8)** - Centralized state file path management (`lib/core/paths.js`), PDCA doc path registry, config cleanup (dead keys removed, missing keys added), state directory migration to `.bkit/{state,runtime,snapshots}/`, auto-migration with EXDEV fallback, 190 exports
+- **Studio Support & Path Registry (v1.5.8)** - Centralized state file path management (`lib/core/paths.js`), PDCA doc path registry, config cleanup (dead keys removed, missing keys added), state directory migration to `.rossi/{state,runtime,snapshots}/`, auto-migration with EXDEV fallback, 190 exports
 - **/simplify + /batch PDCA Integration (v1.5.7)** - CC built-in /simplify and /batch commands integrated into PDCA Check→Report flow, CC_COMMAND_PATTERNS 9-language awareness, HTTP Hooks documentation, English conversion for 3 stop scripts
 - **Auto-Memory Integration (v1.5.6)** - CC v2.1.59 auto-memory official support, /copy guidance, multi-agent memory optimization, ENH-48~51 enhancements, 186 exports
 - **Plan Plus Skill (v1.5.5)** - Brainstorming-enhanced PDCA planning with intent discovery, alternatives exploration, and YAGNI review
 - **bkend MCP Accuracy Fix (v1.5.4)** - MCP tool coverage 19→28+, accurate tool names, dynamic Base URL, search_docs workflow
-- **Team Visibility & State Writer (v1.5.3)** - Agent Teams state management with `.bkit/agent-state.json` for Studio IPC
+- **Team Visibility & State Writer (v1.5.3)** - Agent Teams state management with `.rossi/agent-state.json` for Studio IPC
 - **SubagentStart/SubagentStop Hooks (v1.5.3)** - 2 new hook events for agent lifecycle tracking (10 hook events total)
-- **Output Styles Auto-Discovery (v1.5.3)** - `outputStyles` in plugin.json + 4th style `bkit-pdca-enterprise`
+- **Output Styles Auto-Discovery (v1.5.3)** - `outputStyles` in plugin.json + 4th style `rossi-pdca-enterprise`
 - **CTO-Led Agent Teams (v1.5.1)** - CTO agent orchestrates parallel PDCA execution with multi-agent teams (Dynamic: 3, Enterprise: 5 teammates)
-- **Output Styles (v1.5.1)** - Level-based response formatting (bkit-learning, bkit-pdca-guide, bkit-enterprise, bkit-pdca-enterprise)
+- **Output Styles (v1.5.1)** - Level-based response formatting (rossi-learning, rossi-pdca-guide, rossi-enterprise, rossi-pdca-enterprise)
 - **Agent Memory (v1.5.1)** - Cross-session context persistence for all 32 agents (auto-active)
 - **Natural Feature Discovery (v1.5.1)** - Auto-trigger integration aligned with "Automation First" philosophy
 - **Task Management + PDCA Integration (v1.4.7)** - Task Chain Auto-Creation, Task ID Persistence, Check↔Act Iteration
@@ -101,17 +101,17 @@ Layer 6: Plugin Data Backup      → ${CLAUDE_PLUGIN_DATA} persistent state mana
 
 ## Skill Evals: Data-Driven Skill Quality Management
 
-Claude Code introduced **Skill Evals** in Skills 2.0—a framework for measuring skill quality through automated testing. bkit extends this concept into a **complete skill lifecycle management system** that answers a question no other plugin addresses: *"Are my skills still worth keeping?"*
+Claude Code introduced **Skill Evals** in Skills 2.0—a framework for measuring skill quality through automated testing. ROSSI extends this concept into a **complete skill lifecycle management system** that answers a question no other plugin addresses: *"Are my skills still worth keeping?"*
 
 ### What Are Skill Evals?
 
 Skill Evals run automated quality checks against skills by sending test prompts and comparing outputs against expected results. Think of them as **unit tests for AI skills**—they catch regressions when models update and measure whether a skill still adds value.
 
-### How bkit Enhances Skill Evals
+### How ROSSI Enhances Skill Evals
 
-bkit builds three layers on top of Claude Code's native Evals:
+ROSSI builds three layers on top of Claude Code's native Evals:
 
-| Layer | Claude Code Native | bkit Enhancement |
+| Layer | Claude Code Native | ROSSI Enhancement |
 |-------|-------------------|------------------|
 | **Eval Execution** | Basic eval runner | `evals/runner.js` with benchmark mode, 29 pre-built eval definitions |
 | **A/B Testing** | Not available | `evals/ab-tester.js` compares skill performance across models (e.g., Sonnet 4.6 vs Opus 4.6) |
@@ -130,7 +130,7 @@ evals/
 
 ### Skill Classification & Lifecycle
 
-Not all skills age the same way. bkit classifies each skill to manage its lifecycle:
+Not all skills age the same way. ROSSI classifies each skill to manage its lifecycle:
 
 | Classification | Count | Purpose | What Evals Measure |
 |---------------|:-----:|---------|-------------------|
@@ -163,14 +163,14 @@ node evals/runner.js --benchmark
 
 ### Integration with PDCA
 
-Skill Evals connect directly to bkit's PDCA workflow:
+Skill Evals connect directly to ROSSI's PDCA workflow:
 
 - **Skill Creator** (`skill-creator/`) generates new skills with eval templates pre-included
 - **Template Validator** ensures PDCA documents maintain required sections
 - **Classification metadata** in every SKILL.md frontmatter enables automated lifecycle decisions
 - **Quarterly benchmarks** track skill quality trends over time
 
-> **Philosophy**: bkit's third principle is *"No Guessing."* Skill Evals replace intuition with measurement—you never have to guess whether a skill is still earning its place in your workflow.
+> **Philosophy**: ROSSI's third principle is *"No Guessing."* Skill Evals replace intuition with measurement—you never have to guess whether a skill is still earning its place in your workflow.
 
 ---
 
@@ -178,17 +178,17 @@ Skill Evals connect directly to bkit's PDCA workflow:
 
 > **First time using Claude Code?**
 >
-> Start with [bkit-starter](https://github.com/popup-studio-ai/bkit-starter)!
+> Start with [rossi-starter](https://github.com/rossi-dev/rossi-starter)!
 >
 > - Beginner-friendly guide
 > - No programming experience required
 > - Build your first project hands-on
 >
 > ```bash
-> /plugin enable bkit-starter
+> /plugin enable rossi-starter
 > ```
 >
-> bkit is the advanced extension designed for users who have mastered bkit-starter.
+> ROSSI is the advanced extension designed for users who have mastered rossi-starter.
 
 ---
 
@@ -196,7 +196,7 @@ Skill Evals connect directly to bkit's PDCA workflow:
 
 | Requirement | Minimum Version | Notes |
 |-------------|:---------------:|-------|
-| **Claude Code** | **v2.1.78+** | Required. bkit v2.0.4 uses agent frontmatter (effort/maxTurns/disallowedTools), 18 hook events, MCP servers, and ${CLAUDE_PLUGIN_DATA}. Recommended: v2.1.81+. |
+| **Claude Code** | **v2.1.78+** | Required. ROSSI v2.0.4 uses agent frontmatter (effort/maxTurns/disallowedTools), 18 hook events, MCP servers, and ${CLAUDE_PLUGIN_DATA}. Recommended: v2.1.81+. |
 | Node.js | v18+ | For hook script execution |
 | Agent Teams (optional) | Set `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` | Required only for CTO-Led Agent Teams feature |
 
@@ -209,39 +209,39 @@ Skill Evals connect directly to bkit's PDCA workflow:
 
 ## Quick Start
 
-> **Note**: bkit is designed for **Claude Code**. For Gemini CLI, see [bkit-gemini](https://github.com/popup-studio-ai/bkit-gemini).
+> **Note**: ROSSI is designed for **Claude Code**. For Gemini CLI, see [ROSSI-gemini](https://github.com/rossi-dev/ROSSI-gemini).
 
 ### Option 1: Marketplace Installation (Recommended)
 
-The easiest way to install bkit is through the Claude Code marketplace.
+The easiest way to install ROSSI is through the Claude Code marketplace.
 
 ```bash
-# Step 1: Add bkit marketplace
-/plugin marketplace add popup-studio-ai/bkit-claude-code
+# Step 1: Add ROSSI marketplace
+/plugin marketplace add rossi-dev/rossi-cto-agent-kit
 
-# Step 2: Install bkit plugin
-/plugin install bkit
+# Step 2: Install ROSSI plugin
+/plugin install ROSSI
 ```
 
 #### Managing Marketplaces
 
 Use `/plugin` command and navigate to **Marketplaces** tab to manage your plugin sources:
 
-![bkit Marketplace](images/bkit-marketplace.png)
+![ROSSI Marketplace](images/rossi-marketplace.png)
 
-- **bkit-marketplace**: Contains bkit and bkit-starter plugins
+- **rossi-marketplace**: Contains ROSSI and rossi-starter plugins
 - **claude-plugins-official**: Official Anthropic plugins
 
 #### Discovering Plugins
 
 Navigate to **Discover** tab to browse and install available plugins:
 
-![bkit Marketplace Plugins](images/bkit-marketplace-plugins.png)
+![ROSSI Marketplace Plugins](images/rossi-marketplace-plugins.png)
 
 | Plugin | Description | Best For |
 |--------|-------------|----------|
-| **bkit** | Full PDCA methodology + Claude Code mastery | Experienced developers |
-| **bkit-starter** | Korean learning guide for beginners | First-time Claude Code users |
+| **ROSSI** | Full PDCA methodology + Claude Code mastery | Experienced developers |
+| **rossi-starter** | Korean learning guide for beginners | First-time Claude Code users |
 
 #### Auto-Update Configuration
 
@@ -264,7 +264,7 @@ Keep your plugins up-to-date automatically by configuring auto-update in your se
 ### Plugin Structure
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 ├── .claude-plugin/
 │   ├── plugin.json          # Claude Code plugin manifest
 │   └── marketplace.json     # Marketplace registry
@@ -274,20 +274,20 @@ bkit-claude-code/
 ├── hooks/                   # Event hooks (hooks.json)
 ├── evals/                   # Skill eval definitions & runner
 ├── scripts/                 # Hook execution scripts
-├── servers/                 # MCP servers (bkit-pdca, bkit-analysis)
+├── servers/                 # MCP servers (rossi-pdca, rossi-analysis)
 ├── lib/                     # Shared utilities (88 modules across 11 subdirs)
 ├── output-styles/           # Level-based response formatting
 ├── templates/               # Document templates
-└── bkit.config.json         # Centralized configuration
+└── rossi.config.json         # Centralized configuration
 ```
 
 ---
 
 ## Customization
 
-After installing bkit via the marketplace, you can customize any component by copying it to your project's `.claude/` folder.
+After installing ROSSI via the marketplace, you can customize any component by copying it to your project's `.claude/` folder.
 
-> **Comprehensive Guide**: See **[CUSTOMIZATION-GUIDE.md](CUSTOMIZATION-GUIDE.md)** for detailed instructions on customizing bkit for your organization, including platform-specific paths, component examples, and license attribution requirements.
+> **Comprehensive Guide**: See **[CUSTOMIZATION-GUIDE.md](CUSTOMIZATION-GUIDE.md)** for detailed instructions on customizing ROSSI for your organization, including platform-specific paths, component examples, and license attribution requirements.
 
 ### How It Works
 
@@ -300,33 +300,33 @@ Claude Code searches for configuration files in this priority order:
 
 ```bash
 # Step 1: Find the plugin installation location
-ls ~/.claude/plugins/bkit/
+ls ~/.claude/plugins/ROSSI/
 
 # Step 2: Copy only the files you want to customize
 mkdir -p .claude/skills/starter
-cp ~/.claude/plugins/bkit/skills/starter/SKILL.md .claude/skills/starter/
+cp ~/.claude/plugins/ROSSI/skills/starter/SKILL.md .claude/skills/starter/
 
 # Step 3: Edit the copied file in your project
 # Your project's .claude/skills/starter/SKILL.md will override the plugin's version
 
 # Step 4: Commit to version control (optional)
 git add .claude/
-git commit -m "feat: customize bkit starter skill"
+git commit -m "feat: customize ROSSI starter skill"
 ```
 
 ### Available Components for Customization
 
 | Component | Location | Description |
 |-----------|----------|-------------|
-| **Skills** | `~/.claude/plugins/bkit/skills/` | Domain knowledge, context and slash commands (e.g., `/pdca plan`) |
-| **Agents** | `~/.claude/plugins/bkit/agents/` | Specialized AI assistants |
-| **Templates** | `~/.claude/plugins/bkit/templates/` | Document templates |
-| **Scripts** | `~/.claude/plugins/bkit/scripts/` | Hook scripts |
-| **Config** | `~/.claude/plugins/bkit/bkit.config.json` | Central configuration |
+| **Skills** | `~/.claude/plugins/ROSSI/skills/` | Domain knowledge, context and slash commands (e.g., `/pdca plan`) |
+| **Agents** | `~/.claude/plugins/ROSSI/agents/` | Specialized AI assistants |
+| **Templates** | `~/.claude/plugins/ROSSI/templates/` | Document templates |
+| **Scripts** | `~/.claude/plugins/ROSSI/scripts/` | Hook scripts |
+| **Config** | `~/.claude/plugins/ROSSI/rossi.config.json` | Central configuration |
 
 ### Important Notes
 
-- **Customized files don't receive plugin updates.** When bkit is updated, your customized files remain unchanged while non-customized files are updated automatically.
+- **Customized files don't receive plugin updates.** When ROSSI is updated, your customized files remain unchanged while non-customized files are updated automatically.
 - **Check the [CHANGELOG](CHANGELOG.md)** periodically for updates that might affect your customizations.
 - **Delete a customized file** to revert to the plugin's default version.
 - **Attribution required**: When creating derivative plugins, follow the [License & Attribution](CUSTOMIZATION-GUIDE.md#license--attribution) guidelines.
@@ -439,11 +439,11 @@ PM Agent Team runs **before** the Plan phase to produce a comprehensive PRD (Pro
 
 ---
 
-## Is bkit Only for Development?
+## Is ROSSI Only for Development?
 
-![bkit for Non-Development](images/to-use-non-development.png)
+![ROSSI for Non-Development](images/to-use-non-development.png)
 
-bkit is **primarily designed for software development**. However, some components can inspire structured workflows beyond coding:
+ROSSI is **primarily designed for software development**. However, some components can inspire structured workflows beyond coding:
 
 | Component | Beyond Development Uses |
 |-----------|------------------------|
@@ -451,7 +451,7 @@ bkit is **primarily designed for software development**. However, some component
 | **Document Templates** | Planning any structured project |
 | **Gap Analysis** | Comparing any plan vs. actual outcome |
 
-> **Note**: For general writing, research, or non-technical tasks, plain Claude Code (without bkit) is better suited.
+> **Note**: For general writing, research, or non-technical tasks, plain Claude Code (without ROSSI) is better suited.
 
 ---
 
@@ -459,20 +459,20 @@ bkit is **primarily designed for software development**. However, some component
 
 ### Customization Guide
 
-- **[CUSTOMIZATION-GUIDE.md](CUSTOMIZATION-GUIDE.md)** - Complete guide to customizing bkit for your organization
+- **[CUSTOMIZATION-GUIDE.md](CUSTOMIZATION-GUIDE.md)** - Complete guide to customizing ROSSI for your organization
   - Platform-specific configuration paths (macOS, Linux, Windows, WSL)
   - Component customization (agents, skills, commands, hooks, templates)
   - License attribution requirements for derivative works
-  - bkit design philosophy and architecture decisions
+  - ROSSI design philosophy and architecture decisions
 
-### Current Reference (bkit-system/)
+### Current Reference (rossi-system/)
 
-- **[System Architecture](bkit-system/README.md)** - Plugin structure and trigger system overview
-- **[Context Engineering](bkit-system/philosophy/context-engineering.md)** - LLM context curation principles (v1.4.2)
-- **[Core Mission & Philosophy](bkit-system/philosophy/core-mission.md)** - 3 core philosophies (Automation First, No Guessing, Docs=Code)
-- **[AI-Native Principles](bkit-system/philosophy/ai-native-principles.md)** - AI-Native development and 3 core competencies
-- **[PDCA Methodology](bkit-system/philosophy/pdca-methodology.md)** - PDCA cycle and 9-stage pipeline relationship
-- **[Graph Index](bkit-system/_GRAPH-INDEX.md)** - Obsidian-optimized component graph
+- **[System Architecture](rossi-system/README.md)** - Plugin structure and trigger system overview
+- **[Context Engineering](rossi-system/philosophy/context-engineering.md)** - LLM context curation principles (v1.4.2)
+- **[Core Mission & Philosophy](rossi-system/philosophy/core-mission.md)** - 3 core philosophies (Automation First, No Guessing, Docs=Code)
+- **[AI-Native Principles](rossi-system/philosophy/ai-native-principles.md)** - AI-Native development and 3 core competencies
+- **[PDCA Methodology](rossi-system/philosophy/pdca-methodology.md)** - PDCA cycle and 9-stage pipeline relationship
+- **[Graph Index](rossi-system/_GRAPH-INDEX.md)** - Obsidian-optimized component graph
 
 ### Component Reference
 
@@ -491,19 +491,19 @@ bkit is **primarily designed for software development**. However, some component
 
 ### Visualize with Obsidian
 
-The `bkit-system/` documentation is optimized for [Obsidian](https://obsidian.md/)'s Graph View:
+The `rossi-system/` documentation is optimized for [Obsidian](https://obsidian.md/)'s Graph View:
 
-1. Open `bkit-system/` as an Obsidian vault
+1. Open `rossi-system/` as an Obsidian vault
 2. Press `Ctrl/Cmd + G` to open Graph View
 3. Explore component relationships visually
 
-See **[bkit-system/README.md](bkit-system/README.md#viewing-with-obsidian)** for detailed instructions.
+See **[rossi-system/README.md](rossi-system/README.md#viewing-with-obsidian)** for detailed instructions.
 
 ---
 
 ## Language Support
 
-bkit automatically detects your language from trigger keywords:
+ROSSI automatically detects your language from trigger keywords:
 
 | Language | Trigger Keywords |
 |----------|-----------------|
@@ -571,11 +571,11 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 ## Design Philosophy
 
-bkit is not a productivity hack. It is an attempt to bring **engineering discipline** to AI-native development.
+ROSSI is not a productivity hack. It is an attempt to bring **engineering discipline** to AI-native development.
 
 The software industry has spent decades refining how humans write code—version control, code review, CI/CD, testing pyramids. But when AI enters the development loop, most of that discipline evaporates. Developers prompt, accept, and ship. The feedback loop disappears. Documentation becomes an afterthought. Quality becomes a matter of luck.
 
-**bkit exists because we believe AI-assisted development deserves the same rigor as traditional engineering.**
+**ROSSI exists because we believe AI-assisted development deserves the same rigor as traditional engineering.**
 
 ### What we optimize for
 
@@ -583,13 +583,13 @@ The software industry has spent decades refining how humans write code—version
 
 - **Verification over trust.** AI generates plausible code. Plausible is not correct. Every implementation goes through gap analysis against its design document. If the match rate falls below 90%, the system iterates automatically. We do not ship hope.
 
-- **Context over prompts.** A well-structured prompt helps once. A well-structured context system helps every time. bkit's ~620+ functions across 88 modules, 37 skills, and 32 agents exist to ensure the AI receives the right context at the right moment—not through clever prompting, but through systematic engineering.
+- **Context over prompts.** A well-structured prompt helps once. A well-structured context system helps every time. ROSSI's ~620+ functions across 88 modules, 37 skills, and 32 agents exist to ensure the AI receives the right context at the right moment—not through clever prompting, but through systematic engineering.
 
-- **Constraints over features.** We intentionally limit what bkit does. Three project levels, not infinite configuration. A fixed 9-stage pipeline, not a customizable workflow builder. Opinionated defaults, not a framework for frameworks. Constraints eliminate decision fatigue and make the system learnable.
+- **Constraints over features.** We intentionally limit what ROSSI does. Three project levels, not infinite configuration. A fixed 9-stage pipeline, not a customizable workflow builder. Opinionated defaults, not a framework for frameworks. Constraints eliminate decision fatigue and make the system learnable.
 
 ### What this means in practice
 
-When you use bkit, you will write a plan document before writing code. You will generate a design specification before implementation. You will run gap analysis after every feature. You will produce a completion report that captures what was built, what was verified, and what was learned.
+When you use ROSSI, you will write a plan document before writing code. You will generate a design specification before implementation. You will run gap analysis after every feature. You will produce a completion report that captures what was built, what was verified, and what was learned.
 
 This is slower than prompting and shipping. It is also how software that lasts gets built.
 
@@ -599,7 +599,7 @@ This is slower than prompting and shipping. It is also how software that lasts g
 
 ## License
 
-Copyright 2024-2026 POPUP STUDIO PTE. LTD.
+Copyright 2024-2026 Концерн РОССИ (ЗАО РОССИ)
 
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 
@@ -609,9 +609,9 @@ You must include the [NOTICE](NOTICE) file in any redistribution.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/popup-studio-ai/bkit-claude-code/issues)
-- **Email**: contact@popupstudio.ai
+- **Issues**: [GitHub Issues](https://github.com/rossi-dev/rossi-cto-agent-kit/issues)
+- **Email**: ds@rossi.ru
 
 ---
 
-Made with AI by [POPUP STUDIO](https://popupstudio.ai)
+Made with AI by [Концерн РОССИ](https://rossi.ru)

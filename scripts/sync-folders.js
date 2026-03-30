@@ -185,7 +185,7 @@ function syncFolder(folderName) {
 
 function main() {
   console.log('='.repeat(60));
-  console.log('bkit Folder Synchronization');
+  console.log('ROSSI Folder Synchronization');
   console.log('='.repeat(60));
 
   if (DRY_RUN) {

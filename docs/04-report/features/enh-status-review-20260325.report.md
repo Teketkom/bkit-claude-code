@@ -2,7 +2,7 @@
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v2.0.6 (점검 시점)
 > **Author**: CC Version Analysis Workflow (ENH Status Review)
 > **Completion Date**: 2026-03-25
@@ -151,7 +151,7 @@
 | **145** | Dream memory consolidation | 문서 | ~1h | context-engineering.md |
 | **147** | Security monitor 정책 문서화 | 문서 | ~0.5h | context-engineering.md |
 
-**공통점**: 모두 CC 쪽에서 기능은 이미 구현됨. bkit은 활용 가이드 문서화만 필요.
+**공통점**: 모두 CC 쪽에서 기능은 이미 구현됨. ROSSI은 활용 가이드 문서화만 필요.
 
 ---
 
@@ -190,7 +190,7 @@ ENH-146 (P3) — Programmatic Model Discovery (YAGNI)
 
 ## 5. GitHub Issues 모니터링 현황
 
-| Issue | 심각도 | bkit 영향 | 상태 | 관련 ENH |
+| Issue | 심각도 | ROSSI 영향 | 상태 | 관련 ENH |
 |-------|--------|----------|------|---------|
 | #37520 | HIGH | CTO Team 직접 영향 | OPEN | ENH-143 |
 | #37729 | MEDIUM | SessionStart 오염 | OPEN | ENH-148 |

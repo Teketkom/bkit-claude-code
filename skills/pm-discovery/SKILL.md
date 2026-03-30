@@ -9,7 +9,7 @@ description: |
 argument-hint: "[feature]"
 user-invocable: true
 agents:
-  default: bkit:pm-lead
+  default: rossi:pm-lead
 allowed-tools:
   - Read
   - Write

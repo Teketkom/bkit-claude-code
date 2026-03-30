@@ -3,7 +3,7 @@
  * @module test/controllable-ai/safe-defaults
  * @version 2.0.0
  *
- * Validates that bkit starts with safe defaults:
+ * Validates that ROSSI starts with safe defaults:
  * L2 semi-auto, deny > ask > allow priority, L4 still blocks absolute dangers.
  * 20 TC total.
  */
@@ -23,7 +23,7 @@ try {
   process.exit(1);
 }
 
-const CONFIG_PATH = path.resolve(__dirname, '../../bkit.config.json');
+const CONFIG_PATH = path.resolve(__dirname, '../../rossi.config.json');
 const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'));
 
 // ============================================================
@@ -118,7 +118,7 @@ test('SD-010', 'Destructive detector critical rules default to deny action', () 
 console.log('\n=== Safe Defaults: L4 Safety Floor ===');
 
 test('SD-011', 'L4 allows git_push_force via automation controller', () => {
-  // At L4, automation controller allows it — but bkit.config.json deny takes precedence
+  // At L4, automation controller allows it — but rossi.config.json deny takes precedence
   const r = controller.isDestructiveAllowed('git_push_force', 4);
   assert.strictEqual(r, 'allow', 'Controller allows at L4');
 });

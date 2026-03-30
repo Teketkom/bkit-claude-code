@@ -6,7 +6,7 @@ deprecation-risk: low
 description: |
   Desktop app development guide — Electron and Tauri for cross-platform apps.
   Triggers: desktop app, Electron, Tauri, mac app, windows app, 데스크톱 앱, десктопное приложение, настольное приложение.
-agent: bkit:pipeline-guide
+agent: rossi:pipeline-guide
 allowed-tools:
   - Read
   - Write

@@ -4,7 +4,7 @@
  * Unit Test: v2.0.0 YAML Workflow Presets Verification (20 TC)
  * WF-001~020: Test the 3 workflow presets (default, hotfix, enterprise)
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -13,7 +13,7 @@ const { assert, assertNoThrow, skip, summary, reset } = require('../helpers/asse
 reset();
 
 const BASE_DIR = path.resolve(__dirname, '../..');
-const WORKFLOWS_DIR = path.join(BASE_DIR, '.bkit', 'workflows');
+const WORKFLOWS_DIR = path.join(BASE_DIR, '.rossi', 'workflows');
 
 console.log('\n=== v200-workflows.test.js (20 TC) ===\n');
 
@@ -34,7 +34,7 @@ try {
 }
 
 // ============================================================
-// WF-001~003: .bkit/workflows/ directory has 3 .yaml files
+// WF-001~003: .rossi/workflows/ directory has 3 .yaml files
 // ============================================================
 console.log('--- WF-001~003: Workflow files exist ---');
 
@@ -50,7 +50,7 @@ for (let i = 0; i < WORKFLOW_FILES.length; i++) {
   const id = `WF-${String(i + 1).padStart(3, '0')}`;
 
   assert(id, fs.existsSync(filePath),
-    `${file} exists in .bkit/workflows/`);
+    `${file} exists in .rossi/workflows/`);
 }
 
 // ============================================================

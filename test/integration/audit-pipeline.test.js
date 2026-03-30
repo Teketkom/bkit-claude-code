@@ -30,8 +30,8 @@ function assert(id, condition, description) {
 }
 
 // Setup: Override PROJECT_DIR to temp directory for isolated testing
-const TEST_DIR = path.join(os.tmpdir(), `bkit-audit-test-${process.pid}-${Date.now()}`);
-fs.mkdirSync(path.join(TEST_DIR, '.bkit', 'audit'), { recursive: true });
+const TEST_DIR = path.join(os.tmpdir(), `ROSSI-audit-test-${process.pid}-${Date.now()}`);
+fs.mkdirSync(path.join(TEST_DIR, '.rossi', 'audit'), { recursive: true });
 
 // Patch platform module to use temp directory
 const platform = require(path.join(PROJECT_ROOT, 'lib/core/platform'));
@@ -53,7 +53,7 @@ auditLogger.writeAuditLog({
   actor: 'system',
   result: 'success',
 });
-const auditDir = path.join(TEST_DIR, '.bkit', 'audit');
+const auditDir = path.join(TEST_DIR, '.rossi', 'audit');
 const todayStr = new Date().toISOString().slice(0, 10);
 const auditFile = path.join(auditDir, `${todayStr}.jsonl`);
 assert('AP-001',
@@ -72,8 +72,8 @@ assert('AP-002',
 
 // AP-003: Entry has required fields
 assert('AP-003',
-  parsed2 !== null && parsed2.id && parsed2.timestamp && parsed2.actor && parsed2.bkitVersion,
-  'Audit entry has id, timestamp, actor, and bkitVersion'
+  parsed2 !== null && parsed2.id && parsed2.timestamp && parsed2.actor && parsed2.rossiVersion,
+  'Audit entry has id, timestamp, actor, and rossiVersion'
 );
 
 // AP-004: Multiple writes append to same file

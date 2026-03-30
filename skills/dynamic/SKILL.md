@@ -7,7 +7,7 @@ description: |
   Fullstack development with bkend.ai BaaS — authentication, database, API integration.
   Triggers: fullstack, BaaS, login, signup, database, web app, 풀스택, 인증, init dynamic, динамический, фуллстек, логин, база данных.
 argument-hint: "[init|guide|help]"
-agent: bkit:bkend-expert
+agent: rossi:bkend-expert
 allowed-tools:
   - Read
   - Write
@@ -40,7 +40,7 @@ task-template: "[Init-Dynamic] {feature}"
 3. Create CLAUDE.md (Level: Dynamic specified)
 4. Create docs/ folder structure
 5. src/lib/bkend.ts client template
-6. Initialize .bkit-memory.json
+6. Initialize .rossi-memory.json
 
 ### guide (Development Guide)
 - bkend.ai auth/data configuration guide
@@ -352,14 +352,14 @@ Move to **Enterprise Level** if you need:
 → "I need complex backend logic"
 ```
 
-## bkit Features for Dynamic Level (v1.5.1)
+## ROSSI Features for Dynamic Level (v1.5.1)
 
-### Output Style: bkit-pdca-guide (Recommended)
+### Output Style: rossi-pdca-guide (Recommended)
 
 For optimal PDCA workflow experience, activate the PDCA guide style:
 
 ```
-/output-style bkit-pdca-guide
+/output-style rossi-pdca-guide
 ```
 
 This provides:
@@ -383,7 +383,7 @@ Dynamic projects support Agent Teams for parallel PDCA execution:
 
 ### Agent Memory (Auto-Active)
 
-All bkit agents automatically remember project context across sessions.
+All ROSSI agents automatically remember project context across sessions.
 No setup needed — agents use `project` scope memory for this codebase.
 
 ---

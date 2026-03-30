@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Philosophy Tests: Automation First Principle v2 (25 TC)
- * Tests that bkit state machine auto-transitions, semi-auto defaults,
+ * Tests that ROSSI state machine auto-transitions, semi-auto defaults,
  * gate configs, quality gates, and YAML workflows define auto-advance rules.
  *
  * @module test/philosophy/automation-first-v2.test.js
@@ -100,11 +100,11 @@ assert('AF-006',
   'DEFAULT_LEVEL equals 2 (Semi-Auto)'
 );
 
-// --- AF-007: bkit.config.json automationLevel matches Semi-Auto ---
-const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'bkit.config.json'), 'utf-8'));
+// --- AF-007: rossi.config.json automationLevel matches Semi-Auto ---
+const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'rossi.config.json'), 'utf-8'));
 assert('AF-007',
   config.pdca.automationLevel === 'Semi-Auto' || config.pdca.automationLevel === 'semi-auto',
-  'bkit.config.json pdca.automationLevel is Semi-Auto'
+  'rossi.config.json pdca.automationLevel is Semi-Auto'
 );
 
 // --- AF-008: getRuntimeState uses DEFAULT_LEVEL as currentLevel ---
@@ -209,7 +209,7 @@ assert('AF-020',
 // AF-021~025: YAML workflows define auto-advance rules
 // =====================================================================
 
-const workflowDir = path.join(PROJECT_ROOT, '.bkit', 'workflows');
+const workflowDir = path.join(PROJECT_ROOT, '.rossi', 'workflows');
 
 // --- AF-021: default.workflow.yaml exists and is parseable ---
 const defaultYaml = path.join(workflowDir, 'default.workflow.yaml');

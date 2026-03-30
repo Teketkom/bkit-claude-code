@@ -154,11 +154,11 @@ const level = levelMod.detectLevel();
 assert('U-OTH-052', ['Starter', 'Dynamic', 'Enterprise'].includes(level), `detectLevel returns valid level (got ${level})`);
 
 // Env override
-const origLevel = process.env.BKIT_LEVEL;
-process.env.BKIT_LEVEL = 'Enterprise';
-assert('U-OTH-053', levelMod.detectLevel() === 'Enterprise', 'BKIT_LEVEL env override works');
-if (origLevel) process.env.BKIT_LEVEL = origLevel;
-else delete process.env.BKIT_LEVEL;
+const origLevel = process.env.ROSSI_LEVEL;
+process.env.ROSSI_LEVEL = 'Enterprise';
+assert('U-OTH-053', levelMod.detectLevel() === 'Enterprise', 'ROSSI_LEVEL env override works');
+if (origLevel) process.env.ROSSI_LEVEL = origLevel;
+else delete process.env.ROSSI_LEVEL;
 
 // canSkipPhase
 assert('U-OTH-054', levelMod.canSkipPhase('Starter', 'phase-1') === true, 'Starter can skip phase-1');
@@ -252,8 +252,8 @@ assert('U-OTH-092', typeof configMod.safeJsonParse === 'function', 'safeJsonPars
 assert('U-OTH-093', typeof configMod.getConfigArray === 'function', 'getConfigArray exported');
 assert('U-OTH-094', typeof configMod.getBkitConfig === 'function', 'getBkitConfig exported');
 
-const bkitConfig = configMod.loadConfig();
-assert('U-OTH-095', typeof bkitConfig === 'object', 'loadConfig returns object');
+const rossiConfig = configMod.loadConfig();
+assert('U-OTH-095', typeof rossiConfig === 'object', 'loadConfig returns object');
 
 // getConfig with dot notation
 const threshold = configMod.getConfig('triggers.confidenceThreshold', 0.7);

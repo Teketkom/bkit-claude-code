@@ -2,11 +2,11 @@
 
 > **PDCA Cycle**: 2/3 — 테스트 스위트 보강
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23
-> **이슈**: [GitHub #53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53)
+> **이슈**: [GitHub #53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53)
 
 ---
 
@@ -54,7 +54,7 @@
 | I53-001~005 | 특수문자 경로 시뮬레이션 (괄호, 공백, &, [], !) | ✅ PASS |
 | I53-006 | bash -c quoted path 실행 | ✅ PASS |
 | I53-007 | Unquoted 괄호 syntax error 확인 | ✅ PASS |
-| I53-008 | plugin.json ↔ bkit.config.json 버전 일치 | ✅ PASS |
+| I53-008 | plugin.json ↔ rossi.config.json 버전 일치 | ✅ PASS |
 | I53-009 | hooks.json description 버전 일치 | ✅ PASS |
 | I53-010 | 모든 hook script 파일 존재 | ✅ PASS |
 

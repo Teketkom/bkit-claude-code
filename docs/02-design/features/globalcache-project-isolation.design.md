@@ -2,7 +2,7 @@
 
 > **요약**: PLUGIN_DATA 백업/복원에 프로젝트 검증 가드 추가 및 globalCache 프로젝트 격리 설계
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.0
 > **작성자**: Claude
 > **날짜**: 2026-03-21
@@ -34,7 +34,7 @@
 ```
 ┌─────────────┐     ┌──────────────────────────────────────┐     ┌─────────────┐
 │ Project A   │     │ CLAUDE_PLUGIN_DATA (전역)              │     │ Project B   │
-│             │     │ ~/.claude/plugins/data/bkit/backup/   │     │             │
+│             │     │ ~/.claude/plugins/data/ROSSI/backup/   │     │             │
 │ savePdca()  │────▶│ pdca-status.backup.json  ← A의 상태    │     │             │
 │             │     │ (프로젝트 식별 정보 없음)                 │     │             │
 └─────────────┘     └──────────────────────────────────────┘     └─────────────┘
@@ -52,7 +52,7 @@
 ```
 ┌─────────────┐     ┌──────────────────────────────────────┐     ┌─────────────┐
 │ Project A   │     │ CLAUDE_PLUGIN_DATA (전역)              │     │ Project B   │
-│ /path/to/A  │     │ ~/.claude/plugins/data/bkit/backup/   │     │ /path/to/B  │
+│ /path/to/A  │     │ ~/.claude/plugins/data/ROSSI/backup/   │     │ /path/to/B  │
 │             │     │                                      │     │             │
 │ savePdca()  │────▶│ pdca-status.backup.json  ← A의 상태    │     │             │
 │             │────▶│ meta.json ← { projectDir: "/path/A" }│     │             │
@@ -87,7 +87,7 @@
 
 **현재 코드** (version-history.json 저장 부분):
 ```javascript
-history.push({ timestamp: new Date().toISOString(), bkitVersion: '2.0.0', backed });
+history.push({ timestamp: new Date().toISOString(), rossiVersion: '2.0.0', backed });
 ```
 
 **수정 내용**: 백업 성공 후 `meta.json`에 프로젝트 경로를 기록한다.
@@ -100,7 +100,7 @@ try {
   const meta = {
     projectDir: getPlatform().PROJECT_DIR,
     timestamp: new Date().toISOString(),
-    bkitVersion: '2.0.0',
+    rossiVersion: '2.0.0',
   };
   fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2));
 } catch (_) { /* meta.json is non-critical */ }
@@ -240,7 +240,7 @@ function _getCacheKey() {
 {
   "projectDir": "/Users/user/projects/my-app",
   "timestamp": "2026-03-21T10:00:00.000Z",
-  "bkitVersion": "2.0.0"
+  "rossiVersion": "2.0.0"
 }
 ```
 
@@ -248,12 +248,12 @@ function _getCacheKey() {
 |------|------|------|------|
 | `projectDir` | string | Yes | 백업 원본 프로젝트의 절대 경로 (`getPlatform().PROJECT_DIR`) |
 | `timestamp` | string (ISO 8601) | Yes | 마지막 백업 시각 |
-| `bkitVersion` | string | Yes | 백업 시점의 bkit 버전 |
+| `rossiVersion` | string | Yes | 백업 시점의 ROSSI 버전 |
 
 ### 4.2 파일 위치
 
 ```
-~/.claude/plugins/data/bkit-bkit-marketplace/backup/
+~/.claude/plugins/data/ROSSI-rossi-marketplace/backup/
 ├── meta.json                    ← NEW (프로젝트 식별)
 ├── pdca-status.backup.json      ← 기존 (변경 없음)
 ├── memory.backup.json           ← 기존 (변경 없음)

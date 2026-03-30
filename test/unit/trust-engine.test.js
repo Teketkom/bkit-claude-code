@@ -9,10 +9,10 @@ const path = require('path');
 const os = require('os');
 
 // Set up tmp dir as working directory before requiring module
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bkit-trust-test-'));
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ROSSI-trust-test-'));
 const origCwd = process.cwd();
 process.chdir(tmpDir);
-fs.mkdirSync(path.join(tmpDir, '.bkit', 'state'), { recursive: true });
+fs.mkdirSync(path.join(tmpDir, '.rossi', 'state'), { recursive: true });
 
 let mod;
 try {
@@ -34,7 +34,7 @@ function assert(id, condition, message) {
 
 // Helper: reset trust profile to clean state
 function resetProfile() {
-  const profilePath = path.join(tmpDir, '.bkit', 'state', 'trust-profile.json');
+  const profilePath = path.join(tmpDir, '.rossi', 'state', 'trust-profile.json');
   if (fs.existsSync(profilePath)) fs.unlinkSync(profilePath);
 }
 

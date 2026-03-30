@@ -17,7 +17,7 @@ function formatMarkdownReport(benchmarkResult) {
   const { timestamp, version, model, summary, details } = benchmarkResult;
 
   const lines = [
-    `# bkit Skill Evals Report`,
+    `# ROSSI Skill Evals Report`,
     ``,
     `> Generated: ${timestamp}`,
     `> Version: ${version}`,
@@ -74,7 +74,7 @@ function formatDetailedReport(benchmarkResult) {
   }
 
   const lines = [
-    `# bkit Skill Evals Detailed Report`,
+    `# ROSSI Skill Evals Detailed Report`,
     ``,
     `> Generated: ${timestamp}`,
     `> Version: ${version}`,

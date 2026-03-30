@@ -2,7 +2,7 @@
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v2.0.6 (분석 시점)
 > **Author**: CC Version Analysis Workflow
 > **Completion Date**: 2026-03-26
@@ -38,7 +38,7 @@
 │  🔴 신규 tools:             1건 (PowerShell, Windows)   │
 │  📋 신규 ENH 기회:          4건 (ENH-156~159)          │
 │  🔢 연속 호환 릴리스:        50개 (v2.1.34~v2.1.84)    │
-│  🔢 breaking changes:       0건 (bkit 기준)            │
+│  🔢 breaking changes:       0건 (ROSSI 기준)            │
 │  🔢 자동 수혜:              4건 (cold-start, subagent,  │
 │                              MCP cache, IME/CJK)       │
 └──────────────────────────────────────────────────────┘
@@ -49,7 +49,7 @@
 | 관점 | 내용 |
 |------|------|
 | **문제** | CC v2.1.84에서 TaskCreated hook event 신규 추가, paths: YAML list 지원, cold-start race fix, MCP 2KB cap 등 ~43건 변경 |
-| **해결 방법** | GitHub release notes + CHANGELOG.md + npm + 이슈 트래커 + bkit 코드베이스 교차 검증 |
+| **해결 방법** | GitHub release notes + CHANGELOG.md + npm + 이슈 트래커 + ROSSI 코드베이스 교차 검증 |
 | **기능/UX 효과** | TaskCreated hook으로 PDCA Task 생성 시점 추적 가능, cold-start race fix로 세션 안정성 향상, IME/CJK fix로 한국어 입력 개선 |
 | **핵심 가치** | 50개 연속 호환 릴리스 확인 + ENH 4건 도출(P1 1건/P2 1건/P3 2건) + 자동 수혜 4건 확인 |
 
@@ -64,41 +64,41 @@
 | Neutral | 10 | 2 | 7 | 1 |
 
 **총 변경사항**: ~14건 (HIGH 4 + MEDIUM 7 + Other 3)
-**bkit 코드 변경 필요**: 2건 (ENH-156, ENH-157)
+**ROSSI 코드 변경 필요**: 2건 (ENH-156, ENH-157)
 **자동 수혜**: 2건 (B-84-14 cold-start fix, B-84-6 workflow subagent fix)
 
 ---
 
-## 3. Component Mapping (CC 변경 → bkit 컴포넌트)
+## 3. Component Mapping (CC 변경 → ROSSI 컴포넌트)
 
 ### 3.1 HIGH Impact Changes
 
-| CC 변경 | ID | bkit 컴포넌트 | 영향 분류 | 상세 |
+| CC 변경 | ID | ROSSI 컴포넌트 | 영향 분류 | 상세 |
 |---------|-----|--------------|----------|------|
-| **TaskCreated hook event** | F-84-5 | hooks/hooks.json, scripts/ | Enhancement | CC hook events 24→25. bkit 현재 18 events 구현. TaskCreated 추가 시 19. PDCA Task 생성 시점 감지 가능 |
-| **paths: YAML list** | F-84-11 | skills/*/SKILL.md | Enhancement | 현재 bkit 37개 skills 중 `paths:` 사용 0건. 신규 적용 가능하나 YAGNI 검토 필요 |
-| **Cold-start race fix** | B-84-14 | 전체 (scripts/, hooks/) | Neutral (자동 수혜) | Edit/Write InputValidationError race condition 수정. bkit hook scripts 5초 timeout 내 cold-start 시 간헐적 실패 방지 |
-| **MCP 2KB description cap** | I-84-1 | servers/ (2개 MCP 서버) | Neutral (안전) | bkit MCP tool descriptions 최대 길이 측정 결과 모두 2KB 미만. 영향 없음 |
+| **TaskCreated hook event** | F-84-5 | hooks/hooks.json, scripts/ | Enhancement | CC hook events 24→25. ROSSI 현재 18 events 구현. TaskCreated 추가 시 19. PDCA Task 생성 시점 감지 가능 |
+| **paths: YAML list** | F-84-11 | skills/*/SKILL.md | Enhancement | 현재 ROSSI 37개 skills 중 `paths:` 사용 0건. 신규 적용 가능하나 YAGNI 검토 필요 |
+| **Cold-start race fix** | B-84-14 | 전체 (scripts/, hooks/) | Neutral (자동 수혜) | Edit/Write InputValidationError race condition 수정. ROSSI hook scripts 5초 timeout 내 cold-start 시 간헐적 실패 방지 |
+| **MCP 2KB description cap** | I-84-1 | servers/ (2개 MCP 서버) | Neutral (안전) | ROSSI MCP tool descriptions 최대 길이 측정 결과 모두 2KB 미만. 영향 없음 |
 
 ### 3.2 MEDIUM Impact Changes
 
-| CC 변경 | ID | bkit 컴포넌트 | 영향 분류 | 상세 |
+| CC 변경 | ID | ROSSI 컴포넌트 | 영향 분류 | 상세 |
 |---------|-----|--------------|----------|------|
-| ANTHROPIC_DEFAULT_*_MODEL_SUPPORTS | F-84-2 | agents/*.md | Neutral | 3P capability override. bkit은 자체 model override 미사용 |
-| CLAUDE_STREAM_IDLE_TIMEOUT_MS | F-84-4 | 해당 없음 | Neutral | 90초 streaming idle watchdog. bkit 장시간 hook은 최대 10초 timeout |
-| Idle-return 75min+ prompt | F-84-9 | 해당 없음 | Neutral | 장시간 방치 복귀 프롬프트. bkit 관련 없음 |
-| System-prompt caching + ToolSearch | F-84-14 | 해당 없음 | Neutral (자동 수혜) | 시스템 프롬프트 캐싱 개선. bkit 성능 자동 향상 |
+| ANTHROPIC_DEFAULT_*_MODEL_SUPPORTS | F-84-2 | agents/*.md | Neutral | 3P capability override. ROSSI은 자체 model override 미사용 |
+| CLAUDE_STREAM_IDLE_TIMEOUT_MS | F-84-4 | 해당 없음 | Neutral | 90초 streaming idle watchdog. ROSSI 장시간 hook은 최대 10초 timeout |
+| Idle-return 75min+ prompt | F-84-9 | 해당 없음 | Neutral | 장시간 방치 복귀 프롬프트. ROSSI 관련 없음 |
+| System-prompt caching + ToolSearch | F-84-14 | 해당 없음 | Neutral (자동 수혜) | 시스템 프롬프트 캐싱 개선. ROSSI 성능 자동 향상 |
 | Workflow subagent json-schema 400 fix | B-84-6 | agents/ (CTO Team) | Neutral (자동 수혜) | workflow subagent json-schema 400 에러 수정. CTO Team 안정성 자동 향상 |
-| File attachment snippet hang fix | B-84-9 | 해당 없음 | Neutral | bkit은 file attachment 미사용 |
-| MCP cache leak on reconnect fix | B-84-10 | servers/ | Neutral (자동 수혜) | MCP 서버 재연결 시 캐시 누수 수정. bkit MCP 서버 안정성 향상 |
+| File attachment snippet hang fix | B-84-9 | 해당 없음 | Neutral | ROSSI은 file attachment 미사용 |
+| MCP cache leak on reconnect fix | B-84-10 | servers/ | Neutral (자동 수혜) | MCP 서버 재연결 시 캐시 누수 수정. ROSSI MCP 서버 안정성 향상 |
 
 ### 3.3 Other Changes
 
-| CC 변경 | ID | bkit 컴포넌트 | 영향 분류 |
+| CC 변경 | ID | ROSSI 컴포넌트 | 영향 분류 |
 |---------|-----|--------------|----------|
-| PowerShell tool (Windows) | F-84-1 | 해당 없음 | Neutral (bkit은 macOS/Linux) |
+| PowerShell tool (Windows) | F-84-1 | 해당 없음 | Neutral (ROSSI은 macOS/Linux) |
 | IME/CJK cursor tracking fix | B-84-12 | 해당 없음 | Neutral (자동 수혜, 한국어 입력 개선) |
-| Bare #123 auto-link removed | BC-84-1 | 해당 없음 | Neutral (bkit docs에서 owner/repo#NNN 형식 이미 사용) |
+| Bare #123 auto-link removed | BC-84-1 | 해당 없음 | Neutral (ROSSI docs에서 owner/repo#NNN 형식 이미 사용) |
 
 ---
 
@@ -123,7 +123,7 @@ Task 완료 후 처리              Task 생성 시점 처리
 - Progress update            - PDCA phase 전환 기록
 ```
 
-**결론**: TaskCreated는 **감사 로깅 및 Task 관리 강화**에 유용. PDCA Task 생성 시점을 정확히 기록하면 워크플로우 추적성이 향상됨. 다만 현재 bkit이 실질적으로 Task 생성을 직접 처리하지 않으므로 (TaskCompleted에서 후처리), 즉각적 필수성은 P1.
+**결론**: TaskCreated는 **감사 로깅 및 Task 관리 강화**에 유용. PDCA Task 생성 시점을 정확히 기록하면 워크플로우 추적성이 향상됨. 다만 현재 ROSSI이 실질적으로 Task 생성을 직접 처리하지 않으므로 (TaskCompleted에서 후처리), 즉각적 필수성은 P1.
 
 **TaskCreated 핸들러 예상 구현 범위**:
 1. Task subject에서 PDCA phase 감지 (기존 `detectPdcaFromTaskSubject()` 재사용)
@@ -139,58 +139,58 @@ Task 완료 후 처리              Task 생성 시점 처리
 
 | 스킬 | 관련 디렉토리 | paths: 적용 가치 |
 |------|-------------|-----------------|
-| pdca | `docs/`, `templates/`, `.bkit/state/` | Medium — 3개 디렉토리에 걸쳐 동작 |
+| pdca | `docs/`, `templates/`, `.rossi/state/` | Medium — 3개 디렉토리에 걸쳐 동작 |
 | code-review | `src/`, `lib/`, `scripts/` | Medium — 프로젝트 코드 전반 |
 | deploy | `.github/`, `infra/`, `Dockerfile` | Low — 인프라 파일은 특정 위치 |
 | enterprise | `infra/`, `k8s/`, `terraform/` | Low — 인프라 전용 |
 | cc-version-analysis | `docs/04-report/`, `.claude/agent-memory/` | Low — 특정 경로 |
-| bkit-rules | 전체 프로젝트 | N/A — 전역 룰이므로 paths 제한 불가 |
-| audit | `.bkit/audit/`, `.bkit/state/` | Medium — 감사 디렉토리 한정 |
+| rossi-rules | 전체 프로젝트 | N/A — 전역 룰이므로 paths 제한 불가 |
+| audit | `.rossi/audit/`, `.rossi/state/` | Medium — 감사 디렉토리 한정 |
 
 **YAGNI 검토 결과**:
-- bkit skills은 **플러그인 내부 스킬** (사용자 프로젝트 구조에 독립적)
+- ROSSI skills은 **플러그인 내부 스킬** (사용자 프로젝트 구조에 독립적)
 - `paths:` 는 사용자 프로젝트의 특정 경로에서만 스킬이 활성화되도록 제한하는 기능
-- bkit skills은 프로젝트 전반에서 동작해야 하므로 `paths:` 제한이 오히려 방해
-- **예외**: `bkit-rules` 같은 전역 스킬은 paths 적용 자체가 무의미
+- ROSSI skills은 프로젝트 전반에서 동작해야 하므로 `paths:` 제한이 오히려 방해
+- **예외**: `rossi-rules` 같은 전역 스킬은 paths 적용 자체가 무의미
 
-**결론**: paths: YAML list는 CC의 사용자 정의 스킬/규칙에 유용하나, **bkit 플러그인 내장 스킬에는 적용 필요성 낮음**. 단, `skill-create`로 생성하는 **project-local 스킬에서 paths: YAML list 지원을 문서화**하는 것은 의미 있음 (P2).
+**결론**: paths: YAML list는 CC의 사용자 정의 스킬/규칙에 유용하나, **ROSSI 플러그인 내장 스킬에는 적용 필요성 낮음**. 단, `skill-create`로 생성하는 **project-local 스킬에서 paths: YAML list 지원을 문서화**하는 것은 의미 있음 (P2).
 
 ### 4.3 MCP Tool Description 2KB Cap 분석 (I-84-1)
 
-**bkit MCP 서버 tool description 길이 측정**:
+**ROSSI MCP 서버 tool description 길이 측정**:
 
 | 서버 | Tool | Description 길이 |
 |------|------|-----------------|
-| bkit-analysis-server | bkit_code_quality | ~83 bytes |
-| bkit-analysis-server | bkit_gap_analysis | ~67 bytes |
-| bkit-analysis-server | bkit_regression_rules | ~80 bytes |
-| bkit-analysis-server | bkit_checkpoint_list | ~53 bytes |
-| bkit-analysis-server | bkit_checkpoint_detail | ~56 bytes |
-| bkit-analysis-server | bkit_audit_search | ~77 bytes |
-| bkit-pdca-server | bkit_pdca_status | ~72 bytes |
-| bkit-pdca-server | bkit_pdca_history | ~65 bytes |
-| bkit-pdca-server | bkit_feature_list | ~48 bytes |
-| bkit-pdca-server | bkit_feature_detail | ~73 bytes |
-| bkit-pdca-server | bkit_plan_read | ~61 bytes |
-| bkit-pdca-server | bkit_design_read | ~64 bytes |
-| bkit-pdca-server | bkit_analysis_read | ~58 bytes |
-| bkit-pdca-server | bkit_report_read | ~63 bytes |
-| bkit-pdca-server | bkit_metrics_get | ~62 bytes |
-| bkit-pdca-server | bkit_metrics_history | ~47 bytes |
+| rossi-analysis-server | rossi_code_quality | ~83 bytes |
+| rossi-analysis-server | rossi_gap_analysis | ~67 bytes |
+| rossi-analysis-server | rossi_regression_rules | ~80 bytes |
+| rossi-analysis-server | rossi_checkpoint_list | ~53 bytes |
+| rossi-analysis-server | rossi_checkpoint_detail | ~56 bytes |
+| rossi-analysis-server | rossi_audit_search | ~77 bytes |
+| rossi-pdca-server | rossi_pdca_status | ~72 bytes |
+| rossi-pdca-server | rossi_pdca_history | ~65 bytes |
+| rossi-pdca-server | rossi_feature_list | ~48 bytes |
+| rossi-pdca-server | rossi_feature_detail | ~73 bytes |
+| rossi-pdca-server | rossi_plan_read | ~61 bytes |
+| rossi-pdca-server | rossi_design_read | ~64 bytes |
+| rossi-pdca-server | rossi_analysis_read | ~58 bytes |
+| rossi-pdca-server | rossi_report_read | ~63 bytes |
+| rossi-pdca-server | rossi_metrics_get | ~62 bytes |
+| rossi-pdca-server | rossi_metrics_history | ~47 bytes |
 
-**최대 description**: ~83 bytes (bkit_code_quality)
+**최대 description**: ~83 bytes (rossi_code_quality)
 **2KB cap**: 2,048 bytes
 **안전 마진**: 24x 이상
 
-**결론**: bkit MCP 서버는 2KB cap에 **전혀 영향 없음**. 모든 tool description이 100 bytes 미만.
+**결론**: ROSSI MCP 서버는 2KB cap에 **전혀 영향 없음**. 모든 tool description이 100 bytes 미만.
 
 ### 4.4 Cold-Start Race Fix 분석 (B-84-14)
 
-**bkit 관련 시나리오**:
-- bkit SessionStart hook은 `once: true` + timeout 5000ms
+**ROSSI 관련 시나리오**:
+- ROSSI SessionStart hook은 `once: true` + timeout 5000ms
 - CC 시작 직후 Edit/Write 호출 시 core tools deferred race condition이 있었음
-- bkit의 hook scripts는 stdin JSON 파싱 → 로직 → stdout JSON 출력 패턴
-- bkit 자체는 hook 내에서 Edit/Write를 호출하지 않으므로 **직접 영향 없음**
+- ROSSI의 hook scripts는 stdin JSON 파싱 → 로직 → stdout JSON 출력 패턴
+- ROSSI 자체는 hook 내에서 Edit/Write를 호출하지 않으므로 **직접 영향 없음**
 - 다만 사용자의 첫 번째 명령이 빠른 Edit/Write일 경우 CC 수준에서 수정되어 간접 수혜
 
 ---
@@ -225,12 +225,12 @@ Task 완료 후 처리              Task 생성 시점 처리
 | CC Feature | F-84-11: paths: YAML list in frontmatter |
 | Priority | P2 (Medium) |
 | 근거 | project-local 스킬 생성 시 paths: 다중 glob 지원 문서화 |
-| 기존 상태 | bkit 내장 스킬은 paths: 미사용 (적용 불필요) |
+| 기존 상태 | ROSSI 내장 스킬은 paths: 미사용 (적용 불필요) |
 | 구현 범위 | skill-create SKILL.md 문서 업데이트 + 예시 추가 |
 
 **구현 계획**:
 1. `skills/skill-create/SKILL.md` — paths: YAML list 사용 예시 추가
-2. bkit 내장 37개 스킬에는 **적용하지 않음** (YAGNI)
+2. ROSSI 내장 37개 스킬에는 **적용하지 않음** (YAGNI)
 
 **추정 LOC**: +15 (문서 추가)
 
@@ -241,7 +241,7 @@ Task 완료 후 처리              Task 생성 시점 처리
 | CC Feature | F-84-4: Streaming idle watchdog 90s default |
 | Priority | P3 (Low) — YAGNI 경계 |
 | 근거 | CTO Team 장시간 세션에서 이론적으로 관련 가능하나 실질적 필요성 낮음 |
-| 현재 상태 | bkit hook timeout 최대 10초 (hooks.json) — 90초 idle timeout과 무관 |
+| 현재 상태 | ROSSI hook timeout 최대 10초 (hooks.json) — 90초 idle timeout과 무관 |
 | 판정 | Monitor only. 실제 CTO Team에서 idle timeout 이슈 보고 시 구현 |
 
 ### ENH-159: Workflow Subagent 안정성 문서화 (P3)
@@ -296,7 +296,7 @@ Task 완료 후 처리              Task 생성 시점 처리
 
 | 테스트 카테고리 | 영향 | 상세 |
 |---------------|------|------|
-| regression/skills-36.test.js | VERIFY | paths: 필드 파싱 테스트 추가 불필요 (CC가 파싱, bkit은 문서만) |
+| regression/skills-36.test.js | VERIFY | paths: 필드 파싱 테스트 추가 불필요 (CC가 파싱, ROSSI은 문서만) |
 | 해당 없음 | — | 문서 변경만이므로 TC 변경 없음 |
 
 ---
@@ -384,16 +384,16 @@ self-healing.md에서 `reasoningEffort: high` 사용 중. CC 공식 agent frontm
 
 ## Appendix A: ENH Summary Table
 
-| ENH | Priority | CC Feature | bkit Impact | Affected Files | 상태 |
+| ENH | Priority | CC Feature | ROSSI Impact | Affected Files | 상태 |
 |-----|----------|------------|-------------|----------------|------|
 | ENH-156 | P1 | TaskCreated hook event | PDCA Task 생성 추적 + audit | hooks.json, scripts/, test/ | 신규 |
 | ENH-157 | P2 | paths: YAML list | skill-create 문서 업데이트 | skills/skill-create/SKILL.md | 신규 |
 | ENH-158 | P3 | CLAUDE_STREAM_IDLE_TIMEOUT_MS | Monitor only | — | Monitor |
 | ENH-159 | P3 | Workflow subagent fix | 자동 수혜 | — | 자동 해결 |
 
-## Appendix B: 전체 CC v2.1.84 변경사항 bkit 영향 매핑
+## Appendix B: 전체 CC v2.1.84 변경사항 ROSSI 영향 매핑
 
-| # | CC 변경 | 유형 | bkit 영향 | 조치 필요 |
+| # | CC 변경 | 유형 | ROSSI 영향 | 조치 필요 |
 |---|---------|------|----------|----------|
 | 1 | TaskCreated hook event | Feature | ENH-156 | YES |
 | 2 | paths: YAML list | Feature | ENH-157 (문서) | YES (문서만) |

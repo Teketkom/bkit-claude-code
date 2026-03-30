@@ -7,7 +7,7 @@ description: |
   bkend.ai authentication — email/social login, JWT tokens, RBAC, session management.
   Triggers: bkend auth, login, signup, JWT, RBAC, 인증, 로그인, 회원가입, авторизация, вход, регистрация.
 user-invocable: false
-agent: bkit:bkend-expert
+agent: rossi:bkend-expert
 allowed-tools:
   - Read
   - Write
@@ -108,7 +108,7 @@ For the complete endpoint list, use `search_docs` or check Live Reference.
 ## Official Documentation (Live Reference)
 
 For the latest authentication documentation, use WebFetch:
-- Auth Overview: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/authentication/01-overview.md
-- MCP Auth Guide: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/mcp/06-auth-tools.md
-- Security: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/security/01-overview.md
-- Full TOC: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/SUMMARY.md
+- Auth Overview: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/authentication/01-overview.md
+- MCP Auth Guide: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/mcp/06-auth-tools.md
+- Security: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/security/01-overview.md
+- Full TOC: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/SUMMARY.md

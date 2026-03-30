@@ -1,6 +1,6 @@
 # Scenario: Write Code
 
-> How bkit behaves when user writes/modifies code (v1.2.1)
+> How ROSSI behaves when user writes/modifies code (v1.2.1)
 
 ## Scenario Overview
 
@@ -28,7 +28,7 @@ User: "Modify login.ts file"
 │  3. PreToolUse Hooks Execute (Unified Hook v1.2.0)               │
 │                                                                 │
 │  ┌─────────────────────────────────────────────────────────┐   │
-│  │ [[../../skills/bkit-rules/SKILL|bkit-rules]] → pre-write.js     │   │
+│  │ [[../../skills/rossi-rules/SKILL|rossi-rules]] → pre-write.js     │   │
 │  │ (Unified hook: PDCA + Task Classification + Convention) │   │
 │  │                                                          │   │
 │  │ 1. Source file detection (is_source_file - ext-based v1.2.1)│
@@ -65,7 +65,7 @@ User: "Modify login.ts file"
 │  5. PostToolUse Hooks Execute                                    │
 │                                                                 │
 │  ┌─────────────────────────────────────────────────────────┐   │
-│  │ [[../../skills/bkit-rules/SKILL|bkit-rules]] → pdca-post-write.js│   │
+│  │ [[../../skills/rossi-rules/SKILL|rossi-rules]] → pdca-post-write.js│   │
 │  │ • If design doc exists: "/pdca-analyze recommended" guidance│
 │  └─────────────────────────────────────────────────────────┘   │
 │                              │                                  │
@@ -105,7 +105,7 @@ Design doc: docs/02-design/features/auth.design.md exists
 
 ### PreToolUse Result
 
-**bkit-rules (pre-write.js - Unified Hook v1.2.0)**:
+**rossi-rules (pre-write.js - Unified Hook v1.2.0)**:
 ```
 PDCA Notice: This file belongs to the 'auth' feature.
 
@@ -131,7 +131,7 @@ PDCA documentation is essential.
 
 ### PostToolUse Result
 
-**bkit-rules (pdca-post-write.js)**:
+**rossi-rules (pdca-post-write.js)**:
 ```
 Write completed: src/features/auth/login.ts
 
@@ -170,7 +170,7 @@ design-implementation alignment.
 
 ### Exclude Patterns
 
-> Customizable via `BKIT_EXCLUDE_PATTERNS` environment variable
+> Customizable via `ROSSI_EXCLUDE_PATTERNS` environment variable
 
 | Pattern | Description |
 |---------|-------------|

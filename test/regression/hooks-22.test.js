@@ -5,7 +5,7 @@
  * HK-001~022: Each of 22 hook events registered in hooks.json
  * HK-023~025: Each handler script file exists and has valid JS syntax
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');

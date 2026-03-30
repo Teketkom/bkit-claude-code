@@ -1,7 +1,7 @@
-# bkit v2.0.0 영역 4: 아키텍처 리팩토링 상세 설계
+# ROSSI v2.0.0 영역 4: 아키텍처 리팩토링 상세 설계
 
 > **영역**: 4 — Architecture Refactoring
-> **Plan 참조**: `docs/01-plan/features/bkit-v200-enhancement.plan.md` Section 4.1
+> **Plan 참조**: `docs/01-plan/features/rossi-v200-enhancement.plan.md` Section 4.1
 > **설계 기준일**: 2026-03-19
 > **요구사항**: FR-05, FR-06, FR-07, FR-21, FR-22
 
@@ -84,7 +84,7 @@
 
 | # | 파일 | 사용 함수 | 원본 모듈 |
 |---|------|----------|----------|
-| 47 | `session-start.js` | BKIT_PLATFORM, detectLevel, debugLog, initPdcaStatusIfNotExists, getPdcaStatusFull, emitUserPrompt, detectNewFeatureIntent, matchImplicitAgentTrigger, matchImplicitSkillTrigger, getBkitConfig, calculateAmbiguityScore, generateClarifyingQuestions | core, pdca, intent |
+| 47 | `session-start.js` | ROSSI_PLATFORM, detectLevel, debugLog, initPdcaStatusIfNotExists, getPdcaStatusFull, emitUserPrompt, detectNewFeatureIntent, matchImplicitAgentTrigger, matchImplicitSkillTrigger, getBkitConfig, calculateAmbiguityScore, generateClarifyingQuestions | core, pdca, intent |
 
 **lib/ (5개)**:
 
@@ -136,7 +136,7 @@ const { debugLog } = require('../lib/core/debug');
 |-------------|---------------|-----------------|
 | I/O (outputAllow, readStdinSync, parseHookInput, outputBlock, outputEmpty, truncateContext, MAX_CONTEXT_LENGTH, xmlSafeOutput) | `../lib/common.js` | `../lib/core/io` |
 | Debug (debugLog, getDebugLogPath, DEBUG_LOG_PATHS) | `../lib/common.js` | `../lib/core/debug` |
-| Platform (BKIT_PLATFORM, PROJECT_DIR, PLUGIN_ROOT, isClaudeCode, detectPlatform, getPluginPath, getProjectPath, getTemplatePath, BKIT_PROJECT_DIR) | `../lib/common.js` | `../lib/core/platform` |
+| Platform (ROSSI_PLATFORM, PROJECT_DIR, PLUGIN_ROOT, isClaudeCode, detectPlatform, getPluginPath, getProjectPath, getTemplatePath, ROSSI_PROJECT_DIR) | `../lib/common.js` | `../lib/core/platform` |
 | Cache (get, set, invalidate, clear, globalCache, _cache, DEFAULT_TTL, TOOLSEARCH_TTL, getToolSearchCache, setToolSearchCache) | `../lib/common.js` | `../lib/core/cache` |
 | Config (loadConfig, getConfig, getConfigArray, getBkitConfig, safeJsonParse) | `../lib/common.js` | `../lib/core/config` |
 | File (TIER_EXTENSIONS, isSourceFile, isCodeFile, isUiFile, isEnvFile, extractFeature, DEFAULT_EXCLUDE_PATTERNS, DEFAULT_FEATURE_PATTERNS) | `../lib/common.js` | `../lib/core/file` |
@@ -333,7 +333,7 @@ const { debugLog } = require('../../lib/core/debug');
 const { STATE_PATHS, LEGACY_PATHS, ensureBkitDirs } = require('../../lib/core/paths');
 
 /**
- * Migrate legacy state file paths to .bkit/ structured paths
+ * Migrate legacy state file paths to .rossi/ structured paths
  * @returns {{ migrated: string[], skipped: string[], errors: string[] }}
  */
 function migrateStatePaths() { /* ... */ }
@@ -520,20 +520,20 @@ module.exports = { buildSessionContext };
 8. Trigger Keyword Table
 9. v1.4.0~v1.6.2 Enhancement 안내
 10. Executive Summary Output Rule
-11. bkit Feature Usage Report Rule
+11. ROSSI Feature Usage Report Rule
 
 #### 2.2.6 `hooks/session-start.js` (orchestrator)
 
 ```javascript
 #!/usr/bin/env node
 /**
- * bkit Vibecoding Kit - SessionStart Hook (v2.0.0)
+ * ROSSI CTO Agent Kit - SessionStart Hook (v2.0.0)
  * Thin orchestrator: delegates all logic to hooks/startup/ modules
  */
 
 const fs = require('fs');
 const { debugLog } = require('../lib/core/debug');
-const { BKIT_PLATFORM } = require('../lib/core/platform');
+const { ROSSI_PLATFORM } = require('../lib/core/platform');
 const { detectLevel } = require('../lib/pdca/level');
 
 // Startup modules
@@ -544,7 +544,7 @@ const { enhancedOnboarding, getTriggerKeywordTable } = require('./startup/onboar
 const { buildSessionContext } = require('./startup/session-context');
 
 // Step 1: Migration
-debugLog('SessionStart', 'Hook executed', { cwd: process.cwd(), platform: BKIT_PLATFORM });
+debugLog('SessionStart', 'Hook executed', { cwd: process.cwd(), platform: ROSSI_PLATFORM });
 migrateStatePaths();
 
 // Step 2: Restore from PLUGIN_DATA
@@ -566,7 +566,7 @@ const triggerTable = getTriggerKeywordTable();
 const additionalContext = buildSessionContext({ onboardingData, triggerTable });
 
 const response = {
-  systemMessage: `bkit Vibecoding Kit v2.0.0 activated (Claude Code)`,
+  systemMessage: `ROSSI CTO Agent Kit v2.0.0 activated (Claude Code)`,
   hookSpecificOutput: {
     hookEventName: "SessionStart",
     onboardingType: onboardingData.type,
@@ -896,7 +896,7 @@ function savePdcaStatus(status) {
 | `30000` (skill loader TTL) | `skill-loader.js:27` | `CACHE_TTL_MS` |
 | `3000` (pdca status cache) | `status.js:142` | `PDCA_STATUS_CACHE_TTL` |
 | `5000` (context hierarchy) | `context-hierarchy.js:38` | `CONTEXT_CACHE_TTL` |
-| `10000` (bkit config cache) | `config.js:103` | `BKIT_CONFIG_CACHE_TTL` |
+| `10000` (ROSSI config cache) | `config.js:103` | `ROSSI_CONFIG_CACHE_TTL` |
 
 #### 4.1.4 I/O 관련
 
@@ -928,7 +928,7 @@ function savePdcaStatus(status) {
 
 ```javascript
 /**
- * bkit Central Constants
+ * ROSSI Central Constants
  * @module lib/core/constants
  * @version 2.0.0
  *
@@ -996,8 +996,8 @@ const PDCA_STATUS_CACHE_TTL = 3000;
 /** Context hierarchy cache TTL */
 const CONTEXT_CACHE_TTL = 5000;
 
-/** bkit.config.json cache TTL */
-const BKIT_CONFIG_CACHE_TTL = 10000;
+/** rossi.config.json cache TTL */
+const ROSSI_CONFIG_CACHE_TTL = 10000;
 
 // ============================================================
 // I/O Constants
@@ -1078,7 +1078,7 @@ module.exports = {
   SKILL_CACHE_TTL,
   PDCA_STATUS_CACHE_TTL,
   CONTEXT_CACHE_TTL,
-  BKIT_CONFIG_CACHE_TTL,
+  ROSSI_CONFIG_CACHE_TTL,
 
   // I/O
   MAX_CONTEXT_LENGTH,
@@ -1137,7 +1137,7 @@ if (status.history.length > MAX_HISTORY_ENTRIES) {
 ### 5.2 에러 코드 체계
 
 ```
-BKIT_{DOMAIN}_{ACTION}_{DETAIL}
+ROSSI_{DOMAIN}_{ACTION}_{DETAIL}
 
 Domains:
   PDCA    — PDCA 워크플로우
@@ -1180,47 +1180,47 @@ const SEVERITY = {
 
 const ERROR_CODES = {
   // PDCA Domain
-  BKIT_PDCA_STATUS_READ:     'BKIT_PDCA_STATUS_READ',
-  BKIT_PDCA_STATUS_WRITE:    'BKIT_PDCA_STATUS_WRITE',
-  BKIT_PDCA_STATUS_MIGRATE:  'BKIT_PDCA_STATUS_MIGRATE',
-  BKIT_PDCA_PHASE_INVALID:   'BKIT_PDCA_PHASE_INVALID',
-  BKIT_PDCA_TRANSITION_FAIL: 'BKIT_PDCA_TRANSITION_FAIL',
-  BKIT_PDCA_FEATURE_LIMIT:   'BKIT_PDCA_FEATURE_LIMIT',
-  BKIT_PDCA_ITERATION_LIMIT: 'BKIT_PDCA_ITERATION_LIMIT',
+  ROSSI_PDCA_STATUS_READ:     'ROSSI_PDCA_STATUS_READ',
+  ROSSI_PDCA_STATUS_WRITE:    'ROSSI_PDCA_STATUS_WRITE',
+  ROSSI_PDCA_STATUS_MIGRATE:  'ROSSI_PDCA_STATUS_MIGRATE',
+  ROSSI_PDCA_PHASE_INVALID:   'ROSSI_PDCA_PHASE_INVALID',
+  ROSSI_PDCA_TRANSITION_FAIL: 'ROSSI_PDCA_TRANSITION_FAIL',
+  ROSSI_PDCA_FEATURE_LIMIT:   'ROSSI_PDCA_FEATURE_LIMIT',
+  ROSSI_PDCA_ITERATION_LIMIT: 'ROSSI_PDCA_ITERATION_LIMIT',
 
   // State Domain
-  BKIT_STATE_READ:           'BKIT_STATE_READ',
-  BKIT_STATE_WRITE:          'BKIT_STATE_WRITE',
-  BKIT_STATE_LOCK_TIMEOUT:   'BKIT_STATE_LOCK_TIMEOUT',
-  BKIT_STATE_LOCK_STALE:     'BKIT_STATE_LOCK_STALE',
-  BKIT_STATE_CORRUPT:        'BKIT_STATE_CORRUPT',
-  BKIT_STATE_MIGRATION:      'BKIT_STATE_MIGRATION',
+  ROSSI_STATE_READ:           'ROSSI_STATE_READ',
+  ROSSI_STATE_WRITE:          'ROSSI_STATE_WRITE',
+  ROSSI_STATE_LOCK_TIMEOUT:   'ROSSI_STATE_LOCK_TIMEOUT',
+  ROSSI_STATE_LOCK_STALE:     'ROSSI_STATE_LOCK_STALE',
+  ROSSI_STATE_CORRUPT:        'ROSSI_STATE_CORRUPT',
+  ROSSI_STATE_MIGRATION:      'ROSSI_STATE_MIGRATION',
 
   // Hook Domain
-  BKIT_HOOK_STDIN_PARSE:     'BKIT_HOOK_STDIN_PARSE',
-  BKIT_HOOK_OUTPUT_FAIL:     'BKIT_HOOK_OUTPUT_FAIL',
-  BKIT_HOOK_TIMEOUT:         'BKIT_HOOK_TIMEOUT',
-  BKIT_HOOK_MODULE_LOAD:     'BKIT_HOOK_MODULE_LOAD',
+  ROSSI_HOOK_STDIN_PARSE:     'ROSSI_HOOK_STDIN_PARSE',
+  ROSSI_HOOK_OUTPUT_FAIL:     'ROSSI_HOOK_OUTPUT_FAIL',
+  ROSSI_HOOK_TIMEOUT:         'ROSSI_HOOK_TIMEOUT',
+  ROSSI_HOOK_MODULE_LOAD:     'ROSSI_HOOK_MODULE_LOAD',
 
   // Team Domain
-  BKIT_TEAM_STATE_READ:      'BKIT_TEAM_STATE_READ',
-  BKIT_TEAM_STATE_WRITE:     'BKIT_TEAM_STATE_WRITE',
-  BKIT_TEAM_MAX_TEAMMATES:   'BKIT_TEAM_MAX_TEAMMATES',
-  BKIT_TEAM_NOT_AVAILABLE:   'BKIT_TEAM_NOT_AVAILABLE',
+  ROSSI_TEAM_STATE_READ:      'ROSSI_TEAM_STATE_READ',
+  ROSSI_TEAM_STATE_WRITE:     'ROSSI_TEAM_STATE_WRITE',
+  ROSSI_TEAM_MAX_TEAMMATES:   'ROSSI_TEAM_MAX_TEAMMATES',
+  ROSSI_TEAM_NOT_AVAILABLE:   'ROSSI_TEAM_NOT_AVAILABLE',
 
   // Config Domain
-  BKIT_CONFIG_LOAD:          'BKIT_CONFIG_LOAD',
-  BKIT_CONFIG_PARSE:         'BKIT_CONFIG_PARSE',
-  BKIT_CONFIG_MISSING:       'BKIT_CONFIG_MISSING',
+  ROSSI_CONFIG_LOAD:          'ROSSI_CONFIG_LOAD',
+  ROSSI_CONFIG_PARSE:         'ROSSI_CONFIG_PARSE',
+  ROSSI_CONFIG_MISSING:       'ROSSI_CONFIG_MISSING',
 
   // Intent Domain
-  BKIT_INTENT_DETECT:        'BKIT_INTENT_DETECT',
-  BKIT_INTENT_AMBIGUOUS:     'BKIT_INTENT_AMBIGUOUS',
+  ROSSI_INTENT_DETECT:        'ROSSI_INTENT_DETECT',
+  ROSSI_INTENT_AMBIGUOUS:     'ROSSI_INTENT_AMBIGUOUS',
 
   // Plugin Domain
-  BKIT_PLUGIN_DATA_BACKUP:   'BKIT_PLUGIN_DATA_BACKUP',
-  BKIT_PLUGIN_DATA_RESTORE:  'BKIT_PLUGIN_DATA_RESTORE',
-  BKIT_PLUGIN_INIT:          'BKIT_PLUGIN_INIT',
+  ROSSI_PLUGIN_DATA_BACKUP:   'ROSSI_PLUGIN_DATA_BACKUP',
+  ROSSI_PLUGIN_DATA_RESTORE:  'ROSSI_PLUGIN_DATA_RESTORE',
+  ROSSI_PLUGIN_INIT:          'ROSSI_PLUGIN_INIT',
 };
 
 // ============================================================
@@ -1228,7 +1228,7 @@ const ERROR_CODES = {
 // ============================================================
 
 /**
- * Standardized bkit error with code, severity, and context
+ * Standardized ROSSI error with code, severity, and context
  * @extends Error
  */
 class BkitError extends Error {
@@ -1243,7 +1243,7 @@ class BkitError extends Error {
   constructor(message, { code, severity = SEVERITY.ERROR, cause = null, context = {} } = {}) {
     super(message);
     this.name = 'BkitError';
-    this.code = code || 'BKIT_UNKNOWN';
+    this.code = code || 'ROSSI_UNKNOWN';
     this.severity = severity;
     this.cause = cause;
     this.context = context;
@@ -1300,11 +1300,11 @@ class BkitError extends Error {
  * @param {string} [options.module] - Module name for debug logging
  * @returns {*} Function result or fallback
  */
-function safeCatch(fn, { code, fallback, module = 'bkit' } = {}) {
+function safeCatch(fn, { code, fallback, module = 'ROSSI' } = {}) {
   try {
     return fn();
   } catch (e) {
-    const bkitError = e instanceof BkitError ? e : new BkitError(e.message, {
+    const rossiError = e instanceof BkitError ? e : new BkitError(e.message, {
       code,
       severity: SEVERITY.WARNING,
       cause: e,
@@ -1313,7 +1313,7 @@ function safeCatch(fn, { code, fallback, module = 'bkit' } = {}) {
     // Log via debugLog if available
     try {
       const { debugLog } = require('./debug');
-      debugLog(module, bkitError.toDebugString(), bkitError.context);
+      debugLog(module, rossiError.toDebugString(), rossiError.context);
     } catch (_) {}
 
     return fallback;
@@ -1342,7 +1342,7 @@ try { backupToPluginData(); } catch (_) { /* non-critical */ }
 
 // 변환 후:
 safeCatch(() => backupToPluginData(), {
-  code: ERROR_CODES.BKIT_PLUGIN_DATA_BACKUP,
+  code: ERROR_CODES.ROSSI_PLUGIN_DATA_BACKUP,
   fallback: undefined,
   module: 'PDCA',
 });
@@ -1365,7 +1365,7 @@ return safeCatch(() => {
   const content = fs.readFileSync(path, 'utf8');
   return JSON.parse(content);
 }, {
-  code: ERROR_CODES.BKIT_PDCA_STATUS_READ,
+  code: ERROR_CODES.ROSSI_PDCA_STATUS_READ,
   fallback: null,
   module: 'PDCA',
 });
@@ -1379,7 +1379,7 @@ try { /* ... */ } catch (e) { throw e; }
 
 // 변환 후:
 throw new BkitError('Status migration failed', {
-  code: ERROR_CODES.BKIT_PDCA_STATUS_MIGRATE,
+  code: ERROR_CODES.ROSSI_PDCA_STATUS_MIGRATE,
   severity: SEVERITY.CRITICAL,
   cause: originalError,
   context: { feature, fromVersion: '2.0', toVersion: '3.0' },
@@ -1528,8 +1528,8 @@ throw new BkitError('Status migration failed', {
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://bkit.dev/schemas/pdca-status-v3.json",
-  "title": "bkit PDCA Status v3.0",
+  "$id": "https://ROSSI.dev/schemas/pdca-status-v3.json",
+  "title": "ROSSI PDCA Status v3.0",
   "type": "object",
   "required": ["version", "lastUpdated", "activeFeatures", "features"],
   "properties": {
@@ -1836,4 +1836,4 @@ Phase 5 (Day 14): 검증 + 정리
 
 | 버전 | 날짜 | 변경 | 작성자 |
 |------|------|------|--------|
-| 1.0 | 2026-03-19 | 영역 4 상세 설계 초안 | Claude Opus 4.6 + bkit-code-analyzer |
+| 1.0 | 2026-03-19 | 영역 4 상세 설계 초안 | Claude Opus 4.6 + ROSSI-code-analyzer |

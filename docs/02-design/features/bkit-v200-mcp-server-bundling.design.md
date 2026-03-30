@@ -1,13 +1,13 @@
-# bkit v2.0.0 영역 6 — MCP Server 번들링 상세 설계
+# ROSSI v2.0.0 영역 6 — MCP Server 번들링 상세 설계
 
-> **Summary**: bkit-pdca-server + bkit-analysis-server MCP 서버 구현, .mcp.json 번들 설정, Studio 연동 API 스키마 전체 정의
+> **Summary**: rossi-pdca-server + rossi-analysis-server MCP 서버 구현, .mcp.json 번들 설정, Studio 연동 API 스키마 전체 정의
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: 2.0.0
 > **Author**: bkend-expert Agent
 > **Date**: 2026-03-19
 > **Status**: Draft
-> **Planning Doc**: [bkit-v200-enhancement.plan.md](../../01-plan/features/bkit-v200-enhancement.plan.md)
+> **Planning Doc**: [rossi-v200-enhancement.plan.md](../../01-plan/features/rossi-v200-enhancement.plan.md)
 > **영역**: 영역 6 (MCP Server 번들링)
 
 ---
@@ -16,18 +16,18 @@
 
 ### 1.1 설계 목표
 
-영역 6은 bkit Plugin 내부 상태를 외부 도구(bkit Studio, 다른 AI 에이전트, CI/CD 시스템)가 표준 MCP 프로토콜로 조회할 수 있는 데이터 레이어를 구축한다.
+영역 6은 ROSSI Plugin 내부 상태를 외부 도구(ROSSI Studio, 다른 AI 에이전트, CI/CD 시스템)가 표준 MCP 프로토콜로 조회할 수 있는 데이터 레이어를 구축한다.
 
 | 서버 | 역할 | 주요 소비자 |
 |------|------|------------|
-| `bkit-pdca-server` | PDCA 상태/문서/메트릭 조회 | bkit Studio, AI 에이전트, CI |
-| `bkit-analysis-server` | 코드 분석 결과 캐싱/갭 분석/감사 로그 | bkit Studio, code-analyzer 에이전트 |
+| `rossi-pdca-server` | PDCA 상태/문서/메트릭 조회 | ROSSI Studio, AI 에이전트, CI |
+| `rossi-analysis-server` | 코드 분석 결과 캐싱/갭 분석/감사 로그 | ROSSI Studio, code-analyzer 에이전트 |
 
 ### 1.2 설계 원칙
 
 - **읽기 전용 우선**: 두 서버 모두 기본적으로 읽기 도구. 쓰기 도구는 명시적으로 표시
 - **외부 의존성 금지**: `@modelcontextprotocol/sdk`만 허용, 그 외 npm 패키지 불가
-- **파일 기반**: `.bkit/` 디렉토리 파일을 직접 읽음 (DB/네트워크 없음)
+- **파일 기반**: `.rossi/` 디렉토리 파일을 직접 읽음 (DB/네트워크 없음)
 - **stdio transport**: CC Plugin에 번들되어 subprocess로 실행
 - **에러 표준화**: 모든 오류는 MCP `isError: true` + `BkitMcpError` 형식으로 응답
 
@@ -45,44 +45,44 @@ Transport: stdio (StdioServerTransport)
 
 ```
 servers/
-├── bkit-pdca-server/
+├── rossi-pdca-server/
 │   ├── package.json
 │   ├── index.js                  # 서버 진입점 (stdio transport)
 │   ├── lib/
 │   │   ├── tools/
-│   │   │   ├── pdca-status.js    # bkit_pdca_status
-│   │   │   ├── pdca-history.js   # bkit_pdca_history
-│   │   │   ├── feature-list.js   # bkit_feature_list
-│   │   │   ├── feature-detail.js # bkit_feature_detail
-│   │   │   ├── plan-read.js      # bkit_plan_read
-│   │   │   ├── design-read.js    # bkit_design_read
-│   │   │   ├── analysis-read.js  # bkit_analysis_read
-│   │   │   ├── report-read.js    # bkit_report_read
-│   │   │   ├── metrics-get.js    # bkit_metrics_get
-│   │   │   └── metrics-history.js # bkit_metrics_history
+│   │   │   ├── pdca-status.js    # rossi_pdca_status
+│   │   │   ├── pdca-history.js   # rossi_pdca_history
+│   │   │   ├── feature-list.js   # rossi_feature_list
+│   │   │   ├── feature-detail.js # rossi_feature_detail
+│   │   │   ├── plan-read.js      # rossi_plan_read
+│   │   │   ├── design-read.js    # rossi_design_read
+│   │   │   ├── analysis-read.js  # rossi_analysis_read
+│   │   │   ├── report-read.js    # rossi_report_read
+│   │   │   ├── metrics-get.js    # rossi_metrics_get
+│   │   │   └── metrics-history.js # rossi_metrics_history
 │   │   ├── resources/
-│   │   │   ├── pdca-status.js    # bkit://pdca/status
-│   │   │   ├── quality-metrics.js # bkit://quality/metrics
-│   │   │   └── audit-latest.js   # bkit://audit/latest
+│   │   │   ├── pdca-status.js    # rossi://pdca/status
+│   │   │   ├── quality-metrics.js # rossi://quality/metrics
+│   │   │   └── audit-latest.js   # rossi://audit/latest
 │   │   └── utils/
 │   │       ├── file-reader.js    # 파일 읽기 유틸리티 (안전한 경로 검증)
-│   │       ├── path-resolver.js  # BKIT_ROOT 기반 경로 해석
+│   │       ├── path-resolver.js  # ROSSI_ROOT 기반 경로 해석
 │   │       └── error.js          # BkitMcpError 클래스
 │   └── __tests__/
 │       ├── tools.test.js
 │       └── resources.test.js
 │
-└── bkit-analysis-server/
+└── rossi-analysis-server/
     ├── package.json
     ├── index.js
     ├── lib/
     │   ├── tools/
-    │   │   ├── code-quality.js       # bkit_code_quality
-    │   │   ├── gap-analysis.js       # bkit_gap_analysis
-    │   │   ├── regression-rules.js   # bkit_regression_rules
-    │   │   ├── checkpoint-list.js    # bkit_checkpoint_list
-    │   │   ├── checkpoint-detail.js  # bkit_checkpoint_detail
-    │   │   └── audit-search.js       # bkit_audit_search
+    │   │   ├── code-quality.js       # rossi_code_quality
+    │   │   ├── gap-analysis.js       # rossi_gap_analysis
+    │   │   ├── regression-rules.js   # rossi_regression_rules
+    │   │   ├── checkpoint-list.js    # rossi_checkpoint_list
+    │   │   ├── checkpoint-detail.js  # rossi_checkpoint_detail
+    │   │   └── audit-search.js       # rossi_audit_search
     │   └── utils/
     │       ├── file-reader.js
     │       ├── path-resolver.js
@@ -94,19 +94,19 @@ servers/
 
 ---
 
-## 3. bkit-pdca-server 상세 설계
+## 3. rossi-pdca-server 상세 설계
 
 ### 3.1 package.json
 
 ```json
 {
-  "name": "bkit-pdca-server",
+  "name": "rossi-pdca-server",
   "version": "2.0.0",
-  "description": "bkit PDCA status and document MCP server",
+  "description": "ROSSI PDCA status and document MCP server",
   "type": "module",
   "main": "index.js",
   "bin": {
-    "bkit-pdca-server": "./index.js"
+    "rossi-pdca-server": "./index.js"
   },
   "scripts": {
     "start": "node index.js",
@@ -126,10 +126,10 @@ servers/
 ```javascript
 #!/usr/bin/env node
 /**
- * bkit-pdca-server: PDCA 상태/문서/메트릭 MCP 서버
+ * rossi-pdca-server: PDCA 상태/문서/메트릭 MCP 서버
  *
  * stdio transport로 실행됨.
- * BKIT_ROOT 환경변수로 프로젝트 루트를 전달받음.
+ * ROSSI_ROOT 환경변수로 프로젝트 루트를 전달받음.
  */
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
@@ -169,26 +169,26 @@ const RESOURCES = [
 ];
 
 const TOOL_HANDLERS = {
-  bkit_pdca_status: handlePdcaStatus,
-  bkit_pdca_history: handlePdcaHistory,
-  bkit_feature_list: handleFeatureList,
-  bkit_feature_detail: handleFeatureDetail,
-  bkit_plan_read: handlePlanRead,
-  bkit_design_read: handleDesignRead,
-  bkit_analysis_read: handleAnalysisRead,
-  bkit_report_read: handleReportRead,
-  bkit_metrics_get: handleMetricsGet,
-  bkit_metrics_history: handleMetricsHistory,
+  rossi_pdca_status: handlePdcaStatus,
+  rossi_pdca_history: handlePdcaHistory,
+  rossi_feature_list: handleFeatureList,
+  rossi_feature_detail: handleFeatureDetail,
+  rossi_plan_read: handlePlanRead,
+  rossi_design_read: handleDesignRead,
+  rossi_analysis_read: handleAnalysisRead,
+  rossi_report_read: handleReportRead,
+  rossi_metrics_get: handleMetricsGet,
+  rossi_metrics_history: handleMetricsHistory,
 };
 
 const RESOURCE_HANDLERS = {
-  'bkit://pdca/status': handlePdcaStatusResource,
-  'bkit://quality/metrics': handleQualityMetricsResource,
-  'bkit://audit/latest': handleAuditLatestResource,
+  'rossi://pdca/status': handlePdcaStatusResource,
+  'rossi://quality/metrics': handleQualityMetricsResource,
+  'rossi://audit/latest': handleAuditLatestResource,
 };
 
 const server = new Server(
-  { name: 'bkit-pdca-server', version: '2.0.0' },
+  { name: 'rossi-pdca-server', version: '2.0.0' },
   { capabilities: { tools: {}, resources: {} } }
 );
 
@@ -223,7 +223,7 @@ async function main() {
 }
 
 main().catch((err) => {
-  process.stderr.write(`[bkit-pdca-server] Fatal: ${err.message}\n`);
+  process.stderr.write(`[rossi-pdca-server] Fatal: ${err.message}\n`);
   process.exit(1);
 });
 ```
@@ -279,13 +279,13 @@ import path from 'path';
 import fs from 'fs';
 
 /**
- * BKIT_ROOT 환경변수 기반 경로 해석기
+ * ROSSI_ROOT 환경변수 기반 경로 해석기
  * 보안: ../를 통한 경로 탈출 방지
  */
 export class PathResolver {
   constructor() {
-    this.root = process.env.BKIT_ROOT || process.cwd();
-    this.bkitDir = path.join(this.root, '.bkit');
+    this.root = process.env.ROSSI_ROOT || process.cwd();
+    this.rossiDir = path.join(this.root, '.rossi');
     this.docsDir = path.join(this.root, 'docs');
   }
 
@@ -301,19 +301,19 @@ export class PathResolver {
   }
 
   state(filename) {
-    return path.join(this.bkitDir, 'state', filename);
+    return path.join(this.rossiDir, 'state', filename);
   }
 
   audit(filename) {
-    return path.join(this.bkitDir, 'audit', filename);
+    return path.join(this.rossiDir, 'audit', filename);
   }
 
   decisions(filename) {
-    return path.join(this.bkitDir, 'decisions', filename);
+    return path.join(this.rossiDir, 'decisions', filename);
   }
 
   checkpoints() {
-    return path.join(this.bkitDir, 'checkpoints');
+    return path.join(this.rossiDir, 'checkpoints');
   }
 
   docs(phase, feature) {
@@ -374,7 +374,7 @@ export function readJsonOrNull(filePath) {
 
 ### 3.4 도구(Tool) 전체 정의
 
-#### Tool 1: bkit_pdca_status
+#### Tool 1: rossi_pdca_status
 
 **목적**: 현재 PDCA 전체 상태 조회 (전체 또는 특정 Feature)
 
@@ -454,7 +454,7 @@ import { readJson } from '../utils/file-reader.js';
 import { BkitMcpError, withErrorHandling } from '../utils/error.js';
 
 export const PDCA_STATUS_TOOL = {
-  name: 'bkit_pdca_status',
+  name: 'rossi_pdca_status',
   description: '현재 PDCA 전체 상태를 조회합니다. feature 파라미터로 특정 Feature의 상세 상태를 조회할 수 있습니다.',
   inputSchema: {
     type: 'object',
@@ -508,7 +508,7 @@ export const handlePdcaStatus = withErrorHandling(async ({ feature } = {}) => {
 
 ---
 
-#### Tool 2: bkit_pdca_history
+#### Tool 2: rossi_pdca_history
 
 **목적**: PDCA 히스토리 조회 (타임라인 이벤트 목록)
 
@@ -570,7 +570,7 @@ import { readJson } from '../utils/file-reader.js';
 import { withErrorHandling } from '../utils/error.js';
 
 export const PDCA_HISTORY_TOOL = {
-  name: 'bkit_pdca_history',
+  name: 'rossi_pdca_history',
   description: 'PDCA 히스토리 이벤트를 조회합니다.',
   inputSchema: {
     type: 'object',
@@ -605,7 +605,7 @@ export const handlePdcaHistory = withErrorHandling(async ({ feature, limit = 50,
 
 ---
 
-#### Tool 3: bkit_feature_list
+#### Tool 3: rossi_feature_list
 
 **목적**: 활성/완료 Feature 목록 조회
 
@@ -661,7 +661,7 @@ import { readJson } from '../utils/file-reader.js';
 import { withErrorHandling } from '../utils/error.js';
 
 export const FEATURE_LIST_TOOL = {
-  name: 'bkit_feature_list',
+  name: 'rossi_feature_list',
   description: '활성/완료 Feature 목록을 조회합니다.',
   inputSchema: {
     type: 'object',
@@ -709,7 +709,7 @@ export const handleFeatureList = withErrorHandling(async ({ status = 'all', phas
 
 ---
 
-#### Tool 4: bkit_feature_detail
+#### Tool 4: rossi_feature_detail
 
 **목적**: 특정 Feature의 상세 정보 (단계, 메트릭, 타임스탬프, 연결 문서)
 
@@ -771,7 +771,7 @@ import { readJson } from '../utils/file-reader.js';
 import { BkitMcpError, withErrorHandling } from '../utils/error.js';
 
 export const FEATURE_DETAIL_TOOL = {
-  name: 'bkit_feature_detail',
+  name: 'rossi_feature_detail',
   description: '특정 Feature의 상세 정보를 조회합니다. 단계, 메트릭, 타임스탬프, 연결 문서 경로를 포함합니다.',
   inputSchema: {
     type: 'object',
@@ -808,7 +808,7 @@ export const handleFeatureDetail = withErrorHandling(async ({ feature }) => {
 
 ---
 
-#### Tool 5~8: PDCA 문서 읽기 (bkit_plan_read / bkit_design_read / bkit_analysis_read / bkit_report_read)
+#### Tool 5~8: PDCA 문서 읽기 (rossi_plan_read / rossi_design_read / rossi_analysis_read / rossi_report_read)
 
 **공통 패턴** — 4개 도구는 동일한 구조를 사용하며 `phase` 파라미터만 다름.
 
@@ -848,7 +848,7 @@ import { readText } from '../utils/file-reader.js';
 import { withErrorHandling } from '../utils/error.js';
 
 export const PLAN_READ_TOOL = {
-  name: 'bkit_plan_read',
+  name: 'rossi_plan_read',
   description: 'Feature의 Plan 문서(docs/01-plan/features/{feature}.plan.md)를 읽습니다.',
   inputSchema: {
     type: 'object',
@@ -876,7 +876,7 @@ export const handlePlanRead = withErrorHandling(async ({ feature }) => {
 
 ---
 
-#### Tool 9: bkit_metrics_get
+#### Tool 9: rossi_metrics_get
 
 **목적**: 최신 품질 메트릭 조회
 
@@ -932,7 +932,7 @@ import { readJsonOrNull, readJson } from '../utils/file-reader.js';
 import { BkitMcpError, withErrorHandling } from '../utils/error.js';
 
 export const METRICS_GET_TOOL = {
-  name: 'bkit_metrics_get',
+  name: 'rossi_metrics_get',
   description: '최신 품질 메트릭을 조회합니다. 10개 핵심 메트릭(M1~M10)과 임계값을 반환합니다.',
   inputSchema: {
     type: 'object',
@@ -981,7 +981,7 @@ export const handleMetricsGet = withErrorHandling(async ({ feature } = {}) => {
 
 ---
 
-#### Tool 10: bkit_metrics_history
+#### Tool 10: rossi_metrics_history
 
 **목적**: 메트릭 히스토리 조회 (시계열)
 
@@ -1037,7 +1037,7 @@ import { readJsonOrNull } from '../utils/file-reader.js';
 import { withErrorHandling } from '../utils/error.js';
 
 export const METRICS_HISTORY_TOOL = {
-  name: 'bkit_metrics_history',
+  name: 'rossi_metrics_history',
   description: '품질 메트릭 히스토리를 시계열로 조회합니다.',
   inputSchema: {
     type: 'object',
@@ -1078,7 +1078,7 @@ export const handleMetricsHistory = withErrorHandling(async ({ metric, limit = 3
 
 ### 3.5 리소스(Resource) 전체 정의
 
-#### Resource 1: bkit://pdca/status
+#### Resource 1: rossi://pdca/status
 
 ```javascript
 // lib/resources/pdca-status.js
@@ -1086,7 +1086,7 @@ import { pathResolver } from '../utils/path-resolver.js';
 import { readJsonOrNull } from '../utils/file-reader.js';
 
 export const PDCA_STATUS_RESOURCE = {
-  uri: 'bkit://pdca/status',
+  uri: 'rossi://pdca/status',
   name: 'PDCA Current Status',
   description: '현재 PDCA 전체 상태 (60초 캐시)',
   mimeType: 'application/json',
@@ -1096,7 +1096,7 @@ export async function handlePdcaStatusResource() {
   const data = readJsonOrNull(pathResolver.state('pdca-status.json')) ?? {};
   return {
     contents: [{
-      uri: 'bkit://pdca/status',
+      uri: 'rossi://pdca/status',
       mimeType: 'application/json',
       text: JSON.stringify(data, null, 2),
     }],
@@ -1104,7 +1104,7 @@ export async function handlePdcaStatusResource() {
 }
 ```
 
-#### Resource 2: bkit://quality/metrics
+#### Resource 2: rossi://quality/metrics
 
 ```javascript
 // lib/resources/quality-metrics.js
@@ -1112,7 +1112,7 @@ import { pathResolver } from '../utils/path-resolver.js';
 import { readJsonOrNull } from '../utils/file-reader.js';
 
 export const QUALITY_METRICS_RESOURCE = {
-  uri: 'bkit://quality/metrics',
+  uri: 'rossi://quality/metrics',
   name: 'Latest Quality Metrics',
   description: '최신 품질 메트릭 10개 (M1~M10)',
   mimeType: 'application/json',
@@ -1122,7 +1122,7 @@ export async function handleQualityMetricsResource() {
   const data = readJsonOrNull(pathResolver.state('quality-metrics.json')) ?? { metrics: {} };
   return {
     contents: [{
-      uri: 'bkit://quality/metrics',
+      uri: 'rossi://quality/metrics',
       mimeType: 'application/json',
       text: JSON.stringify(data, null, 2),
     }],
@@ -1130,7 +1130,7 @@ export async function handleQualityMetricsResource() {
 }
 ```
 
-#### Resource 3: bkit://audit/latest
+#### Resource 3: rossi://audit/latest
 
 ```javascript
 // lib/resources/audit-latest.js
@@ -1140,7 +1140,7 @@ import fs from 'fs';
 import path from 'path';
 
 export const AUDIT_LATEST_RESOURCE = {
-  uri: 'bkit://audit/latest',
+  uri: 'rossi://audit/latest',
   name: 'Latest Audit Log',
   description: '오늘 날짜 감사 로그 (JSONL)',
   mimeType: 'application/json',
@@ -1153,7 +1153,7 @@ export async function handleAuditLatestResource() {
   if (!fs.existsSync(auditPath)) {
     return {
       contents: [{
-        uri: 'bkit://audit/latest',
+        uri: 'rossi://audit/latest',
         mimeType: 'application/json',
         text: JSON.stringify({ date: today, entries: [] }, null, 2),
       }],
@@ -1165,7 +1165,7 @@ export async function handleAuditLatestResource() {
 
   return {
     contents: [{
-      uri: 'bkit://audit/latest',
+      uri: 'rossi://audit/latest',
       mimeType: 'application/json',
       text: JSON.stringify({ date: today, total: entries.length, entries: entries.slice(-100) }, null, 2),
     }],
@@ -1175,19 +1175,19 @@ export async function handleAuditLatestResource() {
 
 ---
 
-## 4. bkit-analysis-server 상세 설계
+## 4. rossi-analysis-server 상세 설계
 
 ### 4.1 package.json
 
 ```json
 {
-  "name": "bkit-analysis-server",
+  "name": "rossi-analysis-server",
   "version": "2.0.0",
-  "description": "bkit code analysis and audit MCP server",
+  "description": "ROSSI code analysis and audit MCP server",
   "type": "module",
   "main": "index.js",
   "bin": {
-    "bkit-analysis-server": "./index.js"
+    "rossi-analysis-server": "./index.js"
   },
   "scripts": {
     "start": "node index.js",
@@ -1235,7 +1235,7 @@ export function readAllJsonLines(dirPath) {
 
 ### 4.3 도구(Tool) 전체 정의
 
-#### Tool 1: bkit_code_quality
+#### Tool 1: rossi_code_quality
 
 **목적**: 코드 품질 분석 결과 캐시 조회 (code-analyzer 에이전트가 기록한 결과)
 
@@ -1298,7 +1298,7 @@ import { readJsonOrNull } from '../utils/file-reader.js';
 import { withErrorHandling } from '../utils/error.js';
 
 export const CODE_QUALITY_TOOL = {
-  name: 'bkit_code_quality',
+  name: 'rossi_code_quality',
   description: '코드 품질 분석 결과(code-analyzer 캐시)를 조회합니다.',
   inputSchema: {
     type: 'object',
@@ -1330,7 +1330,7 @@ export const handleCodeQuality = withErrorHandling(async ({ feature, includeIssu
 
 ---
 
-#### Tool 2: bkit_gap_analysis
+#### Tool 2: rossi_gap_analysis
 
 **목적**: 최근 갭 분석 결과 조회 (gap-detector 에이전트 출력)
 
@@ -1389,7 +1389,7 @@ import { readJsonOrNull } from '../utils/file-reader.js';
 import { withErrorHandling } from '../utils/error.js';
 
 export const GAP_ANALYSIS_TOOL = {
-  name: 'bkit_gap_analysis',
+  name: 'rossi_gap_analysis',
   description: '최근 갭 분석 결과를 조회합니다. 설계-구현 불일치 항목과 matchRate를 반환합니다.',
   inputSchema: {
     type: 'object',
@@ -1402,7 +1402,7 @@ export const GAP_ANALYSIS_TOOL = {
 };
 
 export const handleGapAnalysis = withErrorHandling(async ({ feature, limit = 10 } = {}) => {
-  // gap-detector 에이전트는 .bkit/state/gap-analysis.json에 결과를 캐시함
+  // gap-detector 에이전트는 .rossi/state/gap-analysis.json에 결과를 캐시함
   const data = readJsonOrNull(pathResolver.state('gap-analysis.json'));
   if (!data) {
     return { content: [{ type: 'text', text: JSON.stringify({ feature: feature ?? null, analyzedAt: null, matchRate: null, totalGaps: 0, gaps: [] }, null, 2) }] };
@@ -1426,7 +1426,7 @@ export const handleGapAnalysis = withErrorHandling(async ({ feature, limit = 10 
 
 ---
 
-#### Tool 3: bkit_regression_rules
+#### Tool 3: rossi_regression_rules
 
 **목적**: 회귀 방지 규칙 조회 및 추가 (읽기/쓰기 혼용)
 
@@ -1495,7 +1495,7 @@ import { BkitMcpError, withErrorHandling } from '../utils/error.js';
 import fs from 'fs';
 
 export const REGRESSION_RULES_TOOL = {
-  name: 'bkit_regression_rules',
+  name: 'rossi_regression_rules',
   description: '회귀 방지 규칙을 조회하거나 새 규칙을 추가합니다. action=list로 목록 조회, action=add로 규칙 추가.',
   inputSchema: {
     type: 'object',
@@ -1539,7 +1539,7 @@ export const handleRegressionRules = withErrorHandling(async ({ action = 'list',
 
 ---
 
-#### Tool 4: bkit_checkpoint_list
+#### Tool 4: rossi_checkpoint_list
 
 **목적**: 체크포인트 목록 조회
 
@@ -1596,7 +1596,7 @@ import fs from 'fs';
 import path from 'path';
 
 export const CHECKPOINT_LIST_TOOL = {
-  name: 'bkit_checkpoint_list',
+  name: 'rossi_checkpoint_list',
   description: '저장된 체크포인트 목록을 조회합니다.',
   inputSchema: {
     type: 'object',
@@ -1632,7 +1632,7 @@ export const handleCheckpointList = withErrorHandling(async ({ feature, limit = 
 
 ---
 
-#### Tool 5: bkit_checkpoint_detail
+#### Tool 5: rossi_checkpoint_detail
 
 **목적**: 특정 체크포인트 상세 조회
 
@@ -1687,7 +1687,7 @@ import fs from 'fs';
 import path from 'path';
 
 export const CHECKPOINT_DETAIL_TOOL = {
-  name: 'bkit_checkpoint_detail',
+  name: 'rossi_checkpoint_detail',
   description: '특정 체크포인트의 상세 정보를 조회합니다.',
   inputSchema: {
     type: 'object',
@@ -1711,7 +1711,7 @@ export const handleCheckpointDetail = withErrorHandling(async ({ id }) => {
 
 ---
 
-#### Tool 6: bkit_audit_search
+#### Tool 6: rossi_audit_search
 
 **목적**: 감사 로그 전문 검색
 
@@ -1769,7 +1769,7 @@ export const handleCheckpointDetail = withErrorHandling(async ({ id }) => {
           "action": { "type": "string" },
           "feature": { "type": ["string", "null"] },
           "phase": { "type": ["string", "null"] },
-          "actor": { "type": "string", "description": "bkit | agent:{name} | user" },
+          "actor": { "type": "string", "description": "ROSSI | agent:{name} | user" },
           "data": { "type": "object", "additionalProperties": true }
         }
       }
@@ -1785,7 +1785,7 @@ import { readAllJsonLines } from '../utils/jsonl-reader.js';
 import { withErrorHandling } from '../utils/error.js';
 
 export const AUDIT_SEARCH_TOOL = {
-  name: 'bkit_audit_search',
+  name: 'rossi_audit_search',
   description: '감사 로그를 검색합니다. 날짜 범위, Feature, action 타입, 전문 검색을 지원합니다.',
   inputSchema: {
     type: 'object',
@@ -1833,21 +1833,21 @@ CC Plugin의 `.mcp.json`은 `${CLAUDE_PLUGIN_ROOT}` 환경변수로 Plugin 설�
 ```json
 {
   "mcpServers": {
-    "bkit-pdca": {
+    "rossi-pdca": {
       "type": "stdio",
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/bkit-pdca-server/index.js"],
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/rossi-pdca-server/index.js"],
       "env": {
-        "BKIT_ROOT": "${workspaceFolder}",
+        "ROSSI_ROOT": "${workspaceFolder}",
         "NODE_ENV": "production"
       }
     },
-    "bkit-analysis": {
+    "rossi-analysis": {
       "type": "stdio",
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/bkit-analysis-server/index.js"],
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/rossi-analysis-server/index.js"],
       "env": {
-        "BKIT_ROOT": "${workspaceFolder}",
+        "ROSSI_ROOT": "${workspaceFolder}",
         "NODE_ENV": "production"
       }
     }
@@ -1859,7 +1859,7 @@ CC Plugin의 `.mcp.json`은 `${CLAUDE_PLUGIN_ROOT}` 환경변수로 Plugin 설�
 
 | 환경변수 | 값 | 용도 |
 |----------|----|----- |
-| `BKIT_ROOT` | `${workspaceFolder}` | 프로젝트 루트 (`.bkit/` 디렉토리 탐색 기준) |
+| `ROSSI_ROOT` | `${workspaceFolder}` | 프로젝트 루트 (`.rossi/` 디렉토리 탐색 기준) |
 | `CLAUDE_PLUGIN_ROOT` | CC Plugin이 자동 주입 | `servers/` 디렉토리 절대 경로 |
 | `NODE_ENV` | `production` | 불필요한 개발 로그 억제 |
 
@@ -1876,14 +1876,14 @@ CC Plugin의 `.mcp.json`은 `${CLAUDE_PLUGIN_ROOT}` 환경변수로 Plugin 설�
 ### 5.4 서버 시작 검증
 
 ```javascript
-// 서버 시작 시 BKIT_ROOT 검증 (index.js에 추가)
-const BKIT_ROOT = process.env.BKIT_ROOT;
-if (!BKIT_ROOT) {
-  process.stderr.write('[bkit-pdca-server] ERROR: BKIT_ROOT env not set\n');
+// 서버 시작 시 ROSSI_ROOT 검증 (index.js에 추가)
+const ROSSI_ROOT = process.env.ROSSI_ROOT;
+if (!ROSSI_ROOT) {
+  process.stderr.write('[rossi-pdca-server] ERROR: ROSSI_ROOT env not set\n');
   process.exit(1);
 }
-if (!fs.existsSync(path.join(BKIT_ROOT, '.bkit'))) {
-  process.stderr.write(`[bkit-pdca-server] WARNING: .bkit directory not found at ${BKIT_ROOT}\n`);
+if (!fs.existsSync(path.join(ROSSI_ROOT, '.rossi'))) {
+  process.stderr.write(`[rossi-pdca-server] WARNING: .ROSSI directory not found at ${ROSSI_ROOT}\n`);
   // 경고만 출력, 종료 안 함 (초기 설치 직후 상황 허용)
 }
 ```
@@ -1895,33 +1895,33 @@ if (!fs.existsSync(path.join(BKIT_ROOT, '.bkit'))) {
 ### 6.1 연동 구조
 
 ```
-bkit Studio (MCP Client)
+ROSSI Studio (MCP Client)
     │
     │ MCP Protocol (stdio)
     │
-    ├── bkit-pdca-server ──── .bkit/state/*.json 읽기
+    ├── rossi-pdca-server ──── .rossi/state/*.json 읽기
     │                    ──── docs/*/*.md 읽기
     │
-    └── bkit-analysis-server ─ .bkit/audit/*.jsonl 읽기
-                             ─ .bkit/decisions/*.jsonl 읽기
-                             ─ .bkit/checkpoints/*.json 읽기
-                             ─ .bkit/state/regression-rules.json 읽기/쓰기
+    └── rossi-analysis-server ─ .rossi/audit/*.jsonl 읽기
+                             ─ .rossi/decisions/*.jsonl 읽기
+                             ─ .rossi/checkpoints/*.json 읽기
+                             ─ .rossi/state/regression-rules.json 읽기/쓰기
 ```
 
 ### 6.2 Studio 화면별 도구 매핑
 
 | Studio 화면 | 사용 도구/리소스 | 폴링 주기 |
 |------------|----------------|----------|
-| PDCA 대시보드 | `bkit://pdca/status` | 5초 |
-| Feature 상세 뷰 | `bkit_feature_detail` | 요청 시 |
-| Feature 목록 | `bkit_feature_list` | 30초 |
-| 품질 메트릭 차트 | `bkit://quality/metrics`, `bkit_metrics_history` | 60초 |
-| 문서 뷰어 | `bkit_plan_read`, `bkit_design_read`, `bkit_analysis_read`, `bkit_report_read` | 요청 시 |
-| 감사 로그 뷰어 | `bkit_audit_search`, `bkit://audit/latest` | 10초 |
-| 코드 품질 패널 | `bkit_code_quality`, `bkit_gap_analysis` | 60초 |
-| 체크포인트 브라우저 | `bkit_checkpoint_list`, `bkit_checkpoint_detail` | 요청 시 |
-| 회귀 규칙 편집기 | `bkit_regression_rules` (list+add) | 요청 시 |
-| PDCA 히스토리 타임라인 | `bkit_pdca_history` | 30초 |
+| PDCA 대시보드 | `rossi://pdca/status` | 5초 |
+| Feature 상세 뷰 | `rossi_feature_detail` | 요청 시 |
+| Feature 목록 | `rossi_feature_list` | 30초 |
+| 품질 메트릭 차트 | `rossi://quality/metrics`, `rossi_metrics_history` | 60초 |
+| 문서 뷰어 | `rossi_plan_read`, `rossi_design_read`, `rossi_analysis_read`, `rossi_report_read` | 요청 시 |
+| 감사 로그 뷰어 | `rossi_audit_search`, `rossi://audit/latest` | 10초 |
+| 코드 품질 패널 | `rossi_code_quality`, `rossi_gap_analysis` | 60초 |
+| 체크포인트 브라우저 | `rossi_checkpoint_list`, `rossi_checkpoint_detail` | 요청 시 |
+| 회귀 규칙 편집기 | `rossi_regression_rules` (list+add) | 요청 시 |
+| PDCA 히스토리 타임라인 | `rossi_pdca_history` | 30초 |
 
 ### 6.3 에러 응답 표준화
 
@@ -1949,39 +1949,39 @@ bkit Studio (MCP Client)
 
 ### 6.4 전체 도구 목록 요약
 
-#### bkit-pdca-server
+#### rossi-pdca-server
 
 | 도구명 | 읽기/쓰기 | 소스 파일 | 주요 출력 |
 |--------|----------|----------|----------|
-| `bkit_pdca_status` | R | `pdca-status.json` | 현재 PDCA 상태 전체 |
-| `bkit_pdca_history` | R | `pdca-status.json` | 이벤트 히스토리 배열 |
-| `bkit_feature_list` | R | `pdca-status.json` | Feature 요약 목록 |
-| `bkit_feature_detail` | R | `pdca-status.json` | Feature 상세 (메트릭 포함) |
-| `bkit_plan_read` | R | `docs/01-plan/**` | Plan 마크다운 전문 |
-| `bkit_design_read` | R | `docs/02-design/**` | Design 마크다운 전문 |
-| `bkit_analysis_read` | R | `docs/03-analysis/**` | Analysis 마크다운 전문 |
-| `bkit_report_read` | R | `docs/04-report/**` | Report 마크다운 전문 |
-| `bkit_metrics_get` | R | `quality-metrics.json` | 최신 M1~M10 메트릭 |
-| `bkit_metrics_history` | R | `quality-history.json` | 메트릭 시계열 |
+| `rossi_pdca_status` | R | `pdca-status.json` | 현재 PDCA 상태 전체 |
+| `rossi_pdca_history` | R | `pdca-status.json` | 이벤트 히스토리 배열 |
+| `rossi_feature_list` | R | `pdca-status.json` | Feature 요약 목록 |
+| `rossi_feature_detail` | R | `pdca-status.json` | Feature 상세 (메트릭 포함) |
+| `rossi_plan_read` | R | `docs/01-plan/**` | Plan 마크다운 전문 |
+| `rossi_design_read` | R | `docs/02-design/**` | Design 마크다운 전문 |
+| `rossi_analysis_read` | R | `docs/03-analysis/**` | Analysis 마크다운 전문 |
+| `rossi_report_read` | R | `docs/04-report/**` | Report 마크다운 전문 |
+| `rossi_metrics_get` | R | `quality-metrics.json` | 최신 M1~M10 메트릭 |
+| `rossi_metrics_history` | R | `quality-history.json` | 메트릭 시계열 |
 
-#### bkit-analysis-server
+#### rossi-analysis-server
 
 | 도구명 | 읽기/쓰기 | 소스 파일 | 주요 출력 |
 |--------|----------|----------|----------|
-| `bkit_code_quality` | R | `quality-metrics.json` | 코드 품질 점수 + 이슈 목록 |
-| `bkit_gap_analysis` | R | `gap-analysis.json` | matchRate + 갭 목록 |
-| `bkit_regression_rules` | R/W | `regression-rules.json` | 회귀 방지 규칙 목록 |
-| `bkit_checkpoint_list` | R | `.bkit/checkpoints/*.json` | 체크포인트 요약 목록 |
-| `bkit_checkpoint_detail` | R | `.bkit/checkpoints/{id}.json` | 체크포인트 전체 내용 |
-| `bkit_audit_search` | R | `.bkit/audit/*.jsonl` | 감사 로그 검색 결과 |
+| `rossi_code_quality` | R | `quality-metrics.json` | 코드 품질 점수 + 이슈 목록 |
+| `rossi_gap_analysis` | R | `gap-analysis.json` | matchRate + 갭 목록 |
+| `rossi_regression_rules` | R/W | `regression-rules.json` | 회귀 방지 규칙 목록 |
+| `rossi_checkpoint_list` | R | `.rossi/checkpoints/*.json` | 체크포인트 요약 목록 |
+| `rossi_checkpoint_detail` | R | `.rossi/checkpoints/{id}.json` | 체크포인트 전체 내용 |
+| `rossi_audit_search` | R | `.rossi/audit/*.jsonl` | 감사 로그 검색 결과 |
 
-#### bkit-pdca-server 리소스
+#### rossi-pdca-server 리소스
 
 | URI | 소스 | 캐시 |
 |-----|------|------|
-| `bkit://pdca/status` | `pdca-status.json` | CC 클라이언트 60초 |
-| `bkit://quality/metrics` | `quality-metrics.json` | CC 클라이언트 60초 |
-| `bkit://audit/latest` | `.bkit/audit/오늘.jsonl` | CC 클라이언트 60초 |
+| `rossi://pdca/status` | `pdca-status.json` | CC 클라이언트 60초 |
+| `rossi://quality/metrics` | `quality-metrics.json` | CC 클라이언트 60초 |
+| `rossi://audit/latest` | `.rossi/audit/오늘.jsonl` | CC 클라이언트 60초 |
 
 ---
 
@@ -1992,40 +1992,40 @@ bkit Studio (MCP Client)
 ```
 Phase 1 (기반 구조 — 영역 4 선행 필요)
   └─ utils/ (error.js, path-resolver.js, file-reader.js, jsonl-reader.js)
-      └─ 요구사항: BKIT_ROOT 환경변수, .bkit/ 디렉토리 구조 확정
+      └─ 요구사항: ROSSI_ROOT 환경변수, .rossi/ 디렉토리 구조 확정
 
-Phase 2 (bkit-pdca-server 핵심 도구)
-  └─ bkit_pdca_status, bkit_feature_list, bkit_feature_detail
-  └─ 리소스 3개 (bkit://pdca/status, bkit://quality/metrics, bkit://audit/latest)
+Phase 2 (rossi-pdca-server 핵심 도구)
+  └─ rossi_pdca_status, rossi_feature_list, rossi_feature_detail
+  └─ 리소스 3개 (rossi://pdca/status, rossi://quality/metrics, rossi://audit/latest)
   └─ .mcp.json 번들 설정
 
-Phase 3 (bkit-pdca-server 나머지)
-  └─ bkit_pdca_history, bkit_plan_read ~ bkit_report_read
-  └─ bkit_metrics_get, bkit_metrics_history
+Phase 3 (rossi-pdca-server 나머지)
+  └─ rossi_pdca_history, rossi_plan_read ~ rossi_report_read
+  └─ rossi_metrics_get, rossi_metrics_history
 
-Phase 4 (bkit-analysis-server)
-  └─ bkit_code_quality, bkit_gap_analysis (영역 5의 quality-metrics.json 선행)
-  └─ bkit_regression_rules, bkit_checkpoint_list, bkit_checkpoint_detail (영역 2 선행)
-  └─ bkit_audit_search (영역 2의 audit-logger.js 선행)
+Phase 4 (rossi-analysis-server)
+  └─ rossi_code_quality, rossi_gap_analysis (영역 5의 quality-metrics.json 선행)
+  └─ rossi_regression_rules, rossi_checkpoint_list, rossi_checkpoint_detail (영역 2 선행)
+  └─ rossi_audit_search (영역 2의 audit-logger.js 선행)
 ```
 
 ### 7.2 영역 간 의존성
 
 | 이 설계의 도구 | 의존하는 영역 | 생산 파일 |
 |--------------|------------|---------|
-| `bkit_pdca_status` | 영역 4 (StateStore) | `pdca-status.json` |
-| `bkit_metrics_get` | 영역 5 (quality-metrics) | `quality-metrics.json` |
-| `bkit_gap_analysis` | 영역 2 (gap-detector) | `gap-analysis.json` |
-| `bkit_regression_rules` | 영역 5 (regression-guard) | `regression-rules.json` |
-| `bkit_checkpoint_list/detail` | 영역 2 (checkpoint-manager) | `.bkit/checkpoints/` |
-| `bkit_audit_search` | 영역 2 (audit-logger) | `.bkit/audit/*.jsonl` |
+| `rossi_pdca_status` | 영역 4 (StateStore) | `pdca-status.json` |
+| `rossi_metrics_get` | 영역 5 (quality-metrics) | `quality-metrics.json` |
+| `rossi_gap_analysis` | 영역 2 (gap-detector) | `gap-analysis.json` |
+| `rossi_regression_rules` | 영역 5 (regression-guard) | `regression-rules.json` |
+| `rossi_checkpoint_list/detail` | 영역 2 (checkpoint-manager) | `.rossi/checkpoints/` |
+| `rossi_audit_search` | 영역 2 (audit-logger) | `.rossi/audit/*.jsonl` |
 
 ### 7.3 예상 규모
 
 | 구성요소 | 파일 수 | 예상 LOC |
 |---------|--------|---------|
-| bkit-pdca-server | 16 | ~600 |
-| bkit-analysis-server | 12 | ~400 |
+| rossi-pdca-server | 16 | ~600 |
+| rossi-analysis-server | 12 | ~400 |
 | 공통 유틸리티 | 8 | ~200 |
 | 테스트 | 4 | ~300 |
 | **총계** | **40** | **~1,500** |
@@ -2037,21 +2037,21 @@ Phase 4 (bkit-analysis-server)
 ### 8.1 단위 테스트 (Node.js 내장 test runner)
 
 ```javascript
-// servers/bkit-pdca-server/__tests__/tools.test.js
+// servers/rossi-pdca-server/__tests__/tools.test.js
 import { test } from 'node:test';
 import assert from 'node:assert';
 import { handlePdcaStatus } from '../lib/tools/pdca-status.js';
 
-// BKIT_ROOT를 임시 디렉토리로 설정하여 테스트
-test('bkit_pdca_status: feature 없이 전체 요약 반환', async () => {
-  process.env.BKIT_ROOT = '/tmp/bkit-test';
+// ROSSI_ROOT를 임시 디렉토리로 설정하여 테스트
+test('rossi_pdca_status: feature 없이 전체 요약 반환', async () => {
+  process.env.ROSSI_ROOT = '/tmp/ROSSI-test';
   // 임시 pdca-status.json 생성
   // ...
   const result = await handlePdcaStatus({});
   assert.ok(result.content[0].text.includes('summary'));
 });
 
-test('bkit_pdca_status: 존재하지 않는 feature → NOT_FOUND 에러', async () => {
+test('rossi_pdca_status: 존재하지 않는 feature → NOT_FOUND 에러', async () => {
   const result = await handlePdcaStatus({ feature: 'nonexistent' });
   assert.ok(result.isError === true);
   assert.ok(result.content[0].text.includes('NOT_FOUND'));
@@ -2060,9 +2060,9 @@ test('bkit_pdca_status: 존재하지 않는 feature → NOT_FOUND 에러', async
 
 ### 8.2 통합 테스트
 
-- 실제 `.bkit/` 파일 구조를 사용한 E2E 테스트
-- `bkit_audit_search` — 다중 날짜 JSONL 파일 검색 검증
-- `bkit_checkpoint_list` — 빈 디렉토리 방어 처리 검증
+- 실제 `.rossi/` 파일 구조를 사용한 E2E 테스트
+- `rossi_audit_search` — 다중 날짜 JSONL 파일 검색 검증
+- `rossi_checkpoint_list` — 빈 디렉토리 방어 처리 검증
 
 ---
 
@@ -2070,4 +2070,4 @@ test('bkit_pdca_status: 존재하지 않는 feature → NOT_FOUND 에러', async
 
 | 버전 | 날짜 | 변경 | 작성자 |
 |------|------|------|--------|
-| 0.1 | 2026-03-19 | 초안 작성 — bkit-pdca-server (10 도구, 3 리소스), bkit-analysis-server (6 도구), .mcp.json 번들, Studio 연동 스키마 | bkend-expert Agent |
+| 0.1 | 2026-03-19 | 초안 작성 — rossi-pdca-server (10 도구, 3 리소스), rossi-analysis-server (6 도구), .mcp.json 번들, Studio 연동 스키마 | bkend-expert Agent |

@@ -7,7 +7,7 @@
  * PC-016~020: addPdcaHistory respects max 100
  * PC-021~025: Feature limit 50 enforced
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -20,12 +20,12 @@ const BASE_DIR = path.resolve(__dirname, '../..');
 console.log('\n=== pdca-core.test.js (25 TC) ===\n');
 
 // --- Load modules ---
-let phase, status, stateStore, bkitConfig;
+let phase, status, stateStore, rossiConfig;
 try {
   phase = require(path.join(BASE_DIR, 'lib/pdca/phase'));
   status = require(path.join(BASE_DIR, 'lib/pdca/status'));
   stateStore = require(path.join(BASE_DIR, 'lib/core/state-store'));
-  bkitConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'bkit.config.json'), 'utf-8'));
+  rossiConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'rossi.config.json'), 'utf-8'));
 } catch (e) {
   console.error('Module load failed:', e.message);
   process.exit(1);

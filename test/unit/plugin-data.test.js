@@ -4,7 +4,7 @@
  * Unit Tests for lib/core/paths.js backupToPluginData and restoreFromPluginData
  * 20 TC | PLUGIN_DATA backup/restore verification
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');
@@ -63,7 +63,7 @@ assert('PD-05',
 );
 
 // Set up temp dir for remaining tests
-const TMP_DIR = path.join('/tmp', `bkit-test-pd-${Date.now()}`);
+const TMP_DIR = path.join('/tmp', `ROSSI-test-pd-${Date.now()}`);
 process.env.CLAUDE_PLUGIN_DATA = TMP_DIR;
 
 // PD-06: Backup targets include pdca-status.backup.json

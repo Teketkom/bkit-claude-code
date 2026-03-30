@@ -1,6 +1,6 @@
-# bkit v2.0.0 영역 1: 워크플로우 자동화 엔진 상세 설계
+# ROSSI v2.0.0 영역 1: 워크플로우 자동화 엔진 상세 설계
 
-> **Design Phase** | Feature: bkit-v200-enhancement (Area 1)
+> **Design Phase** | Feature: rossi-v200-enhancement (Area 1)
 > Date: 2026-03-19 | Author: Claude Opus 4.6 + Enterprise Expert Agent
 
 ---
@@ -289,7 +289,7 @@ const GUARDS = {
    * @returns {boolean}
    */
   guardResumeAvailable(ctx) {
-    // .bkit/state/resume/{feature}.resume.json 존재 확인
+    // .rossi/state/resume/{feature}.resume.json 존재 확인
   },
 
   /**
@@ -298,7 +298,7 @@ const GUARDS = {
    * @returns {boolean}
    */
   guardCheckpointExists(ctx) {
-    // .bkit/checkpoints/ 내 해당 feature 체크포인트 확인
+    // .rossi/checkpoints/ 내 해당 feature 체크포인트 확인
   },
 
   /**
@@ -490,7 +490,7 @@ module.exports = {
 ```javascript
 /**
  * YAML 워크플로우 파일의 JSON Schema
- * bkit은 npm 외부 의존성 금지이므로, Node.js 내장 YAML 파서가 없음.
+ * ROSSI은 npm 외부 의존성 금지이므로, Node.js 내장 YAML 파서가 없음.
  * → YAML 대신 JSON 형식 워크플로우 파일도 지원 (YAML은 경량 자체 파서로 처리)
  */
 
@@ -615,7 +615,7 @@ steps:
 
 ### 2.5 3종 기본 워크플로우
 
-**경로**: `.bkit/workflows/` (설치 시 자동 생성) 또는 `lib/pdca/workflows/` (번들)
+**경로**: `.rossi/workflows/` (설치 시 자동 생성) 또는 `lib/pdca/workflows/` (번들)
 
 #### 2.5.1 default-pdca
 
@@ -924,7 +924,7 @@ defaults:
 module.exports = {
   /**
    * YAML/JSON 워크플로우 파일 파싱
-   * bkit은 외부 YAML 파서 의존성이 없으므로 경량 자체 파서 사용.
+   * ROSSI은 외부 YAML 파서 의존성이 없으므로 경량 자체 파서 사용.
    * JSON 파일도 동시 지원 (.workflow.json)
    * @param {string} filePath - 워크플로우 파일 경로
    * @returns {WorkflowDefinition}
@@ -1118,7 +1118,7 @@ workflow-engine.js
 
 ### 2.10 YAML 파서 설계 참고
 
-bkit은 npm 외부 의존성을 금지하므로, 경량 YAML 파서를 자체 구현합니다.
+ROSSI은 npm 외부 의존성을 금지하므로, 경량 YAML 파서를 자체 구현합니다.
 
 ```javascript
 /**
@@ -1131,7 +1131,7 @@ bkit은 npm 외부 의존성을 금지하므로, 경량 YAML 파서를 자체 �
  * - 따옴표 문자열 ("...", '...')
  * - 멀티라인 값 (| 리터럴, > 접힘)
  *
- * 미지원 (bkit 워크플로우에 불필요):
+ * 미지원 (ROSSI 워크플로우에 불필요):
  * - Flow style ({}, [])
  * - 앵커/참조 (&, *)
  * - 태그 (!!)
@@ -1145,10 +1145,10 @@ bkit은 npm 외부 의존성을 금지하므로, 경량 YAML 파서를 자체 �
 
 | 기존 | 변경 |
 |------|------|
-| `bkit.config.json`의 `pdca.automationLevel` | WorkflowDefinition의 `defaults.automationLevel`이 우선. config는 글로벌 기본값으로 유지 |
-| `bkit.config.json`의 `pdca.matchRateThreshold` | WorkflowDefinition의 `defaults.matchRateThreshold`이 우선 |
-| `bkit.config.json`의 `pdca.maxIterations` | WorkflowDefinition의 `defaults.maxIterations`이 우선 |
-| 워크플로우 저장 위치 | `.bkit/workflows/{id}.workflow.yaml` (사용자 정의) 또는 `lib/pdca/workflows/` (내장) |
+| `rossi.config.json`의 `pdca.automationLevel` | WorkflowDefinition의 `defaults.automationLevel`이 우선. config는 글로벌 기본값으로 유지 |
+| `rossi.config.json`의 `pdca.matchRateThreshold` | WorkflowDefinition의 `defaults.matchRateThreshold`이 우선 |
+| `rossi.config.json`의 `pdca.maxIterations` | WorkflowDefinition의 `defaults.maxIterations`이 우선 |
+| 워크플로우 저장 위치 | `.rossi/workflows/{id}.workflow.yaml` (사용자 정의) 또는 `lib/pdca/workflows/` (내장) |
 | `automation.generateAutoTrigger()` | `workflow-engine.advanceStep()` + `checkGate()`로 대체 |
 
 ---
@@ -1220,7 +1220,7 @@ const APPROVAL_MATRIX = {
  */
 ```
 
-### 3.3 bkit.config.json 스키마 확장
+### 3.3 rossi.config.json 스키마 확장
 
 ```jsonc
 {
@@ -1264,7 +1264,7 @@ const APPROVAL_MATRIX = {
  * 1. 현재 레벨 저장
  * 2. 새 레벨로 전환
  * 3. 활성 워크플로우 인스턴스에 전파
- * 4. persist=true이면 bkit.config.json 갱신
+ * 4. persist=true이면 rossi.config.json 갱신
  * 5. 감사 로그 기록
  *
  * 제약:
@@ -1349,7 +1349,7 @@ automation-controller.js
 | `automation.getAutomationLevel()` | `automation-controller.getLevel()` 래핑으로 전환. 기존 반환값 ('manual'→'guide') 매핑 포함 |
 | `automation.shouldAutoAdvance()` | `automation-controller.isAutoApproved()` + `state-machine.canTransition()`으로 대체 |
 | `automation.isFullAutoMode()` | `automation-controller.getLevel() === 'full-auto'`로 대체 |
-| `bkit.config.json` `pdca.automationLevel` | 하위 호환 유지. `pdca.automation.level`이 우선, 없으면 `pdca.automationLevel` 사용 |
+| `rossi.config.json` `pdca.automationLevel` | 하위 호환 유지. `pdca.automation.level`이 우선, 없으면 `pdca.automationLevel` 사용 |
 
 **'manual' → 'guide' 매핑**: v1.6.2의 `'manual'`은 v2.0.0의 `'guide'`에 해당. `getLevel()` 내부에서 자동 변환.
 
@@ -1758,7 +1758,7 @@ full-auto-do.js
 
 /**
  * Feature별 독립 상태 파일 경로:
- * .bkit/state/workflows/{feature}.json
+ * .rossi/state/workflows/{feature}.json
  *
  * @typedef {Object} FeatureWorkflowFile
  * @property {string} feature
@@ -1781,7 +1781,7 @@ full-auto-do.js
  * 1. Feature가 Do로 전환 시 글로벌 Do Lock 획득
  * 2. Do Lock이 이미 있으면 전환 거부 + 대기 안내
  * 3. Do 완료 또는 에러 시 Lock 해제
- * 4. Lock은 .bkit/runtime/do-lock.json에 저장
+ * 4. Lock은 .rossi/runtime/do-lock.json에 저장
  *
  * @typedef {Object} DoLock
  * @property {string|null} feature - Lock 보유 Feature (null = 미잠금)
@@ -1796,7 +1796,7 @@ full-auto-do.js
 ```javascript
 /**
  * 의존성 정의:
- * - bkit.config.json의 feature 정의에 dependsOn 추가 가능
+ * - rossi.config.json의 feature 정의에 dependsOn 추가 가능
  * - 또는 /pdca depends {feature-a} on {feature-b} 명령
  *
  * 의존성 규칙:
@@ -1911,7 +1911,7 @@ feature-manager.js
 | `status.getActiveFeatures()` | `feature-manager.listFeatures()`의 경량 래퍼로 유지 |
 | `status.switchFeatureContext()` | `feature-manager.switchTo()`로 내부 대체 |
 | `status.addActiveFeature()` | `feature-manager.startFeature()`로 대체 (최대 3개 제한 추가) |
-| `bkit.config.json` `multiFeature.maxActiveFeatures: 5` | 기본값을 3으로 하향. 기존 5는 상태 관리 차원이었고, 워크플로우 레벨에서는 3개 동시 제한 |
+| `rossi.config.json` `multiFeature.maxActiveFeatures: 5` | 기본값을 3으로 하향. 기존 5는 상태 관리 차원이었고, 워크플로우 레벨에서는 3개 동시 제한 |
 
 ---
 
@@ -2135,7 +2135,7 @@ module.exports = {
 
   /**
    * 상태 파일 경로
-   * .bkit/state/circuit/{feature}.circuit.json
+   * .rossi/state/circuit/{feature}.circuit.json
    */
 };
 ```
@@ -2146,7 +2146,7 @@ module.exports = {
 
 ```javascript
 /**
- * Resume 데이터 파일: .bkit/state/resume/{feature}.resume.json
+ * Resume 데이터 파일: .rossi/state/resume/{feature}.resume.json
  *
  * @typedef {Object} ResumeData
  * @property {string} feature - Feature 이름
@@ -2225,7 +2225,7 @@ module.exports = {
 /**
  * /pdca resume {feature}
  * 동작:
- * 1. .bkit/state/resume/{feature}.resume.json 로드
+ * 1. .rossi/state/resume/{feature}.resume.json 로드
  * 2. 유효성 검증 (만료, git ref 일치)
  * 3. Circuit Breaker 확인 (OPEN이면 거부)
  * 4. state-machine.transition(savedState, 'RECOVER', context) 실행
@@ -2237,7 +2237,7 @@ module.exports = {
 /**
  * /pdca rollback {feature}
  * 동작:
- * 1. .bkit/checkpoints/ 에서 최신 체크포인트 조회
+ * 1. .rossi/checkpoints/ 에서 최신 체크포인트 조회
  * 2. 체크포인트 메타데이터 로드
  * 3. state-machine.transition(currentState, 'ROLLBACK', context) 실행
  * 4. 파일 시스템 복원 (체크포인트 스냅샷)
@@ -2308,7 +2308,7 @@ resume.js
  * 2. timeout — 7일(기본) 비활동
  *    트리거: SessionStart 시 stale 검사 또는 주기적 검사
  *    동작: 경고 후 자동 Archive (상태 보존)
- *    설정: bkit.config.json pdca.automation.staleTimeout (ms)
+ *    설정: rossi.config.json pdca.automation.staleTimeout (ms)
  *
  * 3. abandoned — 사용자 명시적 방기 (/pdca abandon {feature})
  *    트리거: 사용자 명령
@@ -2531,11 +2531,11 @@ lifecycle.js
 
 | 경로 | 목적 |
 |------|------|
-| `.bkit/state/workflows/{feature}.json` | Feature별 워크플로우 인스턴스 상태 |
-| `.bkit/state/resume/{feature}.resume.json` | Resume 복구 데이터 |
-| `.bkit/state/circuit/{feature}.circuit.json` | Circuit Breaker 상태 |
-| `.bkit/runtime/do-lock.json` | Do Phase 배타적 잠금 |
-| `.bkit/workflows/*.workflow.yaml` | 사용자 정의 워크플로우 (선택) |
+| `.rossi/state/workflows/{feature}.json` | Feature별 워크플로우 인스턴스 상태 |
+| `.rossi/state/resume/{feature}.resume.json` | Resume 복구 데이터 |
+| `.rossi/state/circuit/{feature}.circuit.json` | Circuit Breaker 상태 |
+| `.rossi/runtime/do-lock.json` | Do Phase 배타적 잠금 |
+| `.rossi/workflows/*.workflow.yaml` | 사용자 정의 워크플로우 (선택) |
 
 ### 기존 코드 수정 사항 요약
 
@@ -2545,7 +2545,7 @@ lifecycle.js
 | `lib/pdca/phase.js` | 최소 수정 | `validatePdcaTransition()` 내부를 `canTransition()` 호출로 전환 |
 | `lib/pdca/status.js` | 확장 | `pdca-status.json` v3.0 스키마 호환 (phaseTimestamps, stateMachine 필드) |
 | `lib/pdca/index.js` | 확장 | 신규 모듈 Export 추가 |
-| `bkit.config.json` | 확장 | `pdca.automation` 섹션 추가 |
+| `rossi.config.json` | 확장 | `pdca.automation` 섹션 추가 |
 | SessionStart Hook | 추가 | `lifecycle.checkStaleFeatures()` 호출 추가 |
 | StopFailure Hook | 추가 | `resume.saveResumePoint()` + `circuitBreaker.recordFailure()` 추가 |
 

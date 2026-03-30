@@ -9,7 +9,7 @@ const path = require('path');
 const os = require('os');
 
 // Set up tmp dir and mock platform before requiring module
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bkit-audit-test-'));
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ROSSI-audit-test-'));
 const origCwd = process.cwd();
 
 // Mock the platform module to use tmpDir as PROJECT_DIR
@@ -50,7 +50,7 @@ mod.writeAuditLog({
 });
 
 const today = new Date().toISOString().slice(0, 10);
-const auditFilePath = path.join(tmpDir, '.bkit', 'audit', `${today}.jsonl`);
+const auditFilePath = path.join(tmpDir, '.rossi', 'audit', `${today}.jsonl`);
 assert('AL-001', fs.existsSync(auditFilePath), 'writeAuditLog creates JSONL file');
 
 const content = fs.readFileSync(auditFilePath, 'utf-8').trim();
@@ -96,7 +96,7 @@ assert('AL-016', typeof summary.byCategory === 'object', 'Summary counts by cate
 // --- AL-017~018: cleanupOldLogs ---
 
 // Create an old log file (40 days ago)
-const auditDir = path.join(tmpDir, '.bkit', 'audit');
+const auditDir = path.join(tmpDir, '.rossi', 'audit');
 const oldDate = new Date(Date.now() - 40 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 fs.writeFileSync(path.join(auditDir, `${oldDate}.jsonl`), '{"action":"test"}\n', 'utf-8');
 

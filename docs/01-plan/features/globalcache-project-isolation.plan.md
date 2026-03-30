@@ -2,12 +2,12 @@
 
 > **요약**: PLUGIN_DATA 백업/복원 시 프로젝트 검증 누락으로 인한 크로스 프로젝트 상태 오염 버그 수정
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.0
 > **작성자**: Claude
 > **날짜**: 2026-03-21
 > **상태**: Draft
-> **이슈**: [GitHub #48](https://github.com/popup-studio-ai/bkit-claude-code/issues/48)
+> **이슈**: [GitHub #48](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/48)
 
 ---
 
@@ -17,7 +17,7 @@
 |------|------|
 | **문제** | `CLAUDE_PLUGIN_DATA` 백업이 플러그인 전역 경로에 저장되어, 새 프로젝트 설치 시 다른 프로젝트의 PDCA 상태가 무검증 복원됨 (이슈 #48) |
 | **해결** | 백업 시 프로젝트 식별자를 메타데이터로 저장하고, 복원 시 현재 프로젝트와 일치 여부를 검증하는 가드 로직 추가 |
-| **기능/UX 효과** | 멀티 프로젝트 환경에서 bkit 설치/전환 시 각 프로젝트가 독립된 깨끗한 PDCA 상태로 시작됨 |
+| **기능/UX 효과** | 멀티 프로젝트 환경에서 ROSSI 설치/전환 시 각 프로젝트가 독립된 깨끗한 PDCA 상태로 시작됨 |
 | **핵심 가치** | 프로젝트 간 데이터 무결성 보장 — "내 프로젝트에는 내 데이터만" 원칙 확립 |
 
 ---
@@ -26,15 +26,15 @@
 
 ### 1.1 목적
 
-GitHub 이슈 #48에서 보고된 **크로스 프로젝트 상태 오염 버그**를 수정한다. 프로젝트 A에서 사용한 bkit의 PDCA 상태가 프로젝트 B에 그대로 복원되는 문제를 해결하여, 각 프로젝트의 PDCA 상태가 완전히 격리되도록 한다.
+GitHub 이슈 #48에서 보고된 **크로스 프로젝트 상태 오염 버그**를 수정한다. 프로젝트 A에서 사용한 ROSSI의 PDCA 상태가 프로젝트 B에 그대로 복원되는 문제를 해결하여, 각 프로젝트의 PDCA 상태가 완전히 격리되도록 한다.
 
 ### 1.2 배경
 
-v1.6.2에서 도입된 ENH-119 (`CLAUDE_PLUGIN_DATA` 백업/복원)는 "플러그인 업데이트, 재설치, 크래시 시에도 작업이 살아남는다"는 목적으로 설계되었다. 그러나 `CLAUDE_PLUGIN_DATA` 경로(`~/.claude/plugins/data/bkit-bkit-marketplace/backup/`)는 **플러그인 전역**이므로 프로젝트 단위가 아닌 bkit 플러그인 단위로 공유된다.
+v1.6.2에서 도입된 ENH-119 (`CLAUDE_PLUGIN_DATA` 백업/복원)는 "플러그인 업데이트, 재설치, 크래시 시에도 작업이 살아남는다"는 목적으로 설계되었다. 그러나 `CLAUDE_PLUGIN_DATA` 경로(`~/.claude/plugins/data/ROSSI-rossi-marketplace/backup/`)는 **플러그인 전역**이므로 프로젝트 단위가 아닌 ROSSI 플러그인 단위로 공유된다.
 
 **재현 시나리오:**
-1. 프로젝트 A에서 bkit 사용 → `savePdcaStatus()` → `backupToPluginData()` → 전역 백업에 A 상태 저장
-2. 프로젝트 B에 bkit 설치 → SessionStart → `.bkit/state/pdca-status.json` 미존재
+1. 프로젝트 A에서 ROSSI 사용 → `savePdcaStatus()` → `backupToPluginData()` → 전역 백업에 A 상태 저장
+2. 프로젝트 B에 ROSSI 설치 → SessionStart → `.rossi/state/pdca-status.json` 미존재
 3. `restoreFromPluginData()` → 조건 충족 (`!destExists && backupExists`) → A의 상태가 B에 복사
 
 **부차적 문제:**
@@ -42,7 +42,7 @@ v1.6.2에서 도입된 ENH-119 (`CLAUDE_PLUGIN_DATA` 백업/복원)는 "플러�
 
 ### 1.3 관련 문서
 
-- 이슈: [GitHub #48 — globalCache not isolated per project](https://github.com/popup-studio-ai/bkit-claude-code/issues/48)
+- 이슈: [GitHub #48 — globalCache not isolated per project](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/48)
 - ENH-119: `${CLAUDE_PLUGIN_DATA}` 영구 상태 (v1.6.2 도입)
 
 ---
@@ -125,7 +125,7 @@ v1.6.2에서 도입된 ENH-119 (`CLAUDE_PLUGIN_DATA` 백업/복원)는 "플러�
 | **Dynamic** | Feature 기반 모듈 | 웹앱, SaaS | ☐ |
 | **Enterprise** | 엄격한 레이어 분리 | 대규모 시스템 | ☐ |
 
-> 본 수정은 bkit 내부 모듈 버그 수정으로, 프로젝트 레벨과 무관하게 적용됨.
+> 본 수정은 ROSSI 내부 모듈 버그 수정으로, 프로젝트 레벨과 무관하게 적용됨.
 
 ### 6.2 핵심 아키텍처 결정
 

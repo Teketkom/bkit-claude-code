@@ -1,13 +1,13 @@
-# bkit v2.0.0 영역 7 — Studio 연동 준비 상세 설계
+# ROSSI v2.0.0 영역 7 — Studio 연동 준비 상세 설계
 
-> **Summary**: Plugin 측에서 bkit Studio가 소비할 데이터 인터페이스 전체 정의 — 파일 스키마, 이벤트 스트림, 제어 상태, MCP 교환 인터페이스
+> **Summary**: Plugin 측에서 ROSSI Studio가 소비할 데이터 인터페이스 전체 정의 — 파일 스키마, 이벤트 스트림, 제어 상태, MCP 교환 인터페이스
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: v2.0.0
 > **Author**: PM Agent (Claude Sonnet 4.6)
 > **Date**: 2026-03-19
 > **Status**: Draft
-> **Planning Doc**: [bkit-v200-enhancement.plan.md](../01-plan/features/bkit-v200-enhancement.plan.md)
+> **Planning Doc**: [rossi-v200-enhancement.plan.md](../01-plan/features/rossi-v200-enhancement.plan.md)
 
 ---
 
@@ -15,20 +15,20 @@
 
 ### 1.1 Studio 독립성 원칙
 
-bkit Plugin은 Studio 없이 100% 완전하게 동작해야 합니다. Studio는 선택적 시각화 레이어이며, Plugin은 Studio의 존재를 알 필요가 없습니다.
+ROSSI Plugin은 Studio 없이 100% 완전하게 동작해야 합니다. Studio는 선택적 시각화 레이어이며, Plugin은 Studio의 존재를 알 필요가 없습니다.
 
 | 원칙 | 적용 방식 |
 |------|----------|
-| **파일 기반 우선** | 모든 데이터는 `.bkit/` 하위 파일로 기록. Studio는 파일을 폴링/구독 |
+| **파일 기반 우선** | 모든 데이터는 `.rossi/` 하위 파일로 기록. Studio는 파일을 폴링/구독 |
 | **Append-Only 스트림** | 이벤트 파일은 항상 추가 전용, Studio는 원하는 시점부터 읽기 가능 |
-| **하위 호환 100%** | 기존 `.bkit/state/`, `.bkit/runtime/` 구조 유지, 신규 파일만 추가 |
+| **하위 호환 100%** | 기존 `.rossi/state/`, `.rossi/runtime/` 구조 유지, 신규 파일만 추가 |
 | **MCP는 선택** | MCP 서버는 고급 조회 인터페이스. 파일 폴링만으로 모든 기능 사용 가능 |
 | **외부 의존성 없음** | JSON/JSONL/YAML 표준 형식만 사용. 별도 DB/라이브러리 불필요 |
 
 ### 1.2 파일 경로 전체 맵
 
 ```
-.bkit/
+.rossi/
 ├── runtime/
 │   ├── agent-state.json          (기존 v1.0 → v2.0 확장)
 │   ├── agent-events.jsonl        [신규] Agent 이벤트 스트림
@@ -61,7 +61,7 @@ bkit Plugin은 Studio 없이 100% 완전하게 동작해야 합니다. Studio는
 
 ### 2.1 경로
 
-`.bkit/runtime/agent-state.json`
+`.rossi/runtime/agent-state.json`
 
 ### 2.2 설계 배경
 
@@ -72,9 +72,9 @@ bkit Plugin은 Studio 없이 100% 완전하게 동작해야 합니다. Studio는
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/agent-state.v2.json",
+  "$id": "https://ROSSI.dev/schemas/agent-state.v2.json",
   "title": "AgentState",
-  "description": "bkit Agent Team 실시간 상태. Studio 대시보드가 이 파일을 폴링하여 PDCA 진행 현황을 렌더링합니다.",
+  "description": "ROSSI Agent Team 실시간 상태. Studio 대시보드가 이 파일을 폴링하여 PDCA 진행 현황을 렌더링합니다.",
   "type": "object",
   "required": ["version", "feature", "pdcaPhase", "lastUpdated"],
   "properties": {
@@ -338,7 +338,7 @@ bkit Plugin은 Studio 없이 100% 완전하게 동작해야 합니다. Studio는
     }
   ],
   "enabled": true,
-  "teamName": "bkit-enterprise",
+  "teamName": "rossi-enterprise",
   "orchestrationPattern": "council",
   "ctoAgent": "opus",
   "startedAt": "2026-03-19T09:00:00Z",
@@ -377,11 +377,11 @@ bkit Plugin은 Studio 없이 100% 완전하게 동작해야 합니다. Studio는
 
 ---
 
-## 3. `.bkit/runtime/agent-events.jsonl` — Agent 이벤트 스트림
+## 3. `.rossi/runtime/agent-events.jsonl` — Agent 이벤트 스트림
 
 ### 3.1 경로
 
-`.bkit/runtime/agent-events.jsonl`
+`.rossi/runtime/agent-events.jsonl`
 
 ### 3.2 설계 배경
 
@@ -589,11 +589,11 @@ bkit Plugin은 Studio 없이 100% 완전하게 동작해야 합니다. Studio는
 
 ---
 
-## 4. `.bkit/runtime/control-state.json` — 런타임 제어 상태
+## 4. `.rossi/runtime/control-state.json` — 런타임 제어 상태
 
 ### 4.1 경로
 
-`.bkit/runtime/control-state.json`
+`.rossi/runtime/control-state.json`
 
 ### 4.2 설계 배경
 
@@ -604,7 +604,7 @@ Studio 제어 패널이 현재 자동화 레벨, Trust Score, 활성 가드레�
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/control-state.v1.json",
+  "$id": "https://ROSSI.dev/schemas/control-state.v1.json",
   "title": "ControlState",
   "description": "런타임 자동화 제어 상태. Studio에서 읽기/쓰기 가능. Plugin은 5초 주기로 폴링하여 변경 반영.",
   "type": "object",
@@ -820,24 +820,24 @@ Plugin은 5초 주기로 이 파일을 폴링하여 `updatedBy === "studio"` 감
 
 ### 5.1 경로
 
-`.bkit/workflows/workflow.schema.json` (Schema 파일)
-`.bkit/workflows/default.workflow.yaml` (기본 워크플로우 인스턴스)
+`.rossi/workflows/workflow.schema.json` (Schema 파일)
+`.rossi/workflows/default.workflow.yaml` (기본 워크플로우 인스턴스)
 
 ### 5.2 JSON Schema for YAML Workflow
 
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/workflow.v1.json",
+  "$id": "https://ROSSI.dev/schemas/workflow.v1.json",
   "title": "BkitWorkflow",
-  "description": "bkit YAML 워크플로우 DSL 스키마. Studio 워크플로우 에디터가 이 스키마로 유효성 검증 및 자동완성을 제공합니다.",
+  "description": "ROSSI YAML 워크플로우 DSL 스키마. Studio 워크플로우 에디터가 이 스키마로 유효성 검증 및 자동완성을 제공합니다.",
   "type": "object",
   "required": ["$schema", "version", "name", "phases"],
   "properties": {
 
     "$schema": {
       "type": "string",
-      "const": "https://bkit.dev/schemas/workflow.v1.json",
+      "const": "https://ROSSI.dev/schemas/workflow.v1.json",
       "description": "스키마 참조 URI. 에디터 자동완성 활성화에 필요."
     },
 
@@ -1024,10 +1024,10 @@ Plugin은 5초 주기로 이 파일을 폴링하여 `updatedBy === "studio"` 감
 ### 5.3 예시 데이터 (`default.workflow.yaml`)
 
 ```yaml
-$schema: "https://bkit.dev/schemas/workflow.v1.json"
+$schema: "https://ROSSI.dev/schemas/workflow.v1.json"
 version: "1.0"
 name: default
-description: 표준 PDCA 워크플로우 (bkit 기본값). PM → Plan → Design → Do → Check/Act 루프 → Report → Archive.
+description: 표준 PDCA 워크플로우 (ROSSI 기본값). PM → Plan → Design → Do → Check/Act 루프 → Report → Archive.
 automationLevel: 2
 
 phases:
@@ -1113,7 +1113,7 @@ phases:
       requireApproval: true
 
 metadata:
-  author: bkit-team
+  author: ROSSI-team
   createdAt: "2026-03-19T00:00:00Z"
   tags: [default, standard, pdca]
 ```
@@ -1133,15 +1133,15 @@ metadata:
 
 ### 6.1 경로
 
-`.bkit/checkpoints/index.json` (전체 인덱스)
-`.bkit/checkpoints/cp-{timestamp}/meta.json` (개별 메타)
+`.rossi/checkpoints/index.json` (전체 인덱스)
+`.rossi/checkpoints/cp-{timestamp}/meta.json` (개별 메타)
 
 ### 6.2 `index.json` Schema
 
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/checkpoint-index.v1.json",
+  "$id": "https://ROSSI.dev/schemas/checkpoint-index.v1.json",
   "title": "CheckpointIndex",
   "description": "전체 체크포인트 인덱스. Studio 체크포인트 브라우저가 이 파일로 목록을 렌더링합니다.",
   "type": "object",
@@ -1230,7 +1230,7 @@ metadata:
 
           "metaPath": {
             "type": "string",
-            "description": "상세 메타 파일 경로 (`.bkit/checkpoints/{id}/meta.json`)"
+            "description": "상세 메타 파일 경로 (`.rossi/checkpoints/{id}/meta.json`)"
           }
         }
       }
@@ -1249,7 +1249,7 @@ metadata:
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/checkpoint-meta.v1.json",
+  "$id": "https://ROSSI.dev/schemas/checkpoint-meta.v1.json",
   "title": "CheckpointMeta",
   "type": "object",
   "required": ["id", "feature", "phase", "createdAt", "files"],
@@ -1322,7 +1322,7 @@ metadata:
       "sizeBytes": 204800,
       "createdAt": "2026-03-19T09:00:00Z",
       "restorable": true,
-      "metaPath": ".bkit/checkpoints/cp-1710849600000/meta.json"
+      "metaPath": ".rossi/checkpoints/cp-1710849600000/meta.json"
     },
     {
       "id": "cp-1710853200000",
@@ -1335,7 +1335,7 @@ metadata:
       "sizeBytes": 163488,
       "createdAt": "2026-03-19T10:00:00Z",
       "restorable": true,
-      "metaPath": ".bkit/checkpoints/cp-1710853200000/meta.json"
+      "metaPath": ".rossi/checkpoints/cp-1710853200000/meta.json"
     }
   ],
   "lastUpdated": "2026-03-19T11:00:00Z"
@@ -1357,15 +1357,15 @@ metadata:
 
 ### 7.1 경로
 
-`.bkit/state/quality-metrics.json` (최신 메트릭 10개)
-`.bkit/state/quality-history.json` (시계열 히스토리)
+`.rossi/state/quality-metrics.json` (최신 메트릭 10개)
+`.rossi/state/quality-history.json` (시계열 히스토리)
 
 ### 7.2 `quality-metrics.json` Schema
 
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/quality-metrics.v1.json",
+  "$id": "https://ROSSI.dev/schemas/quality-metrics.v1.json",
   "title": "QualityMetrics",
   "description": "현재 세션의 최신 품질 메트릭 10개. Studio 실시간 대시보드 카드에 표시.",
   "type": "object",
@@ -1495,7 +1495,7 @@ metadata:
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/quality-history.v1.json",
+  "$id": "https://ROSSI.dev/schemas/quality-history.v1.json",
   "title": "QualityHistory",
   "description": "품질 메트릭 시계열 데이터. Studio 차트(선 그래프, 영역 그래프)에 사용.",
   "type": "object",
@@ -1634,17 +1634,17 @@ metadata:
 
 ### 8.1 경로
 
-`.bkit/audit/{YYYY-MM-DD}.jsonl` (감사 로그)
-`.bkit/audit/audit-index.json` (감사 로그 인덱스)
-`.bkit/decisions/{YYYY-MM-DD}.jsonl` (Decision Trace)
-`.bkit/decisions/decision-index.json` (Decision Trace 인덱스)
+`.rossi/audit/{YYYY-MM-DD}.jsonl` (감사 로그)
+`.rossi/audit/audit-index.json` (감사 로그 인덱스)
+`.rossi/decisions/{YYYY-MM-DD}.jsonl` (Decision Trace)
+`.rossi/decisions/decision-index.json` (Decision Trace 인덱스)
 
 ### 8.2 감사 로그 이벤트 스키마 (JSONL 한 줄)
 
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/audit-event.v1.json",
+  "$id": "https://ROSSI.dev/schemas/audit-event.v1.json",
   "title": "AuditEvent",
   "description": "단일 감사 이벤트. 각 JSONL 줄이 이 스키마를 따릅니다.",
   "type": "object",
@@ -1723,7 +1723,7 @@ metadata:
 ```jsonl
 {"ts":"2026-03-19T10:00:00.000Z","id":"aud-a1b2c3d4e5f6","action":"agent_spawned","actor":"state-machine","severity":"info","feature":"user-auth","phase":"check","target":"gap-detector","detail":{"automationLevel":2},"outcome":"success"}
 {"ts":"2026-03-19T10:30:00.000Z","id":"aud-b2c3d4e5f6a1","action":"guardrail_triggered","actor":"gap-detector","severity":"critical","feature":"user-auth","phase":"check","target":"git push --force origin main","detail":{"guardrailId":"GR-02","blastRadius":"high"},"outcome":"blocked"}
-{"ts":"2026-03-19T10:31:00.000Z","id":"aud-c3d4e5f6a1b2","action":"checkpoint_created","actor":"checkpoint-manager","severity":"info","feature":"user-auth","phase":"check","target":".bkit/checkpoints/cp-1710849600000","detail":{"trigger":"pre_destructive","fileCount":18},"outcome":"success"}
+{"ts":"2026-03-19T10:31:00.000Z","id":"aud-c3d4e5f6a1b2","action":"checkpoint_created","actor":"checkpoint-manager","severity":"info","feature":"user-auth","phase":"check","target":".rossi/checkpoints/cp-1710849600000","detail":{"trigger":"pre_destructive","fileCount":18},"outcome":"success"}
 ```
 
 ### 8.4 `audit-index.json` Schema
@@ -1731,7 +1731,7 @@ metadata:
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/audit-index.v1.json",
+  "$id": "https://ROSSI.dev/schemas/audit-index.v1.json",
   "title": "AuditIndex",
   "description": "감사 로그 파일 인덱스. Studio가 날짜/기간으로 빠르게 조회하기 위해 사용.",
   "type": "object",
@@ -1800,7 +1800,7 @@ metadata:
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bkit.dev/schemas/decision-event.v1.json",
+  "$id": "https://ROSSI.dev/schemas/decision-event.v1.json",
   "title": "DecisionEvent",
   "type": "object",
   "required": ["ts", "id", "decision", "actor", "rationale"],
@@ -1903,7 +1903,7 @@ metadata:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    bkit Studio                          │
+│                    ROSSI Studio                          │
 │  ┌────────────┐  ┌────────────┐  ┌────────────────────┐ │
 │  │ Dashboard  │  │ Audit View │  │ Workflow Editor    │ │
 │  └─────┬──────┘  └─────┬──────┘  └────────┬───────────┘ │
@@ -1916,8 +1916,8 @@ metadata:
          │ FileSystem Watch            │ MCP Protocol
          ▼                             ▼
 ┌────────────────────────┐  ┌─────────────────────────────┐
-│    .bkit/ 파일 시스템   │  │   bkit-pdca-server (MCP)    │
-│  agent-state.json      │  │   servers/bkit-pdca-server/ │
+│    .rossi/ 파일 시스템   │  │   rossi-pdca-server (MCP)    │
+│  agent-state.json      │  │   servers/rossi-pdca-server/ │
 │  agent-events.jsonl    │  │                             │
 │  control-state.json    │  │  Tools:                     │
 │  quality-metrics.json  │  │  - get_pdca_status          │
@@ -1939,7 +1939,7 @@ metadata:
 | **인증/보안** | 없음 (파일 시스템 권한 의존) | MCP 연결 인증 가능 |
 | **연결 상태** | 항상 접근 가능 | MCP 서버 실행 필요 |
 | **오프라인 동작** | 가능 | 불가 |
-| **bkit 없이 조회** | 가능 (파일 읽기) | 불가 |
+| **ROSSI 없이 조회** | 가능 (파일 읽기) | 불가 |
 | **권장 사용** | 기본값, 항상 작동 | 고급 조회, 실시간 알림 |
 
 ### 9.3 권장 아키텍처 결정
@@ -1949,7 +1949,7 @@ metadata:
 
 Studio는 다음 우선순위로 데이터 소스를 선택합니다.
 
-1. `bkit-pdca-server` MCP 서버가 실행 중이면 MCP 사용
+1. `rossi-pdca-server` MCP 서버가 실행 중이면 MCP 사용
 2. MCP 서버 미실행 시 파일 폴링으로 자동 폴백
 3. 파일 접근 불가 시 "연결 없음" 상태 표시
 
@@ -2108,7 +2108,7 @@ Studio는 다음 우선순위로 데이터 소스를 선택합니다.
 ### 9.5 MCP 서버 구현 위치 및 구조
 
 ```
-servers/bkit-pdca-server/
+servers/rossi-pdca-server/
 ├── index.js              MCP 서버 진입점 (stdio transport)
 ├── server.js             McpServer 인스턴스 + Tool 등록
 ├── tools/
@@ -2118,7 +2118,7 @@ servers/bkit-pdca-server/
 │   ├── control.js        set_automation_level, approve_action 핸들러
 │   └── checkpoints.js    restore_checkpoint 핸들러
 ├── readers/
-│   ├── file-reader.js    .bkit/ 파일 읽기 유틸리티
+│   ├── file-reader.js    .rossi/ 파일 읽기 유틸리티
 │   └── jsonl-reader.js   JSONL 스트리밍 읽기
 └── package.json          { "type": "module", "main": "index.js" }
 ```
@@ -2128,10 +2128,10 @@ servers/bkit-pdca-server/
 ```json
 {
   "mcpServers": {
-    "bkit-pdca": {
+    "rossi-pdca": {
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/bkit-pdca-server/index.js"],
-      "description": "bkit PDCA 상태 조회 및 제어 MCP 서버"
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/rossi-pdca-server/index.js"],
+      "description": "ROSSI PDCA 상태 조회 및 제어 MCP 서버"
     }
   }
 }
@@ -2150,7 +2150,7 @@ Week 5-6 (영역 7 전담)
 │   ├── workflow.schema.json 작성
 │   ├── audit-event.v1.json 작성
 │   ├── decision-event.v1.json 작성
-│   └── 모든 JSON Schema를 .bkit/schemas/ 에 배치
+│   └── 모든 JSON Schema를 .rossi/schemas/ 에 배치
 │
 ├── Step 2: 파일 기반 Writer 구현 (Day 3-5)
 │   ├── lib/team/state-writer.js — agent-state.json v2.0 확장
@@ -2165,7 +2165,7 @@ Week 5-6 (영역 7 전담)
 │   └── lib/audit/audit-indexer.js — audit-index.json 갱신
 │
 └── Step 5: MCP 서버 기본 구현 (Day 10-14)
-    ├── servers/bkit-pdca-server/ 기본 구조
+    ├── servers/rossi-pdca-server/ 기본 구조
     ├── get_pdca_status, get_metrics Tool 구현
     └── set_automation_level, approve_action Tool 구현
 ```
@@ -2179,11 +2179,11 @@ Week 5-6 (영역 7 전담)
 | `lib/studio/index.js` | Studio 연동 모듈 공개 API | ~30 LOC |
 | `lib/audit/audit-indexer.js` | audit-index.json / decision-index.json 갱신 | ~120 LOC |
 | `lib/quality/history-writer.js` | quality-history.json FIFO 관리 | ~80 LOC |
-| `servers/bkit-pdca-server/index.js` | MCP 서버 진입점 | ~50 LOC |
-| `servers/bkit-pdca-server/server.js` | Tool 등록 및 라우팅 | ~150 LOC |
-| `servers/bkit-pdca-server/tools/*.js` | 6개 Tool 핸들러 | ~300 LOC |
-| `.bkit/schemas/*.json` | JSON Schema 파일 5종 | 문서 |
-| `.bkit/workflows/*.yaml` | 워크플로우 템플릿 3종 | 문서 |
+| `servers/rossi-pdca-server/index.js` | MCP 서버 진입점 | ~50 LOC |
+| `servers/rossi-pdca-server/server.js` | Tool 등록 및 라우팅 | ~150 LOC |
+| `servers/rossi-pdca-server/tools/*.js` | 6개 Tool 핸들러 | ~300 LOC |
+| `.rossi/schemas/*.json` | JSON Schema 파일 5종 | 문서 |
+| `.rossi/workflows/*.yaml` | 워크플로우 템플릿 3종 | 문서 |
 
 **영역 7 합계**: 약 910 LOC + 문서 파일 8종
 
@@ -2191,7 +2191,7 @@ Week 5-6 (영역 7 전담)
 
 ## 11. 관련 문서
 
-- Plan: [bkit-v200-enhancement.plan.md](../01-plan/features/bkit-v200-enhancement.plan.md)
+- Plan: [rossi-v200-enhancement.plan.md](../01-plan/features/rossi-v200-enhancement.plan.md)
 - 영역 6 (MCP 서버): 별도 설계 문서 예정
 - 영역 2 (통제 가능한 AI): control-state.json의 가드레일 시스템과 연계
 

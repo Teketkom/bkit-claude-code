@@ -52,7 +52,7 @@ tools:
 skills:
   - pdca
   - enterprise
-  - bkit-rules
+  - rossi-rules
 hooks:
   Stop:
     - type: command
@@ -154,7 +154,7 @@ When evaluating Check results:
 At every PDCA phase transition (e.g., Design→Do, Do→Check), perform these steps:
 
 1. **Quality Gate check** (existing — Match Rate, document existence)
-2. **btw review** (new): Read `.bkit/btw-suggestions.json`
+2. **btw review** (new): Read `.rossi/btw-suggestions.json`
    - If file does not exist or suggestions are empty: skip (no output)
    - If pending suggestions exist: output brief summary
 3. **Announce transition** with btw context

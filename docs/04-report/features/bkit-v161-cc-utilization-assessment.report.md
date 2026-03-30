@@ -1,9 +1,9 @@
-# bkit v1.6.1 Claude Code Utilization Assessment Report
+# ROSSI v1.6.1 Claude Code Utilization Assessment Report
 
 > Created: 2026-03-08
 > Assessor: Anthropic CTO Perspective (Virtual)
 > Method: CTO 10-Agent Team Parallel Analysis + Task Management System
-> Target: bkit v1.6.1 (Vibecoding Kit) — Based on CC v2.1.69
+> Target: ROSSI v1.6.1 (Vibecoding Kit) — Based on CC v2.1.69
 
 ---
 
@@ -11,7 +11,7 @@
 
 | Item | Description |
 |------|-------------|
-| Feature | bkit v1.6.1 Claude Code Utilization Assessment (10 Agents, 9 Perspectives) |
+| Feature | ROSSI v1.6.1 Claude Code Utilization Assessment (10 Agents, 9 Perspectives) |
 | Duration | 2026-03-08 (Single Session) |
 | Method | CTO 10-Agent Team → Task Management → Parallel Analysis → Synthesis |
 
@@ -20,7 +20,7 @@
 | CC Utilization | How deeply does it leverage CC platform capabilities? | 10-Agent 9-Perspective Analysis Framework | CE Level Quantitative Assessment | Platform Utilization Optimization Metrics |
 | Architecture | What is the integration quality of 252 components? | 6-Layer Context Stack Verification | Organic Integration Confirmed | Context Engineering Implementation |
 | Security | Is the security model adequate for 21 agents? | 3-Tier Agent Security Full Inspection | 82/100 Security Score | Security by Default |
-| Philosophy | Is bkit's design philosophy reflected in code? | 4 Core Principles 58 TC Verification | 97/100 Philosophy Compliance | Design = Implementation |
+| Philosophy | Is ROSSI's design philosophy reflected in code? | 4 Core Principles 58 TC Verification | 97/100 Philosophy Compliance | Design = Implementation |
 
 ---
 
@@ -85,7 +85,7 @@
 
 ### 3.1 Hook Events (10/18 = 55.6%)
 
-| Hook Event | Used | Depth | bkit Implementation |
+| Hook Event | Used | Depth | ROSSI Implementation |
 |------------|:----:|:-----:|---------------------|
 | SessionStart | O | Deep | Level detection, PDCA restoration, memory initialization, context layer loading |
 | UserPromptSubmit | O | Deep | 9-language intent detection, ambiguity scoring, agent/skill auto-routing |
@@ -146,7 +146,7 @@
 | Task System | O | TaskCreate/Update/List/Get + blockedBy dependency chains |
 | Plugin System | O | plugin.json + marketplace.json (2 plugins) |
 | Output Styles | O | 4 custom styles (enterprise, learning, pdca-guide, pdca-enterprise) |
-| Auto-Memory | O | CC auto-memory(MD) + bkit memory(JSON) path separation, 0% collision |
+| Auto-Memory | O | CC auto-memory(MD) + ROSSI memory(JSON) path separation, 0% collision |
 | CLAUDE.md | O | Project rules + language policy definition |
 | Templates | O | 15 templates (PDCA 7 + Phase 2 + PM 1 + Config 5) |
 | MCP Integration | O | bkend MCP auto-detection, 5 bkend-* skills connected |
@@ -195,7 +195,7 @@ Layer 2: hooks.json               — 10 global events (46 scripts)
 Layer 3: Agent Frontmatter        — 21 agent role rules (3-Tier security)
 Layer 4: Skill SKILL.md           — 28 skill domain knowledge (Skills 2.0)
 Layer 5: Templates                — 15 structured output templates
-Layer 6: bkit.config.json         — Orchestration patterns, permissions, configuration values
+Layer 6: rossi.config.json         — Orchestration patterns, permissions, configuration values
 ```
 
 ---
@@ -220,7 +220,7 @@ All CC context injection primitives (CLAUDE.md, hooks, agent frontmatter, skill 
 
 ### #3. PreCompact PDCA State Preservation — "Business Continuity Assurance"
 
-Intercepts CC's automatic context compaction event to preserve PDCA state as snapshots. A bkit-original pattern that redefines the context window limitation as a "business continuity problem" and solves it.
+Intercepts CC's automatic context compaction event to preserve PDCA state as snapshots. A ROSSI-original pattern that redefines the context window limitation as a "business continuity problem" and solves it.
 
 ### #4. Implicit Intent Router — "9-Language NLP Router"
 
@@ -275,7 +275,7 @@ Builds a Plan → Design → Do → Check → Act → Report chain using CC Task
 
 ### 7.3 Grade Justification
 
-| CE-5 Requirement | bkit v1.6.1 | Met |
+| CE-5 Requirement | ROSSI v1.6.1 | Met |
 |------------------|-------------|:---:|
 | Hook 13+ | 10 (Deep 7) + frontmatter hooks 8+ = 18+ | O |
 | Agent 16+ | 21 (3-Tier security model) | O |
@@ -305,7 +305,7 @@ Achievement: 100/100 (CE-5 Maximum)
 
 ### 8.1 Core Evaluation
 
-bkit is the plugin that most systematically implements the **Context Engineering vision** of the Claude Code platform.
+ROSSI is the plugin that most systematically implements the **Context Engineering vision** of the Claude Code platform.
 
 The key differentiator is not simply using many features, but integrating CC's individual primitives into a single coherent architecture (**6-Layer Context Stack + PDCA Process Automation + CTO Agent Orchestration**).
 
@@ -319,7 +319,7 @@ The key differentiator is not simply using many features, but integrating CC's i
 
 ### 8.3 Implications for CC Platform Evolution
 
-The existence of bkit proves that the CC platform can evolve beyond a simple "AI coding tool" into an **"AI-Native Development Platform"**. Specifically:
+The existence of ROSSI proves that the CC platform can evolve beyond a simple "AI coding tool" into an **"AI-Native Development Platform"**. Specifically:
 
 - **PDCA Automation**: Combining CC's Task + Hook + Agent can automate the entire software development process
 - **Organization Simulation**: Agent Teams can express role-based team structures (CTO/PM/QA/Security, etc.) as code

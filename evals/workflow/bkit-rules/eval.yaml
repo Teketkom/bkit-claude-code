@@ -1,7 +1,7 @@
-name: bkit-rules
+name: rossi-rules
 classification: workflow
 version: 1.6.1
-description: "bkit-rules process compliance evaluation"
+description: "rossi-rules process compliance evaluation"
 
 evals:
   - name: trigger-accuracy

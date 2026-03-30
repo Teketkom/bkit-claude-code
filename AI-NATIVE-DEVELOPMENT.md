@@ -1,14 +1,14 @@
-# AI-Native Development Methodology with bkit
+# AI-Native Development Methodology with ROSSI
 
 ## Overview
 
-This document explains what AI-Native development means in the current market and how bkit realizes these principles to transform software development.
+This document explains what AI-Native development means in the current market and how ROSSI realizes these principles to transform software development.
 
-### bkit AI-Native Development Flow
+### ROSSI AI-Native Development Flow
 
 ```mermaid
 flowchart TB
-    subgraph MAIN["bkit AI-Native Development"]
+    subgraph MAIN["ROSSI AI-Native Development"]
         direction LR
 
         subgraph ROW1[" "]
@@ -42,7 +42,7 @@ flowchart TB
 
 ## What is AI-Native Development?
 
-![AI-Native by bkit - Part 1](images/ai-native-by-bkit-1.png)
+![AI-Native by ROSSI - Part 1](images/ai-native-by-ROSSI-1.png)
 
 AI-Native development is a paradigm where AI is not just a tool, but a **core collaborator** in the software development process. Unlike traditional development with AI assistance, AI-Native development fundamentally rethinks how software is designed, built, and maintained.
 
@@ -99,7 +99,7 @@ Based on research from industry leaders (Addy Osmani, Sapphire Ventures, DevOps.
 
 **Principle**: Humans govern AI through progressive trust, 5-level automation control, and interactive checkpoints.
 
-**bkit v2.0.3 Controllable AI**:
+**ROSSI v2.0.3 Controllable AI**:
 - **L0-L4 automation levels**: Manual → Guided → Semi-Auto → Auto → Full-Auto
 - **Interactive Checkpoints (v2.0.3)**: 5 AskUserQuestion gates — Plan (requirements + questions), Design (3 architecture options), Do (scope approval), Check (fix strategy)
 - **Confidence-Based Analysis (v2.0.3)**: code-analyzer reports only ≥80% confidence issues with Critical/Important severity
@@ -140,7 +140,7 @@ Context Engineering is the **systematic design of information flow to LLMs**—g
 - Create adaptive triggers based on user intent (9-language, auto-detection)
 - Implement quality feedback loops with quality gates and metrics (M1-M10)
 
-**bkit v2.0.0 Implementation**:
+**ROSSI v2.0.0 Implementation**:
 ```
 Domain Knowledge (37 Skills) ──┐
 Behavioral Rules (32 Agents) ──┼─→ 18-Event Hook System ─→ Dynamic Context Injection
@@ -150,17 +150,17 @@ Controllable AI (L0-L4) ───────┤
 Audit System (JSONL traces) ───┘
 ```
 
-See [bkit-system/philosophy/context-engineering.md](bkit-system/philosophy/context-engineering.md) for detailed implementation.
+See [rossi-system/philosophy/context-engineering.md](rossi-system/philosophy/context-engineering.md) for detailed implementation.
 
 ---
 
-## How bkit Realizes AI-Native Development
+## How ROSSI Realizes AI-Native Development
 
-bkit implements each AI-Native principle through specific features and workflows:
+ROSSI implements each AI-Native principle through specific features and workflows:
 
 ### Principle 1: Specification-Driven Development
 
-| bkit Feature | Implementation |
+| ROSSI Feature | Implementation |
 |--------------|----------------|
 | **PDCA Plan Phase** | Creates detailed specifications before coding |
 | **PDCA Design Phase** | Defines architecture, APIs, data models |
@@ -176,9 +176,9 @@ bkit implements each AI-Native principle through specific features and workflows
 
 ### Principle 2: Context-Aware Development (Context Engineering)
 
-bkit implements **Context Engineering**—the systematic curation of context tokens for optimal LLM inference.
+ROSSI implements **Context Engineering**—the systematic curation of context tokens for optimal LLM inference.
 
-| bkit Feature | Implementation |
+| ROSSI Feature | Implementation |
 |--------------|----------------|
 | **3 Project Levels** | Starter, Dynamic, Enterprise contexts |
 | **Convention Skill (Phase 2)** | Defines naming, structure, patterns |
@@ -190,7 +190,7 @@ bkit implements **Context Engineering**—the systematic curation of context tok
 **Context Engineering Architecture (v2.0.0)**:
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│              bkit v2.0.0 Context Engineering Layers              │
+│              ROSSI v2.0.0 Context Engineering Layers              │
 ├─────────────────────────────────────────────────────────────────┤
 │  Layer 1: Domain Knowledge   │ 37 Skills (structured knowledge)  │
 │  Layer 2: Behavioral Rules   │ 32 Agents (role + constraints)    │
@@ -210,7 +210,7 @@ User Message → Intent Detection → Skill/Agent Trigger →
 
 ### Principle 3: AI Agents as Developers
 
-| bkit Feature | Implementation |
+| ROSSI Feature | Implementation |
 |--------------|----------------|
 | **32 Specialized Agents** | 11 opus + 19 sonnet + 2 haiku (cto-lead, code-analyzer, gap-detector, pm-lead, self-healing, etc.) |
 | **Evaluator-Optimizer Pattern** | Automatic iteration cycles |
@@ -224,7 +224,7 @@ code-explorer → code-architect → implementation → code-reviewer → qa-mon
 
 ### Principle 4: Human Oversight by Design
 
-| bkit Feature | Implementation |
+| ROSSI Feature | Implementation |
 |--------------|----------------|
 | **Interactive Checkpoints (v2.0.3)** | 5 AskUserQuestion gates: requirements, questions, architecture, scope, fix strategy |
 | **PDCA Methodology** | Quality gate at each phase transition |
@@ -245,7 +245,7 @@ idle → [PM Gate] → Plan [CP1: Requirements] [CP2: Questions]
 
 **Principle**: A CTO agent orchestrates multiple specialized AI agents working in parallel, mimicking real development team dynamics.
 
-| bkit Feature | Implementation |
+| ROSSI Feature | Implementation |
 |--------------|----------------|
 | **CTO Lead Agent** | Orchestrates team composition, task assignment, and quality gates |
 | **5 Team Agents** | frontend-architect, product-manager, qa-strategist, security-architect, cto-lead |
@@ -275,12 +275,12 @@ idle → [PM Gate] → Plan [CP1: Requirements] [CP2: Questions]
 
 ---
 
-## bkit's 3 Core AI-Native Competencies
+## ROSSI's 3 Core AI-Native Competencies
 
 ### 1. Rapid Specification-to-Implementation
 
 **Traditional**: Days to weeks from spec to working code
-**With bkit**: 2-3 conversations for bulk implementation
+**With ROSSI**: 2-3 conversations for bulk implementation
 
 ```
 Specification Document → PDCA Design → AI Implementation → Working Code
@@ -308,11 +308,11 @@ Specification Document → PDCA Design → AI Implementation → Working Code
 
 ---
 
-## Comparison: Traditional vs AI-Native with bkit
+## Comparison: Traditional vs AI-Native with ROSSI
 
-![AI-Native by bkit - Part 2](images/ai-native-by-bkit-2.png)
+![AI-Native by ROSSI - Part 2](images/ai-native-by-ROSSI-2.png)
 
-| Aspect | Traditional Development | AI-Native with bkit |
+| Aspect | Traditional Development | AI-Native with ROSSI |
 |--------|------------------------|---------------------|
 | **Specification** | Optional, often skipped | Required, template-driven |
 | **Context** | In developer's head | Documented, AI-accessible |
@@ -367,11 +367,11 @@ Specification Document → PDCA Design → AI Implementation → Working Code
 
 ## Conclusion
 
-AI-Native development is not about using AI tools occasionally—it's about fundamentally restructuring how software is built. bkit provides the framework, methodology, and tools to make this transformation practical and achievable.
+AI-Native development is not about using AI tools occasionally—it's about fundamentally restructuring how software is built. ROSSI provides the framework, methodology, and tools to make this transformation practical and achievable.
 
-The key insight: **Specification quality determines AI output quality**. By enforcing structured documentation through PDCA methodology, bkit ensures that AI agents have the context they need to produce high-quality, consistent code.
+The key insight: **Specification quality determines AI output quality**. By enforcing structured documentation through PDCA methodology, ROSSI ensures that AI agents have the context they need to produce high-quality, consistent code.
 
 ---
 
-*bkit - Vibecoding Kit for AI-Native Development*
-*POPUP STUDIO PTE. LTD. - https://popupstudio.ai*
+*ROSSI CTO Agent Kit for AI-Native Development*
+*Концерн РОССИ (ЗАО РОССИ) - https://rossi.ru*

@@ -1,12 +1,12 @@
-# bkit v2.0.0 영역 2 — 통제 가능한 AI 아키텍처 상세 설계
+# ROSSI v2.0.0 영역 2 — 통제 가능한 AI 아키텍처 상세 설계
 
 > **Summary**: 5단계 자동화 레벨(L0-L4), Permission Manager v2.0, 파괴적 작업 감지, Blast Radius 분석, 체크포인트/롤백, 무한 루프 방지, Decision Trace, 감사 로그, Plan Preview, Trust Score, 사용자 피드백 학습 — 통제 가능한 AI 4원칙을 구현하는 11개 모듈 상세 설계
 >
-> **Project**: bkit v2.0.0
-> **Author**: Security Architect (bkit-security-architect)
+> **Project**: ROSSI v2.0.0
+> **Author**: Security Architect (ROSSI-security-architect)
 > **Date**: 2026-03-19
 > **Status**: Draft
-> **Planning Doc**: [bkit-v200-enhancement.plan.md](../../01-plan/features/bkit-v200-enhancement.plan.md)
+> **Planning Doc**: [rossi-v200-enhancement.plan.md](../../01-plan/features/rossi-v200-enhancement.plan.md)
 > **관련 FR**: FR-03, FR-10, FR-11, FR-12, FR-13, FR-14, FR-25
 > **4원칙**: 안전 기본값, 점진적 신뢰, 완전한 가시성, 언제나 중단 가능
 
@@ -52,7 +52,7 @@ lib/
 │
 ├── permission-manager.js          # v2.0 확장 — 레벨 인식 (FR-03)
 │
-.bkit/
+.rossi/
 ├── audit/
 │   ├── YYYY-MM-DD.jsonl           # 일별 감사 로그
 │   └── summary/
@@ -70,7 +70,7 @@ lib/
 
 ```
                           ┌─────────────────┐
-                          │  bkit.config.json │
+                          │  rossi.config.json │
                           │ automation section│
                           └────────┬──────────┘
                                    │ 초기 레벨 설정
@@ -91,7 +91,7 @@ lib/
                    ┌──────┴──────┐
                    ▼             ▼
               audit-logger  decision-tracer
-              (.bkit/audit) (.bkit/decisions)
+              (.rossi/audit) (.rossi/decisions)
                    │             │
                    └──────┬──────┘
                           ▼
@@ -159,7 +159,7 @@ lib/
 | **Do→Check 전환** | gate | gate | gate(확인) | auto | auto |
 | **Report→Archive** | gate | gate | gate | gate | auto |
 
-### 2.4 bkit.config.json `automation` 섹션 전체 스키마
+### 2.4 rossi.config.json `automation` 섹션 전체 스키마
 
 ```jsonc
 {
@@ -242,7 +242,7 @@ lib/
 }
 ```
 
-### 2.5 런타임 상태 파일 (`.bkit/runtime/control-state.json`)
+### 2.5 런타임 상태 파일 (`.rossi/runtime/control-state.json`)
 
 ```jsonc
 {
@@ -374,7 +374,7 @@ skills/control/SKILL.md
 |-----------|----------|
 | `lib/pdca/automation.js` → `getAutomationLevel()` | `getLegacyAutomationLevel()` 위임. 기존 `'manual'/'semi-auto'/'full-auto'` 3단계를 L0-L4 매핑: manual→L0, semi-auto→L2, full-auto→L4 |
 | `lib/pdca/automation.js` → `shouldAutoAdvance()` | `resolveAction('phase_transition', { phase })` 결과가 `'auto'`이면 true |
-| `bkit.config.json` → `pdca.automationLevel` | v2.0.0에서 `automation.defaultLevel`이 우선, 없으면 기존 `pdca.automationLevel`을 매핑하여 호환 |
+| `rossi.config.json` → `pdca.automationLevel` | v2.0.0에서 `automation.defaultLevel`이 우선, 없으면 기존 `pdca.automationLevel`을 매핑하여 호환 |
 | `lib/core/config.js` → `getConfig()` | `automation.*` 경로 추가, 기존 경로도 동작 유지 |
 
 ### 2.9 보안 고려사항
@@ -520,9 +520,9 @@ function patternToRegex(pattern) {
 ```js
 // v1.6.2 호환 레이어
 // 기존 DEFAULT_PERMISSIONS는 유지하되, LEVEL_PERMISSIONS가 있으면 우선 사용
-// 기존 bkit.config.json의 "permissions" 섹션도 계속 동작
+// 기존 rossi.config.json의 "permissions" 섹션도 계속 동작
 // 결정 순서:
-//   1. bkit.config.json "permissions" (사용자 정의) — 최우선
+//   1. rossi.config.json "permissions" (사용자 정의) — 최우선
 //   2. LEVEL_PERMISSIONS[현재 레벨] — 레벨 기반
 //   3. DEFAULT_PERMISSIONS — 폴백
 
@@ -577,7 +577,7 @@ function _mapToLegacy(perm) {
 | G-004 | 환경/인프라 변경 | `.env` 파일 수정, `docker rm`, `kubectl delete` | High |
 | G-005 | 권한 변경 | `chmod 777`, `chown`, `setfacl` | High |
 | G-006 | 대량 파일 변경 | 10개 이상 파일 동시 변경 | Medium |
-| G-007 | 설정 파일 변경 | `bkit.config.json`, `package.json`, `tsconfig.json` 등 핵심 설정 | Medium |
+| G-007 | 설정 파일 변경 | `rossi.config.json`, `package.json`, `tsconfig.json` 등 핵심 설정 | Medium |
 | G-008 | 네트워크 작업 | `curl -X POST/PUT/DELETE`, `wget --post-data` | Low |
 
 ### 4.3 규칙별 상세 패턴 + 정규식
@@ -687,7 +687,7 @@ const DESTRUCTIVE_RULES = [
     category: 'config_change',
     severity: 'medium',
     patterns: [
-      { regex: /bkit\.config\.json$/i, desc: 'bkit config', type: 'file_path' },
+      { regex: /ROSSI\.config\.json$/i, desc: 'ROSSI config', type: 'file_path' },
       { regex: /package\.json$/i, desc: 'package.json', type: 'file_path' },
       { regex: /tsconfig(\.\w+)?\.json$/i, desc: 'tsconfig', type: 'file_path' },
       { regex: /\.eslintrc/i, desc: 'eslint config', type: 'file_path' },
@@ -988,7 +988,7 @@ createCheckpoint('auto', {
     ├── 파일 스냅샷 생성 (읽기 → Base64 인코딩 → SHA-256 해시)
     ├── pdca-status.json + control-state.json 스냅샷
     ├── git ref 기록
-    ├── .bkit/checkpoints/cp-{timestamp}.json 저장
+    ├── .rossi/checkpoints/cp-{timestamp}.json 저장
     ├── 보존 정책 실행 (50개 초과 시 가장 오래된 auto 삭제)
     └── 감사 로그 기록
 ```
@@ -1440,12 +1440,12 @@ function handlePostToolUse(hookInput) {
 
 ### 8.5 저장 형식
 
-저장 경로: `.bkit/decisions/YYYY-MM-DD.jsonl`
+저장 경로: `.rossi/decisions/YYYY-MM-DD.jsonl`
 
 각 줄이 하나의 JSON 객체 (JSONL = JSON Lines):
 
 ```jsonl
-{"id":"dt-1710820800000-001","timestamp":"2026-03-19T10:00:00.000Z","feature":"bkit-v200","phase":"do","automationLevel":2,"context":{"hook":"PreToolUse","toolName":"Bash","toolInput":"rm -rf dist/"},"decision":{"type":"destructive_block","action":"deny","target":"dist/"},"reasoning":{"rule":"G-001","explanation":"Recursive force deletion detected at L2","alternatives":["rm -r dist/ (with confirmation)","git clean -fd"]},"impact":{"filesAffected":["dist/"],"trustScoreChange":"-3"}}
+{"id":"dt-1710820800000-001","timestamp":"2026-03-19T10:00:00.000Z","feature":"rossi-v200","phase":"do","automationLevel":2,"context":{"hook":"PreToolUse","toolName":"Bash","toolInput":"rm -rf dist/"},"decision":{"type":"destructive_block","action":"deny","target":"dist/"},"reasoning":{"rule":"G-001","explanation":"Recursive force deletion detected at L2","alternatives":["rm -r dist/ (with confirmation)","git clean -fd"]},"impact":{"filesAffected":["dist/"],"trustScoreChange":"-3"}}
 ```
 
 ### 8.6 Export 함수
@@ -1625,7 +1625,7 @@ const AUDIT_RETENTION = {
 ```js
 /**
  * 일별 요약 스키마
- * 저장: .bkit/audit/summary/daily-YYYY-MM-DD.json
+ * 저장: .rossi/audit/summary/daily-YYYY-MM-DD.json
  */
 const dailySummary = {
   date: '2026-03-19',
@@ -1666,7 +1666,7 @@ const dailySummary = {
 
 /**
  * 주별 요약 스키마
- * 저장: .bkit/audit/summary/weekly-YYYY-WNN.json
+ * 저장: .rossi/audit/summary/weekly-YYYY-WNN.json
  */
 const weeklySummary = {
   week: '2026-W12',
@@ -2097,7 +2097,7 @@ function resetScore(initialScore = 60, reason) {}
 /**
  * Trust Profile 저장 경로
  * ${CLAUDE_PLUGIN_DATA}/trust-profile.json (영구)
- * .bkit/runtime/trust-profile.json (프로젝트별 캐시)
+ * .rossi/runtime/trust-profile.json (프로젝트별 캐시)
  */
 function saveTrustProfile() {}
 function loadTrustProfile() {}
@@ -2110,7 +2110,7 @@ Trust Profile은 세션 간 유지가 핵심:
 ```
 저장 우선순위:
 1. ${CLAUDE_PLUGIN_DATA}/trust-profile.json  — CC가 제공하는 영구 스토리지 (ENH-119)
-2. .bkit/runtime/trust-profile.json          — 프로젝트 로컬 폴백
+2. .rossi/runtime/trust-profile.json          — 프로젝트 로컬 폴백
 
 로딩 순서:
 1. PLUGIN_DATA에서 로딩 시도
@@ -2277,7 +2277,7 @@ function checkConsecutiveRejections() {}
 
 ```
                         ┌──────────────────┐
-                        │ bkit.config.json │
+                        │ rossi.config.json │
                         └────────┬─────────┘
                                  │
                     ┌────────────┼────────────┐
@@ -2371,7 +2371,7 @@ function handleDestructiveDetection(result) {
 
 | 4원칙 | 구현 | 검증 방법 |
 |-------|------|----------|
-| **안전 기본값** | L2 기본, deny→ask→allow 체인 유지 | bkit.config.json 기본 스키마 검증 |
+| **안전 기본값** | L2 기본, deny→ask→allow 체인 유지 | rossi.config.json 기본 스키마 검증 |
 | **점진적 신뢰** | Trust Score 기반 에스컬레이션, 1단계씩만 상승 | evaluateLevel() 단위 테스트 |
 | **완전한 가시성** | 모든 결정에 Decision Trace + Audit Log | JSONL 파일 존재 + 빈 파일 경고 |
 | **언제나 중단 가능** | emergencyStop() 즉시 실행, 체크포인트 롤백 | emergency 시나리오 통합 테스트 |
@@ -2392,4 +2392,4 @@ function handleDestructiveDetection(result) {
 
 | 버전 | 날짜 | 변경 | 작성자 |
 |------|------|------|--------|
-| 0.1 | 2026-03-19 | 영역 2 전체 11개 모듈 상세 설계 초안 | Security Architect (bkit-security-architect) |
+| 0.1 | 2026-03-19 | 영역 2 전체 11개 모듈 상세 설계 초안 | Security Architect (ROSSI-security-architect) |

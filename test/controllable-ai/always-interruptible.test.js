@@ -118,7 +118,7 @@ test('AI-010', 'Config checkpointOnDestructive is true', () => {
   const fs = require('fs');
   const path = require('path');
   const config = JSON.parse(fs.readFileSync(
-    path.resolve(__dirname, '../../bkit.config.json'), 'utf8'));
+    path.resolve(__dirname, '../../rossi.config.json'), 'utf8'));
   assert.strictEqual(config.guardrails.checkpointOnDestructive, true);
 });
 

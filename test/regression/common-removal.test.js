@@ -4,7 +4,7 @@
  * Regression Test: Common.js Removal Verification (25 TC)
  * CR-001~025: Verify 0 scripts in scripts/ and hooks/ reference common.js by file scanning
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');

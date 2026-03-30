@@ -4,7 +4,7 @@
  * Unit Tests for lib/pdca/do-detector.js
  * 15 TC | Layer 1 explicit, Layer 2 implicit, Layer 3 confirmation, edge cases
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

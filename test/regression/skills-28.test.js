@@ -3,7 +3,7 @@
  * Regression Test: 28 Skills Full Verification (56 TC)
  * Each skill: (1) eval.yaml existence (2) trigger matching in SKILL.md
  *
- * @version bkit v1.6.1
+ * @version ROSSI v1.6.1
  */
 const fs = require('fs');
 const path = require('path');
@@ -24,7 +24,7 @@ console.log('\n=== skills-28.test.js (56 TC) ===\n');
 
 // --- Skill definitions ---
 const WORKFLOW_SKILLS = [
-  'pdca', 'bkit-rules', 'bkit-templates', 'code-review',
+  'pdca', 'rossi-rules', 'rossi-templates', 'code-review',
   'development-pipeline', 'phase-2-convention', 'phase-8-review',
   'pm-discovery', 'zero-script-qa'
 ];

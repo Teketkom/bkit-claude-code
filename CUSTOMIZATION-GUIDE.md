@@ -1,14 +1,14 @@
 # Claude Code Plugin Customization Guide
 
-A comprehensive guide to customizing Claude Code plugins for your organization, using bkit as a reference implementation.
+A comprehensive guide to customizing Claude Code plugins for your organization, using ROSSI as a reference implementation.
 
 ---
 
 ## Table of Contents
 
-**Part I: Understanding bkit**
-1. [bkit Design Philosophy](#1-bkit-design-philosophy)
-2. [Why bkit is Well-Designed](#2-why-bkit-is-well-designed)
+**Part I: Understanding ROSSI**
+1. [ROSSI Design Philosophy](#1-ROSSI-design-philosophy)
+2. [Why ROSSI is Well-Designed](#2-why-ROSSI-is-well-designed)
 3. [Supported Languages & Frameworks](#3-supported-languages--frameworks)
 4. [Enterprise AI-Native Architecture](#4-enterprise-ai-native-architecture)
 
@@ -34,9 +34,9 @@ A comprehensive guide to customizing Claude Code plugins for your organization, 
 
 ---
 
-## 1. bkit Design Philosophy
+## 1. ROSSI Design Philosophy
 
-Before customizing bkit, understanding its design intent helps you make better decisions about what to adapt and what to keep.
+Before customizing ROSSI, understanding its design intent helps you make better decisions about what to adapt and what to keep.
 
 ### Core Mission
 
@@ -48,13 +48,13 @@ In essence: **AI guides humans toward good development practices**.
 
 | Philosophy | Description | Implementation |
 |------------|-------------|----------------|
-| **Automation First** | Claude automatically applies PDCA even if user doesn't know commands | `bkit-rules` skill + PreToolUse hooks |
+| **Automation First** | Claude automatically applies PDCA even if user doesn't know commands | `rossi-rules` skill + PreToolUse hooks |
 | **No Guessing** | If unsure, check docs → If not in docs, ask user (never guess) | Design-first workflow, `gap-detector` agent |
 | **Docs = Code** | Design first, implement later (maintain design-implementation sync) | PDCA workflow + `/pdca-analyze` command |
 
 ### Well-Designed Aspects Worth Preserving
 
-When customizing bkit, consider keeping these architectural patterns:
+When customizing ROSSI, consider keeping these architectural patterns:
 
 #### 1. Layered Trigger System
 
@@ -70,7 +70,7 @@ This separation allows fine-grained control over when and how automation trigger
 
 #### 2. Level-Based Adaptation
 
-bkit automatically adjusts its behavior based on detected project complexity:
+ROSSI automatically adjusts its behavior based on detected project complexity:
 
 | Level | Detection | Behavior |
 |-------|-----------|----------|
@@ -93,7 +93,7 @@ Each of the 9 pipeline phases runs its own PDCA cycle—not one PDCA for the who
 
 #### 4. Zero Script QA
 
-Instead of writing test scripts, bkit uses:
+Instead of writing test scripts, ROSSI uses:
 - Structured JSON logging
 - Request ID flow tracking
 - AI-powered real-time log analysis
@@ -110,23 +110,23 @@ Instead of writing test scripts, bkit uses:
 
 ### Design Documentation
 
-For deeper understanding, explore the `bkit-system/` folder:
+For deeper understanding, explore the `rossi-system/` folder:
 
 | Document | Purpose |
 |----------|---------|
-| [bkit-system/README.md](bkit-system/README.md) | System architecture overview |
-| [Core Mission](bkit-system/philosophy/core-mission.md) | 3 philosophies explained |
-| [AI-Native Principles](bkit-system/philosophy/ai-native-principles.md) | AI-Native development model |
-| [PDCA Methodology](bkit-system/philosophy/pdca-methodology.md) | PDCA + 9-stage pipeline |
-| [Graph Index](bkit-system/_GRAPH-INDEX.md) | Obsidian visualization hub |
+| [rossi-system/README.md](rossi-system/README.md) | System architecture overview |
+| [Core Mission](rossi-system/philosophy/core-mission.md) | 3 philosophies explained |
+| [AI-Native Principles](rossi-system/philosophy/ai-native-principles.md) | AI-Native development model |
+| [PDCA Methodology](rossi-system/philosophy/pdca-methodology.md) | PDCA + 9-stage pipeline |
+| [Graph Index](rossi-system/_GRAPH-INDEX.md) | Obsidian visualization hub |
 
-> **Tip**: Open `bkit-system/` as an [Obsidian](https://obsidian.md/) vault and press `Ctrl/Cmd + G` to visualize all component relationships.
+> **Tip**: Open `rossi-system/` as an [Obsidian](https://obsidian.md/) vault and press `Ctrl/Cmd + G` to visualize all component relationships.
 
 ---
 
-## 2. Why bkit is Well-Designed
+## 2. Why ROSSI is Well-Designed
 
-bkit is not just a collection of prompts—it's a **production-grade plugin architecture** with carefully designed components that work together as a cohesive system.
+ROSSI is not just a collection of prompts—it's a **production-grade plugin architecture** with carefully designed components that work together as a cohesive system.
 
 ### Component Inventory (v1.5.9)
 
@@ -161,7 +161,7 @@ lib/
 │   ├── tier.js            # Language tier system
 │   ├── level.js           # Project level detection
 │   ├── phase.js           # PDCA phase management (supports number + string input)
-│   ├── status.js          # Status file operations + bkit memory CRUD
+│   ├── status.js          # Status file operations + ROSSI memory CRUD
 │   └── automation.js      # Full-auto mode + PDCA auto-advance
 ├── intent/                # Intent analysis (4 files, 19 exports)
 │   ├── index.js
@@ -210,11 +210,11 @@ const { debugLog, getConfig } = require('./lib/common');  // 210 exports
 
 ### Context Engineering Architecture (v1.5.3)
 
-bkit is a **practical implementation of Context Engineering**—the art of curating optimal tokens for LLM inference. Unlike traditional prompt engineering that focuses on single prompts, Context Engineering designs an entire system of context delivery.
+ROSSI is a **practical implementation of Context Engineering**—the art of curating optimal tokens for LLM inference. Unlike traditional prompt engineering that focuses on single prompts, Context Engineering designs an entire system of context delivery.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│              bkit Context Engineering Architecture              │
+│              ROSSI Context Engineering Architecture              │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────┐  │
@@ -250,7 +250,7 @@ bkit is a **practical implementation of Context Engineering**—the art of curat
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-#### Context Engineering Patterns in bkit
+#### Context Engineering Patterns in ROSSI
 
 | Pattern | Implementation | Purpose |
 |---------|----------------|---------|
@@ -261,9 +261,9 @@ bkit is a **practical implementation of Context Engineering**—the art of curat
 | **State Injection** | SessionStart + Scripts | PDCA status, feature context, iteration counters |
 | **Adaptive Guidance** | lib/common.js | Level-based branching, 9-language triggers, ambiguity detection |
 
-> **Key Insight**: bkit doesn't just prompt the AI—it constructs an entire **context ecosystem** that guides AI behavior consistently across sessions.
+> **Key Insight**: ROSSI doesn't just prompt the AI—it constructs an entire **context ecosystem** that guides AI behavior consistently across sessions.
 
-For detailed Context Engineering documentation, see [bkit-system/philosophy/context-engineering.md](bkit-system/philosophy/context-engineering.md).
+For detailed Context Engineering documentation, see [rossi-system/philosophy/context-engineering.md](rossi-system/philosophy/context-engineering.md).
 
 ### Architectural Excellence
 
@@ -271,7 +271,7 @@ For detailed Context Engineering documentation, see [bkit-system/philosophy/cont
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│               bkit Component Architecture (v1.5.3)               │
+│               ROSSI Component Architecture (v1.5.3)               │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  Knowledge Layer    │ Skills (27)      │ Domain expertise       │
@@ -303,7 +303,7 @@ Every major workflow has three coordinated components:
 | Beginner Help | `starter` | `starter-guide` | `/init-starter` |
 | Fullstack Dev | `dynamic` | `bkend-expert` | `/init-dynamic` |
 | Enterprise | `enterprise` | `enterprise-expert` | `/init-enterprise` |
-| Gap Analysis | `bkit-rules` | `gap-detector` | `/pdca-analyze` |
+| Gap Analysis | `rossi-rules` | `gap-detector` | `/pdca-analyze` |
 | QA Testing | `zero-script-qa` | `qa-monitor` | `/zero-script-qa` |
 | Code Review | `phase-8-review` | `code-analyzer` | `/pdca-iterate` |
 
@@ -314,7 +314,7 @@ This triad pattern ensures:
 
 #### 3. Comprehensive Hook Coverage
 
-bkit implements hooks at **5 different layers**:
+ROSSI implements hooks at **5 different layers**:
 
 ```
 Layer 1: hooks.json (Plugin-level)
@@ -338,7 +338,7 @@ Layer 5: Scripts (49 Node.js scripts)
 
 #### 4. Template Completeness
 
-bkit provides templates for the **entire development lifecycle**:
+ROSSI provides templates for the **entire development lifecycle**:
 
 **PDCA Templates (6):**
 - `plan.template.md` - Feature planning
@@ -358,9 +358,9 @@ bkit provides templates for the **entire development lifecycle**:
 
 ### Why This Matters for Customization
 
-When you customize bkit, you inherit:
+When you customize ROSSI, you inherit:
 
-| Benefit | How bkit Provides It |
+| Benefit | How ROSSI Provides It |
 |---------|---------------------|
 | **Proven Architecture** | 260+ components tested together |
 | **Complete Workflows** | PDCA + 9-phase pipeline ready |
@@ -371,7 +371,7 @@ When you customize bkit, you inherit:
 
 ### Quality Indicators
 
-| Metric | bkit Value | Industry Typical |
+| Metric | ROSSI Value | Industry Typical |
 |--------|------------|------------------|
 | Component Count | 260+ | 10-20 |
 | Hook Layers | 6 | 1-2 |
@@ -384,7 +384,7 @@ When you customize bkit, you inherit:
 
 ## 3. Supported Languages & Frameworks
 
-bkit implements a **4-tier language classification system** optimized for AI-Native development.
+ROSSI implements a **4-tier language classification system** optimized for AI-Native development.
 
 ### Tier Classification System
 
@@ -468,7 +468,7 @@ bkit implements a **4-tier language classification system** optimized for AI-Nat
 
 ### Extension Detection
 
-bkit automatically detects language tier via file extensions:
+ROSSI automatically detects language tier via file extensions:
 
 ```bash
 # Detected in lib/common.js getLanguageTier()
@@ -491,7 +491,7 @@ Tier 4: .php .rb .erb .cs .scala .ex .exs
 
 ## 4. Enterprise AI-Native Architecture
 
-bkit is designed to support **Enterprise-grade systems** through AI-Native development, maintenance, operations, and legacy modernization.
+ROSSI is designed to support **Enterprise-grade systems** through AI-Native development, maintenance, operations, and legacy modernization.
 
 ### What is AI-Native Development?
 
@@ -563,7 +563,7 @@ Refactor existing systems to AI-Native architecture:
 
 Maintain and operate enterprise systems with AI assistance:
 
-| Operation | bkit Support |
+| Operation | ROSSI Support |
 |-----------|--------------|
 | **Incident Response** | qa-monitor agent analyzes logs in real-time |
 | **Code Review** | code-analyzer enforces quality standards |
@@ -608,7 +608,7 @@ Maintain and operate enterprise systems with AI assistance:
 
 ### AI-Native Development Benefits
 
-| Metric | Traditional | AI-Native (bkit) | Improvement |
+| Metric | Traditional | AI-Native (ROSSI) | Improvement |
 |--------|-------------|------------------|-------------|
 | **Simple CRUD** | 2-3 days | 2-4 hours | 80% faster |
 | **Medium Feature** | 1-2 weeks | 2-3 days | 70% faster |
@@ -646,7 +646,7 @@ Maintain and operate enterprise systems with AI assistance:
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Why Build Your .claude on bkit?
+### Why Build Your .claude on ROSSI?
 
 | Reason | Explanation |
 |--------|-------------|
@@ -690,7 +690,7 @@ When you install a Claude Code plugin, components are deployed to the global con
 | **Windows (PowerShell)** | `%USERPROFILE%\.claude\` or `C:\Users\<username>\.claude\` |
 | **Windows (WSL)** | `/home/<username>/.claude/` (Linux filesystem, NOT `/mnt/c/...`) |
 
-> **Note (v1.5.3)**: bkit is Claude Code exclusive. Gemini CLI support was removed in v1.5.0.
+> **Note (v1.5.3)**: ROSSI is Claude Code exclusive. Gemini CLI support was removed in v1.5.0.
 
 ### Managed Settings (Enterprise/Admin - Claude Code Only)
 
@@ -728,7 +728,7 @@ When you install a Claude Code plugin, components are deployed to the global con
 
 ## 7. Plugin Components Overview
 
-A Claude Code plugin like bkit consists of these components:
+A Claude Code plugin like ROSSI consists of these components:
 
 | Component | Purpose | Location |
 |-----------|---------|----------|
@@ -739,10 +739,10 @@ A Claude Code plugin like bkit consists of these components:
 | **Templates** | Document templates for standardization | `templates/` |
 | **Scripts** | Helper scripts for automation | `scripts/` |
 
-### bkit Plugin Structure Example (v1.6.2 - Claude Code Exclusive)
+### ROSSI Plugin Structure Example (v1.6.2 - Claude Code Exclusive)
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 ├── .claude-plugin/
 │   ├── plugin.json                 # Claude Code plugin metadata
 │   └── marketplace.json            # Marketplace registration
@@ -757,7 +757,7 @@ bkit-claude-code/
 │   ├── security-architect.md       # Security & vulnerability expert
 │   └── ... (29 total, including 8 CTO/PM Team + 8 PDCA Eval agents)
 ├── skills/                         # Domain knowledge (31 skills)
-│   ├── bkit-rules/SKILL.md         # Core PDCA rules
+│   ├── rossi-rules/SKILL.md         # Core PDCA rules
 │   ├── plan-plus/SKILL.md          # Brainstorming-enhanced planning (v1.5.5)
 │   ├── development-pipeline/SKILL.md
 │   └── phase-*/SKILL.md            # 9-phase pipeline skills
@@ -769,10 +769,10 @@ bkit-claude-code/
 ├── scripts/                        # Hook execution scripts (49 scripts)
 │   └── *.js
 ├── output-styles/                  # Level-based response formatting (v1.5.3)
-│   ├── bkit-learning.md            # Starter level style
-│   ├── bkit-pdca-guide.md          # Dynamic level style
-│   ├── bkit-enterprise.md          # Enterprise level style
-│   └── bkit-pdca-enterprise.md     # Enterprise PDCA style (v1.5.3)
+│   ├── rossi-learning.md            # Starter level style
+│   ├── rossi-pdca-guide.md          # Dynamic level style
+│   ├── rossi-enterprise.md          # Enterprise level style
+│   └── rossi-pdca-enterprise.md     # Enterprise PDCA style (v1.5.3)
 ├── lib/
 │   ├── common.js                   # Migration Bridge (v1.5.3)
 │   ├── core/                       # Core utilities (7 files)
@@ -851,7 +851,7 @@ Provide specific instructions for handling tasks.
 
 ### Customization Example: Creating an Organization-Specific Agent
 
-**Original bkit agent** (`agents/starter-guide.md`):
+**Original ROSSI agent** (`agents/starter-guide.md`):
 ```markdown
 ---
 name: starter-guide
@@ -1481,7 +1481,7 @@ templates/
 
 ## 13. Organization-Specific Customization
 
-### Step-by-Step: Forking bkit for Your Organization
+### Step-by-Step: Forking ROSSI for Your Organization
 
 #### Step 1: Create Your Plugin Structure
 
@@ -1507,9 +1507,9 @@ EOF
 #### Step 2: Copy and Customize Components
 
 ```bash
-# Copy bkit components you want to customize
-cp -r ~/.claude/plugins/bkit/agents/starter-guide.md agents/team-guide.md
-cp -r ~/.claude/plugins/bkit/skills/bkit-rules skills/org-rules
+# Copy ROSSI components you want to customize
+cp -r ~/.claude/plugins/ROSSI/agents/starter-guide.md agents/team-guide.md
+cp -r ~/.claude/plugins/ROSSI/skills/rossi-rules skills/org-rules
 
 # Edit to match your organization's needs
 ```
@@ -1699,24 +1699,24 @@ CLAUDE_CODE_DEBUG=hooks claude
 - [Claude Code Official Documentation](https://code.claude.com/docs/en/settings)
 - [Claude Code Skills Guide](https://code.claude.com/docs/en/skills)
 - [Agent Skills Open Standard](https://agentskills.io)
-- [bkit GitHub Repository](https://github.com/popup-studio-ai/bkit-claude-code)
+- [ROSSI GitHub Repository](https://github.com/rossi-dev/rossi-cto-agent-kit)
 
 ---
 
 ## License & Attribution
 
-### bkit License
+### ROSSI License
 
-bkit is licensed under the **Apache License 2.0**. This means you can:
+ROSSI is licensed under the **Apache License 2.0**. This means you can:
 
-- **Use** bkit freely in personal and commercial projects
-- **Modify** bkit to fit your organization's needs
+- **Use** ROSSI freely in personal and commercial projects
+- **Modify** ROSSI to fit your organization's needs
 - **Distribute** your customized versions
 - **Sublicense** derivative works under different terms
 
 ### Attribution Requirements
 
-When creating derivative works based on bkit, you **must**:
+When creating derivative works based on ROSSI, you **must**:
 
 1. **Include the original LICENSE file** or reference to Apache 2.0
 2. **Include the NOTICE file** with original attribution
@@ -1725,36 +1725,36 @@ When creating derivative works based on bkit, you **must**:
 
 ### NOTICE File Content
 
-When redistributing bkit or derivative works, include:
+When redistributing ROSSI or derivative works, include:
 
 ```
-bkit - Vibecoding Kit
-Copyright 2024-2026 POPUP STUDIO PTE. LTD.
+ROSSI CTO Agent Kit
+Copyright 2024-2026 Концерн РОССИ (ЗАО РОССИ)
 
-This product includes software developed by POPUP STUDIO PTE. LTD.
-https://github.com/popup-studio-ai/bkit-claude-code
+This product includes software developed by Концерн РОССИ (ЗАО РОССИ)
+https://github.com/rossi-dev/rossi-cto-agent-kit
 
 Licensed under the Apache License, Version 2.0
 ```
 
 ### Example Attribution for Derivative Plugins
 
-If you create a plugin based on bkit (e.g., "acme-dev-kit"), add to your `plugin.json`:
+If you create a plugin based on ROSSI (e.g., "acme-dev-kit"), add to your `plugin.json`:
 
 ```json
 {
   "name": "acme-dev-kit",
   "version": "1.0.0",
-  "description": "ACME Corp's development kit based on bkit",
+  "description": "ACME Corp's development kit based on ROSSI",
   "author": {
     "name": "ACME Corporation",
     "email": "dev@acme.com"
   },
   "license": "Apache-2.0",
   "attribution": {
-    "basedOn": "bkit Vibecoding Kit",
-    "originalAuthor": "POPUP STUDIO PTE. LTD.",
-    "originalRepository": "https://github.com/popup-studio-ai/bkit-claude-code"
+    "basedOn": "ROSSI CTO Agent Kit",
+    "originalAuthor": "Концерн РОССИ (ЗАО РОССИ)",
+    "originalRepository": "https://github.com/rossi-dev/rossi-cto-agent-kit"
   }
 }
 ```
@@ -1765,9 +1765,9 @@ And include a `NOTICE` file in your plugin root:
 ACME Dev Kit
 Copyright 2026 ACME Corporation
 
-This product is based on bkit Vibecoding Kit.
-Original work Copyright 2024-2026 POPUP STUDIO PTE. LTD.
-https://github.com/popup-studio-ai/bkit-claude-code
+This product is based on ROSSI CTO Agent Kit.
+Original work Copyright 2024-2026 Концерн РОССИ (ЗАО РОССИ)
+https://github.com/rossi-dev/rossi-cto-agent-kit
 
 Licensed under the Apache License, Version 2.0
 http://www.apache.org/licenses/LICENSE-2.0
@@ -1777,7 +1777,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 - You don't need to open-source your modifications
 - You don't need to use the same license for your additions
-- You don't need permission to use bkit commercially
+- You don't need permission to use ROSSI commercially
 
 For full license terms, see the [LICENSE](LICENSE) file.
 
@@ -1788,8 +1788,8 @@ For full license terms, see the [LICENSE](LICENSE) file.
 - [Claude Code Official Documentation](https://code.claude.com/docs/en/settings)
 - [Claude Code Skills Guide](https://code.claude.com/docs/en/skills)
 - [Agent Skills Open Standard](https://agentskills.io)
-- [bkit GitHub Repository](https://github.com/popup-studio-ai/bkit-claude-code)
+- [ROSSI GitHub Repository](https://github.com/rossi-dev/rossi-cto-agent-kit)
 
 ---
 
-*This guide is part of the bkit Vibecoding Kit. For questions or contributions, visit our [GitHub repository](https://github.com/popup-studio-ai/bkit-claude-code).*
+*This guide is part of the ROSSI CTO Agent Kit. For questions or contributions, visit our [GitHub repository](https://github.com/rossi-dev/rossi-cto-agent-kit).*

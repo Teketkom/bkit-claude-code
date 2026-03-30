@@ -1,6 +1,6 @@
 # Skills Overview
 
-> 37 Skills defined in bkit (v2.0.8)
+> 37 Skills defined in ROSSI (v2.0.8)
 >
 > **v1.4.1**: Added Context Engineering perspective - Domain Knowledge Layer
 > **v1.5.0**: Claude Code Exclusive
@@ -23,7 +23,7 @@ Skills are **domain-specific expert knowledge** components.
 
 ## Context Engineering Perspective (v1.4.1)
 
-Skills form bkit's **Domain Knowledge Layer**, designed according to [[../../philosophy/context-engineering|Context Engineering]] principles.
+Skills form ROSSI's **Domain Knowledge Layer**, designed according to [[../../philosophy/context-engineering|Context Engineering]] principles.
 
 ### Skill Context Engineering Patterns
 
@@ -78,8 +78,8 @@ Process automation skills that remain valuable regardless of model advancement:
 | plan-plus | Brainstorming-enhanced PDCA planning |
 | pm-discovery | Product discovery and market research |
 | development-pipeline | 9-stage pipeline overview |
-| bkit-rules | PDCA rules + auto-triggering + code quality standards |
-| bkit-templates | Template references + document standards |
+| rossi-rules | PDCA rules + auto-triggering + code quality standards |
+| rossi-templates | Template references + document standards |
 | phase-2-convention | Coding conventions |
 | phase-8-review | Code review + gap analysis |
 | code-review | Code review and quality analysis |
@@ -129,7 +129,7 @@ Each skill has a paired eval definition for data-driven quality measurement:
 
 ## Skill Creator (v1.6.0)
 
-Integrated workflow for creating new skills following bkit conventions:
+Integrated workflow for creating new skills following ROSSI conventions:
 - Generates SKILL.md with proper frontmatter structure
 - Creates paired eval definition automatically
 - Supports A/B testing to compare skill variants
@@ -159,8 +159,8 @@ Integrated workflow for creating new skills following bkit conventions:
 
 | Skill | Purpose | Hooks | Agent |
 |-------|---------|-------|-------|
-| [[../../../skills/bkit-rules/SKILL|bkit-rules]] | PDCA rules + auto-triggering + code quality standards | PreToolUse, PostToolUse | - |
-| [[../../../skills/bkit-templates/SKILL|bkit-templates]] | Template references + document standards | - | - |
+| [[../../../skills/rossi-rules/SKILL|rossi-rules]] | PDCA rules + auto-triggering + code quality standards | PreToolUse, PostToolUse | - |
+| [[../../../skills/rossi-templates/SKILL|rossi-templates]] | Template references + document standards | - | - |
 
 ### Level Skills (3)
 
@@ -218,10 +218,10 @@ The following skills were consolidated:
 |---------------|-------------|
 | `task-classification` | `lib/common.js` |
 | `level-detection` | `lib/common.js` |
-| `pdca-methodology` | `bkit-rules` |
-| `document-standards` | `bkit-templates` |
+| `pdca-methodology` | `rossi-rules` |
+| `document-standards` | `rossi-templates` |
 | `evaluator-optimizer` | `/pdca-iterate` command |
-| `analysis-patterns` | `bkit-templates` |
+| `analysis-patterns` | `rossi-templates` |
 | `ai-native-development` | `enterprise` |
 | `monorepo-architecture` | `enterprise` |
 
@@ -293,10 +293,10 @@ hooks:
 Skills are at root level (not in .claude/):
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 └── skills/
-    ├── bkit-rules/SKILL.md
-    ├── bkit-templates/SKILL.md
+    ├── rossi-rules/SKILL.md
+    ├── rossi-templates/SKILL.md
     ├── starter/SKILL.md
     ├── dynamic/SKILL.md
     ├── enterprise/SKILL.md
@@ -334,10 +334,10 @@ Level skills now suggest appropriate output styles:
 
 | Skill | Suggested Style |
 |-------|----------------|
-| `/starter` | `bkit-learning` |
-| `/dynamic` | `bkit-pdca-guide` |
-| `/enterprise` | `bkit-enterprise` |
-| `/pdca` | `bkit-pdca-guide` |
+| `/starter` | `rossi-learning` |
+| `/dynamic` | `rossi-pdca-guide` |
+| `/enterprise` | `rossi-enterprise` |
+| `/pdca` | `rossi-pdca-guide` |
 
 ### Agent Teams Integration
 
@@ -356,7 +356,7 @@ Level skills now suggest appropriate output styles:
 
 | Style | File | Best For |
 |-------|------|----------|
-| `bkit-learning` | `output-styles/bkit-learning.md` | Beginners, learning |
-| `bkit-pdca-guide` | `output-styles/bkit-pdca-guide.md` | PDCA workflows |
-| `bkit-enterprise` | `output-styles/bkit-enterprise.md` | Architecture decisions |
-| `bkit-pdca-enterprise` | `output-styles/bkit-pdca-enterprise.md` | Enterprise PDCA (v1.5.3) |
+| `rossi-learning` | `output-styles/rossi-learning.md` | Beginners, learning |
+| `rossi-pdca-guide` | `output-styles/rossi-pdca-guide.md` | PDCA workflows |
+| `rossi-enterprise` | `output-styles/rossi-enterprise.md` | Architecture decisions |
+| `rossi-pdca-enterprise` | `output-styles/rossi-pdca-enterprise.md` | Enterprise PDCA (v1.5.3) |

@@ -4,7 +4,7 @@
  * Unit Tests for post-compaction.js
  * 15 TC | PostCompact hook handler validation
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

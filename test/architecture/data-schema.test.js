@@ -123,40 +123,40 @@ assert('DS-010',
 // ============================================================
 
 // Setup temp directory
-const SCHEMA_TEST_DIR = path.join(os.tmpdir(), `bkit-schema-test-${process.pid}-${Date.now()}`);
+const SCHEMA_TEST_DIR = path.join(os.tmpdir(), `ROSSI-schema-test-${process.pid}-${Date.now()}`);
 const platform = require(path.join(PROJECT_ROOT, 'lib/core/platform'));
 const origProjectDir = platform.PROJECT_DIR;
 platform.PROJECT_DIR = SCHEMA_TEST_DIR;
 
-// DS-011: ensureBkitDirs creates root .bkit directory
+// DS-011: ensureBkitDirs creates root .ROSSI directory
 corePaths.ensureBkitDirs();
 assert('DS-011',
-  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.bkit')),
-  'ensureBkitDirs creates .bkit root directory'
+  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.rossi')),
+  'ensureBkitDirs creates .ROSSI root directory'
 );
 
 // DS-012: ensureBkitDirs creates state directory
 assert('DS-012',
-  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.bkit', 'state')),
-  'ensureBkitDirs creates .bkit/state directory'
+  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.rossi', 'state')),
+  'ensureBkitDirs creates .rossi/state directory'
 );
 
 // DS-013: ensureBkitDirs creates runtime directory
 assert('DS-013',
-  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.bkit', 'runtime')),
-  'ensureBkitDirs creates .bkit/runtime directory'
+  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.rossi', 'runtime')),
+  'ensureBkitDirs creates .rossi/runtime directory'
 );
 
 // DS-014: ensureBkitDirs creates audit directory
 assert('DS-014',
-  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.bkit', 'audit')),
-  'ensureBkitDirs creates .bkit/audit directory'
+  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.rossi', 'audit')),
+  'ensureBkitDirs creates .rossi/audit directory'
 );
 
 // DS-015: ensureBkitDirs creates checkpoints directory
 assert('DS-015',
-  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.bkit', 'checkpoints')),
-  'ensureBkitDirs creates .bkit/checkpoints directory'
+  fs.existsSync(path.join(SCHEMA_TEST_DIR, '.rossi', 'checkpoints')),
+  'ensureBkitDirs creates .rossi/checkpoints directory'
 );
 
 // ============================================================
@@ -187,10 +187,10 @@ assert('DS-018',
 // DS-019: CONFIG_PATHS has required entries
 const { CONFIG_PATHS } = corePaths;
 assert('DS-019',
-  typeof CONFIG_PATHS.bkitConfig === 'function' &&
+  typeof CONFIG_PATHS.rossiConfig === 'function' &&
   typeof CONFIG_PATHS.pluginJson === 'function' &&
   typeof CONFIG_PATHS.hooksJson === 'function',
-  'CONFIG_PATHS has bkitConfig, pluginJson, hooksJson'
+  'CONFIG_PATHS has rossiConfig, pluginJson, hooksJson'
 );
 
 // DS-020: Constants module exports quality-related constants

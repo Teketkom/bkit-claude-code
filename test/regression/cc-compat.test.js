@@ -6,7 +6,7 @@
  * CC-006~010: hooks.json timeout values within CC limits
  * CC-011~015: plugin.json engines field correct
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -23,7 +23,7 @@ console.log('\n=== cc-compat.test.js (15 TC) ===\n');
 // --- Load configs ---
 const pluginJson = JSON.parse(fs.readFileSync(path.join(BASE_DIR, '.claude-plugin', 'plugin.json'), 'utf-8'));
 const hooksConfig = JSON.parse(fs.readFileSync(path.join(HOOKS_DIR, 'hooks.json'), 'utf-8'));
-const bkitConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'bkit.config.json'), 'utf-8'));
+const rossiConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'rossi.config.json'), 'utf-8'));
 
 // ============================================================
 // CC-001~005: CC v2.1.78+ features used
@@ -137,16 +137,16 @@ console.log('\n--- plugin.json Validation ---');
 assert('CC-011', typeof pluginJson.version === 'string' && pluginJson.version.length > 0,
   `plugin.json version = "${pluginJson.version}"`);
 
-// CC-012: plugin.json version matches bkit.config.json
-assert('CC-012', pluginJson.version === bkitConfig.version,
-  `plugin.json version (${pluginJson.version}) matches bkit.config.json (${bkitConfig.version})`);
+// CC-012: plugin.json version matches rossi.config.json
+assert('CC-012', pluginJson.version === rossiConfig.version,
+  `plugin.json version (${pluginJson.version}) matches rossi.config.json (${rossiConfig.version})`);
 
 // CC-013: plugin.json has outputStyles
 assert('CC-013', typeof pluginJson.outputStyles === 'string',
   `plugin.json outputStyles = "${pluginJson.outputStyles}"`);
 
 // CC-014: plugin.json has name field
-assert('CC-014', pluginJson.name === 'bkit',
+assert('CC-014', pluginJson.name === 'ROSSI',
   `plugin.json name = "${pluginJson.name}"`);
 
 // CC-015: plugin.json has license

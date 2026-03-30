@@ -6,7 +6,7 @@
  * SP-006~010: lockedUpdate() completes in <20ms
  * SP-011~015: appendJsonl() 100 entries in <100ms
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const { performance } = require('perf_hooks');
@@ -40,7 +40,7 @@ try {
 }
 
 // Temp directory for testing
-const TEMP_DIR = path.join(os.tmpdir(), `bkit-perf-test-${process.pid}`);
+const TEMP_DIR = path.join(os.tmpdir(), `ROSSI-perf-test-${process.pid}`);
 fs.mkdirSync(TEMP_DIR, { recursive: true });
 
 console.log('\n=== state-store-perf.test.js (15 TC) ===\n');

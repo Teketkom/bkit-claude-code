@@ -4,7 +4,7 @@
  * Regression Test: 36 Skills Full Verification (40 TC)
  * SK36-001~040: Each of 36 skills has SKILL.md with valid frontmatter
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -36,7 +36,7 @@ console.log('\n=== skills-36.test.js (40 TC) ===\n');
 // --- All 36 skills ---
 const ALL_SKILLS = [
   'audit', 'bkend-auth', 'bkend-cookbook', 'bkend-data', 'bkend-quickstart',
-  'bkend-storage', 'bkit-rules', 'bkit-templates', 'btw', 'cc-version-analysis',
+  'bkend-storage', 'rossi-rules', 'rossi-templates', 'btw', 'cc-version-analysis',
   'claude-code-learning', 'code-review', 'control', 'desktop-app',
   'development-pipeline', 'dynamic', 'enterprise', 'mobile-app', 'pdca',
   'pdca-batch', 'phase-1-schema', 'phase-2-convention', 'phase-3-mockup',

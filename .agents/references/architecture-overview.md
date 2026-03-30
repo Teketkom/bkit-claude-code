@@ -1,19 +1,19 @@
-# Архитектура bkit — Обзор
+# Архитектура ROSSI — Обзор
 
 ## Структура проекта
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 ├── .claude-plugin/          # Plugin manifest (plugin.json, marketplace.json)
 ├── .mcp.json                # MCP server configuration
 ├── agents/                  # 32 AI агента (11 opus / 19 sonnet / 2 haiku)
-├── bkit-system/             # Системная документация (Obsidian vault)
+├── rossi-system/             # Системная документация (Obsidian vault)
 │   ├── philosophy/          # Миссия, принципы, PDCA методология
 │   ├── components/          # Обзоры агентов, скиллов, хуков, скриптов
 │   ├── scenarios/           # Сценарии использования
 │   ├── testing/             # Чек-листы тестирования
 │   └── triggers/            # Матрица триггеров, правила приоритетов
-├── commands/                # CLI команды (/bkit, output-style-setup)
+├── commands/                # CLI команды (/ROSSI, output-style-setup)
 ├── docs/                    # PDCA документация
 │   ├── 00-pm/               # PRD документы
 │   ├── 01-plan/             # Планы
@@ -36,7 +36,7 @@ bkit-claude-code/
 ├── output-styles/           # 4 стиля вывода (learning, pdca-guide, enterprise, pdca-enterprise)
 ├── refs/                    # Официальные источники Claude Code
 ├── scripts/                 # 57 скриптов хуков
-├── servers/                 # MCP серверы (bkit-pdca, bkit-analysis)
+├── servers/                 # MCP серверы (rossi-pdca, rossi-analysis)
 ├── skill-creator/           # Генератор навыков с шаблонами
 ├── skills/                  # 37 навыков (18 Workflow / 18 Capability / 1 Hybrid)
 ├── templates/               # Шаблоны PDCA документов + инфраструктура
@@ -75,7 +75,7 @@ bkit-claude-code/
 
 ## Ключевые конфигурации
 
-### Пороги качества (bkit.config.json)
+### Пороги качества (rossi.config.json)
 - Match Rate: 90% (порог соответствия дизайну)
 - Code Quality Score: 70
 - Critical Issues: 0 (допустимо)

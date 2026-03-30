@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Philosophy Tests: No Guessing Principle (20 TC)
- * Tests that bkit never guesses — it asks questions when ambiguous,
+ * Tests that ROSSI never guesses — it asks questions when ambiguous,
  * uses config values (not hardcoded), and uses Code as Source of Record
  *
  * @module test/philosophy/no-guessing.test.js
@@ -58,12 +58,12 @@ assert('PHI-NG-004',
   'calculateAmbiguityScore returns score, factors, and shouldClarify (structured result)'
 );
 
-// --- PHI-NG-005: bkit.config.json에 confidenceThreshold가 정의되어 있어야 함 ---
-const configPath = path.join(PROJECT_ROOT, 'bkit.config.json');
+// --- PHI-NG-005: rossi.config.json에 confidenceThreshold가 정의되어 있어야 함 ---
+const configPath = path.join(PROJECT_ROOT, 'rossi.config.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 assert('PHI-NG-005',
   typeof config.triggers.confidenceThreshold === 'number',
-  'bkit.config.json defines triggers.confidenceThreshold (not hardcoded)'
+  'rossi.config.json defines triggers.confidenceThreshold (not hardcoded)'
 );
 
 // --- PHI-NG-006: config의 confidenceThreshold 기본값이 코드 기본값과 일치 ---

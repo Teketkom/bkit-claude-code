@@ -5,7 +5,7 @@
  * UR-001~005: Each UI component renders in <10ms
  * UR-006~010: Progress bar with full data <5ms
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const { performance } = require('perf_hooks');

@@ -1,6 +1,6 @@
-# Contributing to bkit
+# Contributing to ROSSI
 
-Thank you for your interest in contributing to bkit!
+Thank you for your interest in contributing to ROSSI!
 
 ## Code of Conduct
 
@@ -52,4 +52,4 @@ By contributing, you agree that your contributions will be licensed under the Ap
 
 ## Questions?
 
-Feel free to open a discussion or contact us at contact@popupstudio.ai
+Feel free to open a discussion or contact us at ds@rossi.ru

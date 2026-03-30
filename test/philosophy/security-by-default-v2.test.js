@@ -72,11 +72,11 @@ assert('SB-004',
   'getRuntimeState.currentLevel matches DEFAULT_LEVEL (consistent defaults)'
 );
 
-// --- SB-005: bkit.config.json automationLevel is Semi-Auto ---
-const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'bkit.config.json'), 'utf-8'));
+// --- SB-005: rossi.config.json automationLevel is Semi-Auto ---
+const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'rossi.config.json'), 'utf-8'));
 assert('SB-005',
   config.pdca.automationLevel === 'Semi-Auto' || config.pdca.automationLevel === 'semi-auto',
-  'bkit.config.json pdca.automationLevel is "Semi-Auto" (config matches code default)'
+  'rossi.config.json pdca.automationLevel is "Semi-Auto" (config matches code default)'
 );
 
 // =====================================================================

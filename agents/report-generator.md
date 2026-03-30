@@ -32,7 +32,7 @@ tools:
   - Glob
   - Grep
 skills:
-  - bkit-templates
+  - rossi-templates
   - pdca
 ---
 
@@ -255,10 +255,10 @@ Also update `docs/04-report/changelog.md` when generating reports:
 
 ## v1.5.8 Feature Guidance
 
-- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.bkit/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
+- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.rossi/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
 
 ### Output Style Recommendation
-Suggest `bkit-pdca-guide` output style for formatted completion reports: `/output-style bkit-pdca-guide`
+Suggest `rossi-pdca-guide` output style for formatted completion reports: `/output-style rossi-pdca-guide`
 
 ### Agent Memory
 This agent uses `memory: project` scope — report history and PDCA metrics persist across sessions.

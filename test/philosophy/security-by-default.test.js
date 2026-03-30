@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Philosophy Tests: Security-by-Default Principle (10 TC)
- * Tests that bkit enforces security by default:
+ * Tests that ROSSI enforces security by default:
  * - acceptEdits agents have disallowedTools
  * - Starter level blocks Team Mode
  * - Destructive commands are blocked by default
@@ -26,7 +26,7 @@ try {
 console.log('\n=== security-by-default.test.js ===\n');
 
 const agentsDir = path.join(PROJECT_ROOT, 'agents');
-const configPath = path.join(PROJECT_ROOT, 'bkit.config.json');
+const configPath = path.join(PROJECT_ROOT, 'rossi.config.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 
 /**
@@ -45,16 +45,16 @@ function parseAgentFrontmatter(content) {
   };
 }
 
-// --- PHI-SEC-001: bkit.config.json에서 파괴적 Bash 명령 deny 확인 ---
+// --- PHI-SEC-001: rossi.config.json에서 파괴적 Bash 명령 deny 확인 ---
 assert('PHI-SEC-001',
   config.permissions['Bash(rm -rf*)'] === 'deny',
-  'Bash(rm -rf*) is denied by default in bkit.config.json'
+  'Bash(rm -rf*) is denied by default in rossi.config.json'
 );
 
 // --- PHI-SEC-002: git force push deny 확인 ---
 assert('PHI-SEC-002',
   config.permissions['Bash(git push --force*)'] === 'deny',
-  'Bash(git push --force*) is denied by default in bkit.config.json'
+  'Bash(git push --force*) is denied by default in rossi.config.json'
 );
 
 // --- PHI-SEC-003: git reset --hard는 ask (실행 전 확인) ---

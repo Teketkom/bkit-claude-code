@@ -4,11 +4,11 @@
 # @file test/e2e/run-e2e.sh
 # @version 2.0.0
 #
-# 65 E2E test cases for bkit CLI commands
+# 65 E2E test cases for ROSSI CLI commands
 # - Uses: claude -p "command" for testing
 # - Tests: /pdca, /memory, /skills, /agents commands
 # - Tests: plugin functionality
-# - NOTE: Requires Claude Code installed with bkit plugin
+# - NOTE: Requires Claude Code installed with ROSSI plugin
 #
 
 set -e
@@ -180,11 +180,11 @@ else
 fi
 
 # E2E-016: Config file exists
-echo -e "\n${BLUE}[E2E-016]${NC} Validate bkit.config.json exists"
-if [ -f "./bkit.config.json" ]; then
+echo -e "\n${BLUE}[E2E-016]${NC} Validate rossi.config.json exists"
+if [ -f "./rossi.config.json" ]; then
   test_pass "E2E-016"
 else
-  test_fail "E2E-016" "bkit.config.json not found"
+  test_fail "E2E-016" "rossi.config.json not found"
 fi
 
 # E2E-017: Hooks directory exists
@@ -401,13 +401,13 @@ fi
 # JSON Configuration Tests (E2E-041 ~ E2E-060)
 # =====================================================
 
-# E2E-041: bkit.config.json is valid JSON
-echo -e "\n${BLUE}[E2E-041]${NC} Validate bkit.config.json JSON format"
+# E2E-041: rossi.config.json is valid JSON
+echo -e "\n${BLUE}[E2E-041]${NC} Validate rossi.config.json JSON format"
 if command -v jq &> /dev/null; then
-  if jq empty ./bkit.config.json 2>/dev/null; then
+  if jq empty ./rossi.config.json 2>/dev/null; then
     test_pass "E2E-041"
   else
-    test_fail "E2E-041" "bkit.config.json is not valid JSON"
+    test_fail "E2E-041" "rossi.config.json is not valid JSON"
   fi
 else
   test_skip "E2E-041" "jq not available"
@@ -437,10 +437,10 @@ else
   test_skip "E2E-043" "jq not available"
 fi
 
-# E2E-044: bkit.config.json has version field
-echo -e "\n${BLUE}[E2E-044]${NC} Validate bkit.config.json version field"
+# E2E-044: rossi.config.json has version field
+echo -e "\n${BLUE}[E2E-044]${NC} Validate rossi.config.json version field"
 if command -v jq &> /dev/null; then
-  version=$(jq -r '.version' ./bkit.config.json 2>/dev/null)
+  version=$(jq -r '.version' ./rossi.config.json 2>/dev/null)
   if [ ! -z "$version" ] && [ "$version" != "null" ]; then
     test_pass "E2E-044"
   else
@@ -450,10 +450,10 @@ else
   test_skip "E2E-044" "jq not available"
 fi
 
-# E2E-045: bkit.config.json has pdca config
-echo -e "\n${BLUE}[E2E-045]${NC} Validate bkit.config.json pdca section"
+# E2E-045: rossi.config.json has pdca config
+echo -e "\n${BLUE}[E2E-045]${NC} Validate rossi.config.json pdca section"
 if command -v jq &> /dev/null; then
-  pdca=$(jq '.pdca' ./bkit.config.json 2>/dev/null)
+  pdca=$(jq '.pdca' ./rossi.config.json 2>/dev/null)
   if [ ! -z "$pdca" ] && [ "$pdca" != "null" ]; then
     test_pass "E2E-045"
   else
@@ -463,10 +463,10 @@ else
   test_skip "E2E-045" "jq not available"
 fi
 
-# E2E-046: bkit.config.json has team config
-echo -e "\n${BLUE}[E2E-046]${NC} Validate bkit.config.json team section"
+# E2E-046: rossi.config.json has team config
+echo -e "\n${BLUE}[E2E-046]${NC} Validate rossi.config.json team section"
 if command -v jq &> /dev/null; then
-  team=$(jq '.team' ./bkit.config.json 2>/dev/null)
+  team=$(jq '.team' ./rossi.config.json 2>/dev/null)
   if [ ! -z "$team" ] && [ "$team" != "null" ]; then
     test_pass "E2E-046"
   else
@@ -553,7 +553,7 @@ fi
 
 # E2E-054: Workflow YAML files are parseable
 echo -e "\n${BLUE}[E2E-054]${NC} Validate workflow YAML files"
-yaml_count=$(find ./.bkit/workflows -name "*.yaml" 2>/dev/null | wc -l)
+yaml_count=$(find ./.rossi/workflows -name "*.yaml" 2>/dev/null | wc -l)
 if [ $yaml_count -ge 3 ]; then
   test_pass "E2E-054"
 else

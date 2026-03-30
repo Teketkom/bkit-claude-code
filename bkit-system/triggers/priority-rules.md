@@ -10,7 +10,7 @@ Order follows definition order (alphabetical file order or frontmatter definitio
 ### PreToolUse Execution Order (Write|Edit)
 
 ```
-1. bkit-rules → pre-write.js (PDCA check + task classification)
+1. rossi-rules → pre-write.js (PDCA check + task classification)
 2. phase-2-convention → phase2-convention-pre.js
 3. (When specific agent is active) design-validator, code-analyzer
 ```
@@ -45,7 +45,7 @@ When multiple skills match simultaneously:
 ```
 1. Explicit invocation > Keyword matching > File context
 2. More specific skill > General skill
-   Example: phase-4-api > bkit-rules (during API work)
+   Example: phase-4-api > rossi-rules (during API work)
 3. Level skill always applies
    One of starter/dynamic/enterprise is always active
 ```

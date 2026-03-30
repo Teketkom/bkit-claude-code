@@ -9,14 +9,14 @@ const path = require('path');
 const os = require('os');
 
 // Set up tmp dir as working directory before requiring module
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bkit-cp-test-'));
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ROSSI-cp-test-'));
 const origCwd = process.cwd();
 process.chdir(tmpDir);
 
 // Create required state directory
-fs.mkdirSync(path.join(tmpDir, '.bkit', 'state'), { recursive: true });
+fs.mkdirSync(path.join(tmpDir, '.rossi', 'state'), { recursive: true });
 fs.writeFileSync(
-  path.join(tmpDir, '.bkit', 'state', 'pdca-status.json'),
+  path.join(tmpDir, '.rossi', 'state', 'pdca-status.json'),
   JSON.stringify({ feature: 'test-feat', phase: 'plan', progress: 50 }),
   'utf-8'
 );
@@ -76,7 +76,7 @@ assert('CP-010', rollback1.restored === true, 'Rollback to valid checkpoint succ
 assert('CP-011', rollback1.details.includes(cp1.id), 'Rollback details mention checkpoint id');
 
 const restoredStatus = JSON.parse(
-  fs.readFileSync(path.join(tmpDir, '.bkit', 'state', 'pdca-status.json'), 'utf-8')
+  fs.readFileSync(path.join(tmpDir, '.rossi', 'state', 'pdca-status.json'), 'utf-8')
 );
 assert('CP-012', restoredStatus.feature === 'test-feat', 'Restored pdca-status has correct feature');
 

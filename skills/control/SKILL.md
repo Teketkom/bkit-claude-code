@@ -4,7 +4,7 @@ classification: workflow
 classification-reason: Automation control persists regardless of model advancement
 deprecation-risk: none
 description: |
-  Control bkit automation level (L0-L4), view trust score, and manage guardrails.
+  Control ROSSI automation level (L0-L4), view trust score, and manage guardrails.
   Triggers: control, automation level, trust score, guardrail, 자동화 레벨, 제어, управление, уровень автоматизации, контроль.
 argument-hint: "[status|level|pause|resume|trust]"
 user-invocable: true
@@ -23,7 +23,7 @@ task-template: "[Control] {action}"
 
 # Control Skill
 
-> User-invocable skill for managing bkit automation level and system status.
+> User-invocable skill for managing ROSSI automation level and system status.
 
 ## Arguments
 
@@ -52,14 +52,14 @@ task-template: "[Control] {action}"
 
 Display the current automation control state.
 
-1. Read runtime control state from `.bkit/runtime/control-state.json`
-2. Read trust score from `.bkit/state/trust-score.json`
+1. Read runtime control state from `.rossi/runtime/control-state.json`
+2. Read trust score from `.rossi/state/trust-score.json`
 3. Read active guardrails from `lib/control/` configuration
 4. Display formatted status panel
 
 **Output Format**:
 ```
---- bkit Control Panel ----------------------------
+--- ROSSI Control Panel ----------------------------
 Automation Level : L2 (Semi-Auto)
 Trust Score      : 72/100
 Active Guardrails: 8/8
@@ -83,10 +83,10 @@ Guardrails:
 Set the automation level manually.
 
 1. Validate input is a number 0-4
-2. Read current level from `.bkit/runtime/control-state.json`
+2. Read current level from `.rossi/runtime/control-state.json`
 3. If escalating (going higher), warn user about reduced oversight
 4. If de-escalating, apply immediately without confirmation
-5. Update `.bkit/runtime/control-state.json` with new level
+5. Update `.rossi/runtime/control-state.json` with new level
 6. Write audit log entry via `lib/audit/audit-logger.js`
 7. Display confirmation with new level details
 
@@ -106,7 +106,7 @@ Level decreases are immediate (safe direction).
 
 Pause all automation immediately.
 
-1. Save current level to `.bkit/runtime/control-state.json` as `previousLevel`
+1. Save current level to `.rossi/runtime/control-state.json` as `previousLevel`
 2. Set level to L0 (Manual)
 3. Set `paused: true` flag
 4. Write audit log: `automation_paused`
@@ -116,7 +116,7 @@ Pause all automation immediately.
 
 Resume automation to the previous level before pause.
 
-1. Read `previousLevel` from `.bkit/runtime/control-state.json`
+1. Read `previousLevel` from `.rossi/runtime/control-state.json`
 2. If not paused, display: "Automation is not paused."
 3. Restore level to `previousLevel`
 4. Clear `paused` flag
@@ -127,7 +127,7 @@ Resume automation to the previous level before pause.
 
 Show trust score details and contributing factors.
 
-1. Read trust score from `.bkit/state/trust-score.json`
+1. Read trust score from `.rossi/state/trust-score.json`
 2. Calculate score breakdown:
    - PDCA completion rate (0-25 points)
    - Match rate average (0-25 points)
@@ -161,8 +161,8 @@ Level Recommendation: L2 (Semi-Auto)
 
 | File | Purpose |
 |------|---------|
-| `.bkit/runtime/control-state.json` | Runtime control state (level, paused, previousLevel) |
-| `.bkit/state/trust-score.json` | Trust score and contributing metrics |
+| `.rossi/runtime/control-state.json` | Runtime control state (level, paused, previousLevel) |
+| `.rossi/state/trust-score.json` | Trust score and contributing metrics |
 
 ## Module Dependencies
 

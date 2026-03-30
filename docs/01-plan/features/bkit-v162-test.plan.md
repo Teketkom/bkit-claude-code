@@ -1,8 +1,8 @@
-# bkit v1.6.2 Test Plan
+# ROSSI v1.6.2 Test Plan
 
-> **Summary**: bkit v1.6.2 변경사항에 맞춰 기존 1,025 TC를 업데이트하고 신규 TC를 추가하는 테스트 계획
+> **Summary**: ROSSI v1.6.2 변경사항에 맞춰 기존 1,025 TC를 업데이트하고 신규 TC를 추가하는 테스트 계획
 >
-> **Project**: bkit-claude-code
+> **Project**: rossi-cto-agent-kit
 > **Version**: 1.6.2
 > **Author**: CTO Lead (QA Team 8명 협업)
 > **Date**: 2026-03-18
@@ -25,7 +25,7 @@
 
 ### 1.1 Purpose
 
-bkit v1.6.2에서 발생한 구조적 변경사항(hook 추가, agent 추가, 신규 함수, frontmatter 필드 추가)을 기존 테스트 스위트에 반영하여 regression을 방지하고, 신규 기능에 대한 테스트 커버리지를 확보한다.
+ROSSI v1.6.2에서 발생한 구조적 변경사항(hook 추가, agent 추가, 신규 함수, frontmatter 필드 추가)을 기존 테스트 스위트에 반영하여 regression을 방지하고, 신규 기능에 대한 테스트 커버리지를 확보한다.
 
 ### 1.2 Background
 
@@ -40,12 +40,12 @@ v1.6.1에서 v1.6.2로 업그레이드하면서 다음 변경이 발생했다:
 | 신규 스크립트 | - | post-compaction.js, stop-failure-handler.js | 2개 추가 |
 | PLUGIN_DATA | - | backup/restore 함수 | paths.js에 2개 함수 추가 |
 | plugin.json version | 1.6.1 | 1.6.2 | 버전 업데이트 |
-| bkit.config.json version | 1.6.1 | 1.6.2 | 버전 업데이트 |
+| rossi.config.json version | 1.6.1 | 1.6.2 | 버전 업데이트 |
 
 ### 1.3 Related Documents
 
-- 기존 테스트 리포트: `docs/04-report/features/bkit-v161-comprehensive-test.report.md`
-- 기존 Plan: `docs/01-plan/features/bkit-v161-comprehensive-test.plan.md`
+- 기존 테스트 리포트: `docs/04-report/features/rossi-v161-comprehensive-test.report.md`
+- 기존 Plan: `docs/01-plan/features/rossi-v161-comprehensive-test.plan.md`
 - CC 호환성 분석: `docs/03-analysis/claude-code-v2177-impact-analysis.md`
 
 ---
@@ -69,7 +69,7 @@ v1.6.1에서 v1.6.2로 업그레이드하면서 다음 변경이 발생했다:
 ### 2.2 Out of Scope
 
 - E2E 테스트 (claude -p 기반, 별도 run-e2e.sh로 실행)
-- CC v2.1.78 자체 기능 테스트 (bkit 코드베이스 외부)
+- CC v2.1.78 자체 기능 테스트 (ROSSI 코드베이스 외부)
 - PM Agent Team 테스트 (Agent Teams 환경 필수, CI 미지원)
 
 ---
@@ -200,7 +200,7 @@ v1.6.1에서 v1.6.2로 업그레이드하면서 다음 변경이 발생했다:
 - [x] 모든 TC에 고유 ID 부여 (중복 없음)
 - [x] 모든 TC가 독립 실행 가능 (다른 TC에 의존하지 않음)
 - [x] Node.js native assert만 사용 (외부 프레임워크 없음)
-- [x] bkit 3대 철학 준수: Automation First, No Guessing, Docs=Code
+- [x] ROSSI 3대 철학 준수: Automation First, No Guessing, Docs=Code
 
 ---
 
@@ -239,7 +239,7 @@ v1.6.1에서 v1.6.2로 업그레이드하면서 다음 변경이 발생했다:
 
 ## 9. Next Steps
 
-1. [ ] Design 문서 작성 (`bkit-v162-test.design.md`)
+1. [ ] Design 문서 작성 (`rossi-v162-test.design.md`)
 2. [ ] Phase 1 구현 (기존 TC 업데이트)
 3. [ ] Phase 2 구현 (신규 TC 추가)
 4. [ ] Phase 3-4 구현 및 통합 검증

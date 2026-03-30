@@ -8,11 +8,11 @@ description: |
   Triggers: microservices, k8s, terraform, monorepo, AI native, 마이크로서비스, init enterprise, энтерпрайз, масштаб, микросервисы.
 argument-hint: "[init|guide|help]"
 agents:
-  default: bkit:enterprise-expert
-  infra: bkit:infra-architect
-  architecture: bkit:enterprise-expert
-  security: bkit:security-architect
-  team: bkit:cto-lead
+  default: rossi:enterprise-expert
+  infra: rossi:infra-architect
+  architecture: rossi:enterprise-expert
+  security: rossi:security-architect
+  team: rossi:cto-lead
 allowed-tools:
   - Read
   - Write
@@ -46,7 +46,7 @@ task-template: "[Init-Enterprise] {feature}"
 3. Create CLAUDE.md (Level: Enterprise specified)
 4. docs/ 5-category structure
 5. infra/terraform/, infra/k8s/ base templates
-6. Initialize .bkit-memory.json
+6. Initialize .rossi-memory.json
 
 ### guide (Development Guide)
 - AI Native 10-Day development cycle
@@ -456,14 +456,14 @@ Rule: Area-specific CLAUDE.md overrides project-level rules
 
 ---
 
-## bkit Features for Enterprise Level (v1.5.1)
+## ROSSI Features for Enterprise Level (v1.5.1)
 
-### Output Style: bkit-enterprise (Recommended)
+### Output Style: rossi-enterprise (Recommended)
 
 For CTO-level architecture perspectives, activate the enterprise style:
 
 ```
-/output-style bkit-enterprise
+/output-style rossi-enterprise
 ```
 
 This provides:
@@ -491,6 +491,6 @@ Enterprise projects support full Agent Teams for parallel PDCA execution:
 
 ### Agent Memory (Auto-Active)
 
-All bkit agents automatically remember project context across sessions.
+All ROSSI agents automatically remember project context across sessions.
 Enterprise agents use `project` scope memory, ensuring architecture decisions
 and infrastructure patterns persist across development sessions.

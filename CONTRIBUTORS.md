@@ -1,14 +1,14 @@
 # Contributors
 
-Thank you to all the contributors who have helped make bkit better!
+Thank you to all the contributors who have helped make ROSSI better!
 
 ## Core Team
 
-### POPUP STUDIO PTE. LTD.
+### Концерн РОССИ (ЗАО РОССИ)
 
 - **Role**: Creator and Primary Maintainer
-- **Website**: [popupstudio.ai](https://popupstudio.ai)
-- **Email**: contact@popupstudio.ai
+- **Website**: [rossi.ru](https://rossi.ru)
+- **Email**: ds@rossi.ru
 
 ## How to Contribute
 

@@ -6,7 +6,7 @@
 > **v1.6.2**: PostCompact + StopFailure hooks added (10->12 events), hook source display (CC v2.1.75+)
 > **v1.5.0**: Claude Code Exclusive - Gemini CLI support removed
 > **v1.4.7**: Task Management Integration - triggerNextPdcaAction, Task Chain Auto-Creation
-> **v1.4.6**: Sub-agent call stability with `bkit:` prefix
+> **v1.4.6**: Sub-agent call stability with `rossi:` prefix
 > **v1.4.5**: Archive action support, 9-language trigger system
 > **v1.4.4**: hooks-json-integration - all hooks centralized in hooks.json with unified handlers
 > **v1.4.2**: Added UserPromptSubmit (FR-04) and PreCompact (FR-07) hook events
@@ -23,7 +23,7 @@ Hooks are **scripts that automatically execute on specific Claude Code events**.
 
 ## Context Engineering Perspective (v1.4.1)
 
-Hooks are the core of bkit's **context injection system**, organized into 6 layers according to [[../../philosophy/context-engineering|Context Engineering]] principles.
+Hooks are the core of ROSSI's **context injection system**, organized into 6 layers according to [[../../philosophy/context-engineering|Context Engineering]] principles.
 
 ### 6-Layer Hook System
 
@@ -116,7 +116,7 @@ Global hooks are defined in `hooks/hooks.json` (v1.4.4 includes 6 hook events wi
 ```json
 {
   "$schema": "https://json.schemastore.org/claude-code-hooks.json",
-  "description": "bkit Vibecoding Kit - Global hooks for PDCA workflow enforcement",
+  "description": "ROSSI CTO Agent Kit - Global hooks for PDCA workflow enforcement",
   "hooks": {
     "SessionStart": [
       {
@@ -167,7 +167,7 @@ Global hooks are defined in `hooks/hooks.json` (v1.4.4 includes 6 hook events wi
 
 ### 1. SessionStart (Global - hooks.json)
 
-**Trigger**: Once when bkit plugin loads
+**Trigger**: Once when ROSSI plugin loads
 
 | Script | Purpose |
 |--------|---------|
@@ -178,7 +178,7 @@ Global hooks are defined in `hooks/hooks.json` (v1.4.4 includes 6 hook events wi
 - PDCA phase detection from `docs/.pdca-status.json`
 - Environment persistence via `CLAUDE_ENV_FILE`
 - AskUserQuestion guidance with 4 options:
-  1. Learn bkit - Introduction and 9-stage pipeline
+  1. Learn ROSSI - Introduction and 9-stage pipeline
   2. Learn Claude Code - Setup and usage guide
   3. Continue Previous Work - Resume from PDCA status
   4. Start New Project - Initialize new project
@@ -186,10 +186,10 @@ Global hooks are defined in `hooks/hooks.json` (v1.4.4 includes 6 hook events wi
 **Output**:
 ```json
 {
-  "systemMessage": "bkit Vibecoding Kit activated",
+  "systemMessage": "ROSSI CTO Agent Kit activated",
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "# bkit Vibecoding Kit - Required Startup Procedure..."
+    "additionalContext": "# ROSSI CTO Agent Kit - Required Startup Procedure..."
   }
 }
 ```
@@ -482,10 +482,10 @@ PM Team agents (5) use the existing hook infrastructure:
 
 ### Skills 2.0 Compatibility
 
-bkit v2.0.4 continues using `command` type hooks exclusively (18 hook events).
-CC 2.1.0 adds `type: "http"`, `type: "prompt"`, and `type: "agent"` hook types — bkit may adopt these in future versions.
+ROSSI v2.0.4 continues using `command` type hooks exclusively (18 hook events).
+CC 2.1.0 adds `type: "http"`, `type: "prompt"`, and `type: "agent"` hook types — ROSSI may adopt these in future versions.
 
-### v2.0.4 Path Quoting Fix ([#53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53))
+### v2.0.4 Path Quoting Fix ([#53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53))
 
 All hook commands now properly quote `${CLAUDE_PLUGIN_ROOT}` paths with double-quotes to prevent bash syntax errors when the path contains special characters (parentheses, spaces, etc.). This is critical for Windows users whose username may contain parentheses (e.g., `홍길동(HongGildong)`).
 
@@ -497,4 +497,4 @@ When adding new hook commands, always use the quoted pattern to maintain cross-p
 
 - Fixed stdin freeze in long sessions (direct benefit for CTO Team + PM Team)
 - Background agent output recovery (ensures PM Team agents return results to pm-lead)
-- CC official hook events total: 22 (bkit uses 18/22 = 82%)
+- CC official hook events total: 22 (ROSSI uses 18/22 = 82%)

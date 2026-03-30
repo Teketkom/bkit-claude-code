@@ -1,5 +1,5 @@
 /**
- * bkit Vibecoding Kit - SessionStart: Onboarding Module (v2.0.0)
+ * ROSSI CTO Agent Kit - SessionStart: Onboarding Module (v2.0.0)
  *
  * Handles onboarding message generation, level detection,
  * output style suggestion, first-time user detection, and startup import loading.
@@ -90,7 +90,7 @@ function enhancedOnboarding() {
         question: 'How can I help you?',
         header: 'Help Type',
         options: [
-          { label: 'Learn bkit', description: 'Introduction and 9-phase pipeline' },
+          { label: 'Learn ROSSI', description: 'Introduction and 9-phase pipeline' },
           { label: 'Learn Claude Code', description: 'Settings and usage' },
           { label: 'Start new project', description: 'Project initialization' },
           { label: 'Start freely', description: 'Proceed without guide' }
@@ -155,13 +155,13 @@ function getTriggerKeywordTable() {
 ### Agent Triggers
 | Keywords | Agent | Action |
 |----------|-------|--------|
-| verify, 검증, 確認, 验证, verificar, vérifier, prüfen, verificare, проверить | bkit:gap-detector | Run Gap analysis |
-| improve, 개선, 改善, 改进, mejorar, améliorer, verbessern, migliorare, улучшить | bkit:pdca-iterator | Auto-improvement iteration |
-| analyze, 분석, 分析, 品質, analizar, analyser, analysieren, analizzare, анализировать | bkit:code-analyzer | Code quality analysis |
-| report, 보고서, 報告, 报告, informe, rapport, Bericht, rapporto, отчёт | bkit:report-generator | Generate completion report |
-| help, 도움, 助けて, 帮助, ayuda, aide, Hilfe, aiuto, помощь | bkit:starter-guide | Beginner guide |
-| bkend, BaaS, backend service, 백엔드 서비스, バックエンドサービス, 后端服务, бэкенд | bkit:bkend-expert | Backend/BaaS expert |
-| pm, PRD, product discovery, PM 분석, 제품 기획, PM分析, PM-Analyse, analisi PM, PM-анализ | bkit:pm-lead | PM Agent Team analysis |
+| verify, 검증, 確認, 验证, verificar, vérifier, prüfen, verificare, проверить | rossi:gap-detector | Run Gap analysis |
+| improve, 개선, 改善, 改进, mejorar, améliorer, verbessern, migliorare, улучшить | rossi:pdca-iterator | Auto-improvement iteration |
+| analyze, 분석, 分析, 品質, analizar, analyser, analysieren, analizzare, анализировать | rossi:code-analyzer | Code quality analysis |
+| report, 보고서, 報告, 报告, informe, rapport, Bericht, rapporto, отчёт | rossi:report-generator | Generate completion report |
+| help, 도움, 助けて, 帮助, ayuda, aide, Hilfe, aiuto, помощь | rossi:starter-guide | Beginner guide |
+| bkend, BaaS, backend service, 백엔드 서비스, バックエンドサービス, 后端服务, бэкенд | rossi:bkend-expert | Backend/BaaS expert |
+| pm, PRD, product discovery, PM 분석, 제품 기획, PM分析, PM-Analyse, analisi PM, PM-анализ | rossi:pm-lead | PM Agent Team analysis |
 
 ### Skill Triggers (Auto-detection)
 | Keywords | Skill | Level |
@@ -190,9 +190,9 @@ function persistEnvVars() {
     const detectedLevel = detectLevel();
     const detectedPhase = detectPdcaPhase();
     try {
-      fs.appendFileSync(envFile, `export BKIT_LEVEL=${detectedLevel}\n`);
-      fs.appendFileSync(envFile, `export BKIT_PDCA_PHASE=${detectedPhase}\n`);
-      fs.appendFileSync(envFile, `export BKIT_PLATFORM=claude\n`);
+      fs.appendFileSync(envFile, `export ROSSI_LEVEL=${detectedLevel}\n`);
+      fs.appendFileSync(envFile, `export ROSSI_PDCA_PHASE=${detectedPhase}\n`);
+      fs.appendFileSync(envFile, `export ROSSI_PLATFORM=claude\n`);
     } catch (e) {
       // Ignore write errors
     }

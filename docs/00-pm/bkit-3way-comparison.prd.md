@@ -1,9 +1,9 @@
-# bkit 3-Way Comparison: GitHub v2.0.5 vs Local v2.0.4 vs Custom
+# ROSSI 3-Way Comparison: GitHub v2.0.5 vs Local v2.0.4 vs Custom
 
 > **Date**: 2026-03-24
-> **GitHub**: popup-studio-ai/bkit-claude-code (v2.0.5, 429 stars, 108 forks)
+> **GitHub**: rossi-dev/rossi-cto-agent-kit (v2.0.5, 429 stars, 108 forks)
 > **Local Baseline**: v2.0.4 (marketplace cache)
-> **Custom**: v2.0.4 + bkit-infra-automation
+> **Custom**: v2.0.4 + rossi-infra-automation
 
 ---
 

@@ -2,11 +2,11 @@
 
 > **PDCA Cycle**: 3/3 — 문서 동기화
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23
-> **이슈**: [GitHub #53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53)
+> **이슈**: [GitHub #53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53)
 
 ---
 
@@ -37,11 +37,11 @@
 | 파일 | 변경 위치 |
 |------|-----------|
 | `README.md` | 버전 배지, CC requirements |
-| `bkit-system/components/skills/_skills-overview.md` | 헤더 + v2.0.3 참조 |
-| `bkit-system/components/agents/_agents-overview.md` | 헤더 |
-| `bkit-system/components/scripts/_scripts-overview.md` | 헤더 + lib/ 설명 |
-| `bkit-system/components/hooks/_hooks-overview.md` | 헤더 + 여러 섹션 |
-| `bkit-system/README.md` | 시스템 다이어그램 + 컴포넌트 카운트 |
+| `rossi-system/components/skills/_skills-overview.md` | 헤더 + v2.0.3 참조 |
+| `rossi-system/components/agents/_agents-overview.md` | 헤더 |
+| `rossi-system/components/scripts/_scripts-overview.md` | 헤더 + lib/ 설명 |
+| `rossi-system/components/hooks/_hooks-overview.md` | 헤더 + 여러 섹션 |
+| `rossi-system/README.md` | 시스템 다이어그램 + 컴포넌트 카운트 |
 
 ### 1.2 내용 추가
 
@@ -60,8 +60,8 @@
 | 파일 | 사유 |
 |------|------|
 | `AI-NATIVE-DEVELOPMENT.md` | v2.0.3 참조는 기능 도입 시점 (역사적 기록) |
-| `commands/bkit.md` | v2.0.3 참조는 기능 버전 표시 |
-| `bkit-system/_GRAPH-INDEX.md` | lib/ 설명은 해당 시점 상태 |
+| `commands/ROSSI.md` | v2.0.3 참조는 기능 버전 표시 |
+| `rossi-system/_GRAPH-INDEX.md` | lib/ 설명은 해당 시점 상태 |
 
 ---
 
@@ -105,4 +105,4 @@
 | CHANGELOG | ✅ v2.0.4 섹션 |
 | 하위 호환성 | ✅ Unix/macOS/Windows 모두 |
 
-**결론**: bkit v2.0.4는 릴리스 준비 완료.
+**결론**: ROSSI v2.0.4는 릴리스 준비 완료.

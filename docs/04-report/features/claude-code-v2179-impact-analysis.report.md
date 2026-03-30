@@ -2,7 +2,7 @@
 
 > **Status**: ✅ Complete (Analysis Only)
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v1.6.2 (변경 없음)
 > **Author**: CC Version Analysis Workflow
 > **Completion Date**: 2026-03-19
@@ -39,10 +39,10 @@
 
 | 관점 | 내용 |
 |------|------|
-| **문제** | CC v2.1.79 릴리스의 ~18건 변경사항 중 bkit 영향 범위 확인 필요 |
+| **문제** | CC v2.1.79 릴리스의 ~18건 변경사항 중 ROSSI 영향 범위 확인 필요 |
 | **해결 방법** | 4-Phase 워크플로우 (Research → Analyze → Brainstorm → Report) 자동 분석 |
 | **기능/UX 효과** | /btw streaming fix 자동 혜택, PLUGIN_SEED_DIR multi-dir 지원 확인, SessionEnd /resume fix 확인 |
-| **핵심 가치** | 45번째 연속 호환 릴리스 확인 (v2.1.34~v2.1.79, zero-downtime 업그레이드 보장) + bkit v1.6.2 코드 변경 불필요 |
+| **핵심 가치** | 45번째 연속 호환 릴리스 확인 (v2.1.34~v2.1.79, zero-downtime 업그레이드 보장) + ROSSI v1.6.2 코드 변경 불필요 |
 
 ---
 
@@ -53,17 +53,17 @@
 
 ### 2.1 변경사항 분류
 
-| # | 분류 | 변경사항 | 영향도 | bkit 영향 |
+| # | 분류 | 변경사항 | 영향도 | ROSSI 영향 |
 |---|------|---------|--------|-----------|
 | 1 | Feature | `--console` flag for `claude auth login` (API billing auth) | LOW | ❌ 없음 |
 | 2 | Feature | "Show turn duration" toggle in `/config` | LOW | 📋 가이드 가능 |
-| 3 | Fix | `claude -p` hanging without explicit stdin (subprocess) | MEDIUM | ❌ 없음 (bkit은 -p 미사용) |
+| 3 | Fix | `claude -p` hanging without explicit stdin (subprocess) | MEDIUM | ❌ 없음 (ROSSI은 -p 미사용) |
 | 4 | Fix | Ctrl+C not working in `-p` mode | MEDIUM | ❌ 없음 |
-| 5 | Fix | `/btw` returning main agent output during streaming | **HIGH** | ✅ bkit /btw 스킬 직접 혜택 |
+| 5 | Fix | `/btw` returning main agent output during streaming | **HIGH** | ✅ ROSSI /btw 스킬 직접 혜택 |
 | 6 | Fix | Voice mode not activating on startup (`voiceEnabled: true`) | LOW | ❌ 없음 |
 | 7 | Fix | Left/right arrow in `/permissions` navigation | LOW | ❌ 없음 |
 | 8 | Fix | `CLAUDE_CODE_DISABLE_TERMINAL_TITLE` not working on startup | LOW | ❌ 없음 |
-| 9 | Fix | Custom status line blocked by workspace trust | MEDIUM | ⚠️ bkit statusline 간접 영향 |
+| 9 | Fix | Custom status line blocked by workspace trust | MEDIUM | ⚠️ ROSSI statusline 간접 영향 |
 | 10 | Fix | Enterprise users unable to retry on 429 errors | MEDIUM | ❌ 없음 (Enterprise 전용) |
 | 11 | Fix | `SessionEnd` hooks not firing on `/resume` session switch | **HIGH** | ✅ 미래 SessionEnd hook 구현 시 혜택 |
 | 12 | Perf | Startup memory usage improved ~18MB | MEDIUM | ✅ 전체 성능 혜택 |
@@ -77,18 +77,18 @@
 ### 2.2 영향도 분포
 
 ```
-HIGH:   3건 (#5, #11, #14) — bkit 직접 관련
+HIGH:   3건 (#5, #11, #14) — ROSSI 직접 관련
 MEDIUM: 5건 (#3, #4, #9, #10, #12, #13) — 간접 혜택
-LOW:    10건 — bkit 무관
+LOW:    10건 — ROSSI 무관
 ```
 
 ---
 
-## 3. bkit 영향 분석
+## 3. ROSSI 영향 분석
 
 ### 3.1 직접 영향 (코드 변경 불필요)
 
-| 변경 | bkit 컴포넌트 | 영향 | 필요 조치 |
+| 변경 | ROSSI 컴포넌트 | 영향 | 필요 조치 |
 |------|--------------|------|-----------|
 | /btw streaming fix (#5) | `skills/btw/SKILL.md` | /btw 스킬이 streaming 중 올바른 응답 반환 | 없음 (자동 혜택) |
 | Startup memory -18MB (#12) | session-start.js | 전체 세션 성능 향상 | 없음 (자동 혜택) |
@@ -97,7 +97,7 @@ LOW:    10건 — bkit 무관
 
 ### 3.2 미래 활용 기회
 
-| 변경 | bkit 컴포넌트 | 영향 | 필요 조치 |
+| 변경 | ROSSI 컴포넌트 | 영향 | 필요 조치 |
 |------|--------------|------|-----------|
 | PLUGIN_SEED_DIR multi-dir (#14) | plugin.json | multi-plugin 환경 지원 가능 | ENH-131 (P3) |
 | SessionEnd /resume fix (#11) | hooks.json | SessionEnd hook 구현 시 /resume 호환 | ENH-132 (P2) |
@@ -108,7 +108,7 @@ LOW:    10건 — bkit 무관
 | 검증 항목 | 결과 |
 |-----------|------|
 | hooks.json 호환성 | ✅ 12개 hook 이벤트 모두 정상 동작 |
-| PreToolUse permissionDecision | ✅ bkit 미사용 (#36059 영향 없음) |
+| PreToolUse permissionDecision | ✅ ROSSI 미사용 (#36059 영향 없음) |
 | Agent frontmatter | ✅ effort/maxTurns 정상 (29개 agent) |
 | ${CLAUDE_PLUGIN_DATA} | ✅ 정상 동작 |
 | Skills (31개) | ✅ /btw streaming fix 자동 혜택 |
@@ -116,7 +116,7 @@ LOW:    10건 — bkit 무관
 
 ### 3.4 Breaking Change 여부
 
-**없음.** v2.1.79는 bkit v1.6.2와 100% 호환.
+**없음.** v2.1.79는 ROSSI v1.6.2와 100% 호환.
 
 ---
 
@@ -126,7 +126,7 @@ LOW:    10건 — bkit 무관
 
 | ENH | Priority | 설명 | YAGNI 검증 | 구현 시간 |
 |-----|----------|------|------------|-----------|
-| ENH-131 | P3 | `CLAUDE_CODE_PLUGIN_SEED_DIR` multi-directory 문서화 | ⚠️ bkit 단일 플러그인, 현재 불필요 | 0.5h |
+| ENH-131 | P3 | `CLAUDE_CODE_PLUGIN_SEED_DIR` multi-directory 문서화 | ⚠️ ROSSI 단일 플러그인, 현재 불필요 | 0.5h |
 | ENH-132 | P2 | SessionEnd hook 구현 (세션 종료 통계/정리) | ✅ Stop hook 보완, /resume 호환 | 4h |
 | ENH-133 | P3 | Turn duration toggle 사용자 가이드 | ⚠️ 사소한 UI 옵션, 문서만 | 0.5h |
 
@@ -159,11 +159,11 @@ LOW:    10건 — bkit 무관
 
 ### 5.2 신규 모니터링 이슈
 
-| # | 제목 | 상태 | 영향도 | bkit 영향 |
+| # | 제목 | 상태 | 영향도 | ROSSI 영향 |
 |---|------|------|--------|-----------|
-| #36059 | PreToolUse permissionDecision regression | OPEN | **HIGH** | ❌ bkit 미영향 (permissionDecision 미사용). 모니터링만 필요 |
+| #36059 | PreToolUse permissionDecision regression | OPEN | **HIGH** | ❌ ROSSI 미영향 (permissionDecision 미사용). 모니터링만 필요 |
 | #36058 | session_name in hook input JSON | OPEN | LOW | 📋 향후 활용 가능 (ENH 후보) |
-| #36060 | MCP integrations 미작동 in -p mode | OPEN | LOW | ❌ bkit 미영향 |
+| #36060 | MCP integrations 미작동 in -p mode | OPEN | LOW | ❌ ROSSI 미영향 |
 
 ---
 
@@ -172,7 +172,7 @@ LOW:    10건 — bkit 무관
 ```
 v2.1.34 ──────────────────────────────── v2.1.79
          45 연속 호환 릴리스
-         0 Breaking Changes (bkit 기준)
+         0 Breaking Changes (ROSSI 기준)
          Zero-Downtime 업그레이드 보장
 
 Timeline:
@@ -187,21 +187,21 @@ v2.1.79:         1 release (~18 changes, ENH-131~133) ← NEW
 
 ### 7.1 즉시 조치 (필요 없음)
 
-v2.1.79는 bkit v1.6.2 코드 변경 없이 100% 호환됩니다.
+v2.1.79는 ROSSI v1.6.2 코드 변경 없이 100% 호환됩니다.
 
 ### 7.2 향후 고려 사항
 
 1. **ENH-132 (P2)**: SessionEnd hook 구현 → v2.1.79의 /resume fix로 안정적 구현 가능
-2. **#36059 모니터링**: PreToolUse regression이 bkit의 PreToolUse hook에 영향을 줄 가능성 추적
+2. **#36059 모니터링**: PreToolUse regression이 ROSSI의 PreToolUse hook에 영향을 줄 가능성 추적
 3. **CC 권장 버전 업데이트**: v2.1.78+ → v2.1.79+ (startup memory, /btw fix 포함)
 
 ---
 
 ## 8. 결론
 
-CC v2.1.79는 **주로 bugfix/polish 릴리스**로 bkit에 직접적인 영향은 미미합니다.
+CC v2.1.79는 **주로 bugfix/polish 릴리스**로 ROSSI에 직접적인 영향은 미미합니다.
 
 - **자동 혜택**: /btw streaming fix, startup memory -18MB, non-streaming timeout
 - **신규 ENH**: 3건 (P2 1건, P3 2건) — 긴급 구현 불필요
 - **호환성**: 45번째 연속 호환 릴리스 확인
-- **코드 변경**: 불필요 (bkit v1.6.2 유지)
+- **코드 변경**: 불필요 (ROSSI v1.6.2 유지)

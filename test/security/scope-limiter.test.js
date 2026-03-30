@@ -80,7 +80,7 @@ test('SL-005', '*.key files are always denied', () => {
 });
 
 // ============================================================
-// SL-006 ~ SL-010: L0 Strict Scope (docs/, .bkit/ only)
+// SL-006 ~ SL-010: L0 Strict Scope (docs/, .rossi/ only)
 // ============================================================
 console.log('\n=== Scope Limiter: L0 Strict ===');
 
@@ -89,9 +89,9 @@ test('SL-006', 'L0 allows docs/ directory', () => {
   assert.strictEqual(r.allowed, true, 'L0 should allow docs/');
 });
 
-test('SL-007', 'L0 allows .bkit/ directory', () => {
-  const r = scopeLimiter.checkPathScope('.bkit/state/status.json', 0);
-  assert.strictEqual(r.allowed, true, 'L0 should allow .bkit/');
+test('SL-007', 'L0 allows .rossi/ directory', () => {
+  const r = scopeLimiter.checkPathScope('.rossi/state/status.json', 0);
+  assert.strictEqual(r.allowed, true, 'L0 should allow .rossi/');
 });
 
 test('SL-008', 'L0 denies src/ directory', () => {

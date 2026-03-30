@@ -65,7 +65,7 @@
 
 | 파일 | 변경 |
 |------|------|
-| `.bkit/runtime/control-state.json` | trustScore: 50 → 40 |
+| `.rossi/runtime/control-state.json` | trustScore: 50 → 40 |
 
 ---
 

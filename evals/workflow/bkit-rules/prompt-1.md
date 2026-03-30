@@ -1,9 +1,9 @@
-# bkit-rules Eval Prompt - Trigger Accuracy
+# rossi-rules Eval Prompt - Trigger Accuracy
 
 User request to implement a new feature called user-auth for the project.
 This feature involves adding login, registration, and session management.
 
-Test trigger accuracy for auto-applying bkit rules when a development
+Test trigger accuracy for auto-applying ROSSI rules when a development
 task is initiated. The skill should detect the intent and automatically
 apply PDCA methodology, level detection, agent auto-triggering, and
 code quality standards without requiring explicit user commands.

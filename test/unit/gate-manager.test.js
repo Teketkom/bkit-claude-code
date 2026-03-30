@@ -9,8 +9,8 @@ const path = require('path');
 const os = require('os');
 
 // Set up tmp dir and mock platform/state-store for file I/O
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bkit-gate-test-'));
-const stateDir = path.join(tmpDir, '.bkit', 'state');
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ROSSI-gate-test-'));
+const stateDir = path.join(tmpDir, '.rossi', 'state');
 fs.mkdirSync(stateDir, { recursive: true });
 
 // Mock platform to use tmpDir

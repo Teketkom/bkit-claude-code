@@ -1,10 +1,10 @@
-# bkit Skill Evals Framework
+# ROSSI Skill Evals Framework
 
 > v1.6.2 ENH-88: Automated skill quality verification (28/28 full implementation)
 
 ## Overview
 
-The evals framework provides automated testing for all 28 bkit skills, organized by classification:
+The evals framework provides automated testing for all 28 ROSSI skills, organized by classification:
 - **Workflow** (9 skills): Process compliance tests
 - **Capability** (18 skills): Output quality + model parity tests
 - **Hybrid** (1 skill): Both test types

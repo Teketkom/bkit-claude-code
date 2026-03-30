@@ -1,6 +1,6 @@
-# bkit v2.0.0 사용자 가이드
+# ROSSI v2.0.0 사용자 가이드
 
-> **bkit — AI Native Development OS**
+> **ROSSI CTO Agent Kit — AI Native Development OS**
 >
 > Claude Code 플러그인으로, PDCA 방법론 기반의 체계적인 AI 네이티브 개발 환경을 제공합니다.
 > 36개 스킬, 31개 에이전트, 18개 훅 이벤트, 2개 MCP 서버를 통해
@@ -37,9 +37,9 @@
 
 ## 1. 시작하기
 
-### 1.1 bkit이란?
+### 1.1 ROSSI이란?
 
-bkit(Vibecoding Kit)은 Claude Code CLI에 설치하는 **플러그인**입니다.
+ROSSI(Vibecoding Kit)은 Claude Code CLI에 설치하는 **플러그인**입니다.
 AI와 함께 소프트웨어를 개발할 때, "감"(vibe)에 의존하는 것이 아니라
 **PDCA(Plan-Do-Check-Act) 사이클**이라는 체계적인 방법론을 적용하여
 품질 높은 코드를 빠르게 만들어냅니다.
@@ -52,13 +52,13 @@ AI와 함께 소프트웨어를 개발할 때, "감"(vibe)에 의존하는 것�
 
 ### 1.2 설치 확인
 
-bkit이 정상 설치되었는지 확인하려면 Claude Code에서 다음을 입력합니다:
+ROSSI이 정상 설치되었는지 확인하려면 Claude Code에서 다음을 입력합니다:
 
 ```
-/bkit
+/ROSSI
 ```
 
-이 명령어를 실행하면 사용 가능한 모든 bkit 기능 목록이 표시됩니다.
+이 명령어를 실행하면 사용 가능한 모든 ROSSI 기능 목록이 표시됩니다.
 
 ### 1.3 첫 번째 프로젝트 시작
 
@@ -73,7 +73,7 @@ bkit이 정상 설치되었는지 확인하려면 Claude Code에서 다음을 �
 **예시: Dynamic 프로젝트 시작**
 ```
 사용자: "로그인 기능이 있는 블로그 웹앱을 만들고 싶어"
-→ bkit이 자동으로 Dynamic 레벨 감지
+→ ROSSI이 자동으로 Dynamic 레벨 감지
 → /dynamic init 실행 제안
 ```
 
@@ -100,12 +100,12 @@ bkit이 정상 설치되었는지 확인하려면 Claude Code에서 다음을 �
 ### 2.1 PDCA란?
 
 PDCA는 **Plan-Do-Check-Act**의 약자로, 품질 관리의 핵심 방법론입니다.
-bkit은 이 개념을 소프트웨어 개발에 적용하여, AI가 만든 코드의 품질을
+ROSSI은 이 개념을 소프트웨어 개발에 적용하여, AI가 만든 코드의 품질을
 체계적으로 보장합니다.
 
 ### 2.2 상태 머신
 
-bkit의 PDCA는 **10개 상태**와 **20개 전환**으로 구성된 상태 머신입니다:
+ROSSI의 PDCA는 **10개 상태**와 **20개 전환**으로 구성된 상태 머신입니다:
 
 ```
 상태: idle → pm → plan → design → do → check → act → report → archived → error
@@ -249,7 +249,7 @@ bkit의 PDCA는 **10개 상태**와 **20개 전환**으로 구성된 상태 머�
 
 **무엇을 하나요?**
 - Design 문서를 기반으로 실제 코드를 작성합니다
-- bkit이 설계 문서를 참조하면서 코드를 생성합니다
+- ROSSI이 설계 문서를 참조하면서 코드를 생성합니다
 
 #### Step 4: 검증 (Check)
 
@@ -343,7 +343,7 @@ Iteration 2: 93% → 통과! → Report 단계로 이동
 
 ### 4.1 5단계 자동화
 
-bkit은 AI에게 위임하는 권한을 5단계로 조절할 수 있습니다.
+ROSSI은 AI에게 위임하는 권한을 5단계로 조절할 수 있습니다.
 처음에는 낮은 레벨에서 시작하고, 신뢰가 쌓이면 점진적으로 올릴 수 있습니다.
 
 | 레벨 | 이름 | 설명 | 적합한 상황 |
@@ -380,7 +380,7 @@ bkit은 AI에게 위임하는 권한을 5단계로 조절할 수 있습니다.
 
 ### 4.4 Trust Score — 자동 레벨 조정
 
-bkit은 **Trust Score (0-100점)**를 계산하여 자동 레벨 조정을 제안합니다.
+ROSSI은 **Trust Score (0-100점)**를 계산하여 자동 레벨 조정을 제안합니다.
 
 **점수 구성 요소:**
 
@@ -433,7 +433,7 @@ Ctrl+C            # 키보드 단축키로 비상 정지
 또는:
 ```
 "포트폴리오 웹사이트를 만들고 싶어"
-→ bkit이 Starter 레벨 자동 감지
+→ ROSSI이 Starter 레벨 자동 감지
 ```
 
 **주요 특징:**
@@ -441,7 +441,7 @@ Ctrl+C            # 키보드 단축키로 비상 정지
 - 서버/데이터베이스 불필요
 - 간단한 PDCA 사이클 (Plan → Design → Do → Check → Report)
 - Match Rate 기준: 80% (Enterprise보다 낮음)
-- `bkit-learning` 출력 스타일 권장 (학습 포인트 자동 표시)
+- `rossi-learning` 출력 스타일 권장 (학습 포인트 자동 표시)
 
 **사용 가능한 파이프라인 Phase:**
 1. Phase 1: 스키마/용어 정의
@@ -464,7 +464,7 @@ Ctrl+C            # 키보드 단축키로 비상 정지
 또는:
 ```
 "회원가입이 있는 블로그를 만들어줘"
-→ bkit이 Dynamic 레벨 자동 감지
+→ ROSSI이 Dynamic 레벨 자동 감지
 ```
 
 **주요 특징:**
@@ -505,8 +505,8 @@ Ctrl+C            # 키보드 단축키로 비상 정지
 
 ## 6. 36개 스킬 완전 가이드
 
-스킬(Skill)은 bkit의 **구조화된 전문 지식**입니다.
-자연어로 대화하면 bkit이 적절한 스킬을 자동으로 활성화합니다.
+스킬(Skill)은 ROSSI의 **구조화된 전문 지식**입니다.
+자연어로 대화하면 ROSSI이 적절한 스킬을 자동으로 활성화합니다.
 
 ### 6.1 Workflow 스킬 (9개) — 개발 프로세스 관리
 
@@ -568,8 +568,8 @@ Workflow 스킬은 AI 모델의 발전과 무관하게 항상 필요한 **프로
 | **zero-script-qa** | `/zero-script-qa` | 테스트 스크립트 없이 Docker 로그로 QA |
 | **claude-code-learning** | `/claude-code-learning` | Claude Code 사용법 학습 |
 | **development-pipeline** | `/development-pipeline` | 9-Phase 전체 파이프라인 안내 |
-| **bkit-templates** | 자동 트리거 | PDCA 문서 템플릿 제공 |
-| **bkit-rules** | 자동 트리거 | bkit 내부 규칙 참조 |
+| **rossi-templates** | 자동 트리거 | PDCA 문서 템플릿 제공 |
+| **rossi-rules** | 자동 트리거 | ROSSI 내부 규칙 참조 |
 
 ### 6.3 Hybrid 스킬 (2개) — 프로세스 + 전문 지식
 
@@ -586,7 +586,7 @@ Workflow 스킬은 AI 모델의 발전과 무관하게 항상 필요한 **프로
 **예시:**
 ```
 사용자: "로그인 기능을 설계해줘"
-→ bkit이 "로그인" → bkend-auth 스킬 + "설계" → PDCA design 단계 감지
+→ ROSSI이 "로그인" → bkend-auth 스킬 + "설계" → PDCA design 단계 감지
 → 적절한 스킬과 에이전트 자동 활성화
 ```
 
@@ -675,7 +675,7 @@ Workflow 스킬은 AI 모델의 발전과 무관하게 항상 필요한 **프로
 | 에이전트 | 모델 | 역할 |
 |---------|------|------|
 | **cc-version-researcher** | Opus | CC CLI 버전 변경 사항 조사 |
-| **bkit-impact-analyst** | Opus | CC 변경이 bkit에 미치는 영향 분석 |
+| **rossi-impact-analyst** | Opus | CC 변경이 ROSSI에 미치는 영향 분석 |
 
 ---
 
@@ -820,7 +820,7 @@ CTO 팀은 PDCA 단계에 따라 다른 패턴으로 작업합니다:
 
 ### 10.2 10대 품질 지표 (M1-M10)
 
-bkit은 10가지 지표를 자동으로 수집하고 추적합니다:
+ROSSI은 10가지 지표를 자동으로 수집하고 추적합니다:
 
 | ID | 지표 | 측정 주체 | 단위 | 좋은 방향 |
 |----|------|-----------|------|-----------|
@@ -843,7 +843,7 @@ bkit은 10가지 지표를 자동으로 수집하고 추적합니다:
 
 ### 10.3 트렌드 분석 (6가지 경보)
 
-bkit은 품질 지표의 추세를 분석하여 문제를 조기에 감지합니다:
+ROSSI은 품질 지표의 추세를 분석하여 문제를 조기에 감지합니다:
 
 | 경보 | 조건 | 의미 |
 |------|------|------|
@@ -888,7 +888,7 @@ bkit은 품질 지표의 추세를 분석하여 문제를 조기에 감지합니
 - 생성 시간, 타입, Feature 이름
 - 생성 이유 (예: "design→do 전환")
 
-**저장 위치:** `.bkit/checkpoints/`
+**저장 위치:** `.rossi/checkpoints/`
 
 ---
 
@@ -896,7 +896,7 @@ bkit은 품질 지표의 추세를 분석하여 문제를 조기에 감지합니
 
 ### 12.1 파괴적 작업 감지기 (8개 규칙)
 
-bkit은 위험한 명령어를 자동으로 감지하고 차단합니다:
+ROSSI은 위험한 명령어를 자동으로 감지하고 차단합니다:
 
 | 규칙 | 이름 | 감지 패턴 | 심각도 | 기본 조치 |
 |------|------|-----------|--------|-----------|
@@ -912,7 +912,7 @@ bkit은 위험한 명령어를 자동으로 감지하고 차단합니다:
 **작동 방식:**
 ```
 사용자: "빌드 캐시 전체를 삭제해줘"
-→ bkit이 rm -rf 패턴 감지 (G-001)
+→ ROSSI이 rm -rf 패턴 감지 (G-001)
 → "⚠️ 재귀 삭제가 감지되었습니다. 이 작업을 실행하시겠습니까?"
 → 사용자 승인/거부
 ```
@@ -947,9 +947,9 @@ bkit은 위험한 명령어를 자동으로 감지하고 차단합니다:
 
 ### 13.1 감사 로그 (Audit Log)
 
-bkit의 모든 작업이 **시간순으로 기록**됩니다.
+ROSSI의 모든 작업이 **시간순으로 기록**됩니다.
 
-**저장 위치:** `.bkit/audit/YYYY-MM-DD.jsonl`
+**저장 위치:** `.rossi/audit/YYYY-MM-DD.jsonl`
 **보존 기간:** 30일
 
 **기록되는 이벤트 유형 (16종):**
@@ -976,7 +976,7 @@ bkit의 모든 작업이 **시간순으로 기록**됩니다.
 
 AI가 **왜 그런 결정을 했는지** 추적합니다.
 
-**저장 위치:** `.bkit/decisions/YYYY-MM-DD.jsonl`
+**저장 위치:** `.rossi/decisions/YYYY-MM-DD.jsonl`
 
 **추적되는 결정 유형 (15종):**
 
@@ -1026,7 +1026,7 @@ AI가 **왜 그런 결정을 했는지** 추적합니다.
 
 ### 14.1 5가지 대시보드 컴포넌트
 
-bkit은 터미널에 시각적인 대시보드를 표시합니다.
+ROSSI은 터미널에 시각적인 대시보드를 표시합니다.
 
 #### 1) Progress Bar — 진행 상태 바
 
@@ -1112,37 +1112,37 @@ Gap 분석 결과와 변경 영향을 시각화합니다:
 ### 15.1 MCP란?
 
 MCP(Model Context Protocol)는 AI 모델이 외부 도구와 데이터에 접근하는 프로토콜입니다.
-bkit은 2개의 MCP 서버를 제공합니다.
+ROSSI은 2개의 MCP 서버를 제공합니다.
 
-### 15.2 bkit-pdca-server (10개 도구)
+### 15.2 rossi-pdca-server (10개 도구)
 
 PDCA 상태와 문서를 조회하는 서버입니다.
 
 | 도구 | 설명 | 사용 예시 |
 |------|------|-----------|
-| `bkit_pdca_status` | 현재 PDCA 상태 조회 | Feature별 필터 가능 |
-| `bkit_pdca_history` | PDCA 이력 이벤트 조회 | 기간/건수 필터 |
-| `bkit_feature_list` | Feature 목록 조회 | active/completed/archived |
-| `bkit_feature_detail` | 특정 Feature 상세 | 전체 메타데이터 포함 |
-| `bkit_plan_read` | Plan 문서 읽기 | markdown 원문 반환 |
-| `bkit_design_read` | Design 문서 읽기 | markdown 원문 반환 |
-| `bkit_analysis_read` | Analysis 문서 읽기 | Gap 분석 결과 |
-| `bkit_report_read` | Report 문서 읽기 | 완료 보고서 |
-| `bkit_metrics_get` | 최신 품질 지표 | M1-M10 현재값 |
-| `bkit_metrics_history` | 지표 시계열 이력 | 추세 분석용 |
+| `rossi_pdca_status` | 현재 PDCA 상태 조회 | Feature별 필터 가능 |
+| `rossi_pdca_history` | PDCA 이력 이벤트 조회 | 기간/건수 필터 |
+| `rossi_feature_list` | Feature 목록 조회 | active/completed/archived |
+| `rossi_feature_detail` | 특정 Feature 상세 | 전체 메타데이터 포함 |
+| `rossi_plan_read` | Plan 문서 읽기 | markdown 원문 반환 |
+| `rossi_design_read` | Design 문서 읽기 | markdown 원문 반환 |
+| `rossi_analysis_read` | Analysis 문서 읽기 | Gap 분석 결과 |
+| `rossi_report_read` | Report 문서 읽기 | 완료 보고서 |
+| `rossi_metrics_get` | 최신 품질 지표 | M1-M10 현재값 |
+| `rossi_metrics_history` | 지표 시계열 이력 | 추세 분석용 |
 
-### 15.3 bkit-analysis-server (6개 도구)
+### 15.3 rossi-analysis-server (6개 도구)
 
 코드 분석과 감사를 위한 서버입니다.
 
 | 도구 | 설명 |
 |------|------|
-| `bkit_code_quality` | 코드 품질 분석 결과 조회 |
-| `bkit_gap_analysis` | 설계-구현 갭 분석 결과 |
-| `bkit_regression_rules` | 회귀 방지 규칙 목록/추가 |
-| `bkit_checkpoint_list` | 체크포인트 목록 |
-| `bkit_checkpoint_detail` | 체크포인트 상세 |
-| `bkit_audit_search` | 감사 로그 검색 |
+| `rossi_code_quality` | 코드 품질 분석 결과 조회 |
+| `rossi_gap_analysis` | 설계-구현 갭 분석 결과 |
+| `rossi_regression_rules` | 회귀 방지 규칙 목록/추가 |
+| `rossi_checkpoint_list` | 체크포인트 목록 |
+| `rossi_checkpoint_detail` | 체크포인트 상세 |
+| `rossi_audit_search` | 감사 로그 검색 |
 
 ---
 
@@ -1150,15 +1150,15 @@ PDCA 상태와 문서를 조회하는 서버입니다.
 
 ### 16.1 4가지 출력 스타일
 
-bkit은 상황에 맞는 **출력 스타일**을 제공합니다.
+ROSSI은 상황에 맞는 **출력 스타일**을 제공합니다.
 AI의 응답 형식을 목적에 맞게 변경할 수 있습니다.
 
 | 스타일 | 트리거 키워드 | 특징 | 적합한 사용자 |
 |--------|-------------|------|-------------|
-| **bkit-learning** | 배우기, 초보, tutorial | 학습 포인트 자동 표시, TODO 마커 | 입문자, 학습 목적 |
-| **bkit-pdca-guide** | PDCA, 워크플로우 | 단계별 체크리스트, 상태 뱃지 | 일반 개발자 |
-| **bkit-enterprise** | 아키텍처, CTO | 트레이드오프 표, 비용 추정 | 시니어, 아키텍트 |
-| **bkit-pdca-enterprise** | PDCA + Enterprise | 위 두 가지 결합 | Enterprise 팀 |
+| **rossi-learning** | 배우기, 초보, tutorial | 학습 포인트 자동 표시, TODO 마커 | 입문자, 학습 목적 |
+| **rossi-pdca-guide** | PDCA, 워크플로우 | 단계별 체크리스트, 상태 뱃지 | 일반 개발자 |
+| **rossi-enterprise** | 아키텍처, CTO | 트레이드오프 표, 비용 추정 | 시니어, 아키텍트 |
+| **rossi-pdca-enterprise** | PDCA + Enterprise | 위 두 가지 결합 | Enterprise 팀 |
 
 ### 16.2 스타일 변경 방법
 
@@ -1171,9 +1171,9 @@ AI의 응답 형식을 목적에 맞게 변경할 수 있습니다.
 
 ## 17. 설정 파일 가이드
 
-### 17.1 bkit.config.json — 중앙 설정 파일
+### 17.1 rossi.config.json — 중앙 설정 파일
 
-프로젝트 루트의 `bkit.config.json`이 bkit의 모든 동작을 제어합니다.
+프로젝트 루트의 `rossi.config.json`이 ROSSI의 모든 동작을 제어합니다.
 
 #### PDCA 설정
 
@@ -1253,13 +1253,13 @@ AI의 응답 형식을 목적에 맞게 변경할 수 있습니다.
 
 ### 17.2 plugin.json — 플러그인 메타데이터
 
-`.claude-plugin/plugin.json`은 Claude Code에 bkit 플러그인 정보를 알립니다.
+`.claude-plugin/plugin.json`은 Claude Code에 ROSSI 플러그인 정보를 알립니다.
 
 ```json
 {
-  "name": "bkit",
+  "name": "ROSSI",
   "version": "2.0.0",
-  "displayName": "bkit — AI Native Development OS",
+  "displayName": "ROSSI CTO Agent Kit — AI Native Development OS",
   "engines": { "claude-code": ">=2.1.78" },
   "outputStyles": "./output-styles/"
 }
@@ -1271,7 +1271,7 @@ AI의 응답 형식을 목적에 맞게 변경할 수 있습니다.
 
 ### 18.1 3가지 메모리 스코프
 
-bkit은 Claude Code의 에이전트 메모리 시스템을 활용합니다:
+ROSSI은 Claude Code의 에이전트 메모리 시스템을 활용합니다:
 
 | 스코프 | 경로 | 공유 범위 | 용도 |
 |--------|------|-----------|------|
@@ -1279,19 +1279,19 @@ bkit은 Claude Code의 에이전트 메모리 시스템을 활용합니다:
 | **User** | `~/.claude/agent-memory/` | 사용자 전체 프로젝트 | 개인 선호, Claude Code 설정 |
 | **Local** | `.claude/agent-memory-local/` | 로컬 전용 (gitignore) | 민감한 정보, 로컬 환경 |
 
-### 18.2 bkit 상태 파일
+### 18.2 ROSSI 상태 파일
 
-bkit 자체의 상태도 파일로 관리됩니다:
+ROSSI 자체의 상태도 파일로 관리됩니다:
 
 | 파일 | 설명 |
 |------|------|
-| `.bkit/state/pdca-status.json` | PDCA 상태 (단계, Match Rate, 반복 횟수) |
-| `.bkit/state/memory.json` | bkit 메모리 (현재 Feature, 레벨, 컨텍스트) |
-| `.bkit/state/trust-profile.json` | Trust Score 프로파일 |
-| `.bkit/state/quality-metrics.json` | 최신 품질 지표 스냅샷 |
-| `.bkit/state/quality-history.json` | 품질 지표 시계열 이력 |
-| `.bkit/runtime/agent-state.json` | 에이전트 팀 상태 |
-| `.bkit/runtime/control-state.json` | 자동화 제어 상태 |
+| `.rossi/state/pdca-status.json` | PDCA 상태 (단계, Match Rate, 반복 횟수) |
+| `.rossi/state/memory.json` | ROSSI 메모리 (현재 Feature, 레벨, 컨텍스트) |
+| `.rossi/state/trust-profile.json` | Trust Score 프로파일 |
+| `.rossi/state/quality-metrics.json` | 최신 품질 지표 스냅샷 |
+| `.rossi/state/quality-history.json` | 품질 지표 시계열 이력 |
+| `.rossi/runtime/agent-state.json` | 에이전트 팀 상태 |
+| `.rossi/runtime/control-state.json` | 자동화 제어 상태 |
 
 ### 18.3 메모리 관련 명령어
 
@@ -1481,7 +1481,7 @@ Phase 9: 배포
 
 ### 20.4 워크플로우 프리셋
 
-bkit은 3가지 워크플로우 프리셋을 자동으로 선택합니다:
+ROSSI은 3가지 워크플로우 프리셋을 자동으로 선택합니다:
 
 | 프리셋 | 자동 선택 조건 | Match Rate 기준 | 최대 반복 | 특징 |
 |--------|---------------|-----------------|-----------|------|
@@ -1491,7 +1491,7 @@ bkit은 3가지 워크플로우 프리셋을 자동으로 선택합니다:
 
 **커스텀 워크플로우:**
 
-`.bkit/workflows/` 디렉터리에 YAML 파일을 추가하면 커스텀 워크플로우를 만들 수 있습니다.
+`.rossi/workflows/` 디렉터리에 YAML 파일을 추가하면 커스텀 워크플로우를 만들 수 있습니다.
 
 ### 20.5 Zero Script QA
 
@@ -1548,9 +1548,9 @@ node evals/ab-tester.js --parity phase-3-mockup --model opus
 
 ## 21. 자주 묻는 질문 (FAQ)
 
-### Q: bkit을 사용하려면 반드시 PDCA를 따라야 하나요?
+### Q: ROSSI을 사용하려면 반드시 PDCA를 따라야 하나요?
 
-**A:** 아닙니다. bkit은 PDCA를 강제하지 않습니다. 단순한 버그 수정이나 작은 변경은
+**A:** 아닙니다. ROSSI은 PDCA를 강제하지 않습니다. 단순한 버그 수정이나 작은 변경은
 일반 Claude Code처럼 자유롭게 작업할 수 있습니다. PDCA는 새로운 기능 개발이나
 복잡한 작업에서 가장 효과적입니다.
 
@@ -1567,15 +1567,15 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 ```
 그 후 `/pdca team {feature}` 명령으로 팀 모드를 시작합니다.
 
-### Q: bkit 설정을 초기화하고 싶어요.
+### Q: ROSSI 설정을 초기화하고 싶어요.
 
-**A:** `bkit.config.json`을 삭제하면 기본 설정으로 돌아갑니다.
+**A:** `rossi.config.json`을 삭제하면 기본 설정으로 돌아갑니다.
 PDCA 상태를 초기화하려면 `/rollback reset {feature}`를 사용하세요.
 
 ### Q: 자동화 레벨을 어떻게 선택해야 하나요?
 
 **A:** 처음에는 **L2 (Semi-Auto)**로 시작하세요 (기본값).
-bkit에 익숙해지면 L3으로, 반복 작업이 많으면 L4로 올려보세요.
+ROSSI에 익숙해지면 L3으로, 반복 작업이 많으면 L4로 올려보세요.
 민감한 프로젝트에서는 L0이나 L1을 사용하세요.
 
 ### Q: hotfix를 빠르게 적용하고 싶어요.
@@ -1614,7 +1614,7 @@ Ctrl+C                # 키보드 단축키
 
 ### Q: Claude Code 어떤 버전이 필요한가요?
 
-**A:** bkit v2.0.0은 **Claude Code v2.1.78 이상**이 필요합니다.
+**A:** ROSSI v2.0.0은 **Claude Code v2.1.78 이상**이 필요합니다.
 권장 버전은 **v2.1.79+**입니다 (/btw 스트리밍 수정, 시작 메모리 최적화 포함).
 
 ---
@@ -1687,7 +1687,7 @@ Check 단계 병렬 실행:
 
 ## 부록: 18개 Hook 이벤트
 
-bkit은 Claude Code의 Hook 시스템을 통해 다양한 이벤트에 자동 반응합니다.
+ROSSI은 Claude Code의 Hook 시스템을 통해 다양한 이벤트에 자동 반응합니다.
 
 | Hook 이벤트 | 설명 | 주요 동작 |
 |-------------|------|-----------|
@@ -1764,7 +1764,7 @@ bkit은 Claude Code의 Hook 시스템을 통해 다양한 이벤트에 자동 �
 
 | 명령어 | 설명 |
 |--------|------|
-| `/bkit` | bkit 기능 목록 |
+| `/ROSSI` | ROSSI 기능 목록 |
 | `/plan-plus {feature}` | 브레인스토밍 강화 Plan |
 | `/btw {내용}` | 아이디어 기록 |
 | `/code-review` | 코드 리뷰 |
@@ -1785,8 +1785,8 @@ bkit은 Claude Code의 Hook 시스템을 통해 다양한 이벤트에 자동 �
 
 ---
 
-> **bkit v2.0.0** — AI Native Development OS
+> **ROSSI v2.0.0** — AI Native Development OS
 >
 > 문의 및 피드백: https://github.com/anthropics/claude-code/issues
 >
-> bkit은 Apache 2.0 라이선스로 제공됩니다.
+> ROSSI은 Apache 2.0 라이선스로 제공됩니다.

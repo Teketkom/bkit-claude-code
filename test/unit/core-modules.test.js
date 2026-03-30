@@ -41,8 +41,8 @@ if (!platform) {
 } else {
   assert('CM-001', typeof platform.detectPlatform === 'function', 'detectPlatform is a function');
   assert('CM-002', typeof platform.isClaudeCode === 'function', 'isClaudeCode is a function');
-  assert('CM-003', typeof platform.BKIT_PLATFORM === 'string', 'BKIT_PLATFORM is a string');
-  assert('CM-004', ['claude', 'unknown'].includes(platform.BKIT_PLATFORM), 'BKIT_PLATFORM is claude or unknown');
+  assert('CM-003', typeof platform.ROSSI_PLATFORM === 'string', 'ROSSI_PLATFORM is a string');
+  assert('CM-004', ['claude', 'unknown'].includes(platform.ROSSI_PLATFORM), 'ROSSI_PLATFORM is claude or unknown');
   assert('CM-005', typeof platform.PLUGIN_ROOT === 'string' && platform.PLUGIN_ROOT.length > 0, 'PLUGIN_ROOT is a non-empty string');
   assert('CM-006', typeof platform.PROJECT_DIR === 'string' && platform.PROJECT_DIR.length > 0, 'PROJECT_DIR is a non-empty string');
   assert('CM-007', typeof platform.getPluginPath === 'function' && typeof platform.getPluginPath('test') === 'string', 'getPluginPath returns string');
@@ -128,10 +128,10 @@ if (!debug) {
   assert('CM-023', typeof debug.getDebugLogPath() === 'string', 'getDebugLogPath returns a string');
   assert('CM-024', typeof debug.DEBUG_LOG_PATHS === 'object' && debug.DEBUG_LOG_PATHS !== null, 'DEBUG_LOG_PATHS is an object');
 
-  // debugLog should not throw when BKIT_DEBUG is not set
+  // debugLog should not throw when ROSSI_DEBUG is not set
   let noThrow = true;
   try { debug.debugLog('test', 'message', { data: 1 }); } catch (e) { noThrow = false; }
-  assert('CM-025', noThrow, 'debugLog does not throw when BKIT_DEBUG is not set');
+  assert('CM-025', noThrow, 'debugLog does not throw when ROSSI_DEBUG is not set');
 }
 
 // ============================================================

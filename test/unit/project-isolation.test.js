@@ -4,8 +4,8 @@
  * Unit Tests for #48 globalCache project isolation fix
  * 10 TC | Cross-project restore guard + globalCache namespace
  *
- * @version bkit v2.0.1
- * @see https://github.com/popup-studio-ai/bkit-claude-code/issues/48
+ * @version ROSSI v2.0.1
+ * @see https://github.com/rossi-dev/rossi-cto-agent-kit/issues/48
  */
 
 const path = require('path');
@@ -21,7 +21,7 @@ const { backupToPluginData, restoreFromPluginData } = require('../../lib/core/pa
 const origPluginData = process.env.CLAUDE_PLUGIN_DATA;
 
 // Setup temp directories
-const TMP_BASE = path.join('/tmp', `bkit-iso-test-${Date.now()}`);
+const TMP_BASE = path.join('/tmp', `ROSSI-iso-test-${Date.now()}`);
 const BACKUP_DIR = path.join(TMP_BASE, 'backup');
 fs.mkdirSync(BACKUP_DIR, { recursive: true });
 
@@ -64,7 +64,7 @@ console.log('\n--- Section 2: Cross-project restore guard ---');
 fs.writeFileSync(metaPath, JSON.stringify({
   projectDir: '/fake/different/project',
   timestamp: new Date().toISOString(),
-  bkitVersion: '2.0.0',
+  rossiVersion: '2.0.0',
 }));
 const crossResult = restoreFromPluginData();
 assert('ISO-04',
@@ -92,7 +92,7 @@ assert('ISO-06',
 );
 
 // ISO-07: Restore skips when meta.json missing projectDir field
-fs.writeFileSync(metaPath, JSON.stringify({ timestamp: '2026-01-01', bkitVersion: '2.0.0' }));
+fs.writeFileSync(metaPath, JSON.stringify({ timestamp: '2026-01-01', rossiVersion: '2.0.0' }));
 const noFieldResult = restoreFromPluginData();
 assert('ISO-07',
   noFieldResult.skipped.length > 0 &&
@@ -110,7 +110,7 @@ console.log('\n--- Section 3: Same-project restore ---');
 fs.writeFileSync(metaPath, JSON.stringify({
   projectDir: PROJECT_DIR,
   timestamp: new Date().toISOString(),
-  bkitVersion: '2.0.0',
+  rossiVersion: '2.0.0',
 }));
 // Create a dummy backup file that doesn't exist in dest
 const dummyBackup = path.join(BACKUP_DIR, 'pdca-status.backup.json');

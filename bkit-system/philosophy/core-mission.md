@@ -1,12 +1,12 @@
-# bkit Core Mission & Philosophy
+# ROSSI Core Mission & Philosophy
 
-> Core mission, 3 philosophies, and 4 controllable AI principles of bkit v2.0.0
+> Core mission, 3 philosophies, and 4 controllable AI principles of ROSSI v2.0.0
 
 ## Core Mission
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         bkit's Core Mission                              │
+│                         ROSSI's Core Mission                              │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
 │   "Enable all developers using Claude Code to naturally adopt           │
@@ -160,7 +160,7 @@ After:  L0-L4 levels + trust score + emergency stop → Controllable AI
 | Hook Scripts | 57 | `hooks/`, `scripts/` |
 | lib/ Modules | 88 files across 11 subdirs (~620+ exports) | `lib/` |
 | MCP Servers | 2 (16 tools) | `servers/` |
-| Workflow Presets | 3 (default, enterprise, hotfix) | `.bkit/workflows/` |
+| Workflow Presets | 3 (default, enterprise, hotfix) | `.rossi/workflows/` |
 | Output Styles | 4 | `output-styles/` |
 | Tests | 130 files (~2,645 TC) | `test/` |
 
@@ -187,7 +187,7 @@ After:  L0-L4 levels + trust score + emergency stop → Controllable AI
 - **Quality Gates**: 7-stage gates with configurable thresholds per project level
 - **Checkpoint/Rollback**: Automatic checkpoint on phase transitions, manual rollback support
 - **Destructive Detection**: 8 rules (rm -rf, git push --force, etc.) with blast radius analysis
-- **MCP Servers**: bkit-pdca (10 tools) + bkit-analysis (6 tools) for external integration
+- **MCP Servers**: rossi-pdca (10 tools) + rossi-analysis (6 tools) for external integration
 - **Multi-Language Support**: 9 languages (EN, KO, JA, ZH, ES, FR, DE, IT, RU)
 
 ---

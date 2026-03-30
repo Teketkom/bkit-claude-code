@@ -5,7 +5,7 @@
  * 15 TC | parseDesignForTasks, generateImplementationPlan,
  *         checkFullAutoAvailability, evaluateCompletion, edge cases
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

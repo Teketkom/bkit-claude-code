@@ -2,12 +2,12 @@
 
 > **요약**: Windows 사용자명에 괄호 포함 시 hook command bash syntax error 수정
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23
 > **상태**: Draft
-> **이슈**: [GitHub #53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53)
+> **이슈**: [GitHub #53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53)
 
 ---
 
@@ -17,7 +17,7 @@
 |------|------|
 | **문제** | `hooks.json`의 모든 hook command에서 `${CLAUDE_PLUGIN_ROOT}` 경로가 따옴표 없이 사용되어, Windows 사용자명에 괄호(`(`, `)`)가 포함되면 bash syntax error 발생 |
 | **해결** | hooks.json 내 모든 18개 hook command의 node 스크립트 경로를 double-quote로 감싸기 |
-| **기능/UX 효과** | Windows 환경에서 특수문자 포함 경로에서도 bkit이 정상 작동 |
+| **기능/UX 효과** | Windows 환경에서 특수문자 포함 경로에서도 ROSSI이 정상 작동 |
 | **핵심 가치** | 크로스 플랫폼 호환성 보장 — "어떤 OS, 어떤 사용자명이든 동작" 원칙 |
 
 ---
@@ -33,16 +33,16 @@ GitHub 이슈 #53에서 보고된 **Windows hook command 실패 버그**를 수�
 Claude Code 플러그인 시스템은 hook command를 bash `-c` 옵션으로 실행한다. `hooks.json`의 command 필드 값이 `bash -c "command_string"`의 command_string으로 전달되는데, `${CLAUDE_PLUGIN_ROOT}`이 다음과 같은 경로로 확장될 수 있다:
 
 ```
-/c/Users/홍길동(HongGildong)/.claude/plugins/cache/bkit-marketplace/bkit/2.0.3/
+/c/Users/홍길동(HongGildong)/.claude/plugins/cache/rossi-marketplace/ROSSI/2.0.3/
 ```
 
 이 경로의 `(`, `)` 문자를 bash가 subshell grouping으로 해석하여 syntax error가 발생한다.
 
-**영향 범위**: hooks.json 내 모든 18개 hook command가 동일한 패턴을 사용하므로, 해당 환경에서는 bkit의 모든 hook이 실패한다.
+**영향 범위**: hooks.json 내 모든 18개 hook command가 동일한 패턴을 사용하므로, 해당 환경에서는 ROSSI의 모든 hook이 실패한다.
 
 ### 1.3 관련 문서
 
-- 이슈: [GitHub #53 — Hook commands fail on Windows when username contains parentheses](https://github.com/popup-studio-ai/bkit-claude-code/issues/53)
+- 이슈: [GitHub #53 — Hook commands fail on Windows when username contains parentheses](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53)
 
 ---
 

@@ -51,7 +51,7 @@
 | ID | 테스트 | 원인 | 수정 |
 |----|--------|------|------|
 | CS-012 | `plugin.json version === '2.0.0'` | `plugin.json`이 `2.0.2`로 업데이트됨 | 기대값 `2.0.2`로 수정 |
-| CC-012 / VC-030 | `plugin.json version === bkit.config.json version` | `bkit.config.json`이 `2.0.0`으로 미동기화 | `bkit.config.json` → `2.0.2` 동기화 |
+| CC-012 / VC-030 | `plugin.json version === rossi.config.json version` | `rossi.config.json`이 `2.0.0`으로 미동기화 | `rossi.config.json` → `2.0.2` 동기화 |
 | SEC-CP-014 | `config.version === '2.0.0'` | 동일 버전 불일치 | 기대값 `2.0.2`로 수정 |
 | AE-17 | `pm-discovery maxTurns === 20` | PR #50에서 `25`로 변경 | 기대값 `25`로 수정 |
 | AE-20 | `pm-prd maxTurns === 20` | PR #50에서 `25`로 변경 | 기대값 `25`로 수정 |
@@ -60,7 +60,7 @@
 
 | 파일 | 변경 |
 |------|------|
-| `bkit.config.json` | `version: "2.0.0"` → `"2.0.2"` (plugin.json과 동기화) |
+| `rossi.config.json` | `version: "2.0.0"` → `"2.0.2"` (plugin.json과 동기화) |
 | `test/run-all.js` | 10개 카테고리 expected TC 카운트를 실제 결과에 맞게 업데이트 |
 
 ---
@@ -69,7 +69,7 @@
 
 | 파일 | 변경 내용 |
 |------|-----------|
-| `bkit.config.json` | version 2.0.0→2.0.2 |
+| `rossi.config.json` | version 2.0.0→2.0.2 |
 | `test/integration/config-sync.test.js` | CS-012 기대값 2.0.2 |
 | `test/integration/v200-wiring.test.js` | VW-036 기대값 2.0.2 |
 | `test/security/config-permissions.test.js` | SEC-CP-014 기대값 2.0.2 |

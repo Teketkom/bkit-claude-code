@@ -6,7 +6,7 @@
  * VC-011~020: pdca-status.json v2.0 data loads correctly in v3.0 module
  * VC-021~030: Existing agent/skill definitions not broken
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -25,11 +25,11 @@ console.log('\n=== v162-compat.test.js (30 TC) ===\n');
 // ============================================================
 console.log('--- PDCA Commands Compatibility ---');
 
-let phase, status, bkitConfig;
+let phase, status, rossiConfig;
 try {
   phase = require(path.join(BASE_DIR, 'lib/pdca/phase'));
   status = require(path.join(BASE_DIR, 'lib/pdca/status'));
-  bkitConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'bkit.config.json'), 'utf-8'));
+  rossiConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'rossi.config.json'), 'utf-8'));
 } catch (e) {
   console.error('Module load failed:', e.message);
   process.exit(1);
@@ -68,8 +68,8 @@ assert('VC-008', typeof phase.getNextPdcaPhase === 'function' && phase.getNextPd
   'next command: getNextPdcaPhase navigates plan->design');
 
 // VC-009: archive support
-assert('VC-009', bkitConfig.pdca && bkitConfig.pdca.docPaths && bkitConfig.pdca.docPaths.archive,
-  'archive command: archive doc path configured in bkit.config.json');
+assert('VC-009', rossiConfig.pdca && rossiConfig.pdca.docPaths && rossiConfig.pdca.docPaths.archive,
+  'archive command: archive doc path configured in rossi.config.json');
 
 // VC-010: cleanup function available
 assert('VC-010', typeof status.enforceFeatureLimit === 'function',
@@ -278,16 +278,16 @@ for (let i = 0; i < navChain.length - 1; i++) {
 assert('VC-028', chainOk,
   'PDCA phase navigation chain: plan->design->do->check->act->report');
 
-// VC-029: bkit.config.json has all required PDCA docPaths
+// VC-029: rossi.config.json has all required PDCA docPaths
 const requiredDocPaths = ['plan', 'design', 'analysis', 'report'];
-const hasAllDocPaths = requiredDocPaths.every(p => bkitConfig.pdca.docPaths[p]);
+const hasAllDocPaths = requiredDocPaths.every(p => rossiConfig.pdca.docPaths[p]);
 assert('VC-029', hasAllDocPaths,
-  'bkit.config.json has all PDCA docPaths (plan, design, analysis, report)');
+  'rossi.config.json has all PDCA docPaths (plan, design, analysis, report)');
 
 // VC-030: Plugin JSON version coherent
 const pluginJson = JSON.parse(fs.readFileSync(path.join(BASE_DIR, '.claude-plugin', 'plugin.json'), 'utf-8'));
-assert('VC-030', pluginJson.version === bkitConfig.version,
-  `plugin.json version (${pluginJson.version}) matches bkit.config.json (${bkitConfig.version})`);
+assert('VC-030', pluginJson.version === rossiConfig.version,
+  `plugin.json version (${pluginJson.version}) matches rossi.config.json (${rossiConfig.version})`);
 
 // ============================================================
 // Summary

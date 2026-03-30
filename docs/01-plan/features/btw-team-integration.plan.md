@@ -2,9 +2,9 @@
 
 > **Summary**: CTO Team 오케스트레이션의 Phase 전환 시점에 `/btw analyze` 자동 실행을 연결하여, 팀 작업 중 축적된 개선 제안을 다음 Phase에 반영
 >
-> **Project**: bkit (Vibecoding Kit)
+> **Project**: ROSSI (Vibecoding Kit)
 > **Version**: 1.7.0
-> **Author**: bkit PDCA
+> **Author**: ROSSI PDCA
 > **Date**: 2026-03-21
 > **Status**: Draft
 
@@ -36,7 +36,7 @@ Phase 전환은 CTO Lead가 관리하는 구조적 전환점으로, 이 시점�
 
 | 항목 | 내용 |
 |------|------|
-| `/btw` 현재 상태 | 독립 workflow 스킬, `.bkit/btw-suggestions.json`에 저장, 5개 명령(record/list/analyze/promote/stats) |
+| `/btw` 현재 상태 | 독립 workflow 스킬, `.rossi/btw-suggestions.json`에 저장, 5개 명령(record/list/analyze/promote/stats) |
 | CTO Team 현재 상태 | 5개 오케스트레이션 패턴(leader/council/swarm/pipeline/watchdog), Phase 전환 시 Quality Gate 검증 |
 | 연결점 | 없음 — 완전 분리 |
 | B안 선택 근거 | "사용자 수동 btw + Phase 전환 시 auto-analyze"가 턴 효율 최적 (가중 점수 +5.1/10) |
@@ -223,4 +223,4 @@ CTO Team Session
 
 | Version | Date | Changes | Author |
 |---------|------|---------|--------|
-| 0.1 | 2026-03-21 | Initial draft — B안 기반 Plan | bkit PDCA |
+| 0.1 | 2026-03-21 | Initial draft — B안 기반 Plan | ROSSI PDCA |

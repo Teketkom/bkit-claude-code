@@ -4,7 +4,7 @@
  * Unit Tests for lib/pdca/workflow-engine.js
  * 20 TC | Condition evaluator, executeWorkflow, advanceWorkflow, selectWorkflow
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');
@@ -68,7 +68,7 @@ console.log('\n--- Section 1: Condition Evaluator ---');
 console.log('\n--- Section 2: executeWorkflow ---');
 
 // Prepare a tmp dir for workflow state persistence
-const tmpDir = path.join(os.tmpdir(), `bkit-we-test-${Date.now()}`);
+const tmpDir = path.join(os.tmpdir(), `ROSSI-we-test-${Date.now()}`);
 fs.mkdirSync(tmpDir, { recursive: true });
 const origCwd = process.cwd();
 process.chdir(tmpDir);

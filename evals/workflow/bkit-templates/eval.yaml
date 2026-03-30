@@ -1,7 +1,7 @@
-name: bkit-templates
+name: rossi-templates
 classification: workflow
 version: 1.6.1
-description: "bkit-templates process compliance evaluation"
+description: "rossi-templates process compliance evaluation"
 
 evals:
   - name: trigger-accuracy

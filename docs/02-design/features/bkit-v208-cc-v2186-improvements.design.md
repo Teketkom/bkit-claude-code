@@ -1,12 +1,12 @@
-# bkit v2.0.8 — CC v2.1.86 대응 개선 설계
+# ROSSI v2.0.8 — CC v2.1.86 대응 개선 설계
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Target Version**: v2.0.8
 > **Author**: Design Workflow
 > **Created**: 2026-03-28
-> **Plan Reference**: docs/01-plan/features/bkit-v208-cc-v2186-improvements.plan.md
+> **Plan Reference**: docs/01-plan/features/rossi-v208-cc-v2186-improvements.plan.md
 
 ---
 
@@ -16,7 +16,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| **기능** | bkit v2.0.8 — Skills Description 250자 최적화 + Hook `if` 필드 문서화 |
+| **기능** | ROSSI v2.0.8 — Skills Description 250자 최적화 + Hook `if` 필드 문서화 |
 | **변경 파일** | 38개 (34 skills + context-engineering.md + 3 config files) |
 | **핵심 설계 결정** | description은 핵심 1줄 + Triggers 키워드만. 8개국어/Use/DoNOT은 본문 유지 |
 
@@ -202,16 +202,16 @@ description: |
   Triggers: bkend file, upload, download, presigned URL, storage, 파일 업로드, 스토리지.
 ```
 
-#### 1.2.5 bkit Utility Skills
+#### 1.2.5 ROSSI Utility Skills
 
-**bkit-rules** (현재 797자 → 목표 ≤250자)
+**rossi-rules** (현재 797자 → 목표 ≤250자)
 ```yaml
 description: |
-  Core rules for bkit — PDCA methodology, level detection, agent triggering, quality standards.
-  Triggers: bkit rules, core rules, methodology, 핵심 규칙, PDCA 규칙.
+  Core rules for ROSSI — PDCA methodology, level detection, agent triggering, quality standards.
+  Triggers: ROSSI rules, core rules, methodology, 핵심 규칙, PDCA 규칙.
 ```
 
-**bkit-templates** (현재 804자 → 목표 ≤250자)
+**rossi-templates** (현재 804자 → 목표 ≤250자)
 ```yaml
 description: |
   PDCA document templates — Plan, Design, Analysis, Report with consistent structure.
@@ -228,7 +228,7 @@ description: |
 **control** (현재 816자 → 목표 ≤250자)
 ```yaml
 description: |
-  Control bkit automation level (L0-L4), view trust score, and manage guardrails.
+  Control ROSSI automation level (L0-L4), view trust score, and manage guardrails.
   Triggers: control, automation level, trust score, guardrail, 자동화 레벨, 제어.
 ```
 
@@ -242,7 +242,7 @@ description: |
 **cc-version-analysis** (현재 941자 → 목표 ≤250자)
 ```yaml
 description: |
-  CC CLI version upgrade impact analysis — research changes, analyze bkit impact, generate report.
+  CC CLI version upgrade impact analysis — research changes, analyze ROSSI impact, generate report.
   Triggers: cc-version-analysis, CC upgrade, version analysis, CC 버전 분석, 버전 영향.
 ```
 
@@ -302,7 +302,7 @@ description: |
 **skill-status** (현재 271자 → 목표 ≤250자)
 ```yaml
 description: |
-  Show loaded skill inventory — bkit core vs project-local, conflicts, coverage gaps.
+  Show loaded skill inventory — ROSSI core vs project-local, conflicts, coverage gaps.
   Triggers: skill-status, skill list, 스킬 상태, 스킬 목록.
 ```
 
@@ -312,7 +312,7 @@ description: |
 
 ### 2.1 추가 위치
 
-`bkit-system/philosophy/context-engineering.md` 의 "18-Event Hook System" 섹션 하단에 추가.
+`rossi-system/philosophy/context-engineering.md` 의 "18-Event Hook System" 섹션 하단에 추가.
 
 ### 2.2 추가 내용
 
@@ -336,7 +336,7 @@ hook을 실행할 수 있습니다. Permission rule syntax를 사용합니다.
 }
 ```
 
-**bkit 현재 상태**: bkit hooks는 `if` 필드를 사용하지 않습니다.
+**ROSSI 현재 상태**: ROSSI hooks는 `if` 필드를 사용하지 않습니다.
 - unified-bash-pre.js: 모든 Bash 명령에 대해 내부적으로 패턴 분기 처리
 - `if` 필드로 필터링하면 destructive detector, scope limiter 등 다른 검사가 누락됨
 - **권장**: 새로운 단일 목적 hook 추가 시 `if` 필드 활용 (기존 hook은 변경 불필요)
@@ -350,7 +350,7 @@ hook을 실행할 수 있습니다. Permission rule syntax를 사용합니다.
 ### Enterprise Org Policy (CC v2.1.85+)
 
 CC v2.1.85부터 `managed-settings.json` org policy로 특정 plugin의
-설치/활성화를 차단할 수 있습니다. Enterprise 환경에서 bkit 설치 시
+설치/활성화를 차단할 수 있습니다. Enterprise 환경에서 ROSSI 설치 시
 org admin의 정책 확인이 필요할 수 있습니다.
 ```
 
@@ -360,9 +360,9 @@ org admin의 정책 확인이 필요할 수 있습니다.
 
 | 파일 | 필드 | Before | After |
 |------|------|--------|-------|
-| bkit.config.json | version | "2.0.6" | "2.0.8" |
+| rossi.config.json | version | "2.0.6" | "2.0.8" |
 | .claude-plugin/plugin.json | version | "2.0.6" | "2.0.8" |
-| hooks/hooks.json | description | "bkit Vibecoding Kit v2.0.6 - Claude Code" | "bkit Vibecoding Kit v2.0.8 - Claude Code" |
+| hooks/hooks.json | description | "ROSSI CTO Agent Kit v2.0.6 - Claude Code" | "ROSSI CTO Agent Kit v2.0.8 - Claude Code" |
 
 ---
 

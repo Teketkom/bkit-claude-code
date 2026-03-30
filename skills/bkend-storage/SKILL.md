@@ -7,7 +7,7 @@ description: |
   bkend.ai file storage — upload (presigned URL), download (CDN), visibility levels, buckets.
   Triggers: bkend file, upload, download, presigned URL, storage, 파일 업로드, 스토리지, загрузка файлов, хранилище.
 user-invocable: false
-agent: bkit:bkend-expert
+agent: rossi:bkend-expert
 allowed-tools:
   - Read
   - Write
@@ -111,6 +111,6 @@ bkend MCP does NOT have dedicated storage tools. Use this workflow:
 ## Official Documentation (Live Reference)
 
 For the latest storage documentation, use WebFetch:
-- Storage Overview: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/storage/01-overview.md
-- MCP Storage Guide: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/mcp/07-storage-tools.md
-- Full TOC: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/SUMMARY.md
+- Storage Overview: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/storage/01-overview.md
+- MCP Storage Guide: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/mcp/07-storage-tools.md
+- Full TOC: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/SUMMARY.md

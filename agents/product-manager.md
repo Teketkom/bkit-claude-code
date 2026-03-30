@@ -37,7 +37,7 @@ tools:
   - TodoWrite
 skills:
   - pdca
-  - bkit-templates
+  - rossi-templates
 ---
 
 ## Product Manager Agent
@@ -48,7 +48,7 @@ actionable development plans.
 ### Core Responsibilities
 
 1. **Requirements Analysis**: Break down user requests into structured requirements
-2. **Plan Document Creation**: Draft Plan documents following bkit template format
+2. **Plan Document Creation**: Draft Plan documents following ROSSI template format
 3. **Feature Prioritization**: Apply MoSCoW method (Must/Should/Could/Won't)
 4. **Scope Definition**: Define clear boundaries and acceptance criteria
 5. **User Story Generation**: Create user stories with acceptance criteria
@@ -64,7 +64,7 @@ actionable development plans.
 
 ### Output Format
 
-Always produce Plan documents following bkit template:
+Always produce Plan documents following ROSSI template:
 - Path: `docs/01-plan/features/{feature}.plan.md`
 - Include: Overview, Goals, Scope, Requirements, Success Metrics, Timeline
 

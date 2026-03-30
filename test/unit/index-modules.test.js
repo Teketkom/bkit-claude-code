@@ -4,7 +4,7 @@
  * Unit Tests for index.js re-export aggregation modules
  * 15 TC | lib/core, lib/pdca, lib/intent, lib/task, lib/team, lib/ui
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const path = require('path');

@@ -6,7 +6,7 @@
  * AW-006~010: 100 entries sequential <500ms
  * AW-011~015: readAuditLogs 1000 entries <100ms
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const { performance } = require('perf_hooks');
@@ -31,8 +31,8 @@ function perfAssert(id, condition, message, durationMs) {
 }
 
 // --- Setup temp audit directory ---
-const TEMP_DIR = path.join(os.tmpdir(), `bkit-audit-perf-${process.pid}`);
-const TEMP_AUDIT_DIR = path.join(TEMP_DIR, '.bkit', 'audit');
+const TEMP_DIR = path.join(os.tmpdir(), `ROSSI-audit-perf-${process.pid}`);
+const TEMP_AUDIT_DIR = path.join(TEMP_DIR, '.rossi', 'audit');
 fs.mkdirSync(TEMP_AUDIT_DIR, { recursive: true });
 
 // --- Load audit logger and patch the directory ---
@@ -60,7 +60,7 @@ function simulateWriteAuditLog(filePath, entry) {
     target: entry.target || '',
     details: entry.details || {},
     result: entry.result || 'success',
-    bkitVersion: '2.0.0',
+    rossiVersion: '2.0.0',
   };
   fs.appendFileSync(filePath, JSON.stringify(normalized) + '\n');
 }

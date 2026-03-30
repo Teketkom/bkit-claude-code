@@ -4,7 +4,7 @@
  * Regression Test: 29+ Agents Full Verification (25 TC)
  * AG-001~029: Each of 29+ agents has valid frontmatter (model, effort, maxTurns)
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');

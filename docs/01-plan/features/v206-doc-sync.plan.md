@@ -45,14 +45,14 @@ PR #57 introduced three major subsystems:
 
 | # | File | Changes Required |
 |---|------|-----------------|
-| 1 | `bkit.config.json` | version 2.0.5 → 2.0.6 |
+| 1 | `rossi.config.json` | version 2.0.5 → 2.0.6 |
 | 2 | `.claude-plugin/plugin.json` | version + description (counts update) |
 | 3 | `.claude-plugin/marketplace.json` | version if present |
 | 4 | `README.md` | Version badge, feature list, component counts, plugin structure |
 | 5 | `CHANGELOG.md` | New [2.0.6] section with all changes |
 | 6 | `AI-NATIVE-DEVELOPMENT.md` | Updated component counts (agents, skills, lib, hooks) |
 | 7 | `CUSTOMIZATION-GUIDE.md` | Updated counts in component overview tables |
-| 8 | `bkit-system/README.md` | Updated counts if referenced |
+| 8 | `rossi-system/README.md` | Updated counts if referenced |
 
 ### Out of Scope
 - Code changes (already merged in PR #57)

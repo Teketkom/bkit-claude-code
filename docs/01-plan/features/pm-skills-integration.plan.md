@@ -1,10 +1,10 @@
 # pm-skills-integration Planning Document
 
-> **Summary**: pm-skills(Pawel Huryn) 65개 PM 프레임워크를 bkit PM 에이전트 시스템에 통합하여 의사결정 커버리지를 29%→72%로 확장
+> **Summary**: pm-skills(Pawel Huryn) 65개 PM 프레임워크를 ROSSI PM 에이전트 시스템에 통합하여 의사결정 커버리지를 29%→72%로 확장
 >
-> **Project**: bkit (Vibecoding Kit)
+> **Project**: ROSSI (Vibecoding Kit)
 > **Version**: 1.6.2 → 1.7.0
-> **Author**: bkit PDCA
+> **Author**: ROSSI PDCA
 > **Date**: 2026-03-21
 > **Status**: Draft
 
@@ -14,8 +14,8 @@
 
 | Perspective | Content |
 |-------------|---------|
-| **Problem** | 현재 bkit PM은 9개 프레임워크만 보유하여 Discovery 깊이가 1단계, Strategy 분석이 2차원에 불과하며, 가격전략·데이터분석·마케팅 영역이 완전히 부재 |
-| **Solution** | pm-skills(MIT) 65개 스킬 중 HIGH/MEDIUM 우선순위 34개를 bkit 에이전트 프롬프트에 흡수하고, 2개 신규 에이전트(pm-analytics, pm-gtm) 추가 |
+| **Problem** | 현재 ROSSI PM은 9개 프레임워크만 보유하여 Discovery 깊이가 1단계, Strategy 분석이 2차원에 불과하며, 가격전략·데이터분석·마케팅 영역이 완전히 부재 |
+| **Solution** | pm-skills(MIT) 65개 스킬 중 HIGH/MEDIUM 우선순위 34개를 ROSSI 에이전트 프롬프트에 흡수하고, 2개 신규 에이전트(pm-analytics, pm-gtm) 추가 |
 | **Function/UX Effect** | `/pdca pm` 실행 시 Discovery 5단계 체인, Strategy 10차원 분석, PDCA 7개 연결점 자동 생성. PRD에서 User Stories + Test Scenarios 자동 도출 |
 | **Core Value** | PM 의사결정 자신감 29%→72%(+148%), 프레임워크 9→43개(+378%), PDCA 사이클 완전 연결 |
 
@@ -25,22 +25,22 @@
 
 ### 1.1 Purpose
 
-bkit의 PM Agent Team이 현재 9개 프레임워크(OST, JTBD VP, Lean Canvas, Persona, Competitor, TAM/SAM/SOM, Beachhead, GTM, PRD)만 지원하여 제품 의사결정의 핵심 영역(가정 검증, 환경 분석, 가격 전략, 데이터 분석, 실행 산출물)이 누락되어 있다. pm-skills(65개 스킬, MIT)를 통합하여 체계적 제품 의사결정 시스템으로 확장한다.
+ROSSI의 PM Agent Team이 현재 9개 프레임워크(OST, JTBD VP, Lean Canvas, Persona, Competitor, TAM/SAM/SOM, Beachhead, GTM, PRD)만 지원하여 제품 의사결정의 핵심 영역(가정 검증, 환경 분석, 가격 전략, 데이터 분석, 실행 산출물)이 누락되어 있다. pm-skills(65개 스킬, MIT)를 통합하여 체계적 제품 의사결정 시스템으로 확장한다.
 
 ### 1.2 Background
 
 | 항목 | 내용 |
 |------|------|
 | pm-skills | Pawel Huryn의 오픈소스, 8개 플러그인 / 65개 스킬 / 36개 체인 워크플로우 |
-| 라이선스 | MIT — bkit(Apache-2.0)에 통합 가능 |
+| 라이선스 | MIT — ROSSI(Apache-2.0)에 통합 가능 |
 | 호환성 | Claude Code 플러그인 포맷, SKILL.md 구조 |
-| 이미 참조 중 | bkit pm-discovery/strategy/research/prd는 이미 pm-skills의 일부 프레임워크를 Attribution과 함께 사용 중 |
+| 이미 참조 중 | ROSSI pm-discovery/strategy/research/prd는 이미 pm-skills의 일부 프레임워크를 Attribution과 함께 사용 중 |
 
 ### 1.3 Related Documents
 
 - pm-skills GitHub: https://github.com/phuryn/pm-skills
 - 소개 기사: https://news.hada.io/topic?id=27327
-- 현재 bkit PM 에이전트: `agents/pm-lead.md`, `pm-discovery.md`, `pm-strategy.md`, `pm-research.md`, `pm-prd.md`
+- 현재 ROSSI PM 에이전트: `agents/pm-lead.md`, `pm-discovery.md`, `pm-strategy.md`, `pm-research.md`, `pm-prd.md`
 
 ---
 
@@ -60,7 +60,7 @@ bkit의 PM Agent Team이 현재 9개 프레임워크(OST, JTBD VP, Lean Canvas, 
 
 - pm-data-analytics (A/B Test, Cohort, SQL) — 별도 에이전트 필요, 다음 버전
 - pm-marketing-growth (North Star, Positioning, Naming) — 마케팅 전문 에이전트, 다음 버전
-- pm-toolkit (NDA, Privacy, Resume, Grammar) — bkit 핵심 가치와 거리
+- pm-toolkit (NDA, Privacy, Resume, Grammar) — ROSSI 핵심 가치와 거리
 - pm-execution 중 프로젝트 관리 도구 (Sprint, Retro, OKR) — Linear/Jira 영역과 중복
 
 ---
@@ -148,7 +148,7 @@ bkit의 PM Agent Team이 현재 9개 프레임워크(OST, JTBD VP, Lean Canvas, 
 | **Dynamic** | Feature-based modules, BaaS | Web apps, SaaS MVPs | ☐ |
 | **Enterprise** | Strict layer separation, DI | High-traffic systems | ☑ |
 
-> bkit 자체가 플러그인 시스템이므로 Enterprise 수준의 모듈 아키텍처 적용
+> ROSSI 자체가 플러그인 시스템이므로 Enterprise 수준의 모듈 아키텍처 적용
 
 ### 6.2 Key Architectural Decisions
 
@@ -206,7 +206,7 @@ bkit의 PM Agent Team이 현재 9개 프레임워크(OST, JTBD VP, Lean Canvas, 
 
 ### 7.1 Existing Project Conventions
 
-- [x] `CLAUDE.md` — bkit 전역 설정 (plugins cache에 존재)
+- [x] `CLAUDE.md` — ROSSI 전역 설정 (plugins cache에 존재)
 - [x] Agent frontmatter 표준 (name, model, effort, maxTurns, tools)
 - [x] SKILL.md 표준 포맷
 - [x] Attribution 패턴 (`Based on X from pm-skills by Pawel Huryn, MIT`)
@@ -300,4 +300,4 @@ bkit의 PM Agent Team이 현재 9개 프레임워크(OST, JTBD VP, Lean Canvas, 
 
 | Version | Date | Changes | Author |
 |---------|------|---------|--------|
-| 0.1 | 2026-03-21 | Initial draft — 비교 분석 기반 Plan 수립 | bkit PDCA |
+| 0.1 | 2026-03-21 | Initial draft — 비교 분석 기반 Plan 수립 | ROSSI PDCA |

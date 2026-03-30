@@ -1,8 +1,8 @@
-# bkit v2.0.0 Comprehensive Test Plan (Plan-Plus)
+# ROSSI v2.0.0 Comprehensive Test Plan (Plan-Plus)
 
 > **Summary**: v2.0.0 전체 기능 + 아키텍처 + 사용자 경험 관점 종합 테스트 계획
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v2.0.0
 > **Date**: 2026-03-20
 > **Method**: Plan Plus (Brainstorming-Enhanced PDCA)
@@ -108,7 +108,7 @@
 | `test/integration/quality-pipeline.test.js` | 20 | gap-detector → metrics-collector → gate-manager 체인 |
 | `test/integration/control-pipeline.test.js` | 20 | PreToolUse → destructive+blast+scope → Block/Allow |
 | `test/integration/common-removal.test.js` | 25 | 58개 scripts 직접 import 동작 확인 |
-| `test/integration/config-sync.test.js` (개선) | 15 | bkit.config.json v2.0.0 섹션 로드 |
+| `test/integration/config-sync.test.js` (개선) | 15 | rossi.config.json v2.0.0 섹션 로드 |
 | `test/integration/module-chain.test.js` (개선) | 15 | 신규 모듈 간 의존성 체인 |
 | `test/integration/mcp-server.test.js` | 15 | MCP Server JSON-RPC 프로토콜 |
 

@@ -1,13 +1,13 @@
-# bkit v1.6.2 Test Design Document
+# ROSSI v1.6.2 Test Design Document
 
-> **Summary**: bkit v1.6.2 테스트 업데이트 및 신규 TC 상세 설계
+> **Summary**: ROSSI v1.6.2 테스트 업데이트 및 신규 TC 상세 설계
 >
-> **Project**: bkit-claude-code
+> **Project**: rossi-cto-agent-kit
 > **Version**: 1.6.2
 > **Author**: CTO Lead (QA Team 8명)
 > **Date**: 2026-03-18
 > **Status**: Design
-> **Plan Reference**: `docs/01-plan/features/bkit-v162-test.plan.md`
+> **Plan Reference**: `docs/01-plan/features/rossi-v162-test.plan.md`
 
 ---
 
@@ -98,8 +98,8 @@ test/
 - * Regression Test: 10 Hook Events Verification (10 TC)
 + * Regression Test: 12 Hook Events Verification (12 TC)
 + * Validates hooks.json configuration (12 events) and referenced script existence
-- * @version bkit v1.6.1
-+ * @version bkit v1.6.2
+- * @version ROSSI v1.6.1
++ * @version ROSSI v1.6.2
 
 - console.log('\n=== hooks-10.test.js (10 TC) ===\n');
 + console.log('\n=== hooks-12.test.js (12 TC) ===\n');
@@ -132,8 +132,8 @@ test/
 ```diff
 - * Regression Test: 21 Agents Full Verification (42 TC)
 + * Regression Test: 29 Agents Full Verification (58 TC)
-- * @version bkit v1.6.1
-+ * @version bkit v1.6.2
+- * @version ROSSI v1.6.1
++ * @version ROSSI v1.6.2
 
 - console.log('\n=== agents-21.test.js (42 TC) ===\n');
 + console.log('\n=== agents-29.test.js (58 TC) ===\n');
@@ -347,8 +347,8 @@ test/
 ```diff
 - * Regression Test: Claude Code Compatibility (12 TC)
 + * Regression Test: Claude Code Compatibility (16 TC)
-- * @version bkit v1.6.1
-+ * @version bkit v1.6.2
+- * @version ROSSI v1.6.1
++ * @version ROSSI v1.6.2
 
 - console.log('\n=== cc-compat.test.js (12 TC) ===\n');
 + console.log('\n=== cc-compat.test.js (16 TC) ===\n');
@@ -365,13 +365,13 @@ test/
 + assert('CC-06', pluginJson.version === '1.6.2', ...);
 
   // CC-08: version update
-- assert('CC-08', bkitConfig.version === '1.6.1', ...);
-+ assert('CC-08', bkitConfig.version === '1.6.2', ...);
+- assert('CC-08', rossiConfig.version === '1.6.1', ...);
++ assert('CC-08', rossiConfig.version === '1.6.2', ...);
 
   // CC-12: version update
-- const bkitPlugin = marketplaceJson.plugins.find(p => p.name === 'bkit');
-- assert('CC-12', bkitPlugin && bkitPlugin.version === '1.6.1', ...);
-+ assert('CC-12', bkitPlugin && bkitPlugin.version === '1.6.2', ...);
+- const rossiPlugin = marketplaceJson.plugins.find(p => p.name === 'ROSSI');
+- assert('CC-12', rossiPlugin && rossiPlugin.version === '1.6.1', ...);
++ assert('CC-12', rossiPlugin && rossiPlugin.version === '1.6.2', ...);
 
 + // ============================================================
 + // TC13-16: v1.6.2 specific validations
@@ -802,9 +802,9 @@ if (failed > 0) process.exit(1);
 **변경 diff 개요**:
 
 ```diff
-- * bkit v1.6.1 Comprehensive Test Runner
+- * ROSSI v1.6.1 Comprehensive Test Runner
 - * 1020 TC across 8 perspectives
-+ * bkit v1.6.2 Comprehensive Test Runner
++ * ROSSI v1.6.2 Comprehensive Test Runner
 + * ~1151 TC across 8 perspectives
 
   const CATEGORIES = {
@@ -857,12 +857,12 @@ if (failed > 0) process.exit(1);
   };
 
   // 리포트 경로 변경
-- const reportPath = path.join(ROOT, 'docs/04-report/features/bkit-v161-comprehensive-test.report.md');
-+ const reportPath = path.join(ROOT, 'docs/04-report/features/bkit-v162-comprehensive-test.report.md');
+- const reportPath = path.join(ROOT, 'docs/04-report/features/rossi-v161-comprehensive-test.report.md');
++ const reportPath = path.join(ROOT, 'docs/04-report/features/rossi-v162-comprehensive-test.report.md');
 
   // 배너 변경
-- console.log('bkit v1.6.1 Comprehensive Test Runner');
-+ console.log('bkit v1.6.2 Comprehensive Test Runner');
+- console.log('ROSSI v1.6.1 Comprehensive Test Runner');
++ console.log('ROSSI v1.6.2 Comprehensive Test Runner');
 ```
 
 ---

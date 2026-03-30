@@ -1,4 +1,4 @@
-# Plan: bkit v1.6.2 문서 동기화 (Doc-Sync)
+# Plan: ROSSI v1.6.2 문서 동기화 (Doc-Sync)
 
 ## Executive Summary
 
@@ -27,21 +27,21 @@ v1.6.2 구현 완료 사항을 모든 문서에 정확히 반영하여 코드-�
 | 2 | `CHANGELOG.md` | v1.6.2 항목 신규 추가 | P0 |
 | 3 | `CUSTOMIZATION-GUIDE.md` | 컴포넌트 수, 아키텍처 다이어그램, exports | P1 |
 
-#### B. bkit-system/ 문서 (11개, 필수)
+#### B. rossi-system/ 문서 (11개, 필수)
 
 | # | 파일 | 변경 유형 | 우선순위 |
 |---|------|-----------|----------|
-| 4 | `bkit-system/README.md` | 컴포넌트 수, CC 버전, exports, 버전 라벨 | P0 |
-| 5 | `bkit-system/_GRAPH-INDEX.md` | agents/skills/scripts/exports 수, 버전 이력 | P1 |
-| 6 | `bkit-system/philosophy/core-mission.md` | 컴포넌트 수 테이블, 버전 이력 | P1 |
-| 7 | `bkit-system/philosophy/context-engineering.md` | exports 208→210, 버전 이력 | P1 |
-| 8 | `bkit-system/philosophy/pdca-methodology.md` | CC 버전 참조 (간접) | P2 |
-| 9 | `bkit-system/components/agents/_agents-overview.md` | 21→29 agents, 모델 분포 | P0 |
-| 10 | `bkit-system/components/skills/_skills-overview.md` | 28→31 skills, 분류 수 | P0 |
-| 11 | `bkit-system/components/hooks/_hooks-overview.md` | 10→12 hooks, CC 공식 18→22, 이미 부분 업데이트 확인 | P0 |
-| 12 | `bkit-system/components/scripts/_scripts-overview.md` | 45→49 scripts, 208→210 exports | P1 |
-| 13 | `bkit-system/triggers/trigger-matrix.md` | hook events 수, 이벤트 목록 | P1 |
-| 14 | `bkit-system/testing/test-checklist.md` | exports 수, TC 수, 통합 테스트 | P2 |
+| 4 | `rossi-system/README.md` | 컴포넌트 수, CC 버전, exports, 버전 라벨 | P0 |
+| 5 | `rossi-system/_GRAPH-INDEX.md` | agents/skills/scripts/exports 수, 버전 이력 | P1 |
+| 6 | `rossi-system/philosophy/core-mission.md` | 컴포넌트 수 테이블, 버전 이력 | P1 |
+| 7 | `rossi-system/philosophy/context-engineering.md` | exports 208→210, 버전 이력 | P1 |
+| 8 | `rossi-system/philosophy/pdca-methodology.md` | CC 버전 참조 (간접) | P2 |
+| 9 | `rossi-system/components/agents/_agents-overview.md` | 21→29 agents, 모델 분포 | P0 |
+| 10 | `rossi-system/components/skills/_skills-overview.md` | 28→31 skills, 분류 수 | P0 |
+| 11 | `rossi-system/components/hooks/_hooks-overview.md` | 10→12 hooks, CC 공식 18→22, 이미 부분 업데이트 확인 | P0 |
+| 12 | `rossi-system/components/scripts/_scripts-overview.md` | 45→49 scripts, 208→210 exports | P1 |
+| 13 | `rossi-system/triggers/trigger-matrix.md` | hook events 수, 이벤트 목록 | P1 |
+| 14 | `rossi-system/testing/test-checklist.md` | exports 수, TC 수, 통합 테스트 | P2 |
 
 #### C. 기타 (3개, 선택)
 
@@ -55,7 +55,7 @@ v1.6.2 구현 완료 사항을 모든 문서에 정확히 반영하여 코드-�
 
 - `hooks/hooks.json` - 이미 v1.6.2 구현 완료
 - `plugin.json` - 이미 업데이트됨
-- `bkit.config.json` - 이미 업데이트됨
+- `rossi.config.json` - 이미 업데이트됨
 - `session-start.js` - 이미 업데이트됨
 - `agents/*.md` - 이미 effort/maxTurns 추가됨
 - `docs/01-plan/`, `docs/02-design/`, `docs/03-analysis/` - 이전 분석 기록이므로 변경 대상 아님
@@ -65,7 +65,7 @@ v1.6.2 구현 완료 사항을 모든 문서에 정확히 반영하여 코드-�
 | 항목 | v1.6.1 (Before) | v1.6.2 (After) |
 |------|:---------------:|:--------------:|
 | Version | 1.6.1 | 1.6.2 |
-| Hook events (bkit) | 10 | 12 |
+| Hook events (ROSSI) | 10 | 12 |
 | CC 공식 Hook events | 18 | 22 |
 | Agents | 21 (문서) / 29 (실제) | 29 |
 | Skills | 28 (문서) / 31 (실제) | 31 |
@@ -90,7 +90,7 @@ v1.6.2 구현 완료 사항을 모든 문서에 정확히 반영하여 코드-�
 
 ## 5. 작업 순서
 
-1. **P0 (필수, 즉시)**: README.md, CHANGELOG.md, bkit-system/README.md, _agents-overview.md, _skills-overview.md, _hooks-overview.md
+1. **P0 (필수, 즉시)**: README.md, CHANGELOG.md, rossi-system/README.md, _agents-overview.md, _skills-overview.md, _hooks-overview.md
 2. **P1 (필수, 후속)**: CUSTOMIZATION-GUIDE.md, _GRAPH-INDEX.md, core-mission.md, context-engineering.md, _scripts-overview.md, trigger-matrix.md
 3. **P2 (선택)**: pdca-methodology.md, test-checklist.md, skill-status SKILL.md, evals/README.md, skill-creator/README.md
 

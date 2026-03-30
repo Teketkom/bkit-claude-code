@@ -5,7 +5,7 @@
  * 20 TC | getActiveFeatures, canStartFeature, registerFeature,
  *         releaseFeature, checkConflict, dependencies, dashboard
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

@@ -1,7 +1,7 @@
-# bkit v1.6.1 Comprehensive Test Design
+# ROSSI v1.6.1 Comprehensive Test Design
 
 > 1020 TC Test Design Document
-> Plan Reference: docs/01-plan/features/bkit-v161-comprehensive-test.plan.md
+> Plan Reference: docs/01-plan/features/rossi-v161-comprehensive-test.plan.md
 > Date: 2026-03-08
 
 ---
@@ -97,7 +97,7 @@ test/
 
 ### 2.1 No External Dependencies
 - console.assert 기반 (jest/vitest 미사용)
-- bkit 원칙: 외부 의존성 최소화
+- ROSSI 원칙: 외부 의존성 최소화
 - Node.js 내장 모듈만 사용 (fs, path, child_process, perf_hooks)
 
 ### 2.2 Test Isolation

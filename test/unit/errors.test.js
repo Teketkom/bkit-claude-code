@@ -32,26 +32,26 @@ console.log('\n=== errors.test.js ===\n');
 const err1 = new BkitError('test error');
 assert('ER-001', err1 instanceof Error, 'BkitError extends Error');
 assert('ER-002', err1.name === 'BkitError', 'BkitError.name is BkitError');
-assert('ER-003', err1.code === 'BKIT_UNKNOWN', 'Default code is BKIT_UNKNOWN');
+assert('ER-003', err1.code === 'ROSSI_UNKNOWN', 'Default code is ROSSI_UNKNOWN');
 
 const cause = new Error('original');
 const err2 = new BkitError('wrapped', {
-  code: 'BKIT_PDCA_STATUS_READ',
+  code: 'ROSSI_PDCA_STATUS_READ',
   severity: SEVERITY.CRITICAL,
   cause,
   context: { file: '/tmp/test.json' },
 });
-assert('ER-004', err2.code === 'BKIT_PDCA_STATUS_READ' && err2.severity === 'critical', 'Custom code and severity');
+assert('ER-004', err2.code === 'ROSSI_PDCA_STATUS_READ' && err2.severity === 'critical', 'Custom code and severity');
 assert('ER-005', err2.cause === cause && err2.context.file === '/tmp/test.json', 'Cause and context stored');
 
 // --- ER-006~010: ERROR_CODES 30 codes across 7 domains ---
 
 const allCodes = Object.keys(ERROR_CODES);
 assert('ER-006', allCodes.length >= 28, `ERROR_CODES has ${allCodes.length} codes (expected 28+)`);
-assert('ER-007', allCodes.filter(k => k.startsWith('BKIT_PDCA_')).length >= 5, 'PDCA domain has 5+ codes');
-assert('ER-008', allCodes.filter(k => k.startsWith('BKIT_STATE_')).length >= 4, 'State domain has 4+ codes');
-assert('ER-009', allCodes.filter(k => k.startsWith('BKIT_HOOK_')).length >= 3, 'Hook domain has 3+ codes');
-assert('ER-010', allCodes.filter(k => k.startsWith('BKIT_TEAM_')).length >= 3, 'Team domain has 3+ codes');
+assert('ER-007', allCodes.filter(k => k.startsWith('ROSSI_PDCA_')).length >= 5, 'PDCA domain has 5+ codes');
+assert('ER-008', allCodes.filter(k => k.startsWith('ROSSI_STATE_')).length >= 4, 'State domain has 4+ codes');
+assert('ER-009', allCodes.filter(k => k.startsWith('ROSSI_HOOK_')).length >= 3, 'Hook domain has 3+ codes');
+assert('ER-010', allCodes.filter(k => k.startsWith('ROSSI_TEAM_')).length >= 3, 'Team domain has 3+ codes');
 
 // --- ER-011~014: SEVERITY levels ---
 
@@ -65,11 +65,11 @@ assert('ER-014', SEVERITY.INFO === 'info', 'SEVERITY.INFO is info');
 const result1 = safeCatch(() => 42, -1);
 assert('ER-015', result1 === 42, 'safeCatch returns function result on success');
 
-const result2 = safeCatch(() => { throw new Error('boom'); }, -1, { code: 'BKIT_STATE_READ' });
+const result2 = safeCatch(() => { throw new Error('boom'); }, -1, { code: 'ROSSI_STATE_READ' });
 assert('ER-016', result2 === -1, 'safeCatch returns fallback on error');
 
-const bkitErr = new BkitError('already wrapped', { code: 'BKIT_HOOK_TIMEOUT' });
-const result3 = safeCatch(() => { throw bkitErr; }, null);
+const rossiErr = new BkitError('already wrapped', { code: 'ROSSI_HOOK_TIMEOUT' });
+const result3 = safeCatch(() => { throw rossiErr; }, null);
 assert('ER-017', result3 === null, 'safeCatch returns fallback when BkitError is thrown');
 
 // --- ER-018~020: toJSON, isCritical, toDebugString ---
@@ -77,7 +77,7 @@ assert('ER-017', result3 === null, 'safeCatch returns fallback when BkitError is
 const errJson = err2.toJSON();
 assert('ER-018',
   errJson.name === 'BkitError' &&
-  errJson.code === 'BKIT_PDCA_STATUS_READ' &&
+  errJson.code === 'ROSSI_PDCA_STATUS_READ' &&
   errJson.severity === 'critical' &&
   errJson.cause !== null &&
   errJson.cause.message === 'original',
@@ -88,7 +88,7 @@ assert('ER-019', err2.isCritical() === true && err1.isCritical() === false, 'isC
 
 const debugStr = err2.toDebugString();
 assert('ER-020',
-  debugStr.includes('[BKIT_PDCA_STATUS_READ]') &&
+  debugStr.includes('[ROSSI_PDCA_STATUS_READ]') &&
   debugStr.includes('wrapped') &&
   debugStr.includes('caused by: original'),
   'toDebugString includes code, message, and cause'

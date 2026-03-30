@@ -2,7 +2,7 @@
 
 ## Overview
 
-bkit의 Living Context 시스템은 Self-Healing이 코드를 수정할 때 **"왜 이렇게 만들었는지"** 이해할 수 있게 합니다.
+ROSSI의 Living Context 시스템은 Self-Healing이 코드를 수정할 때 **"왜 이렇게 만들었는지"** 이해할 수 있게 합니다.
 
 ```
 에러 발생 → Context Loader(4-Layer) → Claude Code 수정 → 4중 검증 → Auto PR
@@ -13,7 +13,7 @@ bkit의 Living Context 시스템은 Self-Healing이 코드를 수정할 때 **"�
 ### 1. Invariants 작성 (사람이 핵심 10~20개만)
 
 ```yaml
-# .bkit/invariants.yaml
+# .rossi/invariants.yaml
 version: "1.0"
 invariants:
   - id: "INV-001"
@@ -56,7 +56,7 @@ scenarios:
 ```javascript
 const { generateImpactMap, writeImpactMap } = require('./lib/context');
 const map = await generateImpactMap(process.cwd(), { include: ['src/'] });
-writeImpactMap(map, '.bkit/impact-map.json');
+writeImpactMap(map, '.rossi/impact-map.json');
 ```
 
 ### 4. Deploy

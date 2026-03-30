@@ -1,5 +1,5 @@
 /**
- * bkit Vibecoding Kit - SessionStart: Restore Module (v2.0.0)
+ * ROSSI CTO Agent Kit - SessionStart: Restore Module (v2.0.0)
  *
  * Handles PLUGIN_DATA restoration, corrupted file detection,
  * and backup integrity verification.

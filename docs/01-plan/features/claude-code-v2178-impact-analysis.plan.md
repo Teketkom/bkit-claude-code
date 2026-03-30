@@ -1,8 +1,8 @@
-# Claude Code v2.1.73~v2.1.78 영향 분석 및 bkit v1.6.2 계획 문서
+# Claude Code v2.1.73~v2.1.78 영향 분석 및 ROSSI v1.6.2 계획 문서
 
-> **Summary**: Claude Code v2.1.73~v2.1.78 (6개 릴리스, ~166건 변경) 영향 분석 + bkit v1.6.2 전면 활용형 업그레이드 계획
+> **Summary**: Claude Code v2.1.73~v2.1.78 (6개 릴리스, ~166건 변경) 영향 분석 + ROSSI v1.6.2 전면 활용형 업그레이드 계획
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v1.6.1 → v1.6.2
 > **Author**: CTO Team (8 Agents) + Plan Plus Brainstorming
 > **Date**: 2026-03-18
@@ -15,10 +15,10 @@
 
 | Perspective | Content |
 |-------------|---------|
-| **Problem** | CC v2.1.72 이후 6개 릴리스(v2.1.73~v2.1.78)의 ~166건 변경사항이 bkit v1.6.1(31 skills, 29 agents, 10 hook events, 252개 컴포넌트, ~25K LOC) 에코시스템에 미치는 영향이 불확실하며, 신규 기능 4개 Hook + ${CLAUDE_PLUGIN_DATA} + plugin agent frontmatter 활용 기회 존재 |
-| **Solution** | CTO Team 8 agents 병렬 조사 + bkit 코드베이스 전체 아키텍처 교차 검증 + Plan Plus 브레인스토밍을 통한 14개 ENH 전면 활용형 v1.6.2 로드맵 수립 |
+| **Problem** | CC v2.1.72 이후 6개 릴리스(v2.1.73~v2.1.78)의 ~166건 변경사항이 ROSSI v1.6.1(31 skills, 29 agents, 10 hook events, 252개 컴포넌트, ~25K LOC) 에코시스템에 미치는 영향이 불확실하며, 신규 기능 4개 Hook + ${CLAUDE_PLUGIN_DATA} + plugin agent frontmatter 활용 기회 존재 |
+| **Solution** | CTO Team 8 agents 병렬 조사 + ROSSI 코드베이스 전체 아키텍처 교차 검증 + Plan Plus 브레인스토밍을 통한 14개 ENH 전면 활용형 v1.6.2 로드맵 수립 |
 | **Function/UX Effect** | Hook events 10→14 (PostCompact, StopFailure, Elicitation, ElicitationResult), Agent frontmatter에 effort/maxTurns/disallowedTools 네이티브 지원, ${CLAUDE_PLUGIN_DATA} 영구 상태 저장소, 출력 토큰 128K 상한, 1M context 기본화 |
-| **Core Value** | 44번째 연속 호환 릴리스 확인 (v2.1.34~v2.1.78, zero-downtime 업그레이드 보장) + ENH-117~130 (14개 기회) 전체 구현으로 bkit의 3대 철학(Automation First, No Guessing, Docs=Code) 강화 및 Context Engineering 레벨 6 달성 |
+| **Core Value** | 44번째 연속 호환 릴리스 확인 (v2.1.34~v2.1.78, zero-downtime 업그레이드 보장) + ENH-117~130 (14개 기회) 전체 구현으로 ROSSI의 3대 철학(Automation First, No Guessing, Docs=Code) 강화 및 Context Engineering 레벨 6 달성 |
 
 ---
 
@@ -28,16 +28,16 @@
 호환성 검증 + ENH 기회 식별 → v1.6.2 로드맵 수립
 
 ### 대상 독자
-bkit 유지보수자 (개발팀) — v1.6.2 구현 가이드로 활용
+ROSSI 유지보수자 (개발팀) — v1.6.2 구현 가이드로 활용
 
 ### 성공 기준
-1. 44 연속 호환 릴리스 확인 (Breaking Change 0건 for bkit)
+1. 44 연속 호환 릴리스 확인 (Breaking Change 0건 for ROSSI)
 2. 14개 ENH 기회 전체 구현 계획 수립
-3. bkit 3대 철학 준수 검증
+3. ROSSI 3대 철학 준수 검증
 4. 호환성 매트릭스 완성
 
 ### 제약 조건
-- bkit 3대 철학 필수 준수: Automation First, No Guessing, Docs = Code
+- ROSSI 3대 철학 필수 준수: Automation First, No Guessing, Docs = Code
 - 기존 252개 컴포넌트 하위 호환성 유지
 - 208 exports (common.js bridge) 호환성 유지
 
@@ -51,7 +51,7 @@ bkit 유지보수자 (개발팀) — v1.6.2 구현 가이드로 활용
 | **B: 전면 활용형** | 14개 ENH 전체 | CC 최신 기능 최대 활용 | 릴리스 시간 증가 | ✅ 선택 |
 | **C: 보수적 검증형** | 호환성 검증만 | 최소 리스크 | 신규 기능 미활용 | ❌ |
 
-**선택 근거**: 사용자가 전면 활용형을 선택. bkit의 모든 기능이 정상 동작해야 하며, 3대 철학과 사상이 지켜져야 함.
+**선택 근거**: 사용자가 전면 활용형을 선택. ROSSI의 모든 기능이 정상 동작해야 하며, 3대 철학과 사상이 지켜져야 함.
 
 ---
 
@@ -77,9 +77,9 @@ bkit 유지보수자 (개발팀) — v1.6.2 구현 가이드로 활용
 | ENH-130 | Session name (-n) 활용 | P2 | Automation First — CI/CD 세션 자동 네이밍 |
 
 ### Out of Scope (v1.6.2 이후)
-- Elicitation/ElicitationResult hook 구현 (bkit은 현재 MCP 미사용, 문서화만 포함)
+- Elicitation/ElicitationResult hook 구현 (ROSSI은 현재 MCP 미사용, 문서화만 포함)
 - /output-style 명령어 deprecated 대응 (/config으로 이관 완료)
-- Agent resume → SendMessage 전환 (CC 자동 처리, bkit 코드 변경 불필요)
+- Agent resume → SendMessage 전환 (CC 자동 처리, ROSSI 코드 변경 불필요)
 
 ---
 
@@ -87,11 +87,11 @@ bkit 유지보수자 (개발팀) — v1.6.2 구현 가이드로 활용
 
 ### 1.1 목적
 
-Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경사항이 bkit v1.6.1 플러그인 에코시스템에 미치는 영향을 체계적으로 분석하고, 14개 ENH 기회를 전면 활용하는 bkit v1.6.2 버전업 계획을 수립한다.
+Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경사항이 ROSSI v1.6.1 플러그인 에코시스템에 미치는 영향을 체계적으로 분석하고, 14개 ENH 기회를 전면 활용하는 ROSSI v1.6.2 버전업 계획을 수립한다.
 
 ### 1.2 배경
 
-- bkit는 v2.1.34~v2.1.72까지 38개 연속 릴리스에서 100% 호환성 유지
+- ROSSI는 v2.1.34~v2.1.72까지 38개 연속 릴리스에서 100% 호환성 유지
 - 이번 분석으로 v2.1.73~v2.1.78 6개 릴리스 추가 → **44 연속 호환** 확인
 - 7일간 ~166건 변경 (역대 최고 밀도: 일평균 ~24건)
 - 시스템 프롬프트 +23,842 tokens (7일간)
@@ -101,8 +101,8 @@ Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경�
 
 - 이전 분석: `docs/04-report/features/claude-code-v2172-impact-analysis.report.md`
 - 이전 계획: `docs/01-plan/features/claude-code-v2177-impact-analysis.plan.md` (초안, 본 문서로 대체)
-- bkit 철학: `bkit-system/philosophy/core-mission.md`
-- Context Engineering: `bkit-system/philosophy/context-engineering.md`
+- ROSSI 철학: `rossi-system/philosophy/core-mission.md`
+- Context Engineering: `rossi-system/philosophy/context-engineering.md`
 
 ---
 
@@ -135,14 +135,14 @@ Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경�
 
 ---
 
-## 3. bkit 영향 분석
+## 3. ROSSI 영향 분석
 
 ### 3.1 HIGH Impact (10건)
 
-| # | CC Change | Version | bkit 영향 범위 | 3대 철학 |
+| # | CC Change | Version | ROSSI 영향 범위 | 3대 철학 |
 |---|-----------|---------|---------------|---------|
-| H-1 | **Skill deadlock 수정** — 대규모 .claude/skills/ git pull 시 | v2.1.73 | 31 skills 보유 bkit 직접 혜택 | Automation First |
-| H-2 | **SessionStart hooks 2중 발화 수정** (resume 시) | v2.1.73 | bkit SessionStart hook 안정성 | Automation First |
+| H-1 | **Skill deadlock 수정** — 대규모 .claude/skills/ git pull 시 | v2.1.73 | 31 skills 보유 ROSSI 직접 혜택 | Automation First |
+| H-2 | **SessionStart hooks 2중 발화 수정** (resume 시) | v2.1.73 | ROSSI SessionStart hook 안정성 | Automation First |
 | H-3 | **스트리밍 API 버퍼 메모리 누수 수정** | v2.1.74 | 장시간 CTO Team 세션 RSS 무한 증가 해결 | Automation First |
 | H-4 | **Agent frontmatter model: 전체 ID 지원** | v2.1.74 | 29 agents model 필드 호환성 향상 | No Guessing |
 | H-5 | **Opus 4.6 1M context 기본 활성화** | v2.1.75 | 7 opus agents 긴 세션 안정성 대폭 개선 | No Guessing |
@@ -150,11 +150,11 @@ Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경�
 | H-7 | **Auto-updater 메모리 누수 수정** (수십 GB) | v2.1.77 | 시스템 안정성 | Automation First |
 | H-8 | **PreToolUse allow→deny bypass 수정** (보안) | v2.1.77 | enterprise managed settings 보안 정책 | No Guessing |
 | H-9 | **출력 토큰 Opus 64K 기본, 128K 상한** | v2.1.77 | 대규모 분석 보고서 출력 2배 | Docs=Code |
-| H-10 | **${CLAUDE_PLUGIN_DATA} 영구 상태 저장소** | v2.1.78 | bkit 상태 관리 혁신 (업데이트 생존) | Docs=Code |
+| H-10 | **${CLAUDE_PLUGIN_DATA} 영구 상태 저장소** | v2.1.78 | ROSSI 상태 관리 혁신 (업데이트 생존) | Docs=Code |
 
 ### 3.2 MEDIUM Impact (12건)
 
-| # | CC Change | Version | bkit 영향 범위 |
+| # | CC Change | Version | ROSSI 영향 범위 |
 |---|-----------|---------|---------------|
 | M-1 | Agent model opus/sonnet/haiku Bedrock/Vertex 다운그레이드 수정 | v2.1.73 | CTO Team agent model 정확성 |
 | M-2 | 백그라운드 bash 프로세스 에이전트 종료 시 미정리 | v2.1.73 | CTO Team 세션 정리 |
@@ -171,27 +171,27 @@ Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경�
 
 ### 3.3 LOW Impact (8건)
 
-| # | CC Change | Version | bkit 영향 범위 |
+| # | CC Change | Version | ROSSI 영향 범위 |
 |---|-----------|---------|---------------|
 | L-1 | /color 명령어 | v2.1.75 | UI 커스터마이징 (직접 영향 없음) |
 | L-2 | hook source 표시 | v2.1.75 | UX 개선 (문서화 가치) |
 | L-3 | /effort 명령어 | v2.1.76 | effort 수동 설정 |
 | L-4 | -n/--name 세션 이름 | v2.1.76 | CI/CD 활용 가능 |
 | L-5 | allowRead sandbox | v2.1.77 | 엔터프라이즈 세밀 제어 |
-| L-6 | compound bash "Always Allow" 수정 | v2.1.77 | bkit Bash hooks 간접 관련 |
+| L-6 | compound bash "Always Allow" 수정 | v2.1.77 | ROSSI Bash hooks 간접 관련 |
 | L-7 | tmux 알림 통과 | v2.1.78 | tmux 사용자 UX |
 | L-8 | line-by-line 스트리밍 | v2.1.78 | UX 개선 (코드 변경 불필요) |
 
-### 3.4 Breaking Changes 분석 (bkit 기준)
+### 3.4 Breaking Changes 분석 (ROSSI 기준)
 
-| CC Breaking Change | Version | bkit 영향 | 대응 필요 |
+| CC Breaking Change | Version | ROSSI 영향 | 대응 필요 |
 |-------------------|---------|----------|----------|
-| Agent resume 파라미터 제거 → SendMessage 사용 | v2.1.77 | bkit은 SendMessage 이미 사용, 영향 없음 | ❌ 불필요 |
+| Agent resume 파라미터 제거 → SendMessage 사용 | v2.1.77 | ROSSI은 SendMessage 이미 사용, 영향 없음 | ❌ 불필요 |
 | SendMessage 중지 에이전트 자동 재개 | v2.1.77 | 동작 변경이지만 개선 방향, 호환 | ❌ 불필요 |
-| /fork → /branch 이름 변경 | v2.1.77 | bkit은 /fork 미사용, 영향 없음 | ❌ 불필요 |
-| Windows managed settings 경로 변경 | v2.1.75 | bkit은 macOS 주력, Windows 영향 최소 | ❌ 불필요 |
+| /fork → /branch 이름 변경 | v2.1.77 | ROSSI은 /fork 미사용, 영향 없음 | ❌ 불필요 |
+| Windows managed settings 경로 변경 | v2.1.75 | ROSSI은 macOS 주력, Windows 영향 최소 | ❌ 불필요 |
 
-**결론: bkit 기준 Breaking Change 0건. 44 연속 호환 릴리스 확인.**
+**결론: ROSSI 기준 Breaking Change 0건. 44 연속 호환 릴리스 확인.**
 
 ---
 
@@ -203,11 +203,11 @@ Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경�
 
 **CC 변경**: v2.1.78에서 `${CLAUDE_PLUGIN_DATA}` 변수 추가. 플러그인 업데이트에서 살아남는 영구 상태 저장소.
 
-**현재 bkit 상태 관리**:
+**현재 ROSSI 상태 관리**:
 ```
-.bkit/state/pdca-status.json    ← 플러그인 업데이트 시 보존 불확실
-.bkit/state/memory.json         ← 플러그인 업데이트 시 보존 불확실
-.bkit/runtime/agent-state.json  ← 런타임 전용
+.rossi/state/pdca-status.json    ← 플러그인 업데이트 시 보존 불확실
+.rossi/state/memory.json         ← 플러그인 업데이트 시 보존 불확실
+.rossi/runtime/agent-state.json  ← 런타임 전용
 ```
 
 **v1.6.2 구현 계획**:
@@ -226,7 +226,7 @@ Claude Code v2.1.73~v2.1.78 (6개 릴리스, 2026-03-11~03-17, 7일간) 변경�
 
 **CC 변경**: v2.1.78에서 플러그인 제공 에이전트의 frontmatter에 `effort`, `maxTurns`, `disallowedTools` 네이티브 지원.
 
-**현재 bkit agent 설정**:
+**현재 ROSSI agent 설정**:
 ```yaml
 # agents/cto-lead.md (현재)
 ---
@@ -249,7 +249,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
    - 가이드 agents: `maxTurns: 20`
 3. `disallowedTools` 필드가 이미 존재하는 agents 검증 (네이티브 지원 확인)
 
-**영향 범위**: agents/*.md (29개 파일), bkit-system/components/agents/_agents-overview.md
+**영향 범위**: agents/*.md (29개 파일), rossi-system/components/agents/_agents-overview.md
 
 **철학 준수**: No Guessing — 모든 agent의 effort/maxTurns가 명시적으로 선언됨
 
@@ -260,13 +260,13 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 **CC 변경**: v2.1.75에서 Opus 4.6 1M context window가 Max/Team/Enterprise 플랜에서 기본 활성화 (기존 extra usage 필요).
 
 **v1.6.2 구현 계획**:
-1. bkit-system/philosophy/context-engineering.md 업데이트:
+1. rossi-system/philosophy/context-engineering.md 업데이트:
    - "Opus 4.6 1M context 기본 활성화" 반영
    - CTO Team 8 opus agents의 컨텍스트 활용 가이드
 2. SessionStart hook 메시지에 1M context 정보 반영
 3. MEMORY.md 호환성 정보 업데이트
 
-**영향 범위**: bkit-system/philosophy/context-engineering.md, hooks/session-start.js
+**영향 범위**: rossi-system/philosophy/context-engineering.md, hooks/session-start.js
 
 **철학 준수**: No Guessing — 정확한 context window 정보 제공
 
@@ -278,7 +278,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 
 **CC 변경**: v2.1.76에서 `PostCompact` hook event 추가. 컴팩션 완료 후 발화.
 
-**현재 bkit hook 설정**: `PreCompact` (context-compaction.js)만 사용
+**현재 ROSSI hook 설정**: `PreCompact` (context-compaction.js)만 사용
 
 **v1.6.2 구현 계획**:
 1. hooks/hooks.json에 PostCompact 이벤트 추가
@@ -288,7 +288,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
    - 주요 컨텍스트 손실 감지 시 경고
 3. Hook events: 10 → 11
 
-**영향 범위**: hooks/hooks.json, scripts/post-compaction.js (신규), bkit-system/philosophy/context-engineering.md
+**영향 범위**: hooks/hooks.json, scripts/post-compaction.js (신규), rossi-system/philosophy/context-engineering.md
 
 **철학 준수**: Automation First — 컴팩션 후 상태 자동 검증
 
@@ -302,7 +302,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 1. hooks/hooks.json에 StopFailure 이벤트 추가
 2. scripts/stop-failure-handler.js 신규 작성:
    - API 에러 유형 분류 (rate limit, auth, server error)
-   - 에러 정보를 .bkit/runtime/에 로깅
+   - 에러 정보를 .rossi/runtime/에 로깅
    - 사용자에게 복구 안내 메시지 출력
    - CTO Team 세션 시 에러 발생 agent 식별
 3. Hook events: 11 → 12
@@ -317,14 +317,14 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 
 **CC 변경**: v2.1.74에서 `autoMemoryDirectory` 설정 추가. auto-memory 저장소 커스텀 디렉토리 지정 가능.
 
-**현재 bkit 메모리 시스템**:
+**현재 ROSSI 메모리 시스템**:
 - CC auto-memory: `~/.claude/projects/{path}/memory/MEMORY.md` (기본)
-- bkit memory: `.bkit/state/memory.json` (독립)
+- ROSSI memory: `.rossi/state/memory.json` (독립)
 - agent-memory: `.claude/agent-memory/` (21개 에이전트)
 
 **v1.6.2 구현 계획**:
-1. bkit.config.json에 autoMemoryDirectory 가이드 문서화
-2. bkit-system/philosophy/context-engineering.md에 메모리 경로 설정 섹션 추가
+1. rossi.config.json에 autoMemoryDirectory 가이드 문서화
+2. rossi-system/philosophy/context-engineering.md에 메모리 경로 설정 섹션 추가
 3. CLAUDE.md에 autoMemoryDirectory 사용 가이드 추가 (선택적)
 
 **영향 범위**: 문서 업데이트 중심 (코드 변경 최소)
@@ -340,7 +340,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 **v1.6.2 구현 계획**:
 1. 대규모 분석 보고서 생성 agent (report-generator, code-analyzer)에 활용 가이드 추가
 2. agent frontmatter에 출력 토큰 관련 가이드라인 주석 추가
-3. bkit-system 문서 업데이트
+3. rossi-system 문서 업데이트
 
 **영향 범위**: 문서 업데이트 중심
 
@@ -355,8 +355,8 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 **CC 변경**: v2.1.73에서 `modelOverrides` 설정 추가. 모델 피커 항목을 커스텀 프로바이더 모델 ID에 매핑.
 
 **v1.6.2 구현 계획**:
-1. bkit-system 또는 skills/enterprise/SKILL.md에 modelOverrides 사용 가이드 추가
-2. Bedrock/Vertex 사용자를 위한 bkit.config.json 예시 문서화
+1. rossi-system 또는 skills/enterprise/SKILL.md에 modelOverrides 사용 가이드 추가
+2. Bedrock/Vertex 사용자를 위한 rossi.config.json 예시 문서화
 
 **영향 범위**: 문서 업데이트
 
@@ -379,7 +379,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 **CC 변경**: v2.1.76에서 `/effort` 슬래시 명령어 추가. 모델 effort 레벨 설정.
 
 **v1.6.2 구현 계획**:
-1. bkit SessionStart hook에서 effort 설정 안내 추가
+1. ROSSI SessionStart hook에서 effort 설정 안내 추가
 2. CTO Team 사용 시 opus agents의 effort 관리 가이드
 3. "ultrathink" 키워드 사용 가이드 문서화
 
@@ -393,7 +393,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 
 **v1.6.2 구현 계획**:
 1. Enterprise 스킬에 allowRead/denyRead 세밀 제어 가이드 추가
-2. bkit.config.json permissions 섹션에 sandbox 설정 예시 추가
+2. rossi.config.json permissions 섹션에 sandbox 설정 예시 추가
 
 **영향 범위**: 문서 업데이트
 
@@ -417,7 +417,7 @@ disallowedTools:   # ← 현재 CC가 처리하는지 불확실
 
 **CC 변경**: v2.1.75에서 hook 권한 프롬프트에 hook 소스(settings/plugin/skill) 표시.
 
-**v1.6.2 구현 계획**: bkit-system/components/hooks/_hooks-overview.md 업데이트
+**v1.6.2 구현 계획**: rossi-system/components/hooks/_hooks-overview.md 업데이트
 
 ---
 
@@ -457,7 +457,7 @@ Skill/Agent L2-3:               Skill/Agent L2-3:
                                 + ElicitationResult (MCP용)
 ```
 
-CC 공식 Hook Events 총계: 22개 → bkit 사용 14/22 = **63.6%** (기존 10/18 = 55.6%)
+CC 공식 Hook Events 총계: 22개 → ROSSI 사용 14/22 = **63.6%** (기존 10/18 = 55.6%)
 
 ### 5.2 Agent Frontmatter 확장
 
@@ -481,10 +481,10 @@ disallowedTools:                 # NATIVE support (v2.1.78)
 ```
 v1.6.1                          v1.6.2
 ─────────────────               ─────────────────
-.bkit/state/                    .bkit/state/
+.rossi/state/                    .rossi/state/
   pdca-status.json                pdca-status.json
   memory.json                     memory.json
-.bkit/runtime/                  .bkit/runtime/
+.rossi/runtime/                  .rossi/runtime/
   agent-state.json                agent-state.json
                                 ${CLAUDE_PLUGIN_DATA}/
                                   pdca-status.backup.json  # NEW
@@ -509,7 +509,7 @@ v1.6.1                          v1.6.2
 
 ### 6.1 호환성 매트릭스
 
-| bkit 컴포넌트 | 수량 | v2.1.73 | v2.1.74 | v2.1.75 | v2.1.76 | v2.1.77 | v2.1.78 |
+| ROSSI 컴포넌트 | 수량 | v2.1.73 | v2.1.74 | v2.1.75 | v2.1.76 | v2.1.77 | v2.1.78 |
 |--------------|------|---------|---------|---------|---------|---------|---------|
 | Skills | 31 | ✅ deadlock fix | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Agents | 29 | ✅ model fix | ✅ full ID fix | ✅ 1M | ✅ | ✅ 128K | ✅ frontmatter |
@@ -540,16 +540,16 @@ v1.6.1                          v1.6.2
 
 ### 6.3 Breaking Change 최종 확인
 
-**bkit 기준 Breaking Change: 0건**
+**ROSSI 기준 Breaking Change: 0건**
 
-| CC Breaking Change | bkit 영향 | 이유 |
+| CC Breaking Change | ROSSI 영향 | 이유 |
 |-------------------|----------|------|
-| Agent resume 제거 | 없음 | bkit은 SendMessage 사용 |
+| Agent resume 제거 | 없음 | ROSSI은 SendMessage 사용 |
 | SendMessage 자동재개 | 없음 | 개선 방향, 호환 |
-| /fork→/branch | 없음 | bkit 미사용 |
+| /fork→/branch | 없음 | ROSSI 미사용 |
 | Windows managed settings 경로 | 최소 | macOS 주력 |
 
-**연속 호환 릴리스: v2.1.34~v2.1.78 = 44 releases, 0 breaking changes (bkit 기준)**
+**연속 호환 릴리스: v2.1.34~v2.1.78 = 44 releases, 0 breaking changes (ROSSI 기준)**
 
 ---
 
@@ -557,19 +557,19 @@ v1.6.1                          v1.6.2
 
 ### 7.1 지속 모니터링 이슈
 
-| Issue # | Title | Status | bkit Impact | Notes |
+| Issue # | Title | Status | ROSSI Impact | Notes |
 |---------|-------|--------|-------------|-------|
 | #29423 | Task subagents ignore CLAUDE.md | **OPEN** | HIGH | CTO Team 8 agents 영향. 여전히 미해결 |
-| #34197 | Claude Code ignores CLAUDE.MD file | **OPEN** | HIGH | bkit 핵심 의존성 |
-| #30613 | HTTP hooks JSON broken | OPEN | LOW | bkit는 command type만 사용 |
-| #33656 | PostToolUse hook error on bash non-zero exit | OPEN | MEDIUM | bkit hooks 영향 가능 |
+| #34197 | Claude Code ignores CLAUDE.MD file | **OPEN** | HIGH | ROSSI 핵심 의존성 |
+| #30613 | HTTP hooks JSON broken | OPEN | LOW | ROSSI는 command type만 사용 |
+| #33656 | PostToolUse hook error on bash non-zero exit | OPEN | MEDIUM | ROSSI hooks 영향 가능 |
 | #33068 | Plugin marketplace validation error | OPEN | MEDIUM | 플러그인 마켓플레이스 |
 | #35296 | 1M context window 미작동 | OPEN | MEDIUM | 1M 기본화 품질 불균일 |
 | #33963 | OOM 2.6GB+ 크래시 | OPEN | LOW | 장시간 세션 |
 
 ### 7.2 해결된 주요 이슈
 
-| 해결 항목 | Version | bkit Impact |
+| 해결 항목 | Version | ROSSI Impact |
 |-----------|---------|-------------|
 | Skill deadlock (git pull) | v2.1.73 | HIGH ✅ |
 | SessionStart 2중 발화 | v2.1.73 | HIGH ✅ |
@@ -586,7 +586,7 @@ v1.6.1                          v1.6.2
 | Risk | Impact | Likelihood | Mitigation |
 |------|--------|------------|------------|
 | Opus effort medium 기본으로 CTO Team 사고 깊이 저하 | Medium | High | ENH-120으로 effort: high 명시적 설정 |
-| ${CLAUDE_PLUGIN_DATA} 경로 변경 시 마이그레이션 필요 | Medium | Low | 기존 .bkit/state/ 유지 + PLUGIN_DATA 백업 이중화 |
+| ${CLAUDE_PLUGIN_DATA} 경로 변경 시 마이그레이션 필요 | Medium | Low | 기존 .rossi/state/ 유지 + PLUGIN_DATA 백업 이중화 |
 | Output Styles deprecated | Low | Confirmed | SessionStart hook 워크어라운드 유지, /config 이관 검토 |
 | #29423 (task subagents CLAUDE.md 미로드) 미해결 | High | Confirmed | 지속 모니터링, 워크어라운드 유지 |
 | #34197 (CLAUDE.md 무시) 발생 시 | High | Low | 사용자 알림 + 재시작 가이드 |
@@ -623,7 +623,7 @@ Phase 4 (P3): 문서화
 
 Phase 5: 검증 및 릴리스
 ├── 호환성 TC 실행 (~40 TC)
-├── bkit 3대 철학 준수 검증
+├── ROSSI 3대 철학 준수 검증
 ├── MEMORY.md 업데이트
 └── v1.6.2 릴리스
 ```
@@ -646,7 +646,7 @@ Phase 5: 검증 및 릴리스
 ### 10.1 Definition of Done
 
 - [ ] 6개 릴리스 전체 변경사항 수집 완료 (v2.1.73~v2.1.78) ✅
-- [ ] bkit 코드베이스 교차 분석 완료 ✅
+- [ ] ROSSI 코드베이스 교차 분석 완료 ✅
 - [ ] 영향 분석 보고서 작성 (HIGH 10/MEDIUM 12/LOW 8) ✅
 - [ ] ENH 기회 확정 (ENH-117~130, 14건) ✅
 - [ ] 호환성 매트릭스 작성 ✅
@@ -654,7 +654,7 @@ Phase 5: 검증 및 릴리스
 - [ ] 44 연속 호환 릴리스 확인 ✅
 - [ ] 14개 ENH 전체 구현 (v1.6.2 릴리스)
 - [ ] 호환성 TC 실행 (~40 TC)
-- [ ] bkit 3대 철학 준수 검증
+- [ ] ROSSI 3대 철학 준수 검증
 - [ ] MEMORY.md 업데이트
 
 ### 10.2 Quality Criteria
@@ -674,7 +674,7 @@ Phase 5: 검증 및 릴리스
 | Phase | Key Decision | Rationale |
 |-------|-------------|-----------|
 | Phase 1 | 호환성 검증 + ENH 식별 | 사용자 핵심 목적 확인 |
-| Phase 1 | bkit 유지보수자 대상 | 구현 가이드로 활용 |
+| Phase 1 | ROSSI 유지보수자 대상 | 구현 가이드로 활용 |
 | Phase 2 | 전면 활용형 (B) 선택 | 14개 ENH 전체 구현 요청 |
 | Phase 3 | 14개 ENH 전체 포함 | 사용자 명시적 선택 |
 | Phase 3 | 3대 철학 준수 필수 | 사용자 강조 |
@@ -717,7 +717,7 @@ Phase 5: 검증 및 릴리스
 - [Release v2.1.77](https://github.com/anthropics/claude-code/releases/tag/v2.1.77)
 - [Release v2.1.78](https://github.com/anthropics/claude-code/releases/tag/v2.1.78)
 - [Claude Code Official Changelog](https://code.claude.com/docs/en/changelog)
-- [bkit-system/philosophy/core-mission.md](bkit-system/philosophy/core-mission.md)
-- [bkit-system/philosophy/ai-native-principles.md](bkit-system/philosophy/ai-native-principles.md)
-- [bkit-system/philosophy/context-engineering.md](bkit-system/philosophy/context-engineering.md)
-- [bkit-system/philosophy/pdca-methodology.md](bkit-system/philosophy/pdca-methodology.md)
+- [rossi-system/philosophy/core-mission.md](rossi-system/philosophy/core-mission.md)
+- [rossi-system/philosophy/ai-native-principles.md](rossi-system/philosophy/ai-native-principles.md)
+- [rossi-system/philosophy/context-engineering.md](rossi-system/philosophy/context-engineering.md)
+- [rossi-system/philosophy/pdca-methodology.md](rossi-system/philosophy/pdca-methodology.md)

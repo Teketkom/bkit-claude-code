@@ -1,8 +1,8 @@
-# bkit-templates Eval Prompt - Trigger and Template Application
+# rossi-templates Eval Prompt - Trigger and Template Application
 
 User request to generate a Plan document for the feature shopping-cart.
 The project needs a properly structured PDCA Plan document following
-bkit template standards.
+ROSSI template standards.
 
 Test trigger accuracy for template application when the user mentions
 "plan document" as a keyword. The skill should select the correct

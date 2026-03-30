@@ -2,10 +2,10 @@
 'use strict';
 
 /**
- * bkit-analysis-server: Code analysis, gap detection, checkpoints, and audit MCP server.
+ * rossi-analysis-server: Code analysis, gap detection, checkpoints, and audit MCP server.
  *
  * Lightweight JSON-RPC 2.0 over stdio — no external dependencies.
- * Reads .bkit/ state, checkpoints, and audit files.
+ * Reads .rossi/ state, checkpoints, and audit files.
  */
 
 const fs = require('fs');
@@ -16,20 +16,20 @@ const readline = require('readline');
 // Utilities
 // ---------------------------------------------------------------------------
 
-const ROOT = process.env.BKIT_ROOT || process.cwd();
-const BKIT_DIR = path.join(ROOT, '.bkit');
+const ROOT = process.env.ROSSI_ROOT || process.cwd();
+const ROSSI_DIR = path.join(ROOT, '.rossi');
 const DOCS_DIR = path.join(ROOT, 'docs');
 
 function statePath(filename) {
-  return path.join(BKIT_DIR, 'state', filename);
+  return path.join(ROSSI_DIR, 'state', filename);
 }
 
 function auditDir() {
-  return path.join(BKIT_DIR, 'audit');
+  return path.join(ROSSI_DIR, 'audit');
 }
 
 function checkpointsDir() {
-  return path.join(BKIT_DIR, 'checkpoints');
+  return path.join(ROSSI_DIR, 'checkpoints');
 }
 
 function readJsonOrNull(filePath) {
@@ -87,7 +87,7 @@ function errResponse(code, message, details) {
 
 const TOOLS = [
   {
-    name: 'bkit_code_quality',
+    name: 'rossi_code_quality',
     description: 'Read code quality analysis results from quality-metrics.json. Optionally filter by feature.',
     inputSchema: {
       type: 'object',
@@ -99,7 +99,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_gap_analysis',
+    name: 'rossi_gap_analysis',
     description: 'Read latest gap analysis results (design-implementation mismatches).',
     inputSchema: {
       type: 'object',
@@ -111,7 +111,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_regression_rules',
+    name: 'rossi_regression_rules',
     description: 'List or add regression prevention rules. action=list to query, action=add to add a new rule.',
     inputSchema: {
       type: 'object',
@@ -135,7 +135,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_checkpoint_list',
+    name: 'rossi_checkpoint_list',
     description: 'List saved checkpoints. Optionally filter by feature.',
     inputSchema: {
       type: 'object',
@@ -147,7 +147,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_checkpoint_detail',
+    name: 'rossi_checkpoint_detail',
     description: 'Get detailed information for a specific checkpoint.',
     inputSchema: {
       type: 'object',
@@ -159,7 +159,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'bkit_audit_search',
+    name: 'rossi_audit_search',
     description: 'Search audit logs by date range, feature, action type, or full-text query.',
     inputSchema: {
       type: 'object',
@@ -264,7 +264,7 @@ function handleRegressionRules(args) {
     });
 
     // Ensure state directory exists before writing
-    const stateDir = path.join(BKIT_DIR, 'state');
+    const stateDir = path.join(ROSSI_DIR, 'state');
     if (!fs.existsSync(stateDir)) {
       fs.mkdirSync(stateDir, { recursive: true });
     }
@@ -355,12 +355,12 @@ function handleAuditSearch(args) {
 // ---------------------------------------------------------------------------
 
 const TOOL_HANDLERS = {
-  bkit_code_quality: handleCodeQuality,
-  bkit_gap_analysis: handleGapAnalysis,
-  bkit_regression_rules: handleRegressionRules,
-  bkit_checkpoint_list: handleCheckpointList,
-  bkit_checkpoint_detail: handleCheckpointDetail,
-  bkit_audit_search: handleAuditSearch,
+  rossi_code_quality: handleCodeQuality,
+  rossi_gap_analysis: handleGapAnalysis,
+  rossi_regression_rules: handleRegressionRules,
+  rossi_checkpoint_list: handleCheckpointList,
+  rossi_checkpoint_detail: handleCheckpointDetail,
+  rossi_audit_search: handleAuditSearch,
 };
 
 // ---------------------------------------------------------------------------
@@ -386,7 +386,7 @@ function handleMessage(msg) {
     case 'initialize':
       return jsonRpcOk(id, {
         protocolVersion: '2024-11-05',
-        serverInfo: { name: 'bkit-analysis-server', version: '2.0.4' },
+        serverInfo: { name: 'rossi-analysis-server', version: '2.0.4' },
         capabilities: { tools: {} },
       });
 
@@ -434,4 +434,4 @@ rl.on('close', () => {
   process.exit(0);
 });
 
-process.stderr.write('[bkit-analysis-server] Started (pid=' + process.pid + ')\n');
+process.stderr.write('[rossi-analysis-server] Started (pid=' + process.pid + ')\n');

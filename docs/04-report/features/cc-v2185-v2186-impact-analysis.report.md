@@ -2,7 +2,7 @@
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v2.0.6 (분석 시점)
 > **Author**: CC Version Analysis Workflow
 > **Completion Date**: 2026-03-28
@@ -35,7 +35,7 @@
 │  🆕 신규 기능:              11건                       │
 │  🔧 버그 수정:              32건                       │
 │  📈 개선/성능:              14건                       │
-│  ⚠️  Breaking Changes:      0건 (bkit 기준)            │
+│  ⚠️  Breaking Changes:      0건 (ROSSI 기준)            │
 │  🔴 신규 hook events:       0건 (CC 총 25, 변동 없음)   │
 │  🔴 신규 hook 기능:         2건 (if 필드, AskUserQuestion) │
 │  📝 시스템 프롬프트:        v2.1.85 +172 / v2.1.86 -157 │
@@ -43,7 +43,7 @@
 │  📋 신규 ENH 기회:          5건 (ENH-160~164)          │
 │  🔢 연속 호환 릴리스:        52개 (v2.1.34~v2.1.86)    │
 │  🔢 자동 수혜:              8건                        │
-│  🔢 bkit 직접 영향:         2건 (config writes fix,     │
+│  🔢 ROSSI 직접 영향:         2건 (config writes fix,     │
 │                              프로젝트 외부 파일 접근 fix) │
 └──────────────────────────────────────────────────────┘
 ```
@@ -53,9 +53,9 @@
 | 관점 | 내용 |
 |------|------|
 | **문제** | CC v2.1.85~v2.1.86에서 Hook `if` 필드 신규 추가, config disk writes 매 skill 호출 발생 fix, Read tool 토큰 절감, /skills description 250자 cap 등 ~57건 변경 |
-| **해결 방법** | GitHub release notes + CHANGELOG.md + npm + 이슈 트래커 + bkit 코드베이스 교차 검증 |
+| **해결 방법** | GitHub release notes + CHANGELOG.md + npm + 이슈 트래커 + ROSSI 코드베이스 교차 검증 |
 | **기능/UX 효과** | Hook `if` 필드로 조건부 hook 실행 기반 확보, config writes fix로 37 skills 성능 개선, Read tool compact format으로 토큰 절감, /skills 250자 cap으로 description 점검 필요 |
-| **핵심 가치** | 52개 연속 호환 릴리스 확인 + ENH 5건 도출(P1 1건/P2 1건/P3 3건) + 자동 수혜 8건 + bkit 직접 영향 2건(자동 해결) |
+| **핵심 가치** | 52개 연속 호환 릴리스 확인 + ENH 5건 도출(P1 1건/P2 1건/P3 3건) + 자동 수혜 8건 + ROSSI 직접 영향 2건(자동 해결) |
 
 ---
 
@@ -81,8 +81,8 @@
 | System Prompt | 2 releases | — | — | — |
 | **합계** | **~57** | **8** | **17** | **32** |
 
-**bkit 직접 영향**: 2건 (B-86-3 config writes fix, B-86-2 프로젝트 외부 파일 fix) — 모두 자동 수혜
-**bkit ENH 기회**: 5건 (ENH-160~164)
+**ROSSI 직접 영향**: 2건 (B-86-3 config writes fix, B-86-2 프로젝트 외부 파일 fix) — 모두 자동 수혜
+**ROSSI ENH 기회**: 5건 (ENH-160~164)
 **자동 수혜**: 8건
 **코드 변경 필요**: 1건 (ENH-162: skills description 250자 점검)
 
@@ -92,7 +92,7 @@
 
 ### 4.1 신규 기능 (8건)
 
-| # | ID | 변경 | Impact | bkit 영향 |
+| # | ID | 변경 | Impact | ROSSI 영향 |
 |---|-----|------|--------|----------|
 | 1 | F-85-1 | **Hook `if` 필드**: permission rule syntax (`Bash(git *)`) 로 hook 실행 조건 필터링 | **HIGH** | **ENH-160** — 향후 hook 설계 가이드 문서화 |
 | 2 | F-85-2 | **PreToolUse AskUserQuestion updatedInput**: headless Q&A 자동 응답 가능 | **HIGH** | **ENH-161** — ENH-138 선행 필요 |
@@ -105,7 +105,7 @@
 
 ### 4.2 버그 수정 (18건)
 
-| # | ID | 변경 | Impact | bkit 영향 |
+| # | ID | 변경 | Impact | ROSSI 영향 |
 |---|-----|------|--------|----------|
 | 1 | B-85-1 | **`/compact` "context exceeded" fix** | **HIGH** | 자동 수혜 — PreCompact/PostCompact 안정성 향상 |
 | 2 | B-85-2 | `/plugin enable/disable` 경로 불일치 fix | MEDIUM | 자동 수혜 |
@@ -128,7 +128,7 @@
 
 ### 4.3 개선/성능 (5건)
 
-| # | ID | 변경 | Impact | bkit 영향 |
+| # | ID | 변경 | Impact | ROSSI 영향 |
 |---|-----|------|--------|----------|
 | 1 | P-85-1 | @-mention file autocomplete 성능 향상 | MEDIUM | 자동 수혜 |
 | 2 | P-85-2 | PowerShell 위험 명령 감지 개선 | LOW | 영향 없음 |
@@ -151,7 +151,7 @@
 
 ### 5.1 신규 기능 (3건)
 
-| # | ID | 변경 | Impact | bkit 영향 |
+| # | ID | 변경 | Impact | ROSSI 영향 |
 |---|-----|------|--------|----------|
 | 1 | F-86-1 | `X-Claude-Code-Session-Id` header | LOW | 영향 없음 |
 | 2 | F-86-2 | `.jj`(Jujutsu), `.sl`(Sapling) VCS 디렉토리 제외 | LOW | 영향 없음 |
@@ -159,16 +159,16 @@
 
 ### 5.2 버그 수정 (14건)
 
-| # | ID | 변경 | Impact | bkit 영향 |
+| # | ID | 변경 | Impact | ROSSI 영향 |
 |---|-----|------|--------|----------|
 | 1 | B-86-1 | `--resume` tool_use ids 에러 fix | MEDIUM | 자동 수혜 |
-| 2 | B-86-2 | **Write/Edit/Read 프로젝트 루트 외부 파일 fix** | **HIGH** | **bkit 직접 영향** — conditional skills 시 `~/.claude/CLAUDE.md` 접근 |
-| 3 | B-86-3 | **Config disk writes 매 skill 호출 fix** | **HIGH** | **bkit 직접 영향** — 37 skills 성능 저하 해결 |
+| 2 | B-86-2 | **Write/Edit/Read 프로젝트 루트 외부 파일 fix** | **HIGH** | **ROSSI 직접 영향** — conditional skills 시 `~/.claude/CLAUDE.md` 접근 |
+| 3 | B-86-3 | **Config disk writes 매 skill 호출 fix** | **HIGH** | **ROSSI 직접 영향** — 37 skills 성능 저하 해결 |
 | 4 | B-86-4 | `/feedback` OOM 크래시 fix | MEDIUM | 자동 수혜 |
 | 5 | B-86-5 | `--bare` MCP tools drop + mid-turn 유실 fix | MEDIUM | ENH-138 관련 |
 | 6 | B-86-6 | OAuth URL `c` shortcut 절단 fix | LOW | 영향 없음 |
 | 7 | B-86-7 | Masked input token 줄바꿈 누출 fix | LOW | 보안 수혜 |
-| 8 | B-86-8 | **Marketplace plugin scripts "Permission denied" fix** | **HIGH** | bkit은 `node` 실행이라 영향 낮음 |
+| 8 | B-86-8 | **Marketplace plugin scripts "Permission denied" fix** | **HIGH** | ROSSI은 `node` 실행이라 영향 낮음 |
 | 9 | B-86-9 | Statusline 다른 세션 모델 표시 fix | LOW | 영향 없음 |
 | 10 | B-86-10 | Scroll auto-follow fix | LOW | 영향 없음 |
 | 11 | B-86-11 | `/plugin` uninstall `n` 키 fix | LOW | 영향 없음 |
@@ -178,7 +178,7 @@
 
 ### 5.3 개선/성능 (9건)
 
-| # | ID | 변경 | Impact | bkit 영향 |
+| # | ID | 변경 | Impact | ROSSI 영향 |
 |---|-----|------|--------|----------|
 | 1 | P-86-1 | macOS keychain cache 5s → 30s (startup 개선) | MEDIUM | 자동 수혜 |
 | 2 | P-86-2 | @-mention 파일 토큰 절감 (JSON-escape 제거) | MEDIUM | 자동 수혜 |
@@ -212,7 +212,7 @@
 | CC Feature | F-85-1, F-85-4: Hook conditional `if` field |
 | Priority | P2 (Medium) |
 | 근거 | 현재 hooks.json 변경 불필요. 향후 새 hook 추가 시 `if` 활용 가이드로 문서화 가치 |
-| YAGNI | ✅ 통과 — 문서화만. bkit unified-bash-pre.js는 내부에서 모든 Bash 명령 검사하므로 현재 `if` 적용 부적절 |
+| YAGNI | ✅ 통과 — 문서화만. ROSSI unified-bash-pre.js는 내부에서 모든 Bash 명령 검사하므로 현재 `if` 적용 부적절 |
 | 구현 범위 | context-engineering.md에 `if` 필드 사용 가이드 추가 |
 | 추정 LOC | +20 (문서만) |
 
@@ -307,19 +307,19 @@
 
 ---
 
-## 9. Component Mapping (CC 변경 → bkit 컴포넌트)
+## 9. Component Mapping (CC 변경 → ROSSI 컴포넌트)
 
 ### 9.1 HIGH Impact Changes
 
-| CC 변경 | ID | bkit 컴포넌트 | 영향 분류 | 상세 |
+| CC 변경 | ID | ROSSI 컴포넌트 | 영향 분류 | 상세 |
 |---------|-----|--------------|----------|------|
 | **Hook `if` 필드** | F-85-1 | hooks/hooks.json | Enhancement | 조건부 hook 실행 기반. 현재 변경 불필요, 향후 가이드 |
 | **AskUserQuestion updatedInput** | F-85-2 | hooks/scripts/ | Enhancement (대기) | headless Q&A. ENH-138 선행 |
 | **/compact context exceeded fix** | B-85-1 | hooks/ (PreCompact, PostCompact) | 자동 수혜 | compact 실패 시 hook 미실행 방지 |
 | **Read tool compact format** | F-86-3 | 전체 세션 | 자동 수혜 | 토큰 절감 |
-| **Config disk writes fix** | B-86-3 | 전체 (37 skills) | **bkit 직접 영향** | 매 skill 호출 불필요 I/O 제거 |
-| **프로젝트 외부 파일 fix** | B-86-2 | conditional skills | **bkit 직접 영향** | ~/.claude/CLAUDE.md 접근 |
-| **Plugin Permission denied fix** | B-86-8 | hooks/scripts/ | 낮은 영향 | bkit은 node 실행 방식 |
+| **Config disk writes fix** | B-86-3 | 전체 (37 skills) | **ROSSI 직접 영향** | 매 skill 호출 불필요 I/O 제거 |
+| **프로젝트 외부 파일 fix** | B-86-2 | conditional skills | **ROSSI 직접 영향** | ~/.claude/CLAUDE.md 접근 |
+| **Plugin Permission denied fix** | B-86-8 | hooks/scripts/ | 낮은 영향 | ROSSI은 node 실행 방식 |
 | **/skills description 250자 cap** | P-86-5 | 37 x skills/*/SKILL.md | **ENH-162** | 34/36 skills 초과 |
 
 ---
@@ -328,16 +328,16 @@
 
 | 항목 | 상태 |
 |------|------|
-| Breaking changes | **0건** (bkit 기준) |
+| Breaking changes | **0건** (ROSSI 기준) |
 | 연속 호환 릴리스 | **52번째** (v2.1.34 ~ v2.1.86) |
 | Migration 필요 | **NO** |
 | CC 권장 버전 | **v2.1.86+** |
 | plugin.json engines | `">=2.1.78"` 유지 (변경 불필요) |
-| Hook events | CC 25개, bkit 18개 (변동 없음) |
+| Hook events | CC 25개, ROSSI 18개 (변동 없음) |
 | CC tools | 30개 (변동 없음) |
 
 **v2.1.86 업그레이드 강력 권장 이유**:
-1. B-86-3: config disk writes fix → bkit 37 skills 성능 개선
+1. B-86-3: config disk writes fix → ROSSI 37 skills 성능 개선
 2. B-86-2: 프로젝트 외부 파일 접근 fix → conditional skills 안정성
 3. B-85-1: /compact context exceeded fix → PreCompact/PostCompact 안정성
 4. F-86-3: Read tool 토큰 절감 → 전체 세션 효율성 향상
@@ -349,7 +349,7 @@
 
 | 파일 | 변경 유형 | ENH | Priority | 추정 LOC |
 |------|----------|-----|----------|---------|
-| `bkit-system/philosophy/context-engineering.md` | MODIFY (if 필드 가이드) | ENH-160 | P2 | +20 |
+| `rossi-system/philosophy/context-engineering.md` | MODIFY (if 필드 가이드) | ENH-160 | P2 | +20 |
 | 34 x `skills/*/SKILL.md` | MODIFY (description 250자 조정) | ENH-162 | P1 | ~50 |
 
 **총 변경**: 35 files, ~70 LOC
@@ -377,7 +377,7 @@
 
 ## Appendix A: ENH Summary Table
 
-| ENH | Priority | CC Feature | bkit Impact | 상태 |
+| ENH | Priority | CC Feature | ROSSI Impact | 상태 |
 |-----|----------|------------|-------------|------|
 | ENH-160 | P2 | Hook `if` field | 문서화 가이드 | 신규 |
 | ENH-161 | P3 | AskUserQuestion updatedInput | headless Q&A (ENH-138 선행) | 신규 (대기) |

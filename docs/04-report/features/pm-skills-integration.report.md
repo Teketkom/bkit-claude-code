@@ -1,7 +1,7 @@
 # pm-skills-integration Completion Report
 
 > **Feature**: pm-skills-integration + btw-team-integration
-> **Project**: bkit (Vibecoding Kit)
+> **Project**: ROSSI (Vibecoding Kit)
 > **Version**: 1.6.2 → 1.7.0 (customized)
 > **Date**: 2026-03-21
 > **Duration**: Single session
@@ -13,7 +13,7 @@
 
 | Perspective | Content |
 |-------------|---------|
-| **Problem** | bkit PM Agent Team이 9개 프레임워크만 보유하여 제품 의사결정 커버리지 31%, Discovery 1단계, PDCA 연결점 1개에 불과 |
+| **Problem** | ROSSI PM Agent Team이 9개 프레임워크만 보유하여 제품 의사결정 커버리지 31%, Discovery 1단계, PDCA 연결점 1개에 불과 |
 | **Solution** | pm-skills(MIT) 65개 중 34개 프레임워크를 4개 에이전트에 직접 흡수 + btw-team Phase 전환 훅 통합 |
 | **Function/UX Effect** | `/pdca pm` 실행 시 5단계 Discovery Chain, 10차원 Strategy, 4개 실행 산출물 자동 생성. CTO Team Phase 전환 시 btw 자동 요약 |
 | **Core Value** | 종합 점수 31.4 → 97.3점(+210%), 토큰 비용 1M의 0.87%만 사용, 시나리오 파악률 30% → 100% |
@@ -147,7 +147,7 @@
 
 ```
 Original v1.6.2:  ████████░░░░░░░░░░░░░░░░░░░░░░░░  31.4 / 100
-Customized bkit:  █████████████████████████████████░  97.3 / 100
+Customized rossi:  █████████████████████████████████░  97.3 / 100
                                                      +210%
 ```
 
@@ -178,6 +178,6 @@ Customized bkit:  ████████████████████�
 
 ## Attribution
 
-This report covers integration of frameworks from [pm-skills](https://github.com/phuryn/pm-skills) by Pawel Huryn (MIT License) into bkit PM Agent Team (Apache-2.0).
+This report covers integration of frameworks from [pm-skills](https://github.com/phuryn/pm-skills) by Pawel Huryn (MIT License) into ROSSI PM Agent Team (Apache-2.0).
 
 15 methodologies referenced: Teresa Torres, Ash Maurya, Geoffrey Moore, Albert Humphrey, Francis Aguilar, Michael Porter, Igor Ansoff, Alexander Osterwalder, Van Westendorp, Gary Klein, Alan Klement, Alberto Savoia, Ron Jeffries, Mendelow, JTBD methodology.

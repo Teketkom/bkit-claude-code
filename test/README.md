@@ -1,6 +1,6 @@
-# bkit Test Suite
+# ROSSI Test Suite
 
-Complete test suite for bkit v1.6.1 including E2E tests and performance tests.
+Complete test suite for ROSSI v1.6.1 including E2E tests and performance tests.
 
 ## Overview
 
@@ -123,7 +123,7 @@ node test/performance/module-load-perf.test.js
 - E2E-013: skills directory
 - E2E-014: agents directory
 - E2E-015: evals directory
-- E2E-016: bkit.config.json
+- E2E-016: rossi.config.json
 - E2E-017: hooks directory
 - E2E-018: lib directory
 - E2E-019: SKILL.md files count
@@ -152,12 +152,12 @@ node test/performance/module-load-perf.test.js
 - E2E-040: package.json valid JSON
 
 #### JSON Configuration (E2E-041 ~ E2E-060)
-- E2E-041: bkit.config.json JSON format
+- E2E-041: rossi.config.json JSON format
 - E2E-042: plugin.json JSON format
 - E2E-043: marketplace.json JSON format
-- E2E-044: bkit.config.json version field
-- E2E-045: bkit.config.json pdca section
-- E2E-046: bkit.config.json team section
+- E2E-044: rossi.config.json version field
+- E2E-045: rossi.config.json pdca section
+- E2E-046: rossi.config.json team section
 - E2E-047: plugin.json skills declaration
 - E2E-048: plugin.json agents declaration
 - E2E-049: marketplace.json metadata
@@ -249,7 +249,7 @@ Test cases:
 - evals/reporter: < 100ms
 - hooks/session-start: < 200ms
 - plugin metadata: < 300ms
-- bkit.config.json: < 50ms
+- rossi.config.json: < 50ms
 - All core modules: < 500ms
 - Core startup: < 500ms
 - Core + evals: < 700ms
@@ -263,7 +263,7 @@ Test cases:
 
 ## Performance Baseline
 
-These are the expected performance baselines for bkit v1.6.1:
+These are the expected performance baselines for ROSSI v1.6.1:
 
 ### Hook Performance (Claude Code v2.1.49+)
 - SessionStart: ~450ms (measured in v2.1.49)
@@ -331,7 +331,7 @@ Each test suite produces structured output with:
 
 Ensure you're running from project root:
 ```bash
-cd /path/to/bkit-claude-code
+cd /path/to/rossi-cto-agent-kit
 ./test/run-all-tests.sh
 ```
 
@@ -380,11 +380,11 @@ If performance baselines need adjustment:
 - Initial comprehensive test suite
 - 80 E2E test cases
 - 70 performance test cases
-- Support for all bkit core modules
+- Support for all ROSSI core modules
 
 ## Related Documentation
 
 - [Zero Script QA Guide](../skills/zero-script-qa/SKILL.md)
 - [PDCA Workflow](../skills/pdca/SKILL.md)
-- [bkit Configuration](../bkit.config.json)
+- [ROSSI Configuration](../rossi.config.json)
 - [Plugin Documentation](./.claude-plugin/)

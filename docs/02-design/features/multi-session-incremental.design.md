@@ -2,7 +2,7 @@
 
 > **Summary**: PDCA 세션 분리 + Context Anchor로 핸드오프 컨텍스트 손실 30-40% → 70-80% 개선
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: 2.0.4
 > **Author**: Claude
 > **Date**: 2026-03-23
@@ -18,7 +18,7 @@
 | Phase 3 | Mockup | N/A |
 | Phase 4 | API Spec | N/A |
 
-> bkit 플러그인 내부 개선이므로 Pipeline 해당 없음.
+> ROSSI 플러그인 내부 개선이므로 Pipeline 해당 없음.
 
 ---
 

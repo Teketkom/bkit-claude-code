@@ -64,7 +64,7 @@ run_test() {
 
 echo ""
 echo -e "${BLUE}╔════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║           Master Test Runner - bkit v1.6.1             ║${NC}"
+echo -e "${BLUE}║           Master Test Runner - ROSSI v1.6.1             ║${NC}"
 echo -e "${BLUE}╚════════════════════════════════════════════════════════╝${NC}"
 echo ""
 

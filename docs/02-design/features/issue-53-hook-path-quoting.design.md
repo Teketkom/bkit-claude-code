@@ -2,12 +2,12 @@
 
 > **요약**: hooks.json 모든 command 경로에 double-quote 적용하여 Windows 특수문자 경로 호환성 확보
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23
 > **상태**: Approved
-> **이슈**: [GitHub #53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53)
+> **이슈**: [GitHub #53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53)
 
 ---
 
@@ -118,13 +118,13 @@ node "/c/Users/홍길동(HongGildong)/.claude/plugins/.../scripts/foo.js"
 |------|-----------|
 | `hooks/hooks.json` | description v2.0.4, 21개 command quoting |
 | `.claude-plugin/plugin.json` | version 2.0.4 |
-| `bkit.config.json` | version 2.0.4 |
+| `rossi.config.json` | version 2.0.4 |
 | `.claude-plugin/marketplace.json` | version 2.0.4 (2곳) |
 | `evals/config.json` | version 2.0.4 |
-| `servers/bkit-pdca-server/package.json` | version 2.0.4 |
-| `servers/bkit-analysis-server/package.json` | version 2.0.4 |
-| `lib/audit/audit-logger.js` | BKIT_VERSION 2.0.4 |
+| `servers/rossi-pdca-server/package.json` | version 2.0.4 |
+| `servers/rossi-analysis-server/package.json` | version 2.0.4 |
+| `lib/audit/audit-logger.js` | ROSSI_VERSION 2.0.4 |
 | `hooks/session-start.js` | systemMessage 2.0.4 |
 | `hooks/startup/session-context.js` | additionalContext 2.0.4 |
-| `lib/core/paths.js` | bkitVersion 2.0.4 (2곳) |
+| `lib/core/paths.js` | rossiVersion 2.0.4 (2곳) |
 | `CHANGELOG.md` | v2.0.4 섹션 추가 |

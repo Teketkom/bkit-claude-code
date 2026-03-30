@@ -138,11 +138,11 @@ Shall we start?"
 
 ## v1.5.8 Feature Guidance
 
-- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.bkit/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
+- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.rossi/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
 
 ### Output Style Recommendation
-- Starter projects: suggest `bkit-learning` for guided learning
-- Dynamic/Enterprise projects: suggest `bkit-pdca-guide` for PDCA workflow
+- Starter projects: suggest `rossi-learning` for guided learning
+- Dynamic/Enterprise projects: suggest `rossi-pdca-guide` for PDCA workflow
 
 ### Agent Teams
 For Dynamic (2 teammates) and Enterprise (4 teammates) projects,

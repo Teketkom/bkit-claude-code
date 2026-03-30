@@ -1,26 +1,26 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "bkit-marketplace",
+  "name": "rossi-marketplace",
   "version": "2.0.8",
-  "description": "POPUP STUDIO's Vibecoding Kit marketplace - PDCA methodology and AI-native development tools",
+  "description": "Концерн РОССИ's Vibecoding Kit marketplace - PDCA methodology and AI-native development tools",
   "owner": {
-    "name": "POPUP STUDIO PTE. LTD.",
-    "email": "contact@popupstudio.ai",
-    "url": "https://popupstudio.ai"
+    "name": "Концерн РОССИ (ЗАО РОССИ)",
+    "email": "ds@rossi.ru",
+    "url": "https://rossi.ru"
   },
   "plugins": [
     {
-      "name": "bkit-starter",
+      "name": "rossi-starter",
       "description": "Korean learning guide for Claude Code beginners. No programming experience required. Includes 4 learning commands.",
       "version": "1.0.0",
       "author": {
-        "name": "POPUP STUDIO PTE. LTD.",
-        "email": "contact@popupstudio.ai"
+        "name": "Концерн РОССИ (ЗАО РОССИ)",
+        "email": "ds@rossi.ru"
       },
-      "repository": "https://github.com/popup-studio-ai/bkit-starter",
+      "repository": "https://github.com/rossi-dev/rossi-starter",
       "source": {
         "source": "url",
-        "url": "https://github.com/popup-studio-ai/bkit-starter.git"
+        "url": "https://github.com/rossi-dev/rossi-starter.git"
       },
       "category": "learning",
       "keywords": [
@@ -32,17 +32,17 @@
       ]
     },
     {
-      "name": "bkit",
+      "name": "rossi-cto-agent-kit",
       "description": "Vibecoding Kit - PDCA methodology + CTO-Led Agent Teams + Living Context System + 43 PM frameworks + Interactive Checkpoints for AI-native development. 37 Skills, 32 Agents, 57 Scripts, 18 Hook Events, and 4 output styles.",
       "version": "2.0.8",
       "author": {
-        "name": "POPUP STUDIO PTE. LTD.",
-        "email": "contact@popupstudio.ai"
+        "name": "Концерн РОССИ (ЗАО РОССИ)",
+        "email": "ds@rossi.ru"
       },
-      "repository": "https://github.com/popup-studio-ai/bkit-claude-code",
+      "repository": "https://github.com/rossi-dev/rossi-cto-agent-kit",
       "source": {
         "source": "url",
-        "url": "https://github.com/popup-studio-ai/bkit-claude-code.git"
+        "url": "https://github.com/rossi-dev/rossi-cto-agent-kit.git"
       },
       "category": "development",
       "keywords": [

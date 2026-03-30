@@ -14,11 +14,11 @@ hooks:
       command: "node ${CLAUDE_PLUGIN_ROOT}/scripts/phase8-review-stop.js"
       timeout: 10000
 agents:
-  default: bkit:code-analyzer
-  validate: bkit:design-validator
-  gap: bkit:gap-detector
-  qa: bkit:qa-strategist
-  team: bkit:cto-lead
+  default: rossi:code-analyzer
+  validate: rossi:design-validator
+  gap: rossi:gap-detector
+  qa: rossi:qa-strategist
+  team: rossi:cto-lead
 allowed-tools:
   - Read
   - Glob

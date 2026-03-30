@@ -1,6 +1,6 @@
-# bkit v2.0.0 Enhancement — PDCA 완료 보고서
+# ROSSI v2.0.0 Enhancement — PDCA 완료 보고서
 
-> **Feature**: bkit v2.0.0 고도화 — AI Native Development OS
+> **Feature**: ROSSI v2.0.0 고도화 — AI Native Development OS
 > **Date**: 2026-03-20
 > **PDCA Cycle**: Plan → Design → Do → Check → Act → Report
 > **Duration**: 2 세션 (2026-03-19 ~ 2026-03-20)
@@ -12,8 +12,8 @@
 
 | 관점 | 내용 |
 |------|------|
-| **Feature** | bkit v2.0.0 — 워크플로우 완전 자동화 + 통제 가능한 AI + 시각화 |
-| **Branch** | `feat/bkit-v2.0.0` (5 commits: c6602db → df7c626) |
+| **Feature** | ROSSI v2.0.0 — 워크플로우 완전 자동화 + 통제 가능한 AI + 시각화 |
+| **Branch** | `feat/ROSSI-v2.0.0` (5 commits: c6602db → df7c626) |
 | **Files Changed** | 240 files (+41,052 LOC / -1,091 LOC) |
 | **Match Rate** | 99.6% (2,705 PASS / 2,717 TC, 0 FAIL) |
 | **Status** | **v2.0.0 전체 완료** — Phase 1 (Core) + Phase 2 (Integration) + Phase 3 (Testing) 완주 |
@@ -39,7 +39,7 @@
 | **Syntax 검증** | 모든 .js 파일 node -c 통과 | 42/42 (100%) |
 | **신규 Hook Scripts** | 6개 + hooks.json 18이벤트 | 6/6 (100%) |
 | **신규 Skills** | control, audit, rollback, pdca-batch | 4/4 (100%) |
-| **MCP Servers** | bkit-pdca-server, bkit-analysis-server | 2/2 (100%) |
+| **MCP Servers** | rossi-pdca-server, rossi-analysis-server | 2/2 (100%) |
 | **YAML 워크플로우** | default, hotfix, enterprise | 3/3 (100%) |
 | **session-start 분할** | hooks/startup/ 5모듈 | 5/5 (100%) |
 | **pdca-status v3.0** | 마이그레이션 함수 구현 | 1/1 (100%) |
@@ -57,7 +57,7 @@
 | **I-03** | plugin.json v2.0.0 업데이트 | ✅ | 버전 1.6.2 → 2.0.0, description, outputStyles 확장 |
 | **I-04** | SessionStart 대시보드 UI 통합 | ✅ | `lib/ui/progress-bar.js` `session-start.js`에서 호출됨, 진행 바 표시 |
 | **I-05** | 기존 Stop hooks → state-machine 전환 | ✅ | `gap-detector-stop.js`, `iterator-stop.js`, `cto-stop.js`, `analysis-stop.js`, `qa-stop.js` 모두 state-machine 기반 전환 |
-| **I-06** | bkit.config.json automation 섹션 추가 | ✅ | automation, guardrails, quality 섹션 추가 완료 |
+| **I-06** | rossi.config.json automation 섹션 추가 | ✅ | automation, guardrails, quality 섹션 추가 완료 |
 | **I-07** | 통합 테스트 | ✅ | Phase 3에서 2,717 TC 실행, 99.6% 통과 |
 
 **Phase 3 Testing 완료 (commit df7c626)**
@@ -80,7 +80,7 @@ common.js 제거            █████████████████�
 종합 (가중 평균)           ███████████████████░  ~99.9%
 ```
 
-**종합 평가**: bkit v2.0.0 프로덕션 완성. Phase 1-3 모두 완료. 사용자는 즉시 다음을 사용 가능:
+**종합 평가**: ROSSI v2.0.0 프로덕션 완성. Phase 1-3 모두 완료. 사용자는 즉시 다음을 사용 가능:
 - Semi-Auto PDCA 수행 (3회 개입, 기존 12회에서 75% 감소)
 - `/control level`, `/audit log`, `/rollback` 스킬 즉시 사용
 - 위험 작업 자동 차단 + 체크포인트 자동 생성
@@ -150,7 +150,7 @@ renderProgressBar(state.pdca);
 - Match Rate (%)
 - ETA, 에이전트 수
 
-### 2.5 bkit.config.json 확장
+### 2.5 rossi.config.json 확장
 
 **신규 섹션**:
 
@@ -183,7 +183,7 @@ renderProgressBar(state.pdca);
 |-----|------|
 | version | 1.6.2 → 2.0.0 |
 | description | 추가: "100% integrated PDCA automation" |
-| outputStyles | 추가: `bkit-pdca-guide`, `bkit-impact-view`, `bkit-control-panel` |
+| outputStyles | 추가: `rossi-pdca-guide`, `ROSSI-impact-view`, `ROSSI-control-panel` |
 | keywords | 추가: `automation`, `controllable-ai`, `trust-engine` |
 
 ---
@@ -280,8 +280,8 @@ v2.0.0 모듈 아키텍처 검증:
 | 3 | **`/audit` 스킬** | 감사 로그 없음 | `/audit log`, `/audit trace feature`, `/audit summary` 사용 가능 | ★★☆ |
 | 4 | **`/rollback` 스킬** | 롤백 불가 | `/rollback list`, `/rollback to cp-xxx` 사용 가능 | ★★★ |
 | 5 | **`/pdca-batch` 스킬** | 단일 Feature만 | `/pdca-batch status`, `/pdca-batch plan feat1 feat2` 사용 가능 | ★★☆ |
-| 6 | **YAML 워크플로우** | 없음 | `.bkit/workflows/` 3종 (default/hotfix/enterprise) 자동 생성 | ★☆☆ |
-| 7 | **MCP Server** | 없음 | `bkit-pdca-server`, `bkit-analysis-server` 데이터 조회 가능 | ★★☆ |
+| 6 | **YAML 워크플로우** | 없음 | `.rossi/workflows/` 3종 (default/hotfix/enterprise) 자동 생성 | ★☆☆ |
+| 7 | **MCP Server** | 없음 | `rossi-pdca-server`, `rossi-analysis-server` 데이터 조회 가능 | ★★☆ |
 | 8 | **PermissionRequest Hook** | 없음 | L2+ 에서 안전한 bash/write 자동 승인 (권한 프롬프트 감소) | ★★★ |
 | 9 | **PostToolUseFailure Hook** | 도구 실패 시 아무 정보 없음 | 실패 패턴 분석 + 복구 가이드 자동 제공 | ★★★ |
 | 10 | **SessionEnd Hook** | 세션 종료 시 정리 없음 | 자동 백업 flush + 세션 히스토리 저장 | ★★☆ |
@@ -310,7 +310,7 @@ v2.0.0 모듈 아키텍처 검증:
 **Before (v1.6.2)**:
 ```
 사용자: "로그인 기능 만들어줘"
-bkit: "이런 기능을 만드려면 /pdca plan login을 먼저 실행하세요"
+rossi: "이런 기능을 만드려면 /pdca plan login을 먼저 실행하세요"
 사용자: (명령어 모름, 포기)
 → PDCA 완주율: ~30%
 ```
@@ -318,8 +318,8 @@ bkit: "이런 기능을 만드려면 /pdca plan login을 먼저 실행하세요"
 **After (v2.0.0, Integration 완료 시)**:
 ```
 사용자: "로그인 기능 만들어줘"
-bkit: [UserPromptSubmit → Intent Detection → 자동 PDCA 시작]
-      ┌─ bkit PDCA: login ───────────────────────────────────┐
+rossi: [UserPromptSubmit → Intent Detection → 자동 PDCA 시작]
+      ┌─ ROSSI PDCA: login ───────────────────────────────────┐
       │ [▶Plan] → [Design] → [Do] → [Check] → [Act]         │
       │ Agent: pm-lead | ETA: ~3min                           │
       └──────────────────────────────────────────────────────┘
@@ -335,7 +335,7 @@ bkit: [UserPromptSubmit → Intent Detection → 자동 PDCA 시작]
 **Before (v1.6.2)**:
 ```
 AI: git push --force origin main
-→ (bkit: 패턴 매칭으로 차단... 하지만 다른 위험 명령은 통과)
+→ (rossi: 패턴 매칭으로 차단... 하지만 다른 위험 명령은 통과)
 ```
 
 **After (v2.0.0, Integration 완료 시)**:
@@ -356,14 +356,14 @@ AI: rm -rf src/legacy/
 **Before (v1.6.2)**:
 ```
 CTO: "현재 품질 어때?"
-bkit: "/pdca status를 실행하세요"
+rossi: "/pdca status를 실행하세요"
 → 텍스트 기반 상태만 표시, 메트릭 없음
 ```
 
 **After (v2.0.0, Integration 완료 시)**:
 ```
 CTO: "현재 품질 어때?"
-bkit: [quality-metrics.json + quality-history.json 로드]
+rossi: [quality-metrics.json + quality-history.json 로드]
       ┌─ Quality Dashboard ─────────────────────────────────┐
       │ Match Rate:     ████████░░  84%  (target: 90%)       │
       │ Code Quality:   ████████░░  78/100                   │
@@ -393,7 +393,7 @@ CTO: "/control trust"
 ```
 [Context Window 초과 → StopFailure Hook]
 → circuit-breaker: OPEN 상태 전환
-→ resume.js: .bkit/state/resume/feature.resume.json 자동 생성
+→ resume.js: .rossi/state/resume/feature.resume.json 자동 생성
 → checkpoint: 마지막 안전 상태 저장
 
 [다음 세션]
@@ -462,7 +462,7 @@ CTO: "/control trust"
 |---------|:---:|---------|
 | session-end-handler.js | 115 | 백업 flush, 세션 히스토리, 감사 |
 | tool-failure-handler.js | 140 | 6가지 실패 패턴, 복구 가이드 |
-| instructions-loaded-handler.js | 70 | 감사 기록, bkit 규칙 확인 |
+| instructions-loaded-handler.js | 70 | 감사 기록, ROSSI 규칙 확인 |
 | config-change-handler.js | 95 | 감사 + 5가지 위험 패턴 감지 |
 | permission-request-handler.js | 155 | L2+ 자동 승인, ALWAYS_DENY |
 | notification-handler.js | 70 | PDCA 컨텍스트 enrichment |
@@ -471,8 +471,8 @@ CTO: "/control trust"
 
 | 서버 | LOC | 핵심 기능 |
 |------|:---:|---------|
-| bkit-pdca-server | 540 | 10 도구 + 3 리소스, JSON-RPC 2.0 |
-| bkit-analysis-server | 437 | 6 도구 (품질/갭/회귀/체크포인트/감사) |
+| rossi-pdca-server | 540 | 10 도구 + 3 리소스, JSON-RPC 2.0 |
+| rossi-analysis-server | 437 | 6 도구 (품질/갭/회귀/체크포인트/감사) |
 
 #### 영역 7: Skills + Workflows (7 files)
 
@@ -510,7 +510,7 @@ CTO: "/control trust"
 | common.js 제거 (57 scripts) | refactor-team | 직접 import 전환 | ~60분 |
 | Agent Stop Hooks (5개) | state-machine-integration | state-machine 기반 전이 | ~20분 |
 | SessionStart 대시보드 | ui-integration | progress-bar.js 연결 | ~10분 |
-| Config 업데이트 | config-update | bkit.config.json + plugin.json | ~5분 |
+| Config 업데이트 | config-update | rossi.config.json + plugin.json | ~5분 |
 | Phase 2 소계 | **1 팀** | **60 files, +693/-388 LOC** | **~2시간** |
 
 ### 6.3 Phase 3 (Testing) — 완료
@@ -567,7 +567,7 @@ CTO: "/control trust"
 - ✅ 5개 Agent Stop hooks state-machine 기반 전환
 - ✅ 57개 scripts common.js 제거 (direct import 전환)
 - ✅ SessionStart 대시보드 UI 통합
-- ✅ bkit.config.json automation/guardrails/quality 섹션 추가
+- ✅ rossi.config.json automation/guardrails/quality 섹션 추가
 - ✅ plugin.json v2.0.0 업데이트
 
 **Phase 3 (Testing)**:
@@ -602,7 +602,7 @@ CTO: "/control trust"
 
 ### v2.0.0 — 프로덕션 완료
 
-bkit v2.0.0 **"AI Native Development OS — 보이는 자동화, 통제 가능한 AI"** 비전이 **100% 달성**되었습니다.
+ROSSI v2.0.0 **"AI Native Development OS — 보이는 자동화, 통제 가능한 AI"** 비전이 **100% 달성**되었습니다.
 
 | Phase | 상태 | 주요 성과 |
 |-------|:----:|---------|

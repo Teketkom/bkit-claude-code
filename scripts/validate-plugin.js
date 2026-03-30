@@ -314,7 +314,7 @@ function scanDir(dir, pattern) {
 
 function main() {
   console.log('='.repeat(60));
-  console.log('bkit Plugin Validation');
+  console.log('ROSSI Plugin Validation');
   console.log('='.repeat(60));
 
   // Check required files

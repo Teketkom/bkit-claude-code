@@ -86,9 +86,9 @@ assert('CP-005',
 // ============================================================
 
 // Setup temp directory for checkpoint tests
-const CP_TEST_DIR = path.join(os.tmpdir(), `bkit-cp-test-${process.pid}-${Date.now()}`);
-fs.mkdirSync(path.join(CP_TEST_DIR, '.bkit', 'checkpoints'), { recursive: true });
-fs.mkdirSync(path.join(CP_TEST_DIR, '.bkit', 'state'), { recursive: true });
+const CP_TEST_DIR = path.join(os.tmpdir(), `ROSSI-cp-test-${process.pid}-${Date.now()}`);
+fs.mkdirSync(path.join(CP_TEST_DIR, '.rossi', 'checkpoints'), { recursive: true });
+fs.mkdirSync(path.join(CP_TEST_DIR, '.rossi', 'state'), { recursive: true });
 
 const origCwd = process.cwd();
 process.chdir(CP_TEST_DIR);
@@ -96,7 +96,7 @@ process.chdir(CP_TEST_DIR);
 // Write a fake pdca-status for checkpoint
 const fakeStatus = { version: 'v3.0', features: { 'cp-test': { phase: 'do', matchRate: 75 } } };
 fs.writeFileSync(
-  path.join(CP_TEST_DIR, '.bkit', 'state', 'pdca-status.json'),
+  path.join(CP_TEST_DIR, '.rossi', 'state', 'pdca-status.json'),
   JSON.stringify(fakeStatus, null, 2)
 );
 
@@ -127,7 +127,7 @@ assert('CP-008',
 // Modify pdca-status first
 const modifiedStatus = { version: 'v3.0', features: { 'cp-test': { phase: 'check', matchRate: 50 } } };
 fs.writeFileSync(
-  path.join(CP_TEST_DIR, '.bkit', 'state', 'pdca-status.json'),
+  path.join(CP_TEST_DIR, '.rossi', 'state', 'pdca-status.json'),
   JSON.stringify(modifiedStatus)
 );
 const rollResult9 = checkpoint.rollbackToCheckpoint(cp6.id);
@@ -137,7 +137,7 @@ assert('CP-009',
 );
 
 // CP-010: rollback restores original data
-const restored10 = JSON.parse(fs.readFileSync(path.join(CP_TEST_DIR, '.bkit', 'state', 'pdca-status.json'), 'utf8'));
+const restored10 = JSON.parse(fs.readFileSync(path.join(CP_TEST_DIR, '.rossi', 'state', 'pdca-status.json'), 'utf8'));
 assert('CP-010',
   restored10.features['cp-test'].phase === 'do' && restored10.features['cp-test'].matchRate === 75,
   'Restored pdca-status matches original checkpoint data'

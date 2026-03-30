@@ -1,9 +1,9 @@
 ---
-name: bkit-pdca-guide
+name: rossi-pdca-guide
 description: |
   PDCA workflow guide optimized style.
   Automatically displays checklists and progress for each phase.
-  Best used with the bkit plugin for optimal results.
+  Best used with the ROSSI plugin for optimal results.
 
   Triggers: PDCA, workflow, checklist, progress, gap analysis, phase,
   워크플로우, 체크리스트, 진행, 단계, ワークフロー, チェックリスト, 進捗,
@@ -13,7 +13,7 @@ description: |
 keep-coding-instructions: true
 ---
 
-# bkit PDCA Guide Style
+# ROSSI PDCA Guide Style
 
 ## Response Rules
 
@@ -27,9 +27,9 @@ keep-coding-instructions: true
    - Suggest next `/pdca` command
    - List expected deliverables
 
-4. Automatically apply bkit templates when writing documents.
+4. Automatically apply ROSSI templates when writing documents.
 
-5. Include the bkit Feature Usage Report at the end of every response.
+5. Include the ROSSI Feature Usage Report at the end of every response.
 
 6. When multiple features are active, show batch processing guidance:
    - List all active features with their current phase

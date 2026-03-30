@@ -1,12 +1,12 @@
 ---
-name: bkit
+name: ROSSI
 description: |
-  bkit plugin help - Show all available bkit functions.
+  ROSSI plugin help - Show all available ROSSI functions.
   Workaround for skills autocomplete issue.
 
-  Use "/bkit" or just type "bkit help" to see available functions list.
+  Use "/ROSSI" or just type "ROSSI help" to see available functions list.
 
-  Triggers: bkit, bkit help, bkit functions, show bkit commands,
+  Triggers: ROSSI, ROSSI help, ROSSI functions, show ROSSI commands,
   도움말, 기능 목록, ヘルプ, 機能一覧, 帮助, 功能列表,
   ayuda, lista de funciones, aide, liste des fonctions,
   Hilfe, Funktionsliste, aiuto, elenco funzioni
@@ -16,15 +16,15 @@ allowed-tools:
   - Skill
 ---
 
-# bkit Functions
+# ROSSI Functions
 
-> Show all available bkit functions (Skills autocomplete workaround)
+> Show all available ROSSI functions (Skills autocomplete workaround)
 
 Display the following help message:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  bkit - AI Native Development Toolkit (Claude Code Edition)
+  ROSSI - AI Native Development Toolkit (Claude Code Edition)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 PDCA (Document-Driven Development)
@@ -72,8 +72,8 @@ Memory & Clipboard (v1.5.6)
 
 Output Styles (v1.5.3)
   /output-style              Select response style
-  /output-style-setup        Install bkit styles to .claude/
-  Available: bkit-learning, bkit-pdca-guide, bkit-enterprise, bkit-pdca-enterprise
+  /output-style-setup        Install ROSSI styles to .claude/
+  Available: rossi-learning, rossi-pdca-guide, rossi-enterprise, rossi-pdca-enterprise
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   Note: These functions don't have autocomplete in CLI.
@@ -99,8 +99,8 @@ Output Styles (v1.5.3)
 | `/claude-code-learning` | Claude Code learning |
 | `/mobile-app` | Mobile app development (React Native/Flutter/Expo) |
 | `/desktop-app` | Desktop app development (Electron/Tauri) |
-| `/bkit-rules` | Core rules (auto-applied) |
-| `/bkit-templates` | PDCA document templates |
+| `/rossi-rules` | Core rules (auto-applied) |
+| `/rossi-templates` | PDCA document templates |
 
 ### Phase Skills (9, auto-invoked by pipeline)
 
@@ -187,10 +187,10 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 
 | Style | Best For | Description |
 |-------|----------|-------------|
-| bkit-learning | Starter projects | Learning points, educational insights |
-| bkit-pdca-guide | Dynamic projects | PDCA badges, checklists, phase tracking |
-| bkit-enterprise | Enterprise projects | Architecture tradeoffs, cost analysis |
-| bkit-pdca-enterprise | Enterprise projects | PDCA + CTO combined perspective |
+| rossi-learning | Starter projects | Learning points, educational insights |
+| rossi-pdca-guide | Dynamic projects | PDCA badges, checklists, phase tracking |
+| rossi-enterprise | Enterprise projects | Architecture tradeoffs, cost analysis |
+| rossi-pdca-enterprise | Enterprise projects | PDCA + CTO combined perspective |
 
 ### v1.5.1 Features
 
@@ -235,17 +235,17 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 
 | Feature | Activation | Description |
 |---------|-----------|-------------|
-| Output Style Setup | `/output-style-setup` | Install bkit output styles to .claude/ |
+| Output Style Setup | `/output-style-setup` | Install ROSSI output styles to .claude/ |
 | bkend Docs Reference | Automatic | bkend-expert fetches latest docs via WebFetch |
 | SubagentStart/Stop | Automatic | Track team agent spawn/stop events |
-| Team State Writer | Automatic | Write agent state to .bkit/agent-state.json |
+| Team State Writer | Automatic | Write agent state to .rossi/agent-state.json |
 
-### CLAUDE.md and bkit
+### CLAUDE.md and ROSSI
 
-bkit does NOT provide a CLAUDE.md file. Reasons:
-- bkit provides dynamic context via Hooks, Skills, Agents, and Output Styles
+ROSSI does NOT provide a CLAUDE.md file. Reasons:
+- ROSSI provides dynamic context via Hooks, Skills, Agents, and Output Styles
 - CLAUDE.md is for project-specific rules that the project owner writes
-- bkit's SessionStart hook injects PDCA state, level detection, and trigger tables
+- ROSSI's SessionStart hook injects PDCA state, level detection, and trigger tables
 - This is more token-efficient than static CLAUDE.md (injected once vs every turn)
 
 If you need help writing your project's CLAUDE.md, use `/claude-code-learning`.

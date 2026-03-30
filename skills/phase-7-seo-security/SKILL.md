@@ -9,8 +9,8 @@ description: |
 imports:
   - ${PLUGIN_ROOT}/templates/pipeline/phase-7-seo-security.template.md
 agents:
-  default: bkit:code-analyzer
-  security: bkit:security-architect
+  default: rossi:code-analyzer
+  security: rossi:security-architect
 allowed-tools:
   - Read
   - Edit

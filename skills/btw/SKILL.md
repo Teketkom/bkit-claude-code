@@ -27,7 +27,7 @@ allowed-tools:
 
 ### `/btw {suggestion}` - Record a suggestion
 
-1. Read `.bkit/btw-suggestions.json` (create if not exists)
+1. Read `.rossi/btw-suggestions.json` (create if not exists)
 2. Generate next ID: `btw-NNN` (zero-padded, sequential)
 3. Create suggestion entry:
    ```json
@@ -37,7 +37,7 @@ allowed-tools:
      "suggestion": "{user input}",
      "context": {
        "file": "{current working file if identifiable}",
-       "pdcaPhase": "{current PDCA phase from .bkit-memory.json or null}",
+       "pdcaPhase": "{current PDCA phase from .rossi-memory.json or null}",
        "feature": "{current feature or null}"
      },
      "category": "auto-detect",
@@ -63,7 +63,7 @@ allowed-tools:
 
 ### `/btw list` - List all suggestions
 
-1. Read `.bkit/btw-suggestions.json`
+1. Read `.rossi/btw-suggestions.json`
 2. Display table:
    ```
    ID       | Status   | Category       | Suggestion (truncated)
@@ -75,11 +75,11 @@ allowed-tools:
 
 ### `/btw analyze` - Analyze suggestions for skill candidates
 
-1. Read all pending suggestions from `.bkit/btw-suggestions.json`
+1. Read all pending suggestions from `.rossi/btw-suggestions.json`
 2. Group by category and find patterns:
    - Cluster similar suggestions (keyword overlap)
    - Count frequency of similar topics
-   - Identify suggestions that map to existing bkit skills vs. new skill needs
+   - Identify suggestions that map to existing ROSSI skills vs. new skill needs
 3. For each skill candidate:
    - Estimate skill classification: workflow vs capability
    - Suggest skill name and description
@@ -102,7 +102,7 @@ allowed-tools:
 
 ### `/btw promote {id}` - Promote suggestion to skill creation
 
-1. Find suggestion by ID in `.bkit/btw-suggestions.json`
+1. Find suggestion by ID in `.rossi/btw-suggestions.json`
 2. Validate status is "pending" (cannot promote already promoted/dismissed)
 3. Update suggestion:
    - `status`: "promoted"
@@ -114,7 +114,7 @@ allowed-tools:
 
 ### `/btw stats` - Show statistics
 
-1. Read `.bkit/btw-suggestions.json`
+1. Read `.rossi/btw-suggestions.json`
 2. Calculate and display:
    ```
    /btw Statistics
@@ -127,7 +127,7 @@ allowed-tools:
    Top keywords: @Flow(3), DataProxy(2), validation(2)
    ```
 
-## Data File: `.bkit/btw-suggestions.json`
+## Data File: `.rossi/btw-suggestions.json`
 
 Initialize with this structure if file does not exist:
 
@@ -156,7 +156,7 @@ Initialize with this structure if file does not exist:
 
 ## Integration Points
 
-- **PDCA Context**: Reads `.bkit-memory.json` for current phase/feature
+- **PDCA Context**: Reads `.rossi-memory.json` for current phase/feature
 - **skill-create**: `/btw promote` triggers skill-create workflow
 - **skill-needs-extractor**: `/btw analyze` results feed into gap analysis
 - **CTO Team**: Phase transition triggers btw summary (see below)
@@ -166,7 +166,7 @@ Initialize with this structure if file does not exist:
 When `/btw` is used during a CTO Team session (`/pdca team`):
 
 ### Auto-Detection
-- Check if team session is active via `.bkit/runtime/agent-state.json`
+- Check if team session is active via `.rossi/runtime/agent-state.json`
 - If active: set `teamContext.isTeamSession = true` and populate phase/role/pattern
 - If not active: set `teamContext.isTeamSession = false` (default behavior)
 

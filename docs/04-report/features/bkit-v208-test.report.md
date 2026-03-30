@@ -1,12 +1,12 @@
-# bkit v2.0.8 종합 테스트 보고서
+# ROSSI v2.0.8 종합 테스트 보고서
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit v2.0.8
+> **Project**: ROSSI CTO Agent Kit v2.0.8
 > **Author**: Test PDCA Workflow
 > **Completion Date**: 2026-03-28
 > **PDCA Cycle**: #26 (테스트)
-> **Branch**: feat/bkit-v208-cc-v2186-improvements
+> **Branch**: feat/rossi-v208-cc-v2186-improvements
 
 ---
 
@@ -16,7 +16,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| **기능** | bkit v2.0.8 전체 기능 테스트 |
+| **기능** | ROSSI v2.0.8 전체 기능 테스트 |
 | **테스트 범위** | 10개 카테고리, 142 테스트 파일 |
 | **총 TC** | **3,376 TC** |
 | **결과** | **3,364 PASS / 0 FAIL / 12 SKIP** |
@@ -28,7 +28,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  bkit v2.0.8 테스트 결과                                │
+│  ROSSI v2.0.8 테스트 결과                                │
 ├──────────────────────────────────────────────────────┤
 │  📊 총 TC:                  3,376개                    │
 │  ✅ PASS:                   3,364개 (100% FAIL 없음)   │
@@ -105,9 +105,9 @@
 | 범위 | TC ID | 검증 항목 |
 |------|-------|----------|
 | VC2-001~005 | Config | 5개 config/script 파일 v2.0.8 일치 |
-| VC2-006~008 | README | README.md, bkit-system/README.md v2.0.8 참조 |
+| VC2-006~008 | README | README.md, rossi-system/README.md v2.0.8 참조 |
 | VC2-009~012 | CC Compat | engines >=2.1.78, 18 hook events, PLUGIN_ROOT 참조 |
-| VC2-013~018 | ENH-160 | Hook `if` 문서: 섹션 존재, v2.1.85 참조, syntax 예제, bkit 상태 |
+| VC2-013~018 | ENH-160 | Hook `if` 문서: 섹션 존재, v2.1.85 참조, syntax 예제, ROSSI 상태 |
 | VC2-019~021 | ENH-164 | Org Policy 문서: 섹션 존재, managed-settings.json, blocking |
 | VC2-022~025 | Overview | 3개 overview 파일 v2.0.8 헤더 |
 

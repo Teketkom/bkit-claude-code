@@ -25,14 +25,14 @@ console.log('\n=== scope-limiter.test.js ===\n');
 
 // --- SL-001~005: checkPathScope allowed paths per level ---
 
-// L0-L1 (strict): only docs/** and .bkit/**
+// L0-L1 (strict): only docs/** and .rossi/**
 const sl1 = mod.checkPathScope('docs/plan/feature.md', 0);
 assert('SL-001', sl1.allowed === true, 'L0: docs/ path is allowed');
 
-const sl2 = mod.checkPathScope('.bkit/state/pdca-status.json', 1);
-assert('SL-002', sl2.allowed === true, 'L1: .bkit/ path is allowed');
+const sl2 = mod.checkPathScope('.rossi/state/pdca-status.json', 1);
+assert('SL-002', sl2.allowed === true, 'L1: .rossi/ path is allowed');
 
-// L2 (moderate): src, lib, docs, test, .bkit
+// L2 (moderate): src, lib, docs, test, .ROSSI
 const sl3 = mod.checkPathScope('src/index.js', 2);
 assert('SL-003', sl3.allowed === true, 'L2: src/ path is allowed');
 

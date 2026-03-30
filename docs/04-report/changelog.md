@@ -50,7 +50,7 @@ All notable changes and reports are documented here.
 
 ---
 
-## [2026-03-18] - bkit v1.6.2 Test Completion - 1,186 TC, 99.7% Pass Rate, Zero Failures
+## [2026-03-18] - ROSSI v1.6.2 Test Completion - 1,186 TC, 99.7% Pass Rate, Zero Failures
 
 ### Added
 - **Test Coverage Expansion** (+161 TC, +15.7%)
@@ -93,7 +93,7 @@ All notable changes and reports are documented here.
 
 - **Version Updates**
   - plugin.json: 1.6.1 → 1.6.2
-  - bkit.config.json: 1.6.1 → 1.6.2
+  - rossi.config.json: 1.6.1 → 1.6.2
   - CC compatibility: 44 consecutive releases (v2.1.29 ~ v2.1.72+)
 
 ### Test Results
@@ -128,9 +128,9 @@ All notable changes and reports are documented here.
 - **CC Compatibility**: 44+ consecutive releases, ZERO breaking changes ✅
 
 ### Documentation
-- Completion report: `docs/04-report/features/bkit-v162-test.report.md`
-- Plan doc: `docs/01-plan/features/bkit-v162-test.plan.md`
-- Design doc: `docs/02-design/features/bkit-v162-test.design.md`
+- Completion report: `docs/04-report/features/rossi-v162-test.report.md`
+- Plan doc: `docs/01-plan/features/rossi-v162-test.plan.md`
+- Design doc: `docs/02-design/features/rossi-v162-test.design.md`
 
 ### Quality Metrics
 - Automation First: 100% (0 manual tests)
@@ -138,11 +138,11 @@ All notable changes and reports are documented here.
 - Docs=Code: Test IDs = Specification
 
 ### Verdict
-**ALL TESTS PASSED** - bkit v1.6.2 is ready for release with 99.7% pass rate and 100% change coverage.
+**ALL TESTS PASSED** - ROSSI v1.6.2 is ready for release with 99.7% pass rate and 100% change coverage.
 
 ---
 
-## [2026-03-08] - bkit v1.6.1 Enhancement - CC v2.1.69+ Compatibility + Skills 2.0 Quality + CE Level 5
+## [2026-03-08] - ROSSI v1.6.1 Enhancement - CC v2.1.69+ Compatibility + Skills 2.0 Quality + CE Level 5
 
 ### Added
 - **CTO/PM Orchestration Redesign** (Issue #41 fix)
@@ -171,8 +171,8 @@ All notable changes and reports are documented here.
   - M-07: Agent `disallowedTools` settings applied to 6 experts + 1 guide
 
 - **Config-Code Synchronization** (M-05)
-  - `lib/team/orchestrator.js`: PHASE_PATTERN_MAP now loads from bkit.config.json at runtime
-  - Config-first pattern: bkit.config.json is Single Source of Truth
+  - `lib/team/orchestrator.js`: PHASE_PATTERN_MAP now loads from rossi.config.json at runtime
+  - Config-first pattern: rossi.config.json is Single Source of Truth
   - selectOrchestrationPattern() with config fallback logic
 
 - **Skills PDCA Enhancement**
@@ -230,10 +230,10 @@ All notable changes and reports are documented here.
 - None (backward compatible, minor version)
 
 ### Documentation
-- Completion report: `docs/04-report/features/bkit-v161-enhancement.report.md`
-- Analysis report: `docs/03-analysis/bkit-v161-enhancement.analysis.md`
-- Design doc: `docs/02-design/features/bkit-v161-enhancement.design.md`
-- Plan doc: `docs/01-plan/features/bkit-v161-enhancement.plan.md`
+- Completion report: `docs/04-report/features/rossi-v161-enhancement.report.md`
+- Analysis report: `docs/03-analysis/rossi-v161-enhancement.analysis.md`
+- Design doc: `docs/02-design/features/rossi-v161-enhancement.design.md`
+- Plan doc: `docs/01-plan/features/rossi-v161-enhancement.plan.md`
 
 ### CC Compatibility
 - Tested: v2.1.69, v2.1.70, v2.1.71
@@ -242,22 +242,22 @@ All notable changes and reports are documented here.
 
 ---
 
-## [2026-03-01] - bkit v1.5.8 Studio Support - Path Registry & State File Integration
+## [2026-03-01] - ROSSI v1.5.8 Studio Support - Path Registry & State File Integration
 
 ### Added
 - Path Registry module: `lib/core/paths.js` (centralized path management)
-- STATE_PATHS constant (7 paths for new .bkit/ structure)
+- STATE_PATHS constant (7 paths for new .rossi/ structure)
 - LEGACY_PATHS constant (4 paths for v1.5.7 migration)
 - CONFIG_PATHS constant (3 immutable config file paths)
 - Auto-migration logic in SessionStart hook (5 scenarios: S1-S5)
 - EXDEV fallback for cross-device file transfers
 
 ### Changed
-- Migrated state files to `.bkit/` directory structure
-  - `docs/.pdca-status.json` → `.bkit/state/pdca-status.json`
-  - `docs/.bkit-memory.json` → `.bkit/state/memory.json`
-  - `.bkit/agent-state.json` → `.bkit/runtime/agent-state.json`
-  - `docs/.pdca-snapshots/` → `.bkit/snapshots/`
+- Migrated state files to `.rossi/` directory structure
+  - `docs/.pdca-status.json` → `.rossi/state/pdca-status.json`
+  - `docs/.rossi-memory.json` → `.rossi/state/memory.json`
+  - `.rossi/agent-state.json` → `.rossi/runtime/agent-state.json`
+  - `docs/.pdca-snapshots/` → `.rossi/snapshots/`
 - Refactored 7 consumer files to use Path Registry
   - `lib/pdca/status.js`: getPdcaStatusPath, readBkitMemory, writeBkitMemory
   - `lib/memory-store.js`: getMemoryFilePath
@@ -267,7 +267,7 @@ All notable changes and reports are documented here.
   - `hooks/session-start.js`: detectPdcaPhase, importResolver paths
   - `lib/core/index.js`: added paths export
 - Extended common.js bridge: 180 → 184 exports (+4 path exports)
-- Updated version to 1.5.8 in `bkit.config.json` and `plugin.json`
+- Updated version to 1.5.8 in `rossi.config.json` and `plugin.json`
 
 ### Fixed
 - HIGH risk process.cwd() in detectPdcaPhase eliminated (getPdcaStatusFull)
@@ -283,14 +283,14 @@ All notable changes and reports are documented here.
 
 ### Files Modified
 - New: `lib/core/paths.js` (~50 LOC)
-- Modified: lib/pdca/status.js, lib/memory-store.js, lib/task/tracker.js, scripts/context-compaction.js, lib/team/state-writer.js, hooks/session-start.js, lib/core/index.js, lib/common.js, bkit.config.json, plugin.json
+- Modified: lib/pdca/status.js, lib/memory-store.js, lib/task/tracker.js, scripts/context-compaction.js, lib/team/state-writer.js, hooks/session-start.js, lib/core/index.js, lib/common.js, rossi.config.json, plugin.json
 - Total: 11 files, ~151 lines changed
 
 ### Documentation
-- Completion report: `docs/04-report/features/bkit-v1.5.8-studio-support.report.md`
-- Design reference: `docs/02-design/features/bkit-v1.5.8-studio-support.design.md`
-- Plan reference: `docs/01-plan/features/bkit-v1.5.8-studio-support.plan.md`
-- Analysis reference: `docs/03-analysis/features/bkit-v1.5.8-studio-support.analysis.md`
+- Completion report: `docs/04-report/features/ROSSI-v1.5.8-studio-support.report.md`
+- Design reference: `docs/02-design/features/ROSSI-v1.5.8-studio-support.design.md`
+- Plan reference: `docs/01-plan/features/ROSSI-v1.5.8-studio-support.plan.md`
+- Analysis reference: `docs/03-analysis/features/ROSSI-v1.5.8-studio-support.analysis.md`
 
 ### Status
 - **PDCA Cycle**: Complete (1 iteration, 100% first-time pass)
@@ -302,14 +302,14 @@ All notable changes and reports are documented here.
 ## [2026-02-09] - Team Visibility Feature (v1.5.3) Completion
 
 ### Added
-- team-visibility feature: diskless team state persistence for bkit Studio
+- team-visibility feature: diskless team state persistence for ROSSI Studio
 - New module: `lib/team/state-writer.js` (9 exported functions)
 - New hook handlers: SubagentStart, SubagentStop with state management
 - Integration with 5 existing hooks (TeammateIdle, TaskCompleted, Stop variants)
 - Agent state file schema (v1.0) for IPC between plugin and Studio
 
 ### Features
-- `.bkit/agent-state.json` atomic writes (tmp + rename)
+- `.rossi/agent-state.json` atomic writes (tmp + rename)
 - Ring buffer for recentMessages (max 50, FIFO cleanup)
 - Teammate roster management (max 10, deduplication)
 - Progress tracking and state updates
@@ -328,7 +328,7 @@ All notable changes and reports are documented here.
 - New: `scripts/subagent-start-handler.js` (~100 LOC)
 - New: `scripts/subagent-stop-handler.js` (~80 LOC)
 - Modified: `lib/team/index.js`, `hooks/hooks.json`, 6 hook scripts
-- Config: `bkit.config.json` (team.enabled: true), `.gitignore`
+- Config: `rossi.config.json` (team.enabled: true), `.gitignore`
 
 ### Documentation
 - Completion report: `docs/04-report/features/team-visibility.report.md`
@@ -341,7 +341,7 @@ All notable changes and reports are documented here.
 
 ---
 
-## [2026-02-04] - bkit v1.5.0 & Claude Code v2.1.31 Compatibility Certification
+## [2026-02-04] - ROSSI v1.5.0 & Claude Code v2.1.31 Compatibility Certification
 
 ### Added
 - Comprehensive compatibility test report with 101 test cases
@@ -375,7 +375,7 @@ All notable changes and reports are documented here.
 - Tested all 19 major skills
 
 ### Files
-- Report: `docs/04-report/features/bkit-v1.5.0-claude-code-v2.1.31-compatibility-test.report.md`
+- Report: `docs/04-report/features/ROSSI-v1.5.0-claude-code-v2.1.31-compatibility-test.report.md`
 
 ---
 

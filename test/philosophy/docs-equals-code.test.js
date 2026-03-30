@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Philosophy Tests: Docs=Code Principle (15 TC)
- * Tests that bkit.config.json values are consistent with code defaults,
+ * Tests that rossi.config.json values are consistent with code defaults,
  * and that documentation paths match actual file structure
  *
  * @module test/philosophy/docs-equals-code.test.js
@@ -15,9 +15,9 @@ const PROJECT_ROOT = path.resolve(__dirname, '../..');
 
 let config;
 try {
-  config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'bkit.config.json'), 'utf-8'));
+  config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'rossi.config.json'), 'utf-8'));
 } catch (e) {
-  console.error('bkit.config.json load failed:', e.message);
+  console.error('rossi.config.json load failed:', e.message);
   process.exit(1);
 }
 

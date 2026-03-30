@@ -29,81 +29,81 @@ function assert(id, condition, description) {
 }
 
 // ============================================================
-// Section 1: bkit-pdca-server index.js loads without error (MS-001~005)
+// Section 1: rossi-pdca-server index.js loads without error (MS-001~005)
 // ============================================================
 
-const pdcaServerPath = path.join(PROJECT_ROOT, 'servers/bkit-pdca-server/index.js');
+const pdcaServerPath = path.join(PROJECT_ROOT, 'servers/rossi-pdca-server/index.js');
 
-// MS-001: bkit-pdca-server/index.js exists
+// MS-001: rossi-pdca-server/index.js exists
 assert('MS-001',
   fs.existsSync(pdcaServerPath),
-  'servers/bkit-pdca-server/index.js exists'
+  'servers/rossi-pdca-server/index.js exists'
 );
 
-// MS-002: bkit-pdca-server/index.js is valid JavaScript (parseable)
+// MS-002: rossi-pdca-server/index.js is valid JavaScript (parseable)
 let pdcaServerContent = null;
 try {
   pdcaServerContent = fs.readFileSync(pdcaServerPath, 'utf8');
-  assert('MS-002', pdcaServerContent.length > 0, 'bkit-pdca-server/index.js is non-empty');
+  assert('MS-002', pdcaServerContent.length > 0, 'rossi-pdca-server/index.js is non-empty');
 } catch (e) {
-  assert('MS-002', false, `bkit-pdca-server/index.js read failed: ${e.message}`);
+  assert('MS-002', false, `rossi-pdca-server/index.js read failed: ${e.message}`);
 }
 
-// MS-003: bkit-pdca-server exports or defines MCP tools
+// MS-003: rossi-pdca-server exports or defines MCP tools
 assert('MS-003',
   pdcaServerContent !== null && /(?:tools|Tool|server|Server|createServer|MCP|handle)/.test(pdcaServerContent),
-  'bkit-pdca-server/index.js defines MCP tools or server'
+  'rossi-pdca-server/index.js defines MCP tools or server'
 );
 
-// MS-004: bkit-pdca-server references PDCA functionality
+// MS-004: rossi-pdca-server references PDCA functionality
 assert('MS-004',
   pdcaServerContent !== null && /(?:pdca|phase|feature|status|transition)/.test(pdcaServerContent),
-  'bkit-pdca-server/index.js references PDCA functionality'
+  'rossi-pdca-server/index.js references PDCA functionality'
 );
 
-// MS-005: bkit-pdca-server has proper server structure (MCP stdio protocol)
+// MS-005: rossi-pdca-server has proper server structure (MCP stdio protocol)
 assert('MS-005',
   pdcaServerContent !== null && (/serverInfo|server|stdin|stdio|handleRequest|process\.stdin/.test(pdcaServerContent)),
-  'bkit-pdca-server/index.js has MCP server structure'
+  'rossi-pdca-server/index.js has MCP server structure'
 );
 
 // ============================================================
-// Section 2: bkit-analysis-server index.js loads without error (MS-006~010)
+// Section 2: rossi-analysis-server index.js loads without error (MS-006~010)
 // ============================================================
 
-const analysisServerPath = path.join(PROJECT_ROOT, 'servers/bkit-analysis-server/index.js');
+const analysisServerPath = path.join(PROJECT_ROOT, 'servers/rossi-analysis-server/index.js');
 
-// MS-006: bkit-analysis-server/index.js exists
+// MS-006: rossi-analysis-server/index.js exists
 assert('MS-006',
   fs.existsSync(analysisServerPath),
-  'servers/bkit-analysis-server/index.js exists'
+  'servers/rossi-analysis-server/index.js exists'
 );
 
-// MS-007: bkit-analysis-server/index.js is valid JavaScript
+// MS-007: rossi-analysis-server/index.js is valid JavaScript
 let analysisServerContent = null;
 try {
   analysisServerContent = fs.readFileSync(analysisServerPath, 'utf8');
-  assert('MS-007', analysisServerContent.length > 0, 'bkit-analysis-server/index.js is non-empty');
+  assert('MS-007', analysisServerContent.length > 0, 'rossi-analysis-server/index.js is non-empty');
 } catch (e) {
-  assert('MS-007', false, `bkit-analysis-server/index.js read failed: ${e.message}`);
+  assert('MS-007', false, `rossi-analysis-server/index.js read failed: ${e.message}`);
 }
 
-// MS-008: bkit-analysis-server exports or defines MCP tools
+// MS-008: rossi-analysis-server exports or defines MCP tools
 assert('MS-008',
   analysisServerContent !== null && /(?:tools|Tool|server|Server|createServer|MCP|handle)/.test(analysisServerContent),
-  'bkit-analysis-server/index.js defines MCP tools or server'
+  'rossi-analysis-server/index.js defines MCP tools or server'
 );
 
-// MS-009: bkit-analysis-server references analysis functionality
+// MS-009: rossi-analysis-server references analysis functionality
 assert('MS-009',
   analysisServerContent !== null && /(?:analysis|analyze|gap|quality|metric|code)/.test(analysisServerContent),
-  'bkit-analysis-server/index.js references analysis functionality'
+  'rossi-analysis-server/index.js references analysis functionality'
 );
 
-// MS-010: bkit-analysis-server has proper server structure (MCP stdio protocol)
+// MS-010: rossi-analysis-server has proper server structure (MCP stdio protocol)
 assert('MS-010',
   analysisServerContent !== null && (/serverInfo|server|stdin|stdio|handleRequest|process\.stdin/.test(analysisServerContent)),
-  'bkit-analysis-server/index.js has MCP server structure'
+  'rossi-analysis-server/index.js has MCP server structure'
 );
 
 // ============================================================
@@ -133,18 +133,18 @@ assert('MS-013',
   '.mcp.json has mcpServers object'
 );
 
-// MS-014: .mcp.json has bkit-pdca server entry
+// MS-014: .mcp.json has rossi-pdca server entry
 assert('MS-014',
-  mcpConfig !== null && mcpConfig.mcpServers['bkit-pdca'] != null &&
-  mcpConfig.mcpServers['bkit-pdca'].command === 'node',
-  '.mcp.json has bkit-pdca server with command=node'
+  mcpConfig !== null && mcpConfig.mcpServers['rossi-pdca'] != null &&
+  mcpConfig.mcpServers['rossi-pdca'].command === 'node',
+  '.mcp.json has rossi-pdca server with command=node'
 );
 
-// MS-015: .mcp.json has bkit-analysis server entry
+// MS-015: .mcp.json has rossi-analysis server entry
 assert('MS-015',
-  mcpConfig !== null && mcpConfig.mcpServers['bkit-analysis'] != null &&
-  mcpConfig.mcpServers['bkit-analysis'].command === 'node',
-  '.mcp.json has bkit-analysis server with command=node'
+  mcpConfig !== null && mcpConfig.mcpServers['rossi-analysis'] != null &&
+  mcpConfig.mcpServers['rossi-analysis'].command === 'node',
+  '.mcp.json has rossi-analysis server with command=node'
 );
 
 // ============================================================

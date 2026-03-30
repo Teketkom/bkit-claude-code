@@ -1,6 +1,6 @@
 # Scenario: New Feature Request
 
-> bkit's PDCA flow when user requests a new feature
+> ROSSI's PDCA flow when user requests a new feature
 
 ## Scenario Overview
 
@@ -23,7 +23,7 @@ User: "Create a login feature"
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. Skills Activation (Keyword Matching)                         │
 │                                                                 │
-│  [[../../skills/bkit-rules/SKILL|bkit-rules]] activated                  │
+│  [[../../skills/rossi-rules/SKILL|rossi-rules]] activated                  │
 │  • Keywords "feature", "create" matched                         │
 │                                                                 │
 │  [[../../skills/dynamic/SKILL|dynamic]] activated (if Level=Dynamic)   │
@@ -195,7 +195,7 @@ Design considers service separation, K8s deployment
 
 ## Test Checklist
 
-- [ ] Verify bkit-rules skill activation on "create feature" request
+- [ ] Verify rossi-rules skill activation on "create feature" request
 - [ ] Verify creation suggestion when design doc doesn't exist
 - [ ] Verify immediate implementation start when design doc exists
 - [ ] Verify Gap Analysis suggestion after implementation completion

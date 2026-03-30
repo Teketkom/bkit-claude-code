@@ -299,48 +299,48 @@ assert('VW-035',
 );
 
 // ============================================================
-// Section 7: bkit.config.json has v2.0.0 sections (VW-036~040)
+// Section 7: rossi.config.json has v2.0.0 sections (VW-036~040)
 // ============================================================
 
-const bkitConfig = readScript('bkit.config.json');
+const rossiConfig = readScript('rossi.config.json');
 let config = null;
-try { config = JSON.parse(bkitConfig); } catch (_) {}
+try { config = JSON.parse(rossiConfig); } catch (_) {}
 
-// VW-036: bkit.config.json parses as valid JSON
+// VW-036: rossi.config.json parses as valid JSON
 assert('VW-036',
   config !== null && config.version === '2.0.8',
-  'bkit.config.json parses and has version 2.0.8'
+  'rossi.config.json parses and has version 2.0.8'
 );
 
-// VW-037: bkit.config.json has automation section
+// VW-037: rossi.config.json has automation section
 assert('VW-037',
   config !== null && typeof config.automation === 'object' &&
   'defaultLevel' in config.automation && 'trustScoreEnabled' in config.automation,
-  'bkit.config.json has automation section with defaultLevel and trustScoreEnabled'
+  'rossi.config.json has automation section with defaultLevel and trustScoreEnabled'
 );
 
-// VW-038: bkit.config.json has guardrails section
+// VW-038: rossi.config.json has guardrails section
 assert('VW-038',
   config !== null && typeof config.guardrails === 'object' &&
   config.guardrails.destructiveDetection === true &&
   typeof config.guardrails.loopBreaker === 'object',
-  'bkit.config.json has guardrails section with destructiveDetection and loopBreaker'
+  'rossi.config.json has guardrails section with destructiveDetection and loopBreaker'
 );
 
-// VW-039: bkit.config.json has quality section
+// VW-039: rossi.config.json has quality section
 assert('VW-039',
   config !== null && typeof config.quality === 'object' &&
   config.quality.gateEnabled === true &&
   typeof config.quality.thresholds === 'object',
-  'bkit.config.json has quality section with gateEnabled and thresholds'
+  'rossi.config.json has quality section with gateEnabled and thresholds'
 );
 
-// VW-040: bkit.config.json guardrails has checkpoint settings
+// VW-040: rossi.config.json guardrails has checkpoint settings
 assert('VW-040',
   config !== null && config.guardrails &&
   config.guardrails.checkpointOnPhaseTransition === true &&
   config.guardrails.checkpointOnDestructive === true,
-  'bkit.config.json guardrails has checkpointOnPhaseTransition and checkpointOnDestructive'
+  'rossi.config.json guardrails has checkpointOnPhaseTransition and checkpointOnDestructive'
 );
 
 // ============================================================

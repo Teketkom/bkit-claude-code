@@ -10,9 +10,9 @@ User starts a session with a Starter-level project.
 ### Flow
 1. **SessionStart hook fires**
    - Level detected as Starter
-   - Output: "Recommended for Starter level: `bkit-learning`"
+   - Output: "Recommended for Starter level: `rossi-learning`"
 2. **User runs `/starter init my-portfolio`**
-   - Skill displays: "For the best learning experience, try `/output-style bkit-learning`"
+   - Skill displays: "For the best learning experience, try `/output-style rossi-learning`"
 3. **User activates style**
    - Response formatting changes to include learning points
    - User naturally benefits from guided experience
@@ -33,7 +33,7 @@ User creates a Dynamic-level fullstack project and requests a major feature.
    - If env var set: "Agent Teams: Dynamic mode available (3 teammates)"
    - If env var not set: "Your Dynamic project supports Agent Teams. To enable: set `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`"
 2. **User requests major feature** (>= 1000 chars)
-   - bkit-rules: "This is a major feature. Agent Teams can parallelize PDCA phases."
+   - rossi-rules: "This is a major feature. Agent Teams can parallelize PDCA phases."
 3. **User starts team mode**: `/pdca team user-auth`
    - 3 teammates assigned (developer, frontend, qa) + CTO Lead
 4. **Parallel execution**: developer implements while qa prepares check

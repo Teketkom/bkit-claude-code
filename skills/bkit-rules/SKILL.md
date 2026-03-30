@@ -1,18 +1,18 @@
 ---
-name: bkit-rules
+name: rossi-rules
 classification: workflow
 classification-reason: Process automation persists regardless of model advancement
 deprecation-risk: none
 description: |
-  Core rules for bkit — PDCA methodology, level detection, agent triggering, quality standards.
-  Triggers: bkit rules, core rules, methodology, 핵심 규칙, PDCA 규칙, правила bkit, основные правила, методология.
+  Core rules for ROSSI — PDCA methodology, level detection, agent triggering, quality standards.
+  Triggers: ROSSI rules, core rules, methodology, 핵심 규칙, PDCA 규칙, правила ROSSI, основные правила, методология.
 imports:
   - ${PLUGIN_ROOT}/templates/shared/naming-conventions.md
 # hooks: Managed by hooks/hooks.json (pre-write.js, unified-write-post.js) - GitHub #9354 workaround
 user-invocable: false
 ---
 
-# bkit Core Rules
+# ROSSI Core Rules
 
 > Automatically applied rules that don't require user commands.
 
@@ -108,12 +108,12 @@ When user requests feature development:
 
 | User Intent | Auto-Invoke Agent |
 |-------------|-------------------|
-| "code review", "security scan" | `bkit:code-analyzer` |
-| "design review", "spec check" | `bkit:design-validator` |
-| "gap analysis" | `bkit:gap-detector` |
-| "report", "summary" | `bkit:report-generator` |
-| "QA", "log analysis" | `bkit:qa-monitor` |
-| "pipeline", "which phase" | `bkit:pipeline-guide` |
+| "code review", "security scan" | `rossi:code-analyzer` |
+| "design review", "spec check" | `rossi:design-validator` |
+| "gap analysis" | `rossi:gap-detector` |
+| "report", "summary" | `rossi:report-generator` |
+| "QA", "log analysis" | `rossi:qa-monitor` |
+| "pipeline", "which phase" | `rossi:pipeline-guide` |
 
 ### Proactive Suggestions
 
@@ -185,24 +185,24 @@ When project level is detected, automatically suggest the matching output style:
 
 | Level | Suggested Style | Trigger Condition |
 |-------|-----------------|-------------------|
-| Starter | `bkit-learning` | Level detected as Starter |
-| Dynamic | `bkit-pdca-guide` | Level detected as Dynamic |
-| Enterprise | `bkit-enterprise` | Level detected as Enterprise |
+| Starter | `rossi-learning` | Level detected as Starter |
+| Dynamic | `rossi-pdca-guide` | Level detected as Dynamic |
+| Enterprise | `rossi-enterprise` | Level detected as Enterprise |
 
 ### Auto-Selection Rules
 
 - On session start: Suggest output style matching detected level
 - On `/starter init`, `/dynamic init`, `/enterprise init`: Auto-suggest style for that level
-- On PDCA phase transitions: Suggest `bkit-pdca-guide` if not already active
+- On PDCA phase transitions: Suggest `rossi-pdca-guide` if not already active
 - User can override with `/output-style` at any time
 
 ### Available Output Styles
 
 | Style | Best For | Key Features |
 |-------|----------|-------------|
-| `bkit-learning` | Beginners, learning | Learning points, TODO(learner) markers, concept explanations |
-| `bkit-pdca-guide` | PDCA workflows | Status badges, checklists, phase progress, gap analysis suggestions |
-| `bkit-enterprise` | Architecture decisions | Tradeoff analysis, cost impact, deployment strategy, SOLID compliance |
+| `rossi-learning` | Beginners, learning | Learning points, TODO(learner) markers, concept explanations |
+| `rossi-pdca-guide` | PDCA workflows | Status badges, checklists, phase progress, gap analysis suggestions |
+| `rossi-enterprise` | Architecture decisions | Tradeoff analysis, cost impact, deployment strategy, SOLID compliance |
 
 ---
 
@@ -237,7 +237,7 @@ Suggest Agent Teams when conditions are met:
 
 ## 8. Agent Memory Awareness (v1.5.1)
 
-Agent Memory is automatically active for all bkit agents. No user action required.
+Agent Memory is automatically active for all ROSSI agents. No user action required.
 
 ### How It Works
 
@@ -260,7 +260,7 @@ Agent Memory is automatically active for all bkit agents. No user action require
 
 ## 9. Plugin Hot Reload (v1.6.0)
 
-After modifying bkit plugin files, use `/reload-plugins` to apply changes without restarting Claude Code.
+After modifying ROSSI plugin files, use `/reload-plugins` to apply changes without restarting Claude Code.
 - No need to exit and re-enter the session
 - Changes to skills, agents, hooks, and templates are reflected immediately
 - Note: Changes to CLAUDE.md require `/clear` to fully refresh
@@ -269,7 +269,7 @@ After modifying bkit plugin files, use `/reload-plugins` to apply changes withou
 
 CC 2.1.0+ supports `Bash(pattern*)` wildcard permissions.
 
-### bkit Recommended Patterns
+### ROSSI Recommended Patterns
 - `Bash(npm *)` - Allow all npm commands
 - `Bash(git log*)` - Allow git log variants
 - `Bash(node *)` - Allow node execution

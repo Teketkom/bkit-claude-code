@@ -4,16 +4,16 @@ classification: workflow
 classification-reason: Orchestrates multi-phase research and analysis pipeline independent of model capability
 deprecation-risk: none
 description: |
-  CC CLI version upgrade impact analysis — research changes, analyze bkit impact, generate report.
+  CC CLI version upgrade impact analysis — research changes, analyze ROSSI impact, generate report.
   Triggers: cc-version-analysis, CC upgrade, version analysis, CC 버전 분석, 버전 영향, версия Claude Code, анализ версий.
 argument-hint: "[from_version] [to_version]"
 user-invocable: true
 
 agents:
-  research: bkit:cc-version-researcher
-  analyze: bkit:bkit-impact-analyst
+  research: rossi:cc-version-researcher
+  analyze: rossi:rossi-impact-analyst
   brainstorm: null
-  report: bkit:report-generator
+  report: rossi:report-generator
   default: null
 
 allowed-tools:
@@ -51,7 +51,7 @@ hooks:
 
 # CC Version Analysis — Claude Code CLI 버전 영향 분석 워크플로우
 
-> CC CLI 버전 업그레이드 시 bkit plugin에 대한 영향을 체계적으로 조사, 분석하고
+> CC CLI 버전 업그레이드 시 ROSSI plugin에 대한 영향을 체계적으로 조사, 분석하고
 > 개선 기회를 도출하는 전문 워크플로우 스킬.
 
 ## Overview
@@ -59,13 +59,13 @@ hooks:
 이 스킬은 CC CLI의 새 버전이 출시되었을 때 다음을 자동화합니다:
 
 1. **Phase 1 (Research)**: CC 변경사항 심층 조사
-2. **Phase 2 (Analyze)**: bkit 아키텍처 영향 분석
+2. **Phase 2 (Analyze)**: ROSSI 아키텍처 영향 분석
 3. **Phase 3 (Brainstorm)**: Plan Plus 브레인스토밍으로 개선안 도출
 4. **Phase 4 (Report)**: 종합 영향 분석 보고서 작성
 
 **Agent Team 구성**:
 - `cc-version-researcher`: CC 버전 변경사항 외부 조사
-- `bkit-impact-analyst`: bkit 내부 아키텍처 영향 분석
+- `rossi-impact-analyst`: ROSSI 내부 아키텍처 영향 분석
 - `report-generator`: 최종 보고서 생성
 
 ## HARD-GATE
@@ -109,13 +109,13 @@ All documents MUST be written in Korean (한국어).
 │  ├── Technical blogs & community                     │
 │  └── Output: CC Change Report (structured)           │
 │                                                      │
-│  Phase 2: Analyze (bkit-impact-analyst agent)        │
-│  ├── Map CC changes → bkit components                │
+│  Phase 2: Analyze (rossi-impact-analyst agent)        │
+│  ├── Map CC changes → ROSSI components                │
 │  ├── Identify ENH opportunities                      │
 │  ├── File impact matrix                              │
 │  ├── Philosophy compliance check                     │
 │  ├── Test impact assessment                          │
-│  └── Output: bkit Impact Analysis (structured)       │
+│  └── Output: ROSSI Impact Analysis (structured)       │
 │                                                      │
 │  Phase 3: Brainstorm (Plan Plus methodology)         │
 │  ├── Intent discovery (핵심 목표/리스크/기회)         │
@@ -150,14 +150,14 @@ All documents MUST be written in Korean (한국어).
 3. Create Task structure:
    TaskCreate: "[CC-Version-Analysis] CC v{from} → v{to}"
      ├── Task: "Phase 1: CC 변경사항 조사"
-     ├── Task: "Phase 2: bkit 영향 분석"
+     ├── Task: "Phase 2: ROSSI 영향 분석"
      ├── Task: "Phase 3: Plan Plus 브레인스토밍"
      └── Task: "Phase 4: 보고서 작성"
 
 4. Load previous analysis context:
    - Read memory/cc_version_history_*.md
    - Read last ENH number from MEMORY.md
-   - Read existing PDCA status from .bkit/state/pdca-status.json
+   - Read existing PDCA status from .rossi/state/pdca-status.json
 ```
 
 ### Phase 1: Research (Agent: cc-version-researcher)
@@ -171,7 +171,7 @@ Research CC CLI changes from v{from} to v{to}.
 Sources: official docs, GitHub (issues/PRs/releases), npm, blogs.
 Categorize by: Breaking/Feature/Fix/Performance/SystemPrompt/Hook/Config.
 Rate impact: HIGH/MEDIUM/LOW.
-Flag bkit-relevant changes.
+Flag ROSSI-relevant changes.
 Output structured markdown tables.
 ```
 
@@ -181,15 +181,15 @@ Output structured markdown tables.
 - Task 3: Official docs changes
 - Task 4: System prompt diff analysis
 
-### Phase 2: Analyze (Agent: bkit-impact-analyst)
+### Phase 2: Analyze (Agent: rossi-impact-analyst)
 
 **Input**: Phase 1 CC Change Report
-**Output**: bkit Impact Analysis
+**Output**: ROSSI Impact Analysis
 
-Launch the `bkit-impact-analyst` agent with:
+Launch the `rossi-impact-analyst` agent with:
 ```
-Analyze bkit impact from these CC changes: {phase1_output}
-Map each change to bkit components (agents/skills/hooks/lib/scripts).
+Analyze ROSSI impact from these CC changes: {phase1_output}
+Map each change to ROSSI components (agents/skills/hooks/lib/scripts).
 Identify ENH opportunities starting from ENH-{last+1}.
 Check philosophy compliance (Automation First, No Guessing, Docs=Code).
 Assess test impact per ENH.
@@ -212,7 +212,7 @@ Apply Plan Plus brainstorming phases:
 
 #### 3.1 Intent Discovery
 Ask and answer:
-- 이 CC 업그레이드에서 bkit이 얻을 수 있는 최대 가치는?
+- 이 CC 업그레이드에서 ROSSI이 얻을 수 있는 최대 가치는?
 - 놓치면 안 되는 critical change는?
 - 기존 workaround를 대체할 수 있는 native 기능은?
 
@@ -263,7 +263,7 @@ All work MUST be tracked via Task Management System:
 │   ├── GitHub issues 조사
 │   ├── 공식 문서 변경 조사
 │   └── 시스템 프롬프트 변경 분석
-├── [Analyze] Phase 2: bkit 영향 분석                # bkit-impact-analyst
+├── [Analyze] Phase 2: ROSSI 영향 분석                # rossi-impact-analyst
 │   ├── 컴포넌트 매핑
 │   ├── ENH 기회 식별
 │   ├── 파일 영향 매트릭스
@@ -286,7 +286,7 @@ When invoked with CTO Team (`/pdca team`):
 |------|-------|-------|------|
 | Lead | cto-lead | opus | Overall orchestration |
 | Researcher | cc-version-researcher | opus | Phase 1: CC research |
-| Analyst | bkit-impact-analyst | opus | Phase 2: bkit analysis |
+| Analyst | rossi-impact-analyst | opus | Phase 2: ROSSI analysis |
 | Reporter | report-generator | haiku | Phase 4: Report writing |
 
 **Parallel execution**:

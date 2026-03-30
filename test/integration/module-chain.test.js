@@ -233,7 +233,7 @@ const mockBenchmark = {
 };
 const mdReport = reporter.formatMarkdownReport(mockBenchmark);
 assert('TC-MC-20',
-  mdReport.includes('bkit Skill Evals Report') && mdReport.includes('Workflow'),
+  mdReport.includes('ROSSI Skill Evals Report') && mdReport.includes('Workflow'),
   'formatMarkdownReport produces valid markdown with section headers'
 );
 
@@ -278,10 +278,10 @@ assert('TC-MC-25',
 );
 
 // TC-MC-26: matchImplicitAgentTrigger uses matchMultiLangPattern
-const helpTrigger = trigger.matchImplicitAgentTrigger('help me learn bkit');
+const helpTrigger = trigger.matchImplicitAgentTrigger('help me learn ROSSI');
 assert('TC-MC-26',
-  helpTrigger != null && helpTrigger.agent.startsWith('bkit:'),
-  'matchImplicitAgentTrigger matches "help" to a bkit: agent'
+  helpTrigger != null && helpTrigger.agent.startsWith('rossi:'),
+  'matchImplicitAgentTrigger matches "help" to a rossi: agent'
 );
 
 // TC-MC-27: detectNewFeatureIntent uses matchMultiLangPattern for feature detection

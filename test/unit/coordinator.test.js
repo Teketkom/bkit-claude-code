@@ -125,7 +125,7 @@ process.env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = '1';
 // CTO team
 const ctoPlan = mod.buildAgentTeamPlan('cto', 'auth-feature', { phase: 'do', level: 'Dynamic' });
 assert('U-CRD-038', ctoPlan !== null, 'CTO plan not null');
-assert('U-CRD-039', ctoPlan.teamName === 'bkit-cto-auth-feature', 'CTO team name format');
+assert('U-CRD-039', ctoPlan.teamName === 'rossi-cto-auth-feature', 'CTO team name format');
 assert('U-CRD-040', Array.isArray(ctoPlan.teammates), 'CTO has teammates array');
 assert('U-CRD-041', ctoPlan.teammates.length > 0, 'CTO has at least 1 teammate');
 assert('U-CRD-042', ctoPlan.phase === 'do', 'CTO plan phase');
@@ -134,7 +134,7 @@ assert('U-CRD-043', Array.isArray(ctoPlan.taskPlan), 'CTO has taskPlan');
 // PM team
 const pmPlan = mod.buildAgentTeamPlan('pm', 'auth-feature', { level: 'Dynamic' });
 assert('U-CRD-044', pmPlan !== null, 'PM plan not null');
-assert('U-CRD-045', pmPlan.teamName === 'bkit-pm-auth-feature', 'PM team name format');
+assert('U-CRD-045', pmPlan.teamName === 'rossi-pm-auth-feature', 'PM team name format');
 assert('U-CRD-046', pmPlan.teammates.length === 4, 'PM team has 4 roles');
 
 // PM roles check

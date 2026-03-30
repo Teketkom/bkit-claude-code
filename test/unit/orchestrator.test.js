@@ -105,7 +105,7 @@ const prompt = mod.generateSubagentSpawnPrompt(
 assert('U-ORC-041', prompt.includes('Feature: auth'), 'Prompt contains feature');
 assert('U-ORC-042', prompt.includes('do phase'), 'Prompt contains phase');
 assert('U-ORC-043', prompt.includes('lib/api.js'), 'Prompt contains file');
-assert('U-ORC-044', prompt.includes('bkit conventions'), 'Prompt contains conventions');
+assert('U-ORC-044', prompt.includes('ROSSI conventions'), 'Prompt contains conventions');
 
 // No files
 const prompt2 = mod.generateSubagentSpawnPrompt(

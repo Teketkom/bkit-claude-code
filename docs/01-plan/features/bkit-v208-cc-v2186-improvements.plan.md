@@ -1,13 +1,13 @@
-# bkit v2.0.8 — CC v2.1.86 대응 개선 계획
+# ROSSI v2.0.8 — CC v2.1.86 대응 개선 계획
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Target Version**: v2.0.8
 > **Author**: Plan Plus Workflow
 > **Created**: 2026-03-28
 > **PDCA Cycle**: #26
-> **Branch**: feat/bkit-v208-cc-v2186-improvements
+> **Branch**: feat/rossi-v208-cc-v2186-improvements
 
 ---
 
@@ -17,7 +17,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| **기능** | bkit v2.0.8 — CC v2.1.85~v2.1.86 대응 개선 |
+| **기능** | ROSSI v2.0.8 — CC v2.1.85~v2.1.86 대응 개선 |
 | **시작일** | 2026-03-28 |
 | **타깃 버전** | v2.0.8 |
 | **CC 호환** | v2.1.34~v2.1.86 (52개 연속 호환) |
@@ -27,7 +27,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  bkit v2.0.8 개선 목표                                  │
+│  ROSSI v2.0.8 개선 목표                                  │
 ├──────────────────────────────────────────────────────┤
 │  📋 구현 항목:              5건 (ENH-160~164)          │
 │  📝 변경 파일:              ~38개                      │
@@ -45,9 +45,9 @@
 
 | 관점 | 내용 |
 |------|------|
-| **문제** | CC v2.1.86에서 /skills description 250자 cap 도입 → bkit 34/36 skills 잘림. Hook `if` 필드 미문서화 |
+| **문제** | CC v2.1.86에서 /skills description 250자 cap 도입 → ROSSI 34/36 skills 잘림. Hook `if` 필드 미문서화 |
 | **해결 방법** | 34 skills description 250자 이내 최적화 + Hook `if` 필드 가이드 문서화 + 버전업 |
-| **기능/UX 효과** | /skills 목록에서 모든 bkit skill의 핵심 정보가 완전히 표시됨. 향후 hook 설계에 `if` 활용 기반 |
+| **기능/UX 효과** | /skills 목록에서 모든 ROSSI skill의 핵심 정보가 완전히 표시됨. 향후 hook 설계에 `if` 활용 기반 |
 | **핵심 가치** | CC v2.1.86 완전 대응 + skill 발견성(discoverability) 대폭 개선 + 52개 연속 호환 유지 |
 
 ---
@@ -58,7 +58,7 @@
 
 **핵심 질문과 답변**:
 
-1. **이 업그레이드에서 bkit이 얻을 수 있는 최대 가치는?**
+1. **이 업그레이드에서 ROSSI이 얻을 수 있는 최대 가치는?**
    → /skills 목록에서 34개 skill의 핵심 정보가 250자 cap으로 잘리는 문제 해결.
    사용자가 skill을 찾고 선택하는 경험(discoverability)이 핵심 가치.
 
@@ -68,7 +68,7 @@
 
 3. **기존 workaround를 대체할 수 있는 native 기능은?**
    → Hook `if` 필드 (ENH-160). 기존에는 모든 Bash 명령에 hook script가 spawn되었으나,
-   `if` 필드로 특정 패턴만 필터링 가능. 단, 현재 bkit 아키텍처에서는 적용 불필요.
+   `if` 필드로 특정 패턴만 필터링 가능. 단, 현재 ROSSI 아키텍처에서는 적용 불필요.
 
 ### Phase 1: 대안 탐색 (Alternative Exploration)
 
@@ -108,7 +108,7 @@ Step 3: ENH-164 — Org policy 주의사항 추가
         (context-engineering.md에 함께 추가, 0 추가 files)
 
 Step 4: 버전업
-        - bkit.config.json: 2.0.6 → 2.0.8
+        - rossi.config.json: 2.0.6 → 2.0.8
         - .claude-plugin/plugin.json: 2.0.6 → 2.0.8
         - hooks/hooks.json: description 버전 업데이트
         - CC recommended version: v2.1.86+
@@ -151,17 +151,17 @@ description: |
 
 ### 2. ENH-160: Hook `if` 필드 문서화 (P2)
 
-**파일**: `bkit-system/philosophy/context-engineering.md`
+**파일**: `rossi-system/philosophy/context-engineering.md`
 
 **추가 내용**:
 - Hook `if` 필드 설명 (CC v2.1.85+)
 - permission rule syntax 예제 (`Bash(git *)`, `Edit(*.ts)`)
-- bkit hooks에서의 적용 가능성 분석
+- ROSSI hooks에서의 적용 가능성 분석
 - 현재 미적용 이유 (unified-bash-pre.js 내부 검사)
 
 ### 3. ENH-164: Org Policy 주의사항 (P3)
 
-**파일**: `bkit-system/philosophy/context-engineering.md` (ENH-160과 동일 파일)
+**파일**: `rossi-system/philosophy/context-engineering.md` (ENH-160과 동일 파일)
 
 **추가 내용**:
 - `managed-settings.json` org policy로 plugin 차단 가능성 언급
@@ -171,9 +171,9 @@ description: |
 
 | 파일 | 변경 |
 |------|------|
-| `bkit.config.json` | version: "2.0.6" → "2.0.8" |
+| `rossi.config.json` | version: "2.0.6" → "2.0.8" |
 | `.claude-plugin/plugin.json` | version: "2.0.6" → "2.0.8" |
-| `hooks/hooks.json` | description: "bkit Vibecoding Kit v2.0.6" → "v2.0.8" |
+| `hooks/hooks.json` | description: "ROSSI CTO Agent Kit v2.0.6" → "v2.0.8" |
 
 ---
 
@@ -186,8 +186,8 @@ description: |
 | 3 | skills/enterprise/SKILL.md | MODIFY (desc) | ENH-162 | ~-15 |
 | 4 | skills/dynamic/SKILL.md | MODIFY (desc) | ENH-162 | ~-15 |
 | 5-34 | skills/*/SKILL.md (30 more) | MODIFY (desc) | ENH-162 | ~-15 each |
-| 35 | bkit-system/philosophy/context-engineering.md | MODIFY | ENH-160,164 | +40 |
-| 36 | bkit.config.json | MODIFY (version) | — | 1 |
+| 35 | rossi-system/philosophy/context-engineering.md | MODIFY | ENH-160,164 | +40 |
+| 36 | rossi.config.json | MODIFY (version) | — | 1 |
 | 37 | .claude-plugin/plugin.json | MODIFY (version) | — | 1 |
 | 38 | hooks/hooks.json | MODIFY (version) | — | 1 |
 

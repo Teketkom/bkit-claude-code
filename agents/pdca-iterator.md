@@ -32,7 +32,7 @@ linked-from-skills:
   - pdca: iterate
 skills_preload:
   - pdca
-  - bkit-rules
+  - rossi-rules
 permissionMode: acceptEdits
 disallowedTools:
   - Agent
@@ -352,10 +352,10 @@ Reports to:
 
 ## v1.5.8 Feature Guidance
 
-- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.bkit/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
+- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.rossi/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
 
 ### Output Style Recommendation
-Suggest `bkit-pdca-guide` output style for iteration tracking: `/output-style bkit-pdca-guide`
+Suggest `rossi-pdca-guide` output style for iteration tracking: `/output-style rossi-pdca-guide`
 Status badges and checklists help visualize improvement progress.
 
 ### Agent Teams

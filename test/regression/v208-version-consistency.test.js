@@ -4,7 +4,7 @@
  * Regression Test: v2.0.8 Version Consistency (25 TC)
  * VC2-001~025: Version numbers, CC compatibility, hook if field docs
  *
- * @version bkit v2.0.8
+ * @version ROSSI v2.0.8
  */
 
 const fs = require('fs');
@@ -18,13 +18,13 @@ console.log('\n=== v208-version-consistency.test.js (25 TC) ===\n');
 
 // --- Load configs ---
 const pluginJson = JSON.parse(fs.readFileSync(path.join(BASE_DIR, '.claude-plugin', 'plugin.json'), 'utf-8'));
-const bkitConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'bkit.config.json'), 'utf-8'));
+const rossiConfig = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'rossi.config.json'), 'utf-8'));
 const hooksJson = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'hooks', 'hooks.json'), 'utf-8'));
 const readme = fs.readFileSync(path.join(BASE_DIR, 'README.md'), 'utf-8');
-const bkitReadme = fs.readFileSync(path.join(BASE_DIR, 'bkit-system', 'README.md'), 'utf-8');
+const rossiReadme = fs.readFileSync(path.join(BASE_DIR, 'rossi-system', 'README.md'), 'utf-8');
 const sessionCtx = fs.readFileSync(path.join(BASE_DIR, 'hooks', 'startup', 'session-context.js'), 'utf-8');
 const sessionStart = fs.readFileSync(path.join(BASE_DIR, 'hooks', 'session-start.js'), 'utf-8');
-const contextEng = fs.readFileSync(path.join(BASE_DIR, 'bkit-system', 'philosophy', 'context-engineering.md'), 'utf-8');
+const contextEng = fs.readFileSync(path.join(BASE_DIR, 'rossi-system', 'philosophy', 'context-engineering.md'), 'utf-8');
 
 const EXPECTED_VERSION = '2.0.8';
 
@@ -36,8 +36,8 @@ console.log('--- VC2-001~005: Config Version ---');
 assert('VC2-001', pluginJson.version === EXPECTED_VERSION,
   `plugin.json version = "${pluginJson.version}" (expected ${EXPECTED_VERSION})`);
 
-assert('VC2-002', bkitConfig.version === EXPECTED_VERSION,
-  `bkit.config.json version = "${bkitConfig.version}" (expected ${EXPECTED_VERSION})`);
+assert('VC2-002', rossiConfig.version === EXPECTED_VERSION,
+  `rossi.config.json version = "${rossiConfig.version}" (expected ${EXPECTED_VERSION})`);
 
 assert('VC2-003', hooksJson.description.includes(`v${EXPECTED_VERSION}`),
   `hooks.json description contains v${EXPECTED_VERSION}`);
@@ -56,11 +56,11 @@ console.log('\n--- VC2-006~008: README References ---');
 assert('VC2-006', readme.includes(`v${EXPECTED_VERSION}`),
   `README.md contains v${EXPECTED_VERSION}`);
 
-assert('VC2-007', bkitReadme.includes(`v${EXPECTED_VERSION}`),
-  `bkit-system/README.md contains v${EXPECTED_VERSION}`);
+assert('VC2-007', rossiReadme.includes(`v${EXPECTED_VERSION}`),
+  `rossi-system/README.md contains v${EXPECTED_VERSION}`);
 
-assert('VC2-008', pluginJson.version === bkitConfig.version,
-  `plugin.json and bkit.config.json versions match (${pluginJson.version})`);
+assert('VC2-008', pluginJson.version === rossiConfig.version,
+  `plugin.json and rossi.config.json versions match (${pluginJson.version})`);
 
 // ============================================================
 // VC2-009~012: CC Compatibility
@@ -104,8 +104,8 @@ assert('VC2-016', contextEng.includes('Bash(git *)'),
 assert('VC2-017', contextEng.includes('PreToolUse') && contextEng.includes('PostToolUse'),
   'context-engineering.md lists supported events (PreToolUse, PostToolUse)');
 
-assert('VC2-018', contextEng.includes('bkit hooks do NOT use the `if` field'),
-  'context-engineering.md documents bkit current state (no `if` usage)');
+assert('VC2-018', contextEng.includes('ROSSI hooks do NOT use the `if` field'),
+  'context-engineering.md documents ROSSI current state (no `if` usage)');
 
 // ============================================================
 // VC2-019~021: ENH-164 Org Policy Documentation
@@ -126,9 +126,9 @@ assert('VC2-021', contextEng.includes('plugin installation/activation'),
 // ============================================================
 console.log('\n--- VC2-022~025: Overview Files ---');
 
-const scriptsOverview = fs.readFileSync(path.join(BASE_DIR, 'bkit-system', 'components', 'scripts', '_scripts-overview.md'), 'utf-8');
-const agentsOverview = fs.readFileSync(path.join(BASE_DIR, 'bkit-system', 'components', 'agents', '_agents-overview.md'), 'utf-8');
-const skillsOverview = fs.readFileSync(path.join(BASE_DIR, 'bkit-system', 'components', 'skills', '_skills-overview.md'), 'utf-8');
+const scriptsOverview = fs.readFileSync(path.join(BASE_DIR, 'rossi-system', 'components', 'scripts', '_scripts-overview.md'), 'utf-8');
+const agentsOverview = fs.readFileSync(path.join(BASE_DIR, 'rossi-system', 'components', 'agents', '_agents-overview.md'), 'utf-8');
+const skillsOverview = fs.readFileSync(path.join(BASE_DIR, 'rossi-system', 'components', 'skills', '_skills-overview.md'), 'utf-8');
 
 assert('VC2-022', scriptsOverview.includes(`v${EXPECTED_VERSION}`),
   `scripts-overview.md header contains v${EXPECTED_VERSION}`);

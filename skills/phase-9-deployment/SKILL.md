@@ -13,7 +13,7 @@ hooks:
     - type: command
       command: "node ${CLAUDE_PLUGIN_ROOT}/scripts/phase9-deploy-stop.js"
       timeout: 10000
-agent: bkit:infra-architect
+agent: rossi:infra-architect
 allowed-tools:
   - Read
   - Write

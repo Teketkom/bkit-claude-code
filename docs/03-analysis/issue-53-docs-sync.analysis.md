@@ -2,7 +2,7 @@
 
 > **요약**: Cycle 3 문서 동기화 — Gap Analysis 결과
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23
@@ -32,11 +32,11 @@
 | scripts_overview 버전 | ✅ 2.0.4 |
 | hooks_overview 버전 | ✅ 2.0.4 |
 | hooks_overview path quoting 섹션 | ✅ 추가됨 |
-| bkit-system/README 버전 | ✅ 2.0.4 |
+| rossi-system/README 버전 | ✅ 2.0.4 |
 | CUSTOMIZATION-GUIDE 예시 quoting | ✅ 4곳 수정 |
 
 ## 2. 의도적으로 변경하지 않은 항목
 
 - AI-NATIVE-DEVELOPMENT.md의 "v2.0.3" 참조: 기능 도입 시점 표시 (역사적 기록)
-- commands/bkit.md의 "v2.0.3" 참조: 기능 도입 버전 표시
+- commands/ROSSI.md의 "v2.0.3" 참조: 기능 도입 버전 표시
 - docs/ 내 PDCA 문서의 "v2.0.3" 참조: 해당 문서 작성 시점의 상태

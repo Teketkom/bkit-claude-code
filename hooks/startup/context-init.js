@@ -1,5 +1,5 @@
 /**
- * bkit Vibecoding Kit - SessionStart: Context Initialization Module (v2.0.0)
+ * ROSSI CTO Agent Kit - SessionStart: Context Initialization Module (v2.0.0)
  *
  * Handles Context Hierarchy, Memory Store, Import Resolver initialization,
  * and Context Fork cleanup (stale forks).
@@ -7,7 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { BKIT_PLATFORM } = require('../../lib/core/platform');
+const { ROSSI_PLATFORM } = require('../../lib/core/platform');
 const { detectLevel } = require('../../lib/pdca/level');
 const { debugLog } = require('../../lib/core/debug');
 const { initPdcaStatusIfNotExists, getPdcaStatusFull } = require('../../lib/pdca/status');
@@ -35,7 +35,7 @@ function run(_input) {
   const importResolver = safeRequire('../../lib/import-resolver.js');
   const contextFork = safeRequire('../../lib/context-fork.js');
 
-  // v2.0.0: Ensure all bkit directories exist (audit/, checkpoints/, decisions/, workflows/, etc.)
+  // v2.0.0: Ensure all ROSSI directories exist (audit/, checkpoints/, decisions/, workflows/, etc.)
   try {
     const { ensureBkitDirs } = require('../../lib/core/paths');
     ensureBkitDirs();
@@ -59,13 +59,13 @@ function run(_input) {
       contextHierarchy.clearSessionContext();
       const pdcaStatus = getPdcaStatusFull();
       contextHierarchy.setSessionContext('sessionStartedAt', new Date().toISOString());
-      contextHierarchy.setSessionContext('platform', BKIT_PLATFORM);
+      contextHierarchy.setSessionContext('platform', ROSSI_PLATFORM);
       contextHierarchy.setSessionContext('level', detectLevel());
       if (pdcaStatus && pdcaStatus.primaryFeature) {
         contextHierarchy.setSessionContext('primaryFeature', pdcaStatus.primaryFeature);
       }
       debugLog('SessionStart', 'Session context initialized', {
-        platform: BKIT_PLATFORM,
+        platform: ROSSI_PLATFORM,
         level: detectLevel()
       });
     } catch (e) {
@@ -81,7 +81,7 @@ function run(_input) {
       const previousSession = memoryStore.getMemory('lastSession', null);
       memoryStore.setMemory('lastSession', {
         startedAt: new Date().toISOString(),
-        platform: BKIT_PLATFORM,
+        platform: ROSSI_PLATFORM,
         level: detectLevel()
       });
       debugLog('SessionStart', 'Memory store initialized', {
@@ -102,7 +102,7 @@ function run(_input) {
         const { CONFIG_PATHS } = require('../../lib/core/paths');
         const { content, errors } = importResolver.resolveImports(
           { imports: startupImports },
-          CONFIG_PATHS.bkitConfig()
+          CONFIG_PATHS.rossiConfig()
         );
         if (errors.length > 0) {
           debugLog('SessionStart', 'Startup import errors', { errors });

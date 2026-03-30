@@ -1,5 +1,5 @@
 ---
-name: bkit-templates
+name: rossi-templates
 classification: workflow
 classification-reason: Process automation persists regardless of model advancement
 deprecation-risk: none
@@ -9,7 +9,7 @@ description: |
 user-invocable: false
 ---
 
-# bkit Document Templates
+# ROSSI Document Templates
 
 > Use these templates when generating PDCA documents.
 

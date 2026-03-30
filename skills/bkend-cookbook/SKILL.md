@@ -7,7 +7,7 @@ description: |
   bkend.ai project tutorials (todo to SaaS) and common error troubleshooting.
   Triggers: bkend tutorial, cookbook, troubleshooting, 튜토리얼, 에러 해결, руководство, рецепты, устранение ошибок.
 user-invocable: false
-agent: bkit:bkend-expert
+agent: rossi:bkend-expert
 allowed-tools:
   - Read
   - Write
@@ -84,6 +84,6 @@ imports:
 ## Official Documentation (Live Reference)
 
 For the latest cookbook and troubleshooting, use WebFetch:
-- Cookbooks: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/cookbooks/blog/01-quick-start.md
-- Troubleshooting: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/troubleshooting/01-common-errors.md
-- Full TOC: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/SUMMARY.md
+- Cookbooks: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/cookbooks/blog/01-quick-start.md
+- Troubleshooting: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/troubleshooting/01-common-errors.md
+- Full TOC: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/SUMMARY.md

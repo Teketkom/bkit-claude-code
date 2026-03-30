@@ -70,9 +70,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docs/02-design/LIVING-CONTEXT-GUIDE.md`: Living Context System architecture and usage guide
 
 **PM Documents** (3 new PRDs)
-- `docs/00-pm/bkit-3way-comparison.prd.md`: bkit vs alternatives comparison
-- `docs/00-pm/bkit-customization-impact-analysis.prd.md`: Customization impact analysis
-- `docs/00-pm/bkit-infra-automation.prd.md`: Infrastructure automation PRD
+- `docs/00-pm/rossi-3way-comparison.prd.md`: ROSSI vs alternatives comparison
+- `docs/00-pm/rossi-customization-impact-analysis.prd.md`: Customization impact analysis
+- `docs/00-pm/rossi-infra-automation.prd.md`: Infrastructure automation PRD
 
 ### Changed
 
@@ -136,7 +136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed — Hook Path Quoting for Windows Compatibility
 
-**Critical Bug Fix ([#53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53))**
+**Critical Bug Fix ([#53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53))**
 - All 18 hook commands in `hooks/hooks.json` now properly quote `${CLAUDE_PLUGIN_ROOT}` paths with double-quotes
 - Fixes bash syntax error when Windows username contains parentheses (e.g., `홍길동(HongGildong)`)
 - Affects: SessionStart, PreToolUse, PostToolUse, Stop, StopFailure, UserPromptSubmit, PreCompact, PostCompact, TaskCompleted, SubagentStart, SubagentStop, TeammateIdle, SessionEnd, PostToolUseFailure, InstructionsLoaded, ConfigChange, PermissionRequest, Notification
@@ -144,7 +144,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - After: `node "${CLAUDE_PLUGIN_ROOT}/scripts/foo.js"` → works on all platforms
 
 **Version Alignment**
-- Bumped all version references from 2.0.3 to 2.0.4: plugin.json, bkit.config.json, marketplace.json, evals/config.json, MCP server packages, audit-logger.js, session-start.js, session-context.js, paths.js
+- Bumped all version references from 2.0.3 to 2.0.4: plugin.json, rossi.config.json, marketplace.json, evals/config.json, MCP server packages, audit-logger.js, session-start.js, session-context.js, paths.js
 
 ### Test Enhancements
 - Added `test/security/hook-path-quoting.test.js`: 12 TCs for path quoting validation
@@ -156,8 +156,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed — Documentation & Architecture Sync
 
 **Version Alignment**
-- Synced `bkit.config.json` version from stale 2.0.0 to match `plugin.json` 2.0.3
-- Updated hardcoded version strings in `lib/audit/audit-logger.js` (BKIT_VERSION), `hooks/session-start.js` (systemMessage), `lib/core/paths.js` (meta.json), MCP server packages
+- Synced `rossi.config.json` version from stale 2.0.0 to match `plugin.json` 2.0.3
+- Updated hardcoded version strings in `lib/audit/audit-logger.js` (ROSSI_VERSION), `hooks/session-start.js` (systemMessage), `lib/core/paths.js` (meta.json), MCP server packages
 - Fixed test expectations for version checks (config-sync, v200-wiring, config-permissions, agents-effort)
 
 **Documentation Sync with v2.0.2 Architecture**
@@ -189,7 +189,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Design Template Architecture Options**: 3 options comparison table (Option A: Minimal / Option B: Clean / Option C: Pragmatic)
 - **pm-prd Template v2.0**: Section 6 Execution Deliverables (Pre-mortem, User Stories, Job Stories, Test Scenarios, Stakeholder Map), SWOT Analysis, Customer Journey Map, ICP, Battlecards, Growth Loops
 - **Integration Test**: pm-skills-integration.test.js (50 TC, 100% pass)
-- **Plan Template Impact Analysis Section** ([PR #51](https://github.com/popup-studio-ai/bkit-claude-code/pull/51)): Mandatory Section 6 requiring full inventory of existing consumers (CREATE/READ/UPDATE/DELETE) before modifying resources — prevents silent breakage of existing functionality
+- **Plan Template Impact Analysis Section** ([PR #51](https://github.com/rossi-dev/rossi-cto-agent-kit/pull/51)): Mandatory Section 6 requiring full inventory of existing consumers (CREATE/READ/UPDATE/DELETE) before modifying resources — prevents silent breakage of existing functionality
 
 ### Changed
 - `agents/pm-discovery.md`: +167 LOC (Brainstorm, Assumption Risk frameworks)
@@ -211,7 +211,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.1] - 2026-03-21
 
 ### Fixed
-- **Cross-Project PDCA State Leakage** ([#48](https://github.com/popup-studio-ai/bkit-claude-code/issues/48)): `restoreFromPluginData()` now validates project identity via `meta.json` before restoring backup, preventing Project A's PDCA state from leaking into Project B
+- **Cross-Project PDCA State Leakage** ([#48](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/48)): `restoreFromPluginData()` now validates project identity via `meta.json` before restoring backup, preventing Project A's PDCA state from leaking into Project B
 - `backupToPluginData()`: Writes `meta.json` with `projectDir` identifier on every backup
 - `restoreFromPluginData()`: 5-stage validation guard (meta exists → parseable → has projectDir → realpathSync normalize → match current project)
 - `globalCache`: Cache keys namespaced as `pdca-status:${PROJECT_DIR}` to prevent in-memory pollution across projects
@@ -228,7 +228,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Visualization UX**: CLI dashboard with progress bar, workflow map, agent panel, impact view, control panel, ANSI styling library with NO_COLOR support
 - **Architecture Refactoring**: constants.js (33 constants), errors.js (BkitError with 7 domains), state-store.js (atomic writes with file locking), hook-io.js (lightweight Hook I/O), backup-scheduler.js, session-start.js split into 5 startup modules
 - **CC Feature Integration**: 6 new hook scripts (SessionEnd, PostToolUseFailure, InstructionsLoaded, ConfigChange, PermissionRequest, Notification)
-- **MCP Servers**: bkit-pdca-server (10 tools + 3 resources), bkit-analysis-server (6 tools)
+- **MCP Servers**: rossi-pdca-server (10 tools + 3 resources), rossi-analysis-server (6 tools)
 - **New Skills**: `/control` (automation level), `/audit` (decision transparency), `/rollback` (checkpoint management), `/pdca-batch` (parallel features)
 - **Comprehensive Test Suite**: 2,717 TC across 10 categories (99.6% pass rate, 0 failures), 2 new categories (Architecture Tests, Controllable AI Tests)
 
@@ -244,15 +244,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - `lib/skill-loader.js` (795 LOC) — orphaned, never imported
 - `lib/skill-quality-reporter.js` (479 LOC) — orphaned, never imported
-- `docs/github-stats-bkit-gemini.md` — separate repository stats
+- `docs/github-stats-ROSSI-gemini.md` — separate repository stats
 - Gemini CLI references from script comments (Claude Code exclusive since v1.5.0)
 - `common.js` usage in hooks/scripts (57 scripts migrated to direct imports)
 
 ### Architecture
 - 7 new lib domains: `lib/audit/`, `lib/control/`, `lib/ui/`, `lib/pdca/` (expanded), `lib/core/` (expanded)
-- State management: `.bkit/state/`, `.bkit/runtime/`, `.bkit/snapshots/`
-- YAML workflows: `.bkit/workflows/` (3 presets)
-- MCP servers: `servers/bkit-pdca-server/`, `servers/bkit-analysis-server/`
+- State management: `.rossi/state/`, `.rossi/runtime/`, `.rossi/snapshots/`
+- YAML workflows: `.rossi/workflows/` (3 presets)
+- MCP servers: `servers/rossi-pdca-server/`, `servers/rossi-analysis-server/`
 
 ## [1.6.2] - 2026-03-18
 
@@ -290,12 +290,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **agents/*.md**: All 29 agents updated with effort/maxTurns fields (model field moved to top)
 - **CC recommended version**: v2.1.71 → v2.1.78
 - **CC compatibility**: v2.1.34~v2.1.78 = 44 consecutive compatible releases (0 breaking changes)
-- **Version bumps**: plugin.json, bkit.config.json, hooks.json, session-start.js, marketplace.json
+- **Version bumps**: plugin.json, rossi.config.json, hooks.json, session-start.js, marketplace.json
 
 ### Documentation
-- **bkit-system/philosophy/context-engineering.md**: 12 new sections for v1.6.2 features
-- **bkit-system/philosophy/core-mission.md**: v1.6.2 version record
-- **bkit-system/components/hooks/_hooks-overview.md**: v1.6.2 hook events
+- **rossi-system/philosophy/context-engineering.md**: 12 new sections for v1.6.2 features
+- **rossi-system/philosophy/core-mission.md**: v1.6.2 version record
+- **rossi-system/components/hooks/_hooks-overview.md**: v1.6.2 hook events
 
 ### Compatibility
 - Claude Code: Minimum v2.1.69+, Recommended v2.1.78
@@ -335,7 +335,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `creator.js`: PDCA phases array unified (includes act phase), imports fixed
   - Agent `disallowedTools` settings applied to 6 experts + 1 guide
 - **Config-Code Synchronization**
-  - `lib/team/orchestrator.js`: PHASE_PATTERN_MAP loads from bkit.config.json at runtime
+  - `lib/team/orchestrator.js`: PHASE_PATTERN_MAP loads from rossi.config.json at runtime
   - selectOrchestrationPattern() with config fallback logic
 - **Skills PDCA Enhancement**
   - `skills/pdca/SKILL.md`: agents.team = null, agents.pm = null (Main Session as Team Lead)
@@ -448,13 +448,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Centralized state file path management replacing 11+ hardcoded path references
   - STATE_PATHS (7 keys): root, state, runtime, snapshots, pdcaStatus, memory, agentState
   - LEGACY_PATHS (4 keys): pdcaStatus, memory, snapshots, agentState (deprecated, v1.6.0 removal)
-  - CONFIG_PATHS (3 keys): bkitConfig, pluginJson, hooksJson
+  - CONFIG_PATHS (3 keys): rossiConfig, pluginJson, hooksJson
   - `ensureBkitDirs()` for recursive directory creation
 - **State Directory Migration**
-  - `docs/.pdca-status.json` → `.bkit/state/pdca-status.json`
-  - `docs/.bkit-memory.json` → `.bkit/state/memory.json`
-  - `.bkit/agent-state.json` → `.bkit/runtime/agent-state.json`
-  - `docs/.pdca-snapshots/` → `.bkit/snapshots/`
+  - `docs/.pdca-status.json` → `.rossi/state/pdca-status.json`
+  - `docs/.rossi-memory.json` → `.rossi/state/memory.json`
+  - `.rossi/agent-state.json` → `.rossi/runtime/agent-state.json`
+  - `docs/.pdca-snapshots/` → `.rossi/snapshots/`
 - **Auto-Migration on SessionStart**
   - Automatic v1.5.7 → v1.5.8 state file migration
   - EXDEV cross-filesystem fallback (copy + delete)
@@ -470,7 +470,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **lib/team/state-writer.js**: `getAgentStatePath()` uses STATE_PATHS.agentState()
 - **scripts/context-compaction.js**: snapshotDir uses STATE_PATHS.snapshots()
 - **hooks/session-start.js**: Auto-migration logic (+45 lines), v1.5.8 context sections
-- **bkit.config.json**: `pdca.statusFile` updated to `.bkit/state/pdca-status.json`
+- **rossi.config.json**: `pdca.statusFile` updated to `.rossi/state/pdca-status.json`
 
 ### Quality
 - Comprehensive Test: 865 TC, 815 PASS, 0 FAIL, 50 SKIP (100%)
@@ -498,7 +498,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - **CC recommended version**: v2.1.59 → v2.1.63
 - **Version**: 1.5.6 → 1.5.7
-  - `plugin.json`, `bkit.config.json`, `hooks.json`, `session-start.js`
+  - `plugin.json`, `rossi.config.json`, `hooks.json`, `session-start.js`
 
 ### Quality
 - Comprehensive Test: 754 TC, 100% pass rate
@@ -515,8 +515,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Auto-Memory Integration** (ENH-48)
   - Add CC auto-memory guidance to SessionStart hook (Memory Systems section)
-  - Add `/memory` command reference to bkit help (`commands/bkit.md`)
-  - Clarify role separation between bkit memory-store and CC auto-memory
+  - Add `/memory` command reference to ROSSI help (`commands/ROSSI.md`)
+  - Clarify role separation between ROSSI memory-store and CC auto-memory
   - Fix agent memory count (9 -> 14 project scope agents)
 - **CTO Team Memory Management Guide** (ENH-50)
   - New guide: `docs/guides/cto-team-memory-guide.md`
@@ -533,7 +533,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `scripts/unified-stop.js`: Add conditional `/copy` tip on Stop event
   - Target skills: phase-4~6, code-review, starter, dynamic, enterprise, mobile-app, desktop-app
 - **Version**: 1.5.5 -> 1.5.6
-  - `plugin.json`, `bkit.config.json`, `session-start.js`, `CHANGELOG.md`
+  - `plugin.json`, `rossi.config.json`, `session-start.js`, `CHANGELOG.md`
 
 ### Compatibility
 - Claude Code: Minimum v2.1.33, Recommended v2.1.59
@@ -612,7 +612,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Team Visibility (State Writer)**
   - `lib/team/state-writer.js`: 9 new functions for Agent Teams state management
   - `initAgentState`, `updateTeammateStatus`, `addTeammate`, `removeTeammate`, `updateProgress`, `addRecentMessage`, `cleanupAgentState`, `getAgentStatePath`, `readAgentState`
-  - `.bkit/agent-state.json` schema v1.0 for Studio IPC
+  - `.rossi/agent-state.json` schema v1.0 for Studio IPC
   - Atomic write pattern (tmp + rename) for concurrent safety
   - MAX_TEAMMATES=10, MAX_MESSAGES=50 ring buffer
 - **SubagentStart/SubagentStop Hooks**
@@ -621,22 +621,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Auto-init agent state, name extraction, model validation
 - **Output Styles Auto-Discovery**
   - `outputStyles` field in `plugin.json` for Claude Code auto-discovery
-  - 4th output style: `bkit-pdca-enterprise` added
+  - 4th output style: `rossi-pdca-enterprise` added
   - `/output-style-setup` command for menu visibility
 - **bkend Documentation Enhancement**
   - Official Documentation (Live Reference) sections in 5 bkend skills + agent
   - `bkend-quickstart` MCP step-by-step guide expansion
   - Agent Memory file for bkend-expert
 - **CLAUDE.md Strategy Documentation**
-  - `commands/bkit.md` expanded with CLAUDE.md strategy sections
-  - v1.5.3 Features table in bkit help command
+  - `commands/ROSSI.md` expanded with CLAUDE.md strategy sections
+  - v1.5.3 Features table in ROSSI help command
 
 ### Changed
 - **Hook Events**: 8 → 10 (added SubagentStart, SubagentStop)
 - **Library Functions**: 232 → 241 (+9 state-writer)
 - **common.js exports**: 171 → 180 (+9 state-writer bridge)
 - **team/index.js exports**: 31 → 40 (+9 state-writer)
-- **Output Styles**: 3 → 4 (added bkit-pdca-enterprise)
+- **Output Styles**: 3 → 4 (added rossi-pdca-enterprise)
 - **team.enabled**: Default changed from false to true
 - **session-start.js**: 4 output styles + /output-style-setup guide
 
@@ -700,16 +700,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `lib/team/` module expanded to 7 files: coordinator, strategy, hooks, index, orchestrator, communication, task-queue, cto-logic
   - Team composition: Dynamic (3 teammates), Enterprise (5 teammates)
   - New hook handlers: `pdca-task-completed.js` (TaskCompleted), `team-idle-handler.js` (TeammateIdle), `team-stop.js`, `cto-stop.js`
-  - `team` configuration section in `bkit.config.json`
+  - `team` configuration section in `rossi.config.json`
   - Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`
   - Total agents: 16 (11 core + 5 CTO Team)
 
 - **Output Styles System**: Level-based response formatting
   - 3 styles in `output-styles/` directory:
-    - `bkit-learning` for Starter level (learning points, TODO markers)
-    - `bkit-pdca-guide` for Dynamic level (status badges, checklists)
-    - `bkit-enterprise` for Enterprise level (tradeoff analysis, cost impact)
-  - `outputStyles` configuration in `bkit.config.json` with `levelDefaults`
+    - `rossi-learning` for Starter level (learning points, TODO markers)
+    - `rossi-pdca-guide` for Dynamic level (status badges, checklists)
+    - `rossi-enterprise` for Enterprise level (tradeoff analysis, cost impact)
+  - `outputStyles` configuration in `rossi.config.json` with `levelDefaults`
 
 - **Agent Memory Integration**: Cross-session context persistence
   - `memory: user` scope for starter-guide, pipeline-guide (cross-project learning)
@@ -717,7 +717,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - No configuration needed — auto-active
 
 - **Natural Feature Discovery**: Philosophy-aligned auto-trigger integration
-  - `bkit-rules/SKILL.md`: 3 new sections (Output Style Auto-Selection, Agent Teams Auto-Suggestion, Agent Memory Awareness)
+  - `rossi-rules/SKILL.md`: 3 new sections (Output Style Auto-Selection, Agent Teams Auto-Suggestion, Agent Memory Awareness)
   - `session-start.js`: Feature awareness block (styles, teams, memory) at every session start
   - Level skills: v1.5.1 feature announcements per level (Starter/Dynamic/Enterprise)
   - All 16 agents: v1.5.1 Feature Guidance sections
@@ -730,9 +730,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **New Hook Events**: `TaskCompleted` and `TeammateIdle` support in `hooks/hooks.json`
 
-- **bkit Memory Functions**: `readBkitMemory()` and `writeBkitMemory()` for `docs/.bkit-memory.json` CRUD
+- **ROSSI Memory Functions**: `readBkitMemory()` and `writeBkitMemory()` for `docs/.rossi-memory.json` CRUD
 
-- **bkit-system Documentation**: v1.5.1 coverage across 16 system docs
+- **rossi-system Documentation**: v1.5.1 coverage across 16 system docs
   - Philosophy docs (4): v1.5.1 feature integration sections
   - Component overviews (4): Agent Memory, Teams, Styles coverage
   - Trigger docs (2): Output Style, Agent Teams, Agent Memory triggers
@@ -762,7 +762,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.5.0] - 2026-02-01
 
 ### Breaking Changes
-- **Claude Code Exclusive**: bkit is now Claude Code exclusive plugin
+- **Claude Code Exclusive**: ROSSI is now Claude Code exclusive plugin
   - Gemini CLI support has been removed
   - All dual-platform code branches eliminated
   - Simplified codebase with single-platform focus
@@ -797,7 +797,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Node.js**: Minimum v18.0.0
 
 ### Migration Guide
-If you were using bkit with Gemini CLI, please note that Gemini CLI support has been discontinued.
+If you were using ROSSI with Gemini CLI, please note that Gemini CLI support has been discontinued.
 For Gemini CLI users, consider using native Gemini CLI extensions or alternative tools.
 
 ---
@@ -836,19 +836,19 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 ## [1.4.6] - 2026-01-28
 
 ### Fixed
-- **Plugin Agent Prefix**: All bkit plugin agents now correctly use `bkit:` prefix
+- **Plugin Agent Prefix**: All ROSSI plugin agents now correctly use `rossi:` prefix
   - Fixes "Agent type 'gap-detector' not found" error in Claude Code Task tool
   - Claude Code requires plugin agents to be called as `{plugin-name}:{agent-name}`
   - 11 agents updated: gap-detector, code-analyzer, pdca-iterator, report-generator, starter-guide, design-validator, qa-monitor, pipeline-guide, bkend-expert, enterprise-expert, infra-architect
   - Built-in agent `claude-code-guide` correctly remains without prefix
 
 ### Changed
-- **lib/common.js**: `matchImplicitAgentTrigger()` now returns `bkit:` prefixed agent names
-- **18 SKILL.md files**: Updated `agent:` and `agents:` frontmatter fields with `bkit:` prefix
-- **hooks/session-start.js**: Trigger keyword table updated with `bkit:` prefix
-- **skills/bkit-rules/SKILL.md**: Task-Based Selection table updated with `bkit:` prefix
-- **Command Renamed**: `/bkit:functions` → `/bkit:bkit`
-  - File renamed: `commands/functions.md` → `commands/bkit.md`
+- **lib/common.js**: `matchImplicitAgentTrigger()` now returns `rossi:` prefixed agent names
+- **18 SKILL.md files**: Updated `agent:` and `agents:` frontmatter fields with `rossi:` prefix
+- **hooks/session-start.js**: Trigger keyword table updated with `rossi:` prefix
+- **skills/rossi-rules/SKILL.md**: Task-Based Selection table updated with `rossi:` prefix
+- **Command Renamed**: `/rossi:functions` → `/rossi:ROSSI`
+  - File renamed: `commands/functions.md` → `commands/ROSSI.md`
   - More intuitive command name for plugin help
 - **Test files removed from repository**: `tests/` and `test-scripts/` directories
   - Added to `.gitignore` (local testing only, not for distribution)
@@ -868,9 +868,9 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
   - Move completed PDCA documents to `docs/archive/YYYY-MM/{feature}/`
   - Update Archive Index automatically
   - Remove feature from activeFeatures after archiving
-- **`/bkit:functions` Command**: Skills autocomplete workaround (GitHub #10246, #18949)
-  - Single entry point showing all available bkit skills
-  - Renamed from `/bkit:menu` for clarity
+- **`/rossi:functions` Command**: Skills autocomplete workaround (GitHub #10246, #18949)
+  - Single entry point showing all available ROSSI skills
+  - Renamed from `/rossi:menu` for clarity
 - **8-Language Trigger Completion**: Full multilingual support
   - Added ES, FR, DE, IT triggers to all 11 agents and 21 skills
   - Complete coverage: EN, KO, JA, ZH, ES, FR, DE, IT
@@ -883,7 +883,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 - **`github-integration` Skill**: Made internal-only (company use)
   - Added to `.gitignore`
   - Public skill count: 21 (unchanged, was already counted)
-- **Command Renaming**: `/bkit` → `/bkit:menu` → `/bkit:functions`
+- **Command Renaming**: `/ROSSI` → `/rossi:menu` → `/rossi:functions`
 
 ### Documentation
 - Archived 10 completed PDCA features to `docs/archive/2026-01/`
@@ -923,7 +923,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 - **Scripts count**: Increased from 28 to 39
 - **Library modules**: Increased from 6 to 7 (added `skill-orchestrator.js`)
 - **Hook system**: Migrated from SKILL.md frontmatter to centralized `hooks.json`
-- **bkit feature report**: Updated to use Skills instead of deprecated Commands
+- **ROSSI feature report**: Updated to use Skills instead of deprecated Commands
 
 ### Deprecated
 - All commands in `commands/*.md` (use Skills instead)
@@ -1004,7 +1004,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 ## [1.4.1] - 2026-01-24
 
 ### Added
-- **Response Report Rule**: AI Agent automatically reports bkit feature usage at the end of each response
+- **Response Report Rule**: AI Agent automatically reports ROSSI feature usage at the end of each response
   - Claude Code: Rule added to `hooks/session-start.js` additionalContext
   - Gemini CLI: Response Report Rule section added to `GEMINI.md`
   - Report format: Used features, unused reasons, PDCA phase-based recommendations
@@ -1028,7 +1028,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 ## [1.4.0] - 2026-01-24
 
 ### Added
-- ~~**Dual Platform Support**: bkit now supports both Claude Code and Gemini CLI~~ *(Removed in v1.5.0)*
+- ~~**Dual Platform Support**: ROSSI now supports both Claude Code and Gemini CLI~~ *(Removed in v1.5.0)*
   - ~~New `gemini-extension.json` manifest for Gemini CLI~~ *(Removed in v1.5.0)*
   - ~~New `GEMINI.md` context file (equivalent to CLAUDE.md)~~ *(Removed in v1.5.0)*
   - ~~New `commands/gemini/` directory with TOML-format commands (20 commands)~~ *(Removed in v1.5.0)*
@@ -1061,7 +1061,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 - **Script Count**: Increased from 21 to 26
 - **hooks/hooks.json**: Updated for Gemini CLI compatibility
 - **Environment Variables**:
-  - `BKIT_PLATFORM`: Auto-set to "claude" or "gemini"
+  - `ROSSI_PLATFORM`: Auto-set to "claude" or "gemini"
   - `GEMINI_PROJECT_DIR`: Gemini CLI project directory
 - **Agent Descriptions**: Updated all 11 agents with multilingual triggers
 
@@ -1087,7 +1087,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 - **hooks/hooks.json**: All 3 hook commands now use `node` prefix
 - **skills/*.md**: Updated 7 skill files with `node` command prefix
 - **agents/*.md**: Updated 5 agent files with `node` command prefix
-- **Documentation**: Updated CUSTOMIZATION-GUIDE.md and bkit-system docs
+- **Documentation**: Updated CUSTOMIZATION-GUIDE.md and rossi-system docs
 
 ---
 
@@ -1103,7 +1103,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
   - Pure Node.js implementation
   - Synchronous stdin reading for hooks
 - **hooks/hooks.json**: Updated all script references from .sh to .js
-- **bkit-system documentation**: Updated all references from .sh to .js
+- **rossi-system documentation**: Updated all references from .sh to .js
 
 ### Added
 - **hooks/session-start.js**: SessionStart hook converted to Node.js
@@ -1137,7 +1137,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
   - Maximum 5 iterations per session with 90% pass threshold
   - Auto-invoked when Match Rate < 90%
 - **SessionStart Enhancement**: AskUserQuestion integration for session initialization
-  - 4 options: Learn bkit, Learn Claude Code, Continue Previous Work, Start New Project
+  - 4 options: Learn ROSSI, Learn Claude Code, Continue Previous Work, Start New Project
 - **Trigger Keyword Mapping**: Agent auto-triggering based on user keywords
   - verify → gap-detector, improve → pdca-iterator, etc.
 - **Task Size Rules**: PDCA application guidance based on change size
@@ -1180,17 +1180,17 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 ## [1.2.2] - 2026-01-21
 
 ### Changed
-- **Documentation Structure Reorganization**: Clear separation of docs/ and bkit-system/ roles
-  - `bkit-system/` = "What IS" (current implementation reference)
+- **Documentation Structure Reorganization**: Clear separation of docs/ and rossi-system/ roles
+  - `rossi-system/` = "What IS" (current implementation reference)
   - `docs/pdca/` = "What WE DO" (active PDCA work)
   - `docs/archive/` = "What WE DID" (completed documents)
-- **New Philosophy Section**: Added `bkit-system/philosophy/` with core documentation
+- **New Philosophy Section**: Added `rossi-system/philosophy/` with core documentation
   - `core-mission.md`: Core mission & 3 philosophies
   - `ai-native-principles.md`: AI-Native development & Language Tier System
   - `pdca-methodology.md`: PDCA cycle & 9-stage pipeline relationship
 
 ### Fixed
-- **Broken Wikilinks**: Fixed 30+ broken Obsidian wikilinks across bkit-system/ documentation
+- **Broken Wikilinks**: Fixed 30+ broken Obsidian wikilinks across rossi-system/ documentation
   - Updated skill/agent links to point to actual source files
   - Pattern: `[[../../skills/skill-name/SKILL|skill-name]]`
 
@@ -1215,7 +1215,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 - **is_code_file()**: Refactored to use Tier constants (30+ extensions)
 - **is_ui_file()**: Added `.astro` support
 - **CLAUDE.template.md**: Added Tier context section
-- **Documentation**: Updated all bkit-system/, docs/, skills/ with Tier system info
+- **Documentation**: Updated all rossi-system/, docs/, skills/ with Tier system info
 
 ### Fixed
 - **Environment Variables**: Fixed `CLAUDE_PROJECT_DIR` vs `CLAUDE_PLUGIN_ROOT` usage in hooks
@@ -1224,23 +1224,23 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 ## [1.2.0] - 2026-01-20
 
 ### Added
-- **Centralized Configuration**: Added `bkit.config.json` for centralized settings
+- **Centralized Configuration**: Added `rossi.config.json` for centralized settings
   - Task classification thresholds
   - Level detection rules
   - PDCA document paths
   - Template configurations
 - **Shared Utilities**: Added `lib/common.js` with reusable functions
-  - `get_config()`: Read values from bkit.config.json
+  - `get_config()`: Read values from rossi.config.json
   - `is_source_file()`: Check if path is source code
   - `extract_feature()`: Extract feature name from file path
   - `classify_task()`: Classify task by content size
   - `detect_level()`: Detect project level
 - **Customization Guide**: Added documentation for customizing plugin components
-  - Copy from `~/.claude/plugins/bkit/` to project `.claude/`
+  - Copy from `~/.claude/plugins/ROSSI/` to project `.claude/`
   - Project-level overrides take priority over plugin defaults
 - **Skills Frontmatter Hooks**: Added hooks directly in SKILL.md frontmatter for priority skills
-  - `bkit-rules`: SessionStart, PreToolUse (Write|Edit), Stop hooks
-  - `bkit-templates`: Template selection automation
+  - `rossi-rules`: SessionStart, PreToolUse (Write|Edit), Stop hooks
+  - `rossi-templates`: Template selection automation
 - **New Scripts**: Added automation scripts
   - `pre-write.js`: Unified pre-write hook combining PDCA and task classification
   - `select-template.js`: Template selection based on document type and level
@@ -1250,19 +1250,19 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 - **Repository Structure**: Removed `.claude/` folder from version control
   - Plugin elements now exist only at root level (single source of truth)
   - Local development uses symlinks from `.claude/` to root
-  - Users customize by copying from `~/.claude/plugins/bkit/` to project `.claude/`
+  - Users customize by copying from `~/.claude/plugins/ROSSI/` to project `.claude/`
 - **Zero Script QA Hooks**: Converted from `type: "prompt"` to `type: "command"`
 - **Template Version**: Bumped PDCA templates from v1.0 to v1.1
 
 ### Removed
 - **Deprecated Skills**: Consolidated redundant skills into core skills
-  - `ai-native-development` → merged into `bkit-rules`
-  - `analysis-patterns` → merged into `bkit-templates`
-  - `document-standards` → merged into `bkit-templates`
+  - `ai-native-development` → merged into `rossi-rules`
+  - `analysis-patterns` → merged into `rossi-templates`
+  - `document-standards` → merged into `rossi-templates`
   - `evaluator-optimizer` → available via `/pdca-iterate` command
   - `level-detection` → moved to `lib/common.js`
   - `monorepo-architecture` → merged into `enterprise`
-  - `pdca-methodology` → merged into `bkit-rules`
+  - `pdca-methodology` → merged into `rossi-rules`
   - `task-classification` → moved to `lib/common.js`
 - **Instructions Folder**: Removed deprecated `.claude/instructions/`
   - Content migrated to respective skills
@@ -1279,7 +1279,7 @@ For Gemini CLI users, consider using native Gemini CLI extensions or alternative
 ## [1.1.0] - 2026-01-09
 
 ### Added
-- Initial public release of bkit
+- Initial public release of ROSSI
 - PDCA methodology implementation
 - 9-stage Development Pipeline
 - Three project levels (Starter, Dynamic, Enterprise)

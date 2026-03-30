@@ -5,7 +5,7 @@
  * 15 TC | createBatchPlan, executeBatchPlan, getBatchStatus,
  *         cancelBatch, resumeBatch
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

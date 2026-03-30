@@ -8,7 +8,7 @@ description: |
   Triggers: code review, quality check, bug detection, 코드 리뷰, 품질 검사, ревью кода, анализ, проверка.
 argument-hint: "[file|directory|pr]"
 user-invocable: true
-agent: bkit:code-analyzer
+agent: rossi:code-analyzer
 allowed-tools:
   - Read
   - Glob

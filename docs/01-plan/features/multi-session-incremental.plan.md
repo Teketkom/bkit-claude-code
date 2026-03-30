@@ -2,7 +2,7 @@
 
 > **Summary**: PDCA 세션 분리 + Context Anchor로 핸드오프 컨텍스트 손실을 30-40% → 70-80%로 개선
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: 2.0.4
 > **Author**: Claude (Plan Plus)
 > **Date**: 2026-03-23
@@ -35,8 +35,8 @@
 
 | User Type | Usage Context | Key Need |
 |-----------|---------------|----------|
-| bkit Dynamic 사용자 | /pdca로 직접 PDCA 실행 | 세션 분리 가이드 + Design 재로드 |
-| bkit Enterprise 사용자 | /pdca team으로 CTO 팀 실행 | 모듈별 scope 지정 + Context Anchor |
+| ROSSI Dynamic 사용자 | /pdca로 직접 PDCA 실행 | 세션 분리 가이드 + Design 재로드 |
+| ROSSI Enterprise 사용자 | /pdca team으로 CTO 팀 실행 | 모듈별 scope 지정 + Context Anchor |
 | 개인 개발자 | CTO Team 없이 직접 실행 | 간단한 세션 분리 안내 |
 
 ### 1.3 Success Criteria
@@ -102,7 +102,7 @@
 | 커밋 메시지에 PDCA 문서 참조 | 개선안 2 영역, 현재 범위 초과 | v2에서 관통 컨텍스트 메커니즘 구현 시 |
 | 코드 주석에 Design 참조 | 개선안 2 영역 | v2 |
 | gap-detector의 Plan 문서 참조 | Check 페이즈 개선, 별도 피처 | Check 페이즈 개선 시 |
-| 세션 간 진행률 자동 추적 | 복잡도 높음, .bkit/state 확장 필요 | session-guide.js 안정화 후 |
+| 세션 간 진행률 자동 추적 | 복잡도 높음, .rossi/state 확장 필요 | session-guide.js 안정화 후 |
 
 ### 3.3 Removed (Won't Do)
 
@@ -128,7 +128,7 @@
 - 커밋 메시지/코드 주석의 PDCA 문서 참조 (개선안 2 영역)
 - gap-detector의 Plan 문서 참조 (Check 페이즈 별도 개선)
 - 자동 세션 분리 강제 메커니즘
-- .bkit/state의 세션 진행률 추적
+- .rossi/state의 세션 진행률 추적
 
 ---
 
@@ -196,7 +196,7 @@
 | **Dynamic** | Feature-based modules, BaaS | Web apps, SaaS MVPs | ✓ |
 | **Enterprise** | Strict layer separation | High-traffic systems | ✓ |
 
-> bkit 자체는 Claude Code 플러그인 (Node.js). Dynamic 수준의 모듈 구조.
+> ROSSI 자체는 Claude Code 플러그인 (Node.js). Dynamic 수준의 모듈 구조.
 
 ### 8.2 Key Decisions
 
@@ -287,7 +287,7 @@ Session N+1: 검증 + 보고
 | Phase | Question | Answer | Decision |
 |-------|----------|--------|----------|
 | Intent Q1 | 핵심 문제? | 컨텍스트 손실 방지 | 세션 분리 + Context Anchor |
-| Intent Q2 | 대상 사용자? | bkit 사용자 전체 | Dynamic + Enterprise 모두 지원 |
+| Intent Q2 | 대상 사용자? | ROSSI 사용자 전체 | Dynamic + Enterprise 모두 지원 |
 | Intent Q3 | 성공 기준? | 체감 70-80% + 기존 호환 | breaking change 없는 확장 |
 | Alternatives | 3가지 접근법 비교 | Approach A: Session Guide | 최소 변경(~5파일)으로 최대 효과 |
 | YAGNI | v1 필수 기능? | 4개 전체 포함 | 모두 5파일 범위 내 구현 가능 |
@@ -299,7 +299,7 @@ Session N+1: 검증 + 보고
 
 ## Appendix: Performance Comparison
 
-| Metric | Current bkit | After Implementation |
+| Metric | Current ROSSI | After Implementation |
 |--------|-------------|---------------------|
 | 최종 보존율 | 15-20% | 61-68% |
 | 체감 결과물 | 30-40% | 70-80% |

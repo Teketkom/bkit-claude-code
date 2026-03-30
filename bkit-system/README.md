@@ -1,6 +1,6 @@
-# bkit System Architecture
+# ROSSI System Architecture
 
-> Architecture guide documenting bkit plugin's internal structure and trigger system
+> Architecture guide documenting ROSSI plugin's internal structure and trigger system
 >
 > **v1.4.0**: Dual Platform Support (Claude Code + Gemini CLI)
 >
@@ -14,7 +14,7 @@
 >
 > **v1.4.5**: `/pdca archive` action, 9-language trigger completion (ES/FR/DE/IT/RU), internationalization (KO→EN translation)
 >
-> **v1.4.6**: Sub-agent call stability with `bkit:` prefix, all 11 agents updated
+> **v1.4.6**: Sub-agent call stability with `rossi:` prefix, all 11 agents updated
 >
 > **v1.4.7**: Task Management + PDCA Integration, Core Modularization (lib/ split into 4 modules with 132 functions)
 >
@@ -28,7 +28,7 @@
 >
 > **v1.5.7**: CC v2.1.63 /simplify + /batch + HTTP hooks PDCA integration, CC_COMMAND_PATTERNS 9-lang, English conversion
 >
-> **v1.5.8**: Studio Support - Path Registry (lib/core/paths.js), state directory migration (.bkit/{state,runtime,snapshots}/), auto-migration with EXDEV fallback, 186 exports
+> **v1.5.8**: Studio Support - Path Registry (lib/core/paths.js), state directory migration (.rossi/{state,runtime,snapshots}/), auto-migration with EXDEV fallback, 186 exports
 >
 > **v1.5.9**: Executive Summary module, AskUserQuestion Preview UX, ENH-74~81, 199 exports
 >
@@ -66,11 +66,11 @@
 
 ## Context Engineering Overview (v1.4.1)
 
-bkit is a practical implementation of **Context Engineering**. Context Engineering is the discipline of optimally curating context tokens for LLM reasoning.
+ROSSI is a practical implementation of **Context Engineering**. Context Engineering is the discipline of optimally curating context tokens for LLM reasoning.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│              bkit Context Engineering Architecture              │
+│              ROSSI Context Engineering Architecture              │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────┐  │
@@ -208,7 +208,7 @@ lib/
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                bkit Trigger System (v2.0.4)                      │
+│                ROSSI Trigger System (v2.0.4)                      │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
@@ -246,7 +246,7 @@ lib/
 | Scripts | 57 | Actual logic execution | [[components/scripts/_scripts-overview]] |
 | Lib | 11 subdirectories, 88 modules | Shared utilities | ~620+ exports |
 | Evals | 28 | Skill evaluation definitions (v1.6.0) | Skill Creator + A/B Testing |
-| Config | 1 | Centralized settings | `bkit.config.json` |
+| Config | 1 | Centralized settings | `rossi.config.json` |
 | Templates | 28 | Document templates | PDCA + Pipeline + Shared |
 
 ## v1.5.1 Features
@@ -259,7 +259,7 @@ lib/
 
 ## Trigger Layers
 
-bkit triggers occur across 6 layers:
+ROSSI triggers occur across 6 layers:
 
 ```
 Layer 1: hooks.json (Global) → SessionStart, UserPromptSubmit, PreCompact, PreToolUse, PostToolUse, Stop
@@ -285,7 +285,7 @@ Details: [[triggers/trigger-matrix]]
 ## Folder Structure
 
 ```
-bkit-system/
+rossi-system/
 ├── README.md                  # This file
 ├── _GRAPH-INDEX.md            # Obsidian graph hub
 ├── philosophy/                # Design philosophy
@@ -315,11 +315,11 @@ bkit-system/
 | Templates | `templates/*.md` |
 | Hooks | `hooks/hooks.json` |
 | Lib | `lib/core/`, `lib/pdca/`, `lib/intent/`, `lib/task/` |
-| Config | `bkit.config.json` |
+| Config | `rossi.config.json` |
 | Context | `CLAUDE.md` |
 | Manifest | `.claude-plugin/plugin.json` |
 
-> **Note (v1.5.0)**: bkit is now Claude Code exclusive. Gemini CLI support was removed.
+> **Note (v1.5.0)**: ROSSI is now Claude Code exclusive. Gemini CLI support was removed.
 
 > **Note**: The `.claude/` folder is not in version control. All plugin elements are at root level.
 > **v1.4.0**: Skills, Agents, Scripts, Templates, Lib, and Config are shared between both platforms.
@@ -328,13 +328,13 @@ bkit-system/
 
 ## Viewing with Obsidian
 
-The bkit-system documentation is optimized for [Obsidian](https://obsidian.md/)'s Graph View, allowing you to visualize component relationships interactively.
+The rossi-system documentation is optimized for [Obsidian](https://obsidian.md/)'s Graph View, allowing you to visualize component relationships interactively.
 
-### Option 1: Open bkit-system as a Vault (Recommended)
+### Option 1: Open rossi-system as a Vault (Recommended)
 
 1. Open Obsidian
 2. Click "Open folder as vault"
-3. Select the `bkit-system/` folder
+3. Select the `rossi-system/` folder
 4. Press `Ctrl/Cmd + G` to open Graph View
 5. Start from `_GRAPH-INDEX.md` to explore all connections
 
@@ -343,12 +343,12 @@ The bkit-system documentation is optimized for [Obsidian](https://obsidian.md/)'
 1. Open Obsidian
 2. Click "Open folder as vault"
 3. Select the project root folder
-4. Navigate to `bkit-system/` in the file explorer
+4. Navigate to `rossi-system/` in the file explorer
 5. Open `_GRAPH-INDEX.md` and use Graph View
 
 ### Pre-configured Settings
 
-The `bkit-system/.obsidian/` folder includes shared settings:
+The `rossi-system/.obsidian/` folder includes shared settings:
 
 | File | Purpose | Shared |
 |------|---------|:------:|
@@ -357,7 +357,7 @@ The `bkit-system/.obsidian/` folder includes shared settings:
 | `workspace.json` | Personal workspace state | No |
 | `app.json` | Personal app settings | No |
 
-> **Tip**: The graph settings are pre-configured for optimal visualization of bkit's 37 skills, 32 agents, 57 scripts, and their relationships.
+> **Tip**: The graph settings are pre-configured for optimal visualization of ROSSI's 37 skills, 32 agents, 57 scripts, and their relationships.
 
 ---
 
@@ -365,8 +365,8 @@ The `bkit-system/.obsidian/` folder includes shared settings:
 
 ### Skills 2.0 Integration
 
-bkit v1.6.0 integrates CC 2.1.0 Skills 2.0 features:
-- **Skill Classification**: 17 Workflow / 18 Capability / 1 Hybrid — Workflow skills are bkit's permanent core value
+ROSSI v1.6.0 integrates CC 2.1.0 Skills 2.0 features:
+- **Skill Classification**: 17 Workflow / 18 Capability / 1 Hybrid — Workflow skills are ROSSI's permanent core value
 - **Skill Evals**: 28 eval definitions for data-driven skill quality measurement
 - **Skill Creator + A/B Testing**: Create and compare skill variants systematically
 - **Skill Hot Reload**: Live skill updates without session restart

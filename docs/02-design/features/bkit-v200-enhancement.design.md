@@ -1,13 +1,13 @@
-# bkit v2.0.0 통합 설계서 (Design Document)
+# ROSSI v2.0.0 통합 설계서 (Design Document)
 
-> **Summary**: bkit v2.0.0 "AI Native Development OS" — 7대 영역 통합 상세 설계
+> **Summary**: ROSSI v2.0.0 "AI Native Development OS" — 7대 영역 통합 상세 설계
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v1.6.2 → v2.0.0
 > **Author**: 10-Agent Design Team (Claude Opus 4.6)
 > **Date**: 2026-03-19
 > **Status**: Draft
-> **Planning Doc**: [bkit-v200-enhancement.plan.md](../../01-plan/features/bkit-v200-enhancement.plan.md)
+> **Planning Doc**: [rossi-v200-enhancement.plan.md](../../01-plan/features/rossi-v200-enhancement.plan.md)
 
 ---
 
@@ -30,13 +30,13 @@
 
 | # | 영역 | 설계 에이전트 | 상세 설계서 경로 | 핵심 산출물 |
 |---|------|-------------|----------------|-----------|
-| 1 | 워크플로우 자동화 엔진 | enterprise-expert | [bkit-v200-area1-workflow-engine.design.md](./bkit-v200-area1-workflow-engine.design.md) | 상태 머신, YAML DSL, 자동화 레벨, Do 감지, Full-Auto, 병렬 Feature, /batch, Resume |
-| 2 | 통제 가능한 AI | security-architect | [bkit-v200-controllable-ai.design.md](./bkit-v200-controllable-ai.design.md) | L0-L4 제어, Permission v2.0, 가드레일 20규칙, Trust Score, Decision Trace, 감사 로그 |
-| 3 | 시각화 UX | frontend-architect | [bkit-v200-area3-visualization-ux.design.md](./bkit-v200-area3-visualization-ux.design.md) | lib/ui/ 6컴포넌트, ANSI 대시보드, agent-state v2.0 |
-| 4 | 아키텍처 리팩토링 | code-analyzer | [bkit-v200-area4-architecture.design.md](./bkit-v200-area4-architecture.design.md) | common.js 제거, session-start 분할, StateStore, BkitError, pdca-status v3.0 |
+| 1 | 워크플로우 자동화 엔진 | enterprise-expert | [rossi-v200-area1-workflow-engine.design.md](./rossi-v200-area1-workflow-engine.design.md) | 상태 머신, YAML DSL, 자동화 레벨, Do 감지, Full-Auto, 병렬 Feature, /batch, Resume |
+| 2 | 통제 가능한 AI | security-architect | [rossi-v200-controllable-ai.design.md](./rossi-v200-controllable-ai.design.md) | L0-L4 제어, Permission v2.0, 가드레일 20규칙, Trust Score, Decision Trace, 감사 로그 |
+| 3 | 시각화 UX | frontend-architect | [rossi-v200-area3-visualization-ux.design.md](./rossi-v200-area3-visualization-ux.design.md) | lib/ui/ 6컴포넌트, ANSI 대시보드, agent-state v2.0 |
+| 4 | 아키텍처 리팩토링 | code-analyzer | [rossi-v200-area4-architecture.design.md](./rossi-v200-area4-architecture.design.md) | common.js 제거, session-start 분할, StateStore, BkitError, pdca-status v3.0 |
 | 5 | CC 기능 활용 | cc-version-researcher | (에이전트 결과 내 포함) | PLUGIN_DATA v2, Agent Frontmatter, Memory, Hook 6개, 품질 게이트, Marketplace |
-| 6 | MCP Server 번들링 | bkend-expert | [bkit-v200-mcp-server-bundling.design.md](./bkit-v200-mcp-server-bundling.design.md) | bkit-pdca-server 10도구, bkit-analysis-server 6도구, .mcp.json |
-| 7 | Studio 연동 준비 | product-manager | [bkit-v200-studio-integration.design.md](./bkit-v200-studio-integration.design.md) | 8개 데이터 포맷, 파일 폴링+MCP 이중 아키텍처 |
+| 6 | MCP Server 번들링 | bkend-expert | [rossi-v200-mcp-server-bundling.design.md](./rossi-v200-mcp-server-bundling.design.md) | rossi-pdca-server 10도구, rossi-analysis-server 6도구, .mcp.json |
+| 7 | Studio 연동 준비 | product-manager | [rossi-v200-studio-integration.design.md](./rossi-v200-studio-integration.design.md) | 8개 데이터 포맷, 파일 폴링+MCP 이중 아키텍처 |
 | 8 | 품질 게이트+QA | qa-strategist | (에이전트 결과 내 포함) | 7단계 게이트, 10대 메트릭, 회귀 방지, Zero Script QA 2.0 |
 | 9 | 데이터 모델 통합 | design-validator | (에이전트 결과 내 포함) | 16개 JSON 스키마, 정합성 검증 14항목 |
 | 10 | 모듈 통합+Hook 흐름 | Explore | (에이전트 결과 내 포함) | Hook 실행 흐름, 30모듈 의존성 맵, 초기화 9Phase |
@@ -110,10 +110,10 @@ skills/            (신규 4)
 ├── rollback/SKILL.md, pdca-batch/SKILL.md
 │
 servers/           (신규 2 MCP 서버)
-├── bkit-pdca-server/    (10 도구 + 3 리소스)
-└── bkit-analysis-server/ (6 도구)
+├── rossi-pdca-server/    (10 도구 + 3 리소스)
+└── rossi-analysis-server/ (6 도구)
 │
-.bkit/workflows/   (신규 3 YAML 워크플로우)
+.rossi/workflows/   (신규 3 YAML 워크플로우)
 ├── default.workflow.yaml
 ├── hotfix.workflow.yaml
 └── enterprise.workflow.yaml
@@ -232,15 +232,15 @@ PDCA Status → Audit Log → Decision Trace → Trust Score
 
 ### 2.6 영역 6: MCP Server
 
-- **bkit-pdca-server**: 10 도구 (상태/히스토리/문서CRUD/메트릭) + 3 리소스
-- **bkit-analysis-server**: 6 도구 (품질/갭분석/회귀규칙/체크포인트/감사검색)
+- **rossi-pdca-server**: 10 도구 (상태/히스토리/문서CRUD/메트릭) + 3 리소스
+- **rossi-analysis-server**: 6 도구 (품질/갭분석/회귀규칙/체크포인트/감사검색)
 - **안전성**: 쓰기 도구 1개만 (regression_rules), readJsonOrNull 패턴
 
 ### 2.7 영역 7: Studio 연동 준비
 
 - **이중 아키텍처**: 파일 폴링(기본) + MCP(선택), MCP 실패 시 파일 자동 폴백
 - **8개 데이터 포맷**: agent-state v2.0, agent-events.jsonl, control-state.json, YAML 스키마, 체크포인트, 메트릭, 감사 로그, MCP 인터페이스
-- **핵심 원칙**: Studio 없이 bkit 100% 동작
+- **핵심 원칙**: Studio 없이 ROSSI 100% 동작
 
 ---
 
@@ -250,22 +250,22 @@ PDCA Status → Audit Log → Decision Trace → Trust Score
 
 | # | 경로 | 형식 | 신규/확장 | 보존 |
 |---|------|:----:|:---------:|:----:|
-| 1 | `.bkit/state/pdca-status.json` | JSON | v2.0→v3.0 | 영구 |
-| 2 | `.bkit/state/quality-metrics.json` | JSON | 신규 | 영구 |
-| 3 | `.bkit/state/quality-history.json` | JSON | 신규 | 100건 |
-| 4 | `.bkit/state/regression-rules.json` | JSON | 신규 | 200규칙 |
-| 5 | `.bkit/state/trust-profile.json` | JSON | 신규 | 영구 |
-| 6 | `.bkit/state/resume/{f}.resume.json` | JSON | 신규 | feature별 |
-| 7 | `.bkit/state/workflows/{f}.json` | JSON | 신규 | feature별 |
-| 8 | `.bkit/runtime/agent-state.json` | JSON | v1.0→v2.0 | 세션 |
-| 9 | `.bkit/runtime/agent-events.jsonl` | JSONL | 신규 | 30일 |
-| 10 | `.bkit/runtime/control-state.json` | JSON | 신규 | 영구 |
-| 11 | `.bkit/audit/YYYY-MM-DD.jsonl` | JSONL | 신규 | 30일 |
-| 12 | `.bkit/decisions/YYYY-MM-DD.jsonl` | JSONL | 신규 | 30일 |
-| 13 | `.bkit/checkpoints/cp-{ts}.json` | JSON | 신규 | 100MB |
-| 14 | `.bkit/checkpoints/index.json` | JSON | 신규 | 영구 |
-| 15 | `.bkit/workflows/*.workflow.yaml` | YAML | 신규 | 영구 |
-| 16 | `bkit.config.json` | JSON | v1.6.2→v2.0 | 영구 |
+| 1 | `.rossi/state/pdca-status.json` | JSON | v2.0→v3.0 | 영구 |
+| 2 | `.rossi/state/quality-metrics.json` | JSON | 신규 | 영구 |
+| 3 | `.rossi/state/quality-history.json` | JSON | 신규 | 100건 |
+| 4 | `.rossi/state/regression-rules.json` | JSON | 신규 | 200규칙 |
+| 5 | `.rossi/state/trust-profile.json` | JSON | 신규 | 영구 |
+| 6 | `.rossi/state/resume/{f}.resume.json` | JSON | 신규 | feature별 |
+| 7 | `.rossi/state/workflows/{f}.json` | JSON | 신규 | feature별 |
+| 8 | `.rossi/runtime/agent-state.json` | JSON | v1.0→v2.0 | 세션 |
+| 9 | `.rossi/runtime/agent-events.jsonl` | JSONL | 신규 | 30일 |
+| 10 | `.rossi/runtime/control-state.json` | JSON | 신규 | 영구 |
+| 11 | `.rossi/audit/YYYY-MM-DD.jsonl` | JSONL | 신규 | 30일 |
+| 12 | `.rossi/decisions/YYYY-MM-DD.jsonl` | JSONL | 신규 | 30일 |
+| 13 | `.rossi/checkpoints/cp-{ts}.json` | JSON | 신규 | 100MB |
+| 14 | `.rossi/checkpoints/index.json` | JSON | 신규 | 영구 |
+| 15 | `.rossi/workflows/*.workflow.yaml` | YAML | 신규 | 영구 |
+| 16 | `rossi.config.json` | JSON | v1.6.2→v2.0 | 영구 |
 
 ### 3.2 정합성 검증 결과 (14항목)
 

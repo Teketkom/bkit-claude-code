@@ -95,7 +95,7 @@ function main() {
 
 function logDeployEvent(event) {
   try {
-    const auditDir = path.join(process.cwd(), '.bkit', 'audit');
+    const auditDir = path.join(process.cwd(), '.rossi', 'audit');
     if (!fs.existsSync(auditDir)) {
       fs.mkdirSync(auditDir, { recursive: true });
     }

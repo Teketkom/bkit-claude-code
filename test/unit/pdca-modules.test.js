@@ -4,7 +4,7 @@
  * Unit Tests for lib/pdca/ untested modules
  * 30 TC | automation.js, executive-summary.js, tier.js, template-validator.js
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const path = require('path');

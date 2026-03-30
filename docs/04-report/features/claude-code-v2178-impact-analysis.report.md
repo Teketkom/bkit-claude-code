@@ -1,8 +1,8 @@
-# Claude Code v2.1.73~v2.1.78 영향 분석 및 bkit v1.6.2 완성 보고서
+# Claude Code v2.1.73~v2.1.78 영향 분석 및 ROSSI v1.6.2 완성 보고서
 
 > **Status**: ✅ Complete (100% Implementation)
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v1.6.1 → v1.6.2
 > **Author**: CTO Team (8 Agents)
 > **Completion Date**: 2026-03-18
@@ -16,7 +16,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| **기능** | Claude Code v2.1.73~v2.1.78 6개 릴리스(~166건 변경) 영향 분석 + bkit v1.6.2 전면 활용형 업그레이드 |
+| **기능** | Claude Code v2.1.73~v2.1.78 6개 릴리스(~166건 변경) 영향 분석 + ROSSI v1.6.2 전면 활용형 업그레이드 |
 | **시작일** | 2026-03-11 |
 | **완료일** | 2026-03-18 |
 | **기간** | 7일 (분석 + 설계 + 구현 + 검증) |
@@ -37,10 +37,10 @@
 
 | 관점 | 내용 |
 |------|------|
-| **문제** | CC v2.1.73~v2.1.78 6개 릴리스의 ~166건 변경사항 중 bkit 영향 범위 불확실 + 신규 기능 4개 Hook + ${CLAUDE_PLUGIN_DATA} + agent frontmatter 활용 기회 존재 |
+| **문제** | CC v2.1.73~v2.1.78 6개 릴리스의 ~166건 변경사항 중 ROSSI 영향 범위 불확실 + 신규 기능 4개 Hook + ${CLAUDE_PLUGIN_DATA} + agent frontmatter 활용 기회 존재 |
 | **해결 방법** | CTO Team 8개 에이전트 병렬 분석 + 14개 ENH 전체 구현 + 호환성 검증 TC 설계 + 3대 철학 준수 검증 |
 | **기능/UX 효과** | Hook events 10→12 확장 (PostCompact, StopFailure), Agent frontmatter effort/maxTurns 네이티브 지원, ${CLAUDE_PLUGIN_DATA} 영구 상태 저장소, exports 208→210 (+2) |
-| **핵심 가치** | 44번째 연속 호환 릴리스 확인(v2.1.34~v2.1.78, zero-downtime 업그레이드 보장) + ENH-117~130 14개 기회 100% 구현으로 bkit 3대 철학(Automation First, No Guessing, Docs=Code) 강화 + Context Engineering 레벨 6 달성 |
+| **핵심 가치** | 44번째 연속 호환 릴리스 확인(v2.1.34~v2.1.78, zero-downtime 업그레이드 보장) + ENH-117~130 14개 기회 100% 구현으로 ROSSI 3대 철학(Automation First, No Guessing, Docs=Code) 강화 + Context Engineering 레벨 6 달성 |
 
 ---
 
@@ -63,7 +63,7 @@
 
 **성과**:
 - 6개 릴리스 전체 변경사항 수집 완료 (~166건)
-- bkit 코드베이스 교차 분석 (31 skills, 29 agents, 10 hook events, 252 components)
+- ROSSI 코드베이스 교차 분석 (31 skills, 29 agents, 10 hook events, 252 components)
 - 영향 분석 보고서 작성 (HIGH 10건, MEDIUM 12건, LOW 8건)
 - ENH 기회 확정 (ENH-117~130, 14건)
 - 호환성 매트릭스 작성
@@ -114,7 +114,7 @@
 - Hook: hooks/hooks.json (+PostCompact, +StopFailure)
 - Session: hooks/session-start.js (PLUGIN_DATA 복구, v1.6.2 정보)
 - Agents: 29개 agents/*.md (effort/maxTurns 추가)
-- Config: plugin.json v1.6.2, bkit.config.json v1.6.2
+- Config: plugin.json v1.6.2, rossi.config.json v1.6.2
 - 문서: context-engineering.md, core-mission.md, hooks-overview.md
 
 ### 3.4 Check Phase
@@ -131,7 +131,7 @@
 | **PLUGIN_DATA 백업** | functional test | PASS ✅ |
 | **post-compaction.js** | 로드 및 실행 | PASS ✅ |
 | **stop-failure-handler.js** | 로드 및 실행 | PASS ✅ |
-| **version bumps** | plugin.json, bkit.config.json, hooks.json, session-start.js | 모두 v1.6.2 ✅ |
+| **version bumps** | plugin.json, rossi.config.json, hooks.json, session-start.js | 모두 v1.6.2 ✅ |
 
 **Design Match Rate**: 100% (14/14 ENH 구현됨)
 
@@ -167,8 +167,8 @@
 |--------|------|------|
 | **코드 변경** | lib/, scripts/, hooks/ | ✅ 완료 |
 | **Agent 업데이트** | agents/*.md (29개) | ✅ 완료 |
-| **설정 파일** | plugin.json, bkit.config.json | ✅ v1.6.2 |
-| **문서** | bkit-system/philosophy/*.md | ✅ 완료 |
+| **설정 파일** | plugin.json, rossi.config.json | ✅ v1.6.2 |
+| **문서** | rossi-system/philosophy/*.md | ✅ 완료 |
 | **Plan 문서** | docs/01-plan/ | ✅ 완료 |
 | **Design 문서** | docs/02-design/ | ✅ 완료 |
 | **Analysis 문서** | docs/03-analysis/ | ✅ 100% match |
@@ -182,7 +182,7 @@
 
 | 항목 | 이유 | 우선순위 | 예상 소요 |
 |------|------|----------|----------|
-| Elicitation/ElicitationResult hook 구현 | bkit이 현재 MCP 미사용 | Low | 2일 (MCP 도입 후) |
+| Elicitation/ElicitationResult hook 구현 | ROSSI이 현재 MCP 미사용 | Low | 2일 (MCP 도입 후) |
 | /output-style deprecated 대응 | /config 이관 선택적 | Low | 1일 |
 
 **이연 근거**: v1.6.2 범위에서 핵심 14개 ENH 100% 완성하기 위해 MCP 관련 기능은 향후 cycle으로 계획
@@ -239,7 +239,7 @@ Stop                         Stop
                             + StopFailure (ENH-118)
 ```
 
-**CC 공식 대비**: bkit 사용 12/22 = 54.5% (기존 10/18 = 55.6%)
+**CC 공식 대비**: ROSSI 사용 12/22 = 54.5% (기존 10/18 = 55.6%)
 
 ### 7.2 Agent Frontmatter 표준화
 
@@ -267,7 +267,7 @@ disallowedTools:                 # NATIVE support
 
 **v1.6.2 영구 저장소**:
 ```
-.bkit/state/                    ${CLAUDE_PLUGIN_DATA}/
+.rossi/state/                    ${CLAUDE_PLUGIN_DATA}/
 ├── pdca-status.json            ├── pdca-status.backup.json
 ├── memory.json                 ├── memory.backup.json
 └── ...                         └── version-history.json
@@ -292,7 +292,7 @@ disallowedTools:                 # NATIVE support
 
 ### 8.1 호환성 매트릭스 (최종)
 
-| bkit 컴포넌트 | 수량 | v2.1.73~78 호환성 | 상태 |
+| ROSSI 컴포넌트 | 수량 | v2.1.73~78 호환성 | 상태 |
 |--------------|------|-------------------|------|
 | **Skills** | 31 | ✅ 호환 (deadlock fix 수혜) | ✅ |
 | **Agents** | 29 | ✅ 호환 (model ID, effort/maxTurns) | ✅ |
@@ -305,13 +305,13 @@ disallowedTools:                 # NATIVE support
 
 ### 8.2 Breaking Changes (최종 확인)
 
-**bkit 기준 Breaking Changes: 0건** ✅
+**ROSSI 기준 Breaking Changes: 0건** ✅
 
-| CC Breaking Change | bkit 영향 | 이유 |
+| CC Breaking Change | ROSSI 영향 | 이유 |
 |-------------------|----------|------|
-| Agent resume 파라미터 제거 | 없음 | bkit은 SendMessage 사용 |
+| Agent resume 파라미터 제거 | 없음 | ROSSI은 SendMessage 사용 |
 | SendMessage 자동 재개 | 없음 | 개선 방향, 호환 |
-| /fork → /branch | 없음 | bkit 미사용 |
+| /fork → /branch | 없음 | ROSSI 미사용 |
 | Windows managed settings | 최소 | macOS 주력 |
 
 ### 8.3 연속 호환 릴리스 확인
@@ -368,7 +368,7 @@ disallowedTools:                 # NATIVE support
 
 1. **Design 문서 크기**: 설계 문서가 50KB 초과로 과도하게 상세 → 추상도 조정 필요
 2. **hook events naming**: PostCompact/StopFailure는 신규지만 Elicitation/ElicitationResult는 MCP 미사용으로 기록만 → 문서화 순서 개선 필요
-3. **PLUGIN_DATA 마이그레이션**: 기존 .bkit/state 유지 + PLUGIN_DATA 백업 이중화로 보수적 진행 → 향후 단순화 검토
+3. **PLUGIN_DATA 마이그레이션**: 기존 .rossi/state 유지 + PLUGIN_DATA 백업 이중화로 보수적 진행 → 향후 단순화 검토
 
 ### 10.3 다음에 시도할 것 (Try)
 
@@ -435,7 +435,7 @@ disallowedTools:                 # NATIVE support
 
 **변경 (Changed)**:
 - plugin.json: v1.6.1 → v1.6.2
-- bkit.config.json: version v1.6.1 → v1.6.2
+- rossi.config.json: version v1.6.1 → v1.6.2
 - hooks.json: hook events 10→12 확장
 - session-start.js: PLUGIN_DATA 복구 로직 추가
 - 29개 agents: effort/maxTurns 필드 추가
@@ -450,7 +450,7 @@ disallowedTools:                 # NATIVE support
 ## 14. 최종 검증 체크리스트
 
 - [x] 6개 릴리스 전체 변경사항 수집 완료 (v2.1.73~v2.1.78)
-- [x] bkit 코드베이스 교차 분석 완료
+- [x] ROSSI 코드베이스 교차 분석 완료
 - [x] 영향 분석 보고서 작성 (HIGH 10/MEDIUM 12/LOW 8)
 - [x] ENH 기회 확정 (ENH-117~130, 14건)
 - [x] 호환성 매트릭스 작성
@@ -459,7 +459,7 @@ disallowedTools:                 # NATIVE support
 - [x] 44 연속 호환 릴리스 확인 ✅
 - [x] 14개 ENH 전체 구현 (v1.6.2 릴리스) ✅
 - [x] 호환성 TC 실행 (~40 TC, 100% PASS) ✅
-- [x] bkit 3대 철학 준수 검증 ✅
+- [x] ROSSI 3대 철학 준수 검증 ✅
 - [x] 최종 Analysis 작성 (100% match) ✅
 - [x] Report 문서 작성 (본 문서) ✅
 
@@ -477,8 +477,8 @@ disallowedTools:                 # NATIVE support
 
 - [Claude Code CHANGELOG](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md)
 - [Release v2.1.73~v2.1.78](https://github.com/anthropics/claude-code/releases)
-- [bkit-system/philosophy/core-mission.md](../../bkit-system/philosophy/core-mission.md)
-- [bkit-system/philosophy/context-engineering.md](../../bkit-system/philosophy/context-engineering.md)
+- [rossi-system/philosophy/core-mission.md](../../rossi-system/philosophy/core-mission.md)
+- [rossi-system/philosophy/context-engineering.md](../../rossi-system/philosophy/context-engineering.md)
 
 ---
 

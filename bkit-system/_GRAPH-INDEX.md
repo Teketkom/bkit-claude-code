@@ -1,4 +1,4 @@
-# bkit Graph Index
+# ROSSI Graph Index
 
 > Obsidian graph view central hub. All components connect from this file.
 >
@@ -47,7 +47,7 @@
 ### v1.6.1 (2026-03-08) - CTO Orchestration Redesign + Quality Hardening
 - CTO/PM Orchestration Redesign: Main Session as CTO pattern (CC v2.1.69+ compatibility, Issue #41 fix)
 - P0 Bug Fixes (4): ambiguity.shouldClarify, trigger.confidenceThreshold, creator.phases, agent disallowedTools
-- Config-Code Synchronization: PHASE_PATTERN_MAP from bkit.config.json at runtime
+- Config-Code Synchronization: PHASE_PATTERN_MAP from rossi.config.json at runtime
 - 3-Tier Agent Security Model: 9 acceptEdits agents with tiered disallowedTools
 - Skill Evals 28/28: Full implementation with real evaluation engine (56 content files)
 - Comprehensive Test Suite: 1073 TC, 99.6% pass rate, 8 perspectives
@@ -78,7 +78,7 @@
 
 ### v1.5.8 (2026-03-01) - Studio Support
 - Path Registry (lib/core/paths.js) - centralized state file paths
-- State directory migration (.bkit/{state,runtime,snapshots}/)
+- State directory migration (.rossi/{state,runtime,snapshots}/)
 - Auto-migration with EXDEV fallback
 - 186 exports (+STATE_PATHS, +LEGACY_PATHS, +CONFIG_PATHS, +ensureBkitDirs)
 
@@ -109,11 +109,11 @@
 
 ### Context Engineering (NEW)
 
-bkit is a practical implementation of **Context Engineering**:
+ROSSI is a practical implementation of **Context Engineering**:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│              bkit Context Engineering Components                 │
+│              ROSSI Context Engineering Components                 │
 ├─────────────────────────────────────────────────────────────────┤
 │  Domain Knowledge (37 Skills)  → Structured domain knowledge     │
 │  Behavioral Rules (32 Agents)  → Role-based behavioral rules     │
@@ -141,8 +141,8 @@ Core design principles and methodology:
 - [[../skills/pm-discovery/SKILL|pm-discovery]] - Product discovery and market research [Workflow]
 
 ### Core Skills (2)
-- [[../skills/bkit-rules/SKILL|bkit-rules]] - PDCA rules + auto-triggering + code quality standards
-- [[../skills/bkit-templates/SKILL|bkit-templates]] - Document templates for consistent PDCA documentation
+- [[../skills/rossi-rules/SKILL|rossi-rules]] - PDCA rules + auto-triggering + code quality standards
+- [[../skills/rossi-templates/SKILL|rossi-templates]] - Document templates for consistent PDCA documentation
 
 ### Level Skills (3)
 - [[../skills/starter/SKILL|starter]] - Starter level (static web, HTML/CSS/JS, Next.js basics)
@@ -170,10 +170,10 @@ Core design principles and methodology:
 The following skills were consolidated:
 - ~~task-classification~~ → `lib/common.js`
 - ~~level-detection~~ → `lib/common.js`
-- ~~pdca-methodology~~ → `bkit-rules`
-- ~~document-standards~~ → `bkit-templates`
+- ~~pdca-methodology~~ → `rossi-rules`
+- ~~document-standards~~ → `rossi-templates`
 - ~~evaluator-optimizer~~ → `/pdca-iterate` command
-- ~~analysis-patterns~~ → `bkit-templates`
+- ~~analysis-patterns~~ → `rossi-templates`
 - ~~ai-native-development~~ → `enterprise`
 - ~~monorepo-architecture~~ → `enterprise`
 
@@ -204,10 +204,10 @@ The following skills were consolidated:
 ## v1.5.1 Features
 
 ### Output Styles (4)
-- [[../output-styles/bkit-learning|bkit-learning]] - Learning-focused response formatting
-- [[../output-styles/bkit-pdca-guide|bkit-pdca-guide]] - PDCA workflow response formatting
-- [[../output-styles/bkit-enterprise|bkit-enterprise]] - Enterprise architecture response formatting
-- [[../output-styles/bkit-pdca-enterprise|bkit-pdca-enterprise]] - Enterprise PDCA response formatting (v1.5.3)
+- [[../output-styles/rossi-learning|rossi-learning]] - Learning-focused response formatting
+- [[../output-styles/rossi-pdca-guide|rossi-pdca-guide]] - PDCA workflow response formatting
+- [[../output-styles/rossi-enterprise|rossi-enterprise]] - Enterprise architecture response formatting
+- [[../output-styles/rossi-pdca-enterprise|rossi-pdca-enterprise]] - Enterprise PDCA response formatting (v1.5.3)
 
 ### Agent Teams
 - [[../lib/team/index|team module]] - Team coordination (Dynamic: 3, Enterprise: 5 teammates)
@@ -308,7 +308,7 @@ The following skills were consolidated:
 #### Platform Detection (v1.5.0 - Claude Code Exclusive)
   - `isClaudeCode()` - Check if running in Claude Code
   - `getPluginPath()` - Get plugin root path
-  - `getBkitConfig()` - Load bkit.config.json with caching
+  - `getBkitConfig()` - Load rossi.config.json with caching
 
 #### Caching System (v1.4.0)
   - `_cache` - In-memory TTL-based cache object
@@ -316,7 +316,7 @@ The following skills were consolidated:
 
 #### Debug Logging (v1.5.0)
   - `debugLog()` - Debug logging
-  - Writes to `~/.claude/bkit-debug.log`
+  - Writes to `~/.claude/ROSSI-debug.log`
 
 #### PDCA Status v2.0 (v1.4.0)
   - `createInitialStatusV2()` - Create PDCA Status v2.0 schema
@@ -352,7 +352,7 @@ The following skills were consolidated:
   - `getPhaseRequirements()` - Get requirements for specific phase
 
 #### Configuration (existing)
-  - `getConfig()` - Read from bkit.config.json
+  - `getConfig()` - Read from rossi.config.json
   - `getConfigArray()` - Get array value from config
 
 #### File Classification (existing)
@@ -393,7 +393,7 @@ The following skills were consolidated:
 
 ### Language Tier System (v1.2.1)
 
-bkit supports languages and frameworks organized by tier:
+ROSSI supports languages and frameworks organized by tier:
 
 | Tier | Category | Languages/Frameworks |
 |------|----------|---------------------|
@@ -410,11 +410,11 @@ bkit supports languages and frameworks organized by tier:
 - Training data availability
 
 ### Configurable Patterns (v1.2.1)
-- `BKIT_EXCLUDE_PATTERNS` - Exclude directories (node_modules, __pycache__, .git, etc.)
-- `BKIT_FEATURE_PATTERNS` - Feature directory patterns (features, modules, packages, etc.)
+- `ROSSI_EXCLUDE_PATTERNS` - Exclude directories (node_modules, __pycache__, .git, etc.)
+- `ROSSI_FEATURE_PATTERNS` - Feature directory patterns (features, modules, packages, etc.)
 
 ### Configuration
-- `bkit.config.json` - Centralized configuration
+- `rossi.config.json` - Centralized configuration
   - Task classification thresholds
   - Level detection rules
   - PDCA document paths
@@ -422,7 +422,7 @@ bkit supports languages and frameworks organized by tier:
 
 ### Platform Note (v1.5.0)
 
-> **v1.5.0**: bkit is now Claude Code exclusive. Gemini CLI support was removed for simplified architecture.
+> **v1.5.0**: ROSSI is now Claude Code exclusive. Gemini CLI support was removed for simplified architecture.
 
 **Components**:
 - `skills/` - 37 skills

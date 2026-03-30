@@ -17,7 +17,7 @@ description: |
   versione CC, aggiornamento CLI, note di rilascio,
   версия Claude Code, обновления, совместимость
 
-  Do NOT use for: bkit internal analysis (use bkit-impact-analyst),
+  Do NOT use for: ROSSI internal analysis (use rossi-impact-analyst),
   implementation tasks, or non-CC version topics.
 model: opus
 effort: high
@@ -81,7 +81,7 @@ For each version in range, collect:
 #### Phase 3: Categorization
 Classify each change by:
 - **Impact Level**: HIGH / MEDIUM / LOW
-- **bkit Relevance**: Direct (affects bkit features) / Indirect (ecosystem) / None
+- **ROSSI Relevance**: Direct (affects ROSSI features) / Indirect (ecosystem) / None
 - **Category**: Hook / Agent / Skill / Tool / Config / UI / Performance / Security
 
 #### Phase 4: Report Generation
@@ -95,18 +95,18 @@ Produce structured output in this format:
 - HIGH impact: N
 - MEDIUM impact: N
 - LOW impact: N
-- bkit-relevant: N
+- ROSSI-relevant: N
 
 ### Breaking Changes
-| Change | Impact | bkit Affected | Migration |
+| Change | Impact | ROSSI Affected | Migration |
 |--------|--------|---------------|-----------|
 
 ### New Features
-| Feature | Description | bkit Opportunity (ENH-N) |
+| Feature | Description | ROSSI Opportunity (ENH-N) |
 |---------|-------------|-------------------------|
 
 ### Bug Fixes
-| Issue | Description | bkit Impact |
+| Issue | Description | ROSSI Impact |
 |-------|-------------|-------------|
 
 ### System Prompt Changes
@@ -115,11 +115,11 @@ Produce structured output in this format:
 - Removed sections: ...
 
 ### Hook Events
-| Event | Status | bkit Usage |
+| Event | Status | ROSSI Usage |
 |-------|--------|------------|
 
 ### Configuration Changes
-| Setting | Old | New | bkit Impact |
+| Setting | Old | New | ROSSI Impact |
 |---------|-----|-----|-------------|
 ```
 
@@ -135,5 +135,5 @@ Produce structured output in this format:
 
 - Do NOT guess version numbers or change details
 - Do NOT conflate changes from different versions
-- Do NOT skip "minor" changes — they may affect bkit
+- Do NOT skip "minor" changes — they may affect ROSSI
 - Do NOT include unverified blog rumors as facts

@@ -1,7 +1,7 @@
-# bkit Customization Impact Analysis
+# ROSSI Customization Impact Analysis
 
-> **Original**: bkit v2.0.4 (GitHub marketplace baseline)
-> **Custom**: bkit v2.0.4 + bkit-infra-automation
+> **Original**: ROSSI v2.0.4 (GitHub marketplace baseline)
+> **Custom**: ROSSI v2.0.4 + rossi-infra-automation
 > **Date**: 2026-03-24
 > **Analysis Method**: Quantitative file/code analysis + Qualitative capability assessment
 
@@ -249,7 +249,7 @@ Overall Score   40/100      79/100      +39 (+97.5%)
 
 Analysis conducted by Claude Code using:
 - File system analysis (find, wc, grep)
-- Impact Map data (.bkit/impact-map.json — 82 modules)
+- Impact Map data (.rossi/impact-map.json — 82 modules)
 - PDCA document analysis (9 PM docs, 5 archive docs)
 - State machine transition counting
 - Capability radar scoring methodology

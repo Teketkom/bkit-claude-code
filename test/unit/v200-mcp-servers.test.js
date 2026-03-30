@@ -2,9 +2,9 @@
 'use strict';
 /**
  * Unit Test: v2.0.0 MCP Servers Verification (25 TC)
- * MS-001~025: Test the 2 MCP servers (bkit-pdca-server, bkit-analysis-server)
+ * MS-001~025: Test the 2 MCP servers (rossi-pdca-server, rossi-analysis-server)
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -18,22 +18,22 @@ const SERVERS_DIR = path.join(BASE_DIR, 'servers');
 console.log('\n=== v200-mcp-servers.test.js (25 TC) ===\n');
 
 // ============================================================
-// MS-001~005: bkit-pdca-server/index.js exists and loads
+// MS-001~005: rossi-pdca-server/index.js exists and loads
 // ============================================================
-console.log('--- MS-001~005: bkit-pdca-server exists and loads ---');
+console.log('--- MS-001~005: rossi-pdca-server exists and loads ---');
 
-const pdcaServerPath = path.join(SERVERS_DIR, 'bkit-pdca-server', 'index.js');
+const pdcaServerPath = path.join(SERVERS_DIR, 'rossi-pdca-server', 'index.js');
 
 // MS-001: index.js file exists
 assert('MS-001', fs.existsSync(pdcaServerPath),
-  'servers/bkit-pdca-server/index.js exists');
+  'servers/rossi-pdca-server/index.js exists');
 
 // MS-002: File is non-empty
 {
   let size = 0;
   try { size = fs.statSync(pdcaServerPath).size; } catch (_) {}
   assert('MS-002', size > 0,
-    'bkit-pdca-server/index.js is non-empty');
+    'rossi-pdca-server/index.js is non-empty');
 }
 
 // MS-003: File has shebang and strict mode
@@ -41,7 +41,7 @@ assert('MS-001', fs.existsSync(pdcaServerPath),
   let content = '';
   try { content = fs.readFileSync(pdcaServerPath, 'utf8'); } catch (_) {}
   assert('MS-003', content.startsWith('#!/usr/bin/env node'),
-    'bkit-pdca-server/index.js has shebang line');
+    'rossi-pdca-server/index.js has shebang line');
 }
 
 // MS-004: File uses readline for stdio transport
@@ -49,7 +49,7 @@ assert('MS-001', fs.existsSync(pdcaServerPath),
   let content = '';
   try { content = fs.readFileSync(pdcaServerPath, 'utf8'); } catch (_) {}
   assert('MS-004', content.includes("require('readline')"),
-    'bkit-pdca-server uses readline for stdio transport');
+    'rossi-pdca-server uses readline for stdio transport');
 }
 
 // MS-005: File has TOOL_HANDLERS dispatch map
@@ -57,25 +57,25 @@ assert('MS-001', fs.existsSync(pdcaServerPath),
   let content = '';
   try { content = fs.readFileSync(pdcaServerPath, 'utf8'); } catch (_) {}
   assert('MS-005', content.includes('TOOL_HANDLERS'),
-    'bkit-pdca-server has TOOL_HANDLERS dispatch map');
+    'rossi-pdca-server has TOOL_HANDLERS dispatch map');
 }
 
 // ============================================================
-// MS-006~010: bkit-pdca-server exports 10 tool handlers
+// MS-006~010: rossi-pdca-server exports 10 tool handlers
 // ============================================================
-console.log('\n--- MS-006~010: bkit-pdca-server has 10 tool handlers ---');
+console.log('\n--- MS-006~010: rossi-pdca-server has 10 tool handlers ---');
 
 const PDCA_TOOLS = [
-  'bkit_pdca_status',
-  'bkit_pdca_history',
-  'bkit_feature_list',
-  'bkit_feature_detail',
-  'bkit_plan_read',
-  'bkit_design_read',
-  'bkit_analysis_read',
-  'bkit_report_read',
-  'bkit_metrics_get',
-  'bkit_metrics_history',
+  'rossi_pdca_status',
+  'rossi_pdca_history',
+  'rossi_feature_list',
+  'rossi_feature_detail',
+  'rossi_plan_read',
+  'rossi_design_read',
+  'rossi_analysis_read',
+  'rossi_report_read',
+  'rossi_metrics_get',
+  'rossi_metrics_history',
 ];
 
 {
@@ -87,27 +87,27 @@ const PDCA_TOOLS = [
     const tool = PDCA_TOOLS[i];
     const id = `MS-${String(i + 6).padStart(3, '0')}`;
     assert(id, content.includes(tool),
-      `bkit-pdca-server defines handler for ${tool}`);
+      `rossi-pdca-server defines handler for ${tool}`);
   }
 }
 
 // ============================================================
-// MS-011~015: bkit-analysis-server/index.js exists and loads
+// MS-011~015: rossi-analysis-server/index.js exists and loads
 // ============================================================
-console.log('\n--- MS-011~015: bkit-analysis-server exists and loads ---');
+console.log('\n--- MS-011~015: rossi-analysis-server exists and loads ---');
 
-const analysisServerPath = path.join(SERVERS_DIR, 'bkit-analysis-server', 'index.js');
+const analysisServerPath = path.join(SERVERS_DIR, 'rossi-analysis-server', 'index.js');
 
 // MS-011: index.js file exists
 assert('MS-011', fs.existsSync(analysisServerPath),
-  'servers/bkit-analysis-server/index.js exists');
+  'servers/rossi-analysis-server/index.js exists');
 
 // MS-012: File is non-empty
 {
   let size = 0;
   try { size = fs.statSync(analysisServerPath).size; } catch (_) {}
   assert('MS-012', size > 0,
-    'bkit-analysis-server/index.js is non-empty');
+    'rossi-analysis-server/index.js is non-empty');
 }
 
 // MS-013: File has shebang and strict mode
@@ -115,7 +115,7 @@ assert('MS-011', fs.existsSync(analysisServerPath),
   let content = '';
   try { content = fs.readFileSync(analysisServerPath, 'utf8'); } catch (_) {}
   assert('MS-013', content.startsWith('#!/usr/bin/env node'),
-    'bkit-analysis-server/index.js has shebang line');
+    'rossi-analysis-server/index.js has shebang line');
 }
 
 // MS-014: File uses readline for stdio transport
@@ -123,7 +123,7 @@ assert('MS-011', fs.existsSync(analysisServerPath),
   let content = '';
   try { content = fs.readFileSync(analysisServerPath, 'utf8'); } catch (_) {}
   assert('MS-014', content.includes("require('readline')"),
-    'bkit-analysis-server uses readline for stdio transport');
+    'rossi-analysis-server uses readline for stdio transport');
 }
 
 // MS-015: File has TOOL_HANDLERS dispatch map
@@ -131,21 +131,21 @@ assert('MS-011', fs.existsSync(analysisServerPath),
   let content = '';
   try { content = fs.readFileSync(analysisServerPath, 'utf8'); } catch (_) {}
   assert('MS-015', content.includes('TOOL_HANDLERS'),
-    'bkit-analysis-server has TOOL_HANDLERS dispatch map');
+    'rossi-analysis-server has TOOL_HANDLERS dispatch map');
 }
 
 // ============================================================
-// MS-016~020: bkit-analysis-server exports 6 tool handlers
+// MS-016~020: rossi-analysis-server exports 6 tool handlers
 // ============================================================
-console.log('\n--- MS-016~020: bkit-analysis-server has 6 tool handlers ---');
+console.log('\n--- MS-016~020: rossi-analysis-server has 6 tool handlers ---');
 
 const ANALYSIS_TOOLS = [
-  'bkit_code_quality',
-  'bkit_gap_analysis',
-  'bkit_regression_rules',
-  'bkit_checkpoint_list',
-  'bkit_checkpoint_detail',
-  'bkit_audit_search',
+  'rossi_code_quality',
+  'rossi_gap_analysis',
+  'rossi_regression_rules',
+  'rossi_checkpoint_list',
+  'rossi_checkpoint_detail',
+  'rossi_audit_search',
 ];
 
 {
@@ -157,7 +157,7 @@ const ANALYSIS_TOOLS = [
     const tool = ANALYSIS_TOOLS[i];
     const id = `MS-${String(i + 16).padStart(3, '0')}`;
     assert(id, content.includes(tool),
-      `bkit-analysis-server defines handler for ${tool}`);
+      `rossi-analysis-server defines handler for ${tool}`);
   }
 }
 
@@ -166,7 +166,7 @@ const ANALYSIS_TOOLS = [
 // ============================================================
 console.log('\n--- MS-021~023: package.json version = 2.0.4 ---');
 
-const serverDirs = ['bkit-pdca-server', 'bkit-analysis-server'];
+const serverDirs = ['rossi-pdca-server', 'rossi-analysis-server'];
 
 for (let i = 0; i < serverDirs.length; i++) {
   const serverName = serverDirs[i];
@@ -207,7 +207,7 @@ for (let i = 0; i < serverDirs.length; i++) {
 // ============================================================
 console.log('\n--- MS-024~025: JSON-RPC 2.0 protocol ---');
 
-// MS-024: bkit-pdca-server uses JSON-RPC 2.0
+// MS-024: rossi-pdca-server uses JSON-RPC 2.0
 {
   let content = '';
   try { content = fs.readFileSync(pdcaServerPath, 'utf8'); } catch (_) {}
@@ -217,10 +217,10 @@ console.log('\n--- MS-024~025: JSON-RPC 2.0 protocol ---');
   const hasToolsList = content.includes("case 'tools/list'") || content.includes('case "tools/list"');
 
   assert('MS-024', hasJsonRpc && hasInitialize && hasToolsList,
-    'bkit-pdca-server implements JSON-RPC 2.0 protocol (initialize, tools/list)');
+    'rossi-pdca-server implements JSON-RPC 2.0 protocol (initialize, tools/list)');
 }
 
-// MS-025: bkit-analysis-server uses JSON-RPC 2.0
+// MS-025: rossi-analysis-server uses JSON-RPC 2.0
 {
   let content = '';
   try { content = fs.readFileSync(analysisServerPath, 'utf8'); } catch (_) {}
@@ -230,7 +230,7 @@ console.log('\n--- MS-024~025: JSON-RPC 2.0 protocol ---');
   const hasToolsCall = content.includes("case 'tools/call'") || content.includes('case "tools/call"');
 
   assert('MS-025', hasJsonRpc && hasInitialize && hasToolsCall,
-    'bkit-analysis-server implements JSON-RPC 2.0 protocol (initialize, tools/call)');
+    'rossi-analysis-server implements JSON-RPC 2.0 protocol (initialize, tools/call)');
 }
 
 // ============================================================

@@ -4,7 +4,7 @@ classification: workflow
 classification-reason: "Reports loaded skill inventory across core and project layers. Read-only status check workflow."
 deprecation-risk: none
 description: |
-  Show loaded skill inventory — bkit core vs project-local, conflicts, coverage gaps.
+  Show loaded skill inventory — ROSSI core vs project-local, conflicts, coverage gaps.
   Triggers: skill-status, skill list, 스킬 상태, 스킬 목록, статус навыков, список скиллов.
 argument-hint: "/skill-status [--detail] [--conflicts]"
 user-invocable: true
@@ -17,14 +17,14 @@ allowed-tools:
 
 # skill-status - Skill Inventory Report
 
-로드된 스킬 목록을 core(bkit 기본)와 project-local로 구분하여 표시.
+로드된 스킬 목록을 core(ROSSI 기본)와 project-local로 구분하여 표시.
 
 ## Command: `/skill-status`
 
 ### Step 1: Scan Core Skills
 
-1. Read bkit core skills directory:
-   `~/.claude/plugins/cache/bkit-marketplace/bkit/*/skills/`
+1. Read ROSSI core skills directory:
+   `~/.claude/plugins/cache/rossi-marketplace/ROSSI/*/skills/`
 2. For each skill directory, read SKILL.md frontmatter:
    - name, classification, description (first line)
 3. Count total core skills
@@ -48,14 +48,14 @@ allowed-tools:
 Skill Status Report
 ====================
 
-Layer: bkit Core (v1.6.2)
+Layer: ROSSI Core (v1.6.2)
   Skills: 28 loaded
   -----------------------------------------------
   Name                | Type       | Classification
   --------------------|------------|---------------
   pdca                | workflow   | PDCA lifecycle
   enterprise          | workflow   | Enterprise init
-  bkit-rules          | capability | Auto-apply rules
+  rossi-rules          | capability | Auto-apply rules
   code-review         | workflow   | Code analysis
   ... (truncated)
 
@@ -89,7 +89,7 @@ Summary: 36 total skills (28 core + 8 project)
 ```
 Priority (high to low):
 1. .claude/skills/project/   (project-local, git-tracked)
-2. ~/.claude/plugins/.../skills/  (bkit core, plugin-managed)
+2. ~/.claude/plugins/.../skills/  (ROSSI core, plugin-managed)
 3. ~/.claude/skills/          (user global, if any)
 ```
 

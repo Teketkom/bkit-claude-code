@@ -1,4 +1,4 @@
-# bkit-rules Expected Output - Process Steps
+# rossi-rules Expected Output - Process Steps
 
 ## Step 1: PDCA Auto-Apply Rules Activation
 1. The skill triggers automatically on the keyword "implement" and "feature"

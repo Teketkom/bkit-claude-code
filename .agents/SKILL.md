@@ -1,25 +1,25 @@
 ---
-name: bkit-claude-code
+name: rossi-cto-agent-kit
 description: >-
   AI-Native Development OS для Claude Code на основе PDCA-методологии.
   Управление полным циклом разработки: планирование, дизайн, реализация, анализ, отчётность.
   CTO-Led Agent Teams (32 агента), 37 навыков, workflow engine, controllable AI (L0-L4),
   quality gates, audit logging, self-healing, MCP серверы.
   Мультиязычная поддержка: EN, KO, JA, ZH, ES, FR, DE, IT, RU.
-  Используй при работе с проектами на базе bkit, PDCA-процессами,
+  Используй при работе с проектами на базе ROSSI, PDCA-процессами,
   управлении командами агентов, code review, архитектурных решениях.
-  Триггеры: bkit, pdca, plan, design, analyze, report, team, CTO, pipeline,
+  Триггеры: ROSSI, pdca, plan, design, analyze, report, team, CTO, pipeline,
   качество кода, архитектура, ревью, планирование, проектирование, анализ, отчёт.
 license: Apache-2.0
 compatibility: Claude Code v2.1.78+, Node.js v18+
 metadata:
-  author: POPUP STUDIO PTE. LTD. / Dmitriy Shalimov (adaptation)
+  author: Концерн РОССИ (ЗАО РОССИ) / Dmitriy Shalimov (adaptation)
   version: '2.0.8'
-  repository: https://github.com/popup-studio-ai/bkit-claude-code
+  repository: https://github.com/rossi-dev/rossi-cto-agent-kit
   languages: en, ko, ja, zh, es, fr, de, it, ru
 ---
 
-# bkit — AI Native Development OS
+# ROSSI CTO Agent Kit — AI Native Development OS
 
 > PDCA methodology + CTO-Led Agent Teams + AI coding assistant mastery for AI-native development
 
@@ -38,7 +38,7 @@ metadata:
 
 | Принцип | Описание | Реализация |
 |---------|----------|------------|
-| **Automation First** | Claude автоматически применяет PDCA даже без команд | `bkit-rules` skill + PreToolUse hooks |
+| **Automation First** | Claude автоматически применяет PDCA даже без команд | `rossi-rules` skill + PreToolUse hooks |
 | **No Guessing** | Не уверен — проверь docs → Нет в docs — спроси пользователя | Design-first workflow, `gap-detector` agent |
 | **Docs = Code** | Сначала дизайн, потом реализация (синхронизация design-implementation) | PDCA workflow + `/pdca analyze` |
 
@@ -53,7 +53,7 @@ metadata:
 
 ## Архитектура Context Engineering
 
-bkit реализует Context Engineering через три взаимосвязанных слоя:
+ROSSI реализует Context Engineering через три взаимосвязанных слоя:
 
 | Слой | Компоненты | Назначение |
 |------|------------|------------|
@@ -210,10 +210,10 @@ Layer 6: Plugin Data Backup      → ${CLAUDE_PLUGIN_DATA} persistent state
 
 | Сервер | Описание |
 |--------|----------|
-| `bkit-pdca` | PDCA state machine, workflow management |
-| `bkit-analysis` | Code analysis, metrics, quality gates |
+| `rossi-pdca` | PDCA state machine, workflow management |
+| `rossi-analysis` | Code analysis, metrics, quality gates |
 
-## Конфигурация (bkit.config.json)
+## Конфигурация (rossi.config.json)
 
 Основные секции конфигурации:
 - `pdca` — пути документов, пороги, автоитерации
@@ -246,7 +246,7 @@ node evals/ab-tester.js --parity phase-3-mockup --model claude-opus-4-6
 
 ## Мультиязычная поддержка (включая русский)
 
-bkit v2.0.8 поддерживает 9 языков: EN, KO, JA, ZH, ES, FR, DE, IT, RU.
+ROSSI v2.0.8 поддерживает 9 языков: EN, KO, JA, ZH, ES, FR, DE, IT, RU.
 
 ### Русский язык (RU) — расширенная поддержка
 
@@ -268,20 +268,20 @@ bkit v2.0.8 поддерживает 9 языков: EN, KO, JA, ZH, ES, FR, DE,
 ## Быстрый старт
 
 1. Убедись что установлен Claude Code v2.1.78+
-2. Установи плагин: `/plugin enable bkit`
+2. Установи плагин: `/plugin enable ROSSI`
 3. Начни новый проект: `/pdca plan my-feature`
 4. Запусти CTO Team: `/pdca team my-feature`
 5. Проверь статус: `/pdca status`
 
 ## Ссылки на базу знаний
 
-- [README](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/README.md)
-- [AI-Native Development](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/AI-NATIVE-DEVELOPMENT.md)
-- [Customization Guide](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/CUSTOMIZATION-GUIDE.md)
-- [CHANGELOG](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/CHANGELOG.md)
-- [Context Engineering](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/bkit-system/philosophy/context-engineering.md)
-- [Core Mission](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/bkit-system/philosophy/core-mission.md)
-- [PDCA Methodology](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/bkit-system/philosophy/pdca-methodology.md)
-- [Trigger Matrix](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/bkit-system/triggers/trigger-matrix.md)
-- [Skills Overview](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/bkit-system/components/skills/_skills-overview.md)
-- [Agents Overview](https://github.com/popup-studio-ai/bkit-claude-code/blob/main/bkit-system/components/agents/_agents-overview.md)
+- [README](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/README.md)
+- [AI-Native Development](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/AI-NATIVE-DEVELOPMENT.md)
+- [Customization Guide](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/CUSTOMIZATION-GUIDE.md)
+- [CHANGELOG](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/CHANGELOG.md)
+- [Context Engineering](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/rossi-system/philosophy/context-engineering.md)
+- [Core Mission](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/rossi-system/philosophy/core-mission.md)
+- [PDCA Methodology](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/rossi-system/philosophy/pdca-methodology.md)
+- [Trigger Matrix](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/rossi-system/triggers/trigger-matrix.md)
+- [Skills Overview](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/rossi-system/components/skills/_skills-overview.md)
+- [Agents Overview](https://github.com/rossi-dev/rossi-cto-agent-kit/blob/main/rossi-system/components/agents/_agents-overview.md)

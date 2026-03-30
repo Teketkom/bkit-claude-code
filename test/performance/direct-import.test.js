@@ -5,7 +5,7 @@
  * DI-001~010: Direct import is faster than common.js
  * DI-011~020: Individual module sizes reasonable
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const { performance } = require('perf_hooks');

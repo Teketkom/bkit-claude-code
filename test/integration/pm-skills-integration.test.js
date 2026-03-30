@@ -4,8 +4,8 @@
  * Integration Tests for PR #50: pm-skills-integration
  * 50 TC | PM Agent frameworks 9→43, PDCA checkpoints, btw team, code-analyzer confidence
  *
- * @version bkit v1.7.0 (PR #50)
- * @see https://github.com/popup-studio-ai/bkit-claude-code/pull/50
+ * @version ROSSI v1.7.0 (PR #50)
+ * @see https://github.com/rossi-dev/rossi-cto-agent-kit/pull/50
  */
 
 const fs = require('fs');

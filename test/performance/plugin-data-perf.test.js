@@ -4,7 +4,7 @@
  * Performance Tests for backupToPluginData and restoreFromPluginData
  * 6 TC | Benchmark backup/restore operations
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');
@@ -20,7 +20,7 @@ const common = require('../../lib/common');
 
 // Save and set temp env
 const origPluginData = process.env.CLAUDE_PLUGIN_DATA;
-const TMP_DIR = path.join('/tmp', `bkit-perf-pd-${Date.now()}`);
+const TMP_DIR = path.join('/tmp', `ROSSI-perf-pd-${Date.now()}`);
 process.env.CLAUDE_PLUGIN_DATA = TMP_DIR;
 
 // PP-01: backupToPluginData < 100ms (cold start)

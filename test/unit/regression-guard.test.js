@@ -9,8 +9,8 @@ const path = require('path');
 const os = require('os');
 
 // Set up tmp dir and mock platform
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bkit-regguard-test-'));
-const stateDir = path.join(tmpDir, '.bkit', 'state');
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ROSSI-regguard-test-'));
+const stateDir = path.join(tmpDir, '.rossi', 'state');
 fs.mkdirSync(stateDir, { recursive: true });
 
 const platformPath = require.resolve('../../lib/core/platform');

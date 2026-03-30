@@ -1,6 +1,6 @@
 # Scenario: QA Execution
 
-> bkit's behavior flow when executing Zero Script QA
+> ROSSI's behavior flow when executing Zero Script QA
 
 ## Scenario Overview
 

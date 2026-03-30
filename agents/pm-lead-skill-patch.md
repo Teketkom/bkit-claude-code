@@ -24,7 +24,7 @@ tools:
 기존 pm-lead 에이전트의 Phase 4 (PRD Synthesis) 완료 후,
 skill-needs-extractor 에이전트를 자동 호출하여 PRD에서 스킬 니즈를 추출한다.
 
-**IMPORTANT**: 이 패치는 기존 bkit 플러그인 파일을 수정하지 않는다.
+**IMPORTANT**: 이 패치는 기존 ROSSI 플러그인 파일을 수정하지 않는다.
 project-local 에이전트로서 pm-lead 워크플로우에 후처리를 추가한다.
 
 ## When to Activate
@@ -79,7 +79,7 @@ project-local 에이전트로서 pm-lead 워크플로우에 후처리를 추가�
 [skill-needs-extractor] agent
     |
     v
-[.bkit/skill-needs.json] output
+[.rossi/skill-needs.json] output
     |
     v
 [User prompt] "Create N new skills?"

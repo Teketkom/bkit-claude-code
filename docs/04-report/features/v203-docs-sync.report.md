@@ -31,7 +31,7 @@
 | Hook 이벤트 수 불일치 | 12 vs 18 (6개 누락) | HIGH |
 | 스크립트 수 불일치 | 49 vs 54 (5개 누락) | HIGH |
 | Export 수 과소 표기 | ~465 vs ~580+ | MEDIUM |
-| bkit-system/ 전체 구버전 | v1.6.2에서 정지 | CRITICAL |
+| rossi-system/ 전체 구버전 | v1.6.2에서 정지 | CRITICAL |
 | CUSTOMIZATION-GUIDE.md | v1.5.x에서 정지 | HIGH |
 | CHANGELOG v2.0.2 | PR #51 누락 | MEDIUM |
 
@@ -40,7 +40,7 @@
 | 파일 | Workflow | Capability | Hybrid | Total |
 |------|:-------:|:---------:|:------:|:-----:|
 | README.md | 9 | 25 | 2 | 36 |
-| bkit-system/README.md | 9 | 20 | 2 | 31 |
+| rossi-system/README.md | 9 | 20 | 2 | 31 |
 | evals/config.json | 10 | 18 | 1 | 29 |
 | priority-rules.md | 10 | 16 | 2 | 28 |
 | **실제 (SKILL.md frontmatter)** | **17** | **18** | **1** | **36** |
@@ -57,7 +57,7 @@
 | fix-2-readme | README.md | 16건 |
 | fix-3-ai-native | AI-NATIVE-DEVELOPMENT.md | 11건 |
 | fix-4-changelog | CHANGELOG.md | 3건 (v2.0.3 신규 + v2.0.2 보완) |
-| fix-5-bkit-system | bkit-system/ 6개 파일 | ~50건 |
+| fix-5-rossi-system | rossi-system/ 6개 파일 | ~50건 |
 | fix-6-tests-versions | 테스트 6개 파일 | 10건 |
 | **합계** | **30개 파일** | **~108건** |
 
@@ -118,8 +118,8 @@
 |------|------|
 | CUSTOMIZATION-GUIDE.md | v1.5.x에서 정지 상태. 전면 재작성 수준 — 별도 PR 권장 |
 | evals/config.json 분류 | 29/36 스킬만 등록. 7개 신규 스킬 eval 정의 필요 — 별도 작업 |
-| bkit-system/scenarios/ | v1.2.1~v1.5.1에서 정지. 시나리오 문서 전면 재작성 필요 |
-| bkit-system/triggers/ | trigger-matrix.md, priority-rules.md 부분 구버전 — 별도 작업 |
+| rossi-system/scenarios/ | v1.2.1~v1.5.1에서 정지. 시나리오 문서 전면 재작성 필요 |
+| rossi-system/triggers/ | trigger-matrix.md, priority-rules.md 부분 구버전 — 별도 작업 |
 | adapters/ 빈 디렉토리 | lib/adapters/에 .js 파일 없음. 향후 구현 또는 정리 필요 |
 
 ---

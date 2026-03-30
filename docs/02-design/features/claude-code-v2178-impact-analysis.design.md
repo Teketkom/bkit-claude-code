@@ -1,8 +1,8 @@
-# Claude Code v2.1.73~v2.1.78 bkit v1.6.2 상세 설계서
+# Claude Code v2.1.73~v2.1.78 ROSSI v1.6.2 상세 설계서
 
-> **Summary**: CC v2.1.73~v2.1.78 영향 분석 기반 bkit v1.6.2 전면 활용형 업그레이드 상세 설계
+> **Summary**: CC v2.1.73~v2.1.78 영향 분석 기반 ROSSI v1.6.2 전면 활용형 업그레이드 상세 설계
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v1.6.1 -> v1.6.2
 > **Author**: CTO Team (8 Agents)
 > **Date**: 2026-03-18
@@ -18,7 +18,7 @@
 | **Problem** | Plan 문서의 14개 ENH를 구현하려면 파일별 변경 명세, 함수 시그니처, 데이터 구조, hooks.json 변경, agent frontmatter 표준 등 구현 수준의 상세 설계가 필요 |
 | **Solution** | 8개 전문 에이전트 병렬 분석으로 코드 변경 8파일 + 신규 스크립트 2파일 + agent frontmatter 29파일 + 문서 16파일의 정밀 설계 완성 |
 | **Function/UX Effect** | Hook events 10->14, Agent frontmatter effort/maxTurns 네이티브 지원, ${CLAUDE_PLUGIN_DATA} 영구 상태 저장소, exports 208->213 |
-| **Core Value** | bkit 3대 철학(Automation First, No Guessing, Docs=Code) 준수 + 44 연속 호환 릴리스 기반 제로 리스크 업그레이드 |
+| **Core Value** | ROSSI 3대 철학(Automation First, No Guessing, Docs=Code) 준수 + 44 연속 호환 릴리스 기반 제로 리스크 업그레이드 |
 
 ---
 
@@ -31,7 +31,7 @@
 3. 신규 스크립트의 전체 구조 설계
 4. 29개 agent frontmatter 변경 표준
 5. 호환성 검증 TC 설계
-6. bkit 3대 철학 준수 검증
+6. ROSSI 3대 철학 준수 검증
 
 ### 1.2 설계 원칙
 
@@ -47,7 +47,7 @@
 | scripts/ | 0 | 2 | +200 |
 | hooks/ | 1 | 0 | +20 |
 | agents/ | 29 | 0 | +87 (3 lines x 29) |
-| bkit-system/ | 4 | 0 | +120 |
+| rossi-system/ | 4 | 0 | +120 |
 | docs/ | 0 | 0 | 본 문서 |
 | plugin.json | 1 | 0 | +1 |
 | **Total** | **39** | **2** | **~508** |
@@ -60,33 +60,33 @@
 
 #### 2.1.1 배경
 
-CC v2.1.78에서 `${CLAUDE_PLUGIN_DATA}` 환경 변수가 추가되었다. 이 경로는 플러그인 업데이트/재설치 시에도 보존되는 영구 저장소를 가리킨다. 현재 bkit의 `.bkit/state/` 디렉토리는 플러그인 디렉토리 외부(프로젝트 루트)에 있어 직접적인 데이터 손실 위험은 낮지만, `${CLAUDE_PLUGIN_DATA}`를 백업 저장소로 활용하면 추가 안전망을 확보할 수 있다.
+CC v2.1.78에서 `${CLAUDE_PLUGIN_DATA}` 환경 변수가 추가되었다. 이 경로는 플러그인 업데이트/재설치 시에도 보존되는 영구 저장소를 가리킨다. 현재 ROSSI의 `.rossi/state/` 디렉토리는 플러그인 디렉토리 외부(프로젝트 루트)에 있어 직접적인 데이터 손실 위험은 낮지만, `${CLAUDE_PLUGIN_DATA}`를 백업 저장소로 활용하면 추가 안전망을 확보할 수 있다.
 
 #### 2.1.2 lib/core/paths.js 변경
 
 **Before** (line 16-24):
 ```javascript
 const STATE_PATHS = {
-  root:       () => path.join(getPlatform().PROJECT_DIR, '.bkit'),
-  state:      () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'state'),
-  runtime:    () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'runtime'),
-  snapshots:  () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'snapshots'),
-  pdcaStatus: () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'state', 'pdca-status.json'),
-  memory:     () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'state', 'memory.json'),
-  agentState: () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'runtime', 'agent-state.json'),
+  root:       () => path.join(getPlatform().PROJECT_DIR, '.rossi'),
+  state:      () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'state'),
+  runtime:    () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'runtime'),
+  snapshots:  () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'snapshots'),
+  pdcaStatus: () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'state', 'pdca-status.json'),
+  memory:     () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'state', 'memory.json'),
+  agentState: () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'runtime', 'agent-state.json'),
 };
 ```
 
 **After**:
 ```javascript
 const STATE_PATHS = {
-  root:       () => path.join(getPlatform().PROJECT_DIR, '.bkit'),
-  state:      () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'state'),
-  runtime:    () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'runtime'),
-  snapshots:  () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'snapshots'),
-  pdcaStatus: () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'state', 'pdca-status.json'),
-  memory:     () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'state', 'memory.json'),
-  agentState: () => path.join(getPlatform().PROJECT_DIR, '.bkit', 'runtime', 'agent-state.json'),
+  root:       () => path.join(getPlatform().PROJECT_DIR, '.rossi'),
+  state:      () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'state'),
+  runtime:    () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'runtime'),
+  snapshots:  () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'snapshots'),
+  pdcaStatus: () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'state', 'pdca-status.json'),
+  memory:     () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'state', 'memory.json'),
+  agentState: () => path.join(getPlatform().PROJECT_DIR, '.rossi', 'runtime', 'agent-state.json'),
   // v1.6.2: ${CLAUDE_PLUGIN_DATA} persistent backup (ENH-119)
   pluginData: () => process.env.CLAUDE_PLUGIN_DATA || null,
   pluginDataBackup: () => {
@@ -145,7 +145,7 @@ function backupToPluginData() {
     }
     history.push({
       timestamp: new Date().toISOString(),
-      bkitVersion: '1.6.2',
+      rossiVersion: '1.6.2',
       backed,
     });
     // Keep last 50 entries
@@ -339,8 +339,8 @@ try {
 ```
 ${CLAUDE_PLUGIN_DATA}/           # CC가 관리하는 영구 저장소
   backup/
-    pdca-status.backup.json      # .bkit/state/pdca-status.json 미러
-    memory.backup.json           # .bkit/state/memory.json 미러
+    pdca-status.backup.json      # .rossi/state/pdca-status.json 미러
+    memory.backup.json           # .rossi/state/memory.json 미러
     version-history.json         # 백업 이력 추적
 ```
 
@@ -349,7 +349,7 @@ ${CLAUDE_PLUGIN_DATA}/           # CC가 관리하는 영구 저장소
 [
   {
     "timestamp": "2026-03-18T10:00:00.000Z",
-    "bkitVersion": "1.6.2",
+    "rossiVersion": "1.6.2",
     "backed": ["pdca-status.backup.json", "memory.backup.json"]
   }
 ]
@@ -582,7 +582,7 @@ hooks:
 
 #### 2.2.4 effort 설정 근거
 
-| Model | CC v2.1.76 기본값 | bkit 설정 | 근거 |
+| Model | CC v2.1.76 기본값 | ROSSI 설정 | 근거 |
 |-------|------------------|----------|------|
 | opus | medium | **high** | CTO Team 깊은 사고 필요. medium 기본으로 인한 사고 깊이 저하 방지 |
 | sonnet | medium | medium | 기본값 유지, 적절한 균형 |
@@ -601,7 +601,7 @@ hooks:
 
 ### 2.3 ENH-127: 1M Context 기본화 문서
 
-#### 2.3.1 bkit-system/philosophy/context-engineering.md 변경
+#### 2.3.1 rossi-system/philosophy/context-engineering.md 변경
 
 **추가 섹션**:
 
@@ -613,7 +613,7 @@ hooks:
 - 기존: extra usage 별도 요금 필요
 - 현재: 플랜 포함 (추가 비용 없음)
 
-### bkit 영향
+### ROSSI 영향
 - 7개 opus agents (cto-lead, code-analyzer, enterprise-expert, gap-detector, infra-architect, security-architect, pdca-iterator)가 1M context 혜택
 - 장시간 CTO Team 세션에서 컨텍스트 유실 없이 전체 PDCA 사이클 수행 가능
 - 대규모 코드베이스 분석 시 전체 파일 동시 로드 가능
@@ -646,18 +646,18 @@ additionalContext += `- Output token: Opus 64K default, 128K upper limit (CC v2.
 
 ```javascript
 // Before (line 484)
-let additionalContext = `# bkit Vibecoding Kit v1.6.1 - Session Startup\n\n`;
+let additionalContext = `# ROSSI CTO Agent Kit v1.6.1 - Session Startup\n\n`;
 
 // After
-let additionalContext = `# bkit Vibecoding Kit v1.6.2 - Session Startup\n\n`;
+let additionalContext = `# ROSSI CTO Agent Kit v1.6.2 - Session Startup\n\n`;
 ```
 
 ```javascript
 // Before (line 750)
-  systemMessage: `bkit Vibecoding Kit v1.6.1 activated (Claude Code)`,
+  systemMessage: `ROSSI CTO Agent Kit v1.6.1 activated (Claude Code)`,
 
 // After
-  systemMessage: `bkit Vibecoding Kit v1.6.2 activated (Claude Code)`,
+  systemMessage: `ROSSI CTO Agent Kit v1.6.2 activated (Claude Code)`,
 ```
 
 ---
@@ -1080,7 +1080,7 @@ debugLog('StopFailure', 'Hook completed', {
 
 문서화 중심. 코드 변경 없음.
 
-#### 3.3.2 bkit-system/philosophy/context-engineering.md 추가 섹션
+#### 3.3.2 rossi-system/philosophy/context-engineering.md 추가 섹션
 
 ```markdown
 ## autoMemoryDirectory 설정 (v1.6.2)
@@ -1089,16 +1089,16 @@ debugLog('StopFailure', 'Hook completed', {
 - `autoMemoryDirectory` 설정으로 auto-memory 저장 경로 커스터마이징 가능
 - 기본값: `~/.claude/projects/{path}/memory/`
 
-### bkit 메모리 시스템 충돌 분석
+### ROSSI 메모리 시스템 충돌 분석
 | 시스템 | 경로 | 형식 | 충돌 |
 |--------|------|------|------|
 | CC auto-memory | ~/.claude/projects/{path}/memory/MEMORY.md | Markdown | 없음 |
-| bkit memory-store | .bkit/state/memory.json | JSON | 없음 |
-| bkit agent-memory | .claude/agent-memory/{agent}/MEMORY.md | Markdown | 없음 |
+| ROSSI memory-store | .rossi/state/memory.json | JSON | 없음 |
+| ROSSI agent-memory | .claude/agent-memory/{agent}/MEMORY.md | Markdown | 없음 |
 
 ### 사용자 가이드
-autoMemoryDirectory 변경 시에도 bkit의 3개 메모리 시스템과 충돌 없음.
-bkit.config.json에 별도 설정 불필요.
+autoMemoryDirectory 변경 시에도 ROSSI의 3개 메모리 시스템과 충돌 없음.
+rossi.config.json에 별도 설정 불필요.
 ```
 
 ---
@@ -1109,7 +1109,7 @@ bkit.config.json에 별도 설정 불필요.
 
 문서화 중심. 코드 변경 없음.
 
-#### 3.4.2 bkit-system/philosophy/context-engineering.md 추가 섹션
+#### 3.4.2 rossi-system/philosophy/context-engineering.md 추가 섹션
 
 ```markdown
 ## 출력 토큰 128K 상한 (v1.6.2)
@@ -1119,7 +1119,7 @@ bkit.config.json에 별도 설정 불필요.
 - Sonnet 4.6: 상한 128K
 - 환경변수 `CLAUDE_CODE_MAX_OUTPUT_TOKENS`으로 상한 설정 가능
 
-### bkit 활용
+### ROSSI 활용
 - report-generator: 대규모 PDCA 보고서 완전 출력 가능 (truncation 방지)
 - code-analyzer: 전체 코드 분석 결과 단일 응답 출력
 - gap-detector: 상세 Gap 목록 + 수정 제안 완전 출력
@@ -1132,7 +1132,7 @@ bkit.config.json에 별도 설정 불필요.
 
 ### 4.1 ENH-121: modelOverrides 가이드
 
-#### 4.1.1 bkit-system/components 또는 skills/enterprise/SKILL.md 추가
+#### 4.1.1 rossi-system/components 또는 skills/enterprise/SKILL.md 추가
 
 ```markdown
 ## modelOverrides (CC v2.1.73+)
@@ -1150,7 +1150,7 @@ Bedrock/Vertex 환경에서 모델 ID 매핑 커스터마이징:
 }
 ```
 
-bkit 29개 agents는 `model: opus|sonnet|haiku` 축약명을 사용하므로,
+ROSSI 29개 agents는 `model: opus|sonnet|haiku` 축약명을 사용하므로,
 modelOverrides로 Bedrock/Vertex 실제 모델 ID와 정확히 매핑 가능.
 ```
 
@@ -1250,13 +1250,13 @@ CTO Team 세션에서 기능명 기반 자동 네이밍으로 세션 관리 용�
 
 ### 5.1 ENH-128: Hook Source 표시 문서화
 
-#### 5.1.1 bkit-system/components/hooks/_hooks-overview.md 추가
+#### 5.1.1 rossi-system/components/hooks/_hooks-overview.md 추가
 
 ```markdown
 ## Hook Source 표시 (CC v2.1.75+)
 
 Hook 권한 프롬프트에 hook의 출처(settings/plugin/skill)가 표시됨.
-bkit의 모든 hooks는 `plugin` 출처로 표시됨.
+ROSSI의 모든 hooks는 `plugin` 출처로 표시됨.
 
 사용자가 hook 승인 시 출처를 확인하여 신뢰성 판단 가능.
 ```
@@ -1265,7 +1265,7 @@ bkit의 모든 hooks는 `plugin` 출처로 표시됨.
 
 ### 5.2 ENH-129: tmux 알림 통과 문서화
 
-#### 5.2.1 bkit-system 문서 추가
+#### 5.2.1 rossi-system 문서 추가
 
 ```markdown
 ## tmux 알림 통과 (CC v2.1.78+)
@@ -1326,7 +1326,7 @@ TeammateIdle (1)
 
 | | v1.6.1 | v1.6.2 |
 |---|--------|--------|
-| bkit 사용 | 10 | 12 |
+| ROSSI 사용 | 10 | 12 |
 | CC 공식 total | 22 | 22 |
 | 사용률 | 45.5% | 54.5% |
 | 미사용 (문서화) | Elicitation, ElicitationResult | 동일 |
@@ -1341,7 +1341,7 @@ TeammateIdle (1)
 **Before**:
 ```json
 {
-  "name": "bkit",
+  "name": "ROSSI",
   "version": "1.6.1",
   ...
 }
@@ -1350,7 +1350,7 @@ TeammateIdle (1)
 **After**:
 ```json
 {
-  "name": "bkit",
+  "name": "ROSSI",
   "version": "1.6.2",
   ...
 }
@@ -1444,7 +1444,7 @@ grep -l "^effort:" agents/*.md | wc -l
 # Expected: 29
 
 # PLUGIN_DATA 백업 테스트
-CLAUDE_PLUGIN_DATA=/tmp/bkit-test node -e "
+CLAUDE_PLUGIN_DATA=/tmp/ROSSI-test node -e "
   const { backupToPluginData } = require('./lib/core/paths');
   console.log(JSON.stringify(backupToPluginData()));
 "
@@ -1475,8 +1475,8 @@ Phase 4: Session Integration
 └── 4.2 plugin.json (version bump)
 
 Phase 5: Documentation
-├── 5.1 bkit-system/philosophy/context-engineering.md (ENH-122, 126, 127)
-├── 5.2 bkit-system/components/hooks/_hooks-overview.md (ENH-128)
+├── 5.1 rossi-system/philosophy/context-engineering.md (ENH-122, 126, 127)
+├── 5.2 rossi-system/components/hooks/_hooks-overview.md (ENH-128)
 ├── 5.3 skills/enterprise/SKILL.md (ENH-121, 123, 125)
 └── 5.4 기타 문서 (ENH-129, 130)
 
@@ -1494,7 +1494,7 @@ Phase 6: Verification
 | effort: high 비용 증가 | Low | Medium | opus agent 7개에만 적용. 전체 비용 대비 미미 |
 | PostCompact hook 미발화 (CC 버전 이슈) | Low | Low | PreCompact 기존 스냅샷으로 충분한 보호. PostCompact는 추가 안전망 |
 | StopFailure hook 미발화 (CC 버전 이슈) | Low | Low | 기존 동작에 영향 없음. StopFailure는 보너스 기능 |
-| maxTurns 제한으로 복잡한 작업 중단 | Medium | Low | cto-lead: 50, opus: 30으로 충분. 부족 시 bkit.config.json 오버라이드 검토 |
+| maxTurns 제한으로 복잡한 작업 중단 | Medium | Low | cto-lead: 50, opus: 30으로 충분. 부족 시 rossi.config.json 오버라이드 검토 |
 | Agent frontmatter 필드 순서 변경 | None | Low | CC는 YAML frontmatter 필드 순서에 의존하지 않음 |
 
 ---

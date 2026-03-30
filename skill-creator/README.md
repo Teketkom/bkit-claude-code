@@ -1,10 +1,10 @@
-# bkit Skill Creator
+# ROSSI Skill Creator
 
 > v1.6.1 ENH-97: Integrated skill creation and testing workflow
 
 ## Overview
 
-Skill Creator provides scaffolding tools for creating new bkit skills with proper classification, eval definitions, and frontmatter configuration.
+Skill Creator provides scaffolding tools for creating new ROSSI skills with proper classification, eval definitions, and frontmatter configuration.
 
 ## Usage
 

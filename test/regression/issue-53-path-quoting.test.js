@@ -5,8 +5,8 @@
  * Verifies that hook commands handle paths with parentheses, spaces, and
  * other special characters that could cause bash syntax errors.
  *
- * @version bkit v2.0.4
- * @see https://github.com/popup-studio-ai/bkit-claude-code/issues/53
+ * @version ROSSI v2.0.4
+ * @see https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53
  */
 
 const fs = require('fs');
@@ -56,11 +56,11 @@ console.log('--- Special Character Path Simulation ---');
 
 // Simulate bash -c with parentheses in path
 const testPaths = [
-  { name: 'parentheses (Korean)', path: '/c/Users/홍길동(HongGildong)/.claude/plugins/bkit' },
-  { name: 'spaces', path: '/c/Users/John Doe/.claude/plugins/bkit' },
-  { name: 'ampersand', path: '/c/Users/Tom&Jerry/.claude/plugins/bkit' },
-  { name: 'brackets', path: '/c/Users/user[1]/.claude/plugins/bkit' },
-  { name: 'exclamation', path: '/c/Users/user!name/.claude/plugins/bkit' },
+  { name: 'parentheses (Korean)', path: '/c/Users/홍길동(HongGildong)/.claude/plugins/ROSSI' },
+  { name: 'spaces', path: '/c/Users/John Doe/.claude/plugins/ROSSI' },
+  { name: 'ampersand', path: '/c/Users/Tom&Jerry/.claude/plugins/ROSSI' },
+  { name: 'brackets', path: '/c/Users/user[1]/.claude/plugins/ROSSI' },
+  { name: 'exclamation', path: '/c/Users/user!name/.claude/plugins/ROSSI' },
 ];
 
 testPaths.forEach((tp, idx) => {
@@ -114,11 +114,11 @@ console.log('\n--- Version Consistency ---');
 
 const pluginJson = JSON.parse(fs.readFileSync(
   path.join(BASE_DIR, '.claude-plugin', 'plugin.json'), 'utf-8'));
-const bkitConfig = JSON.parse(fs.readFileSync(
-  path.join(BASE_DIR, 'bkit.config.json'), 'utf-8'));
+const rossiConfig = JSON.parse(fs.readFileSync(
+  path.join(BASE_DIR, 'rossi.config.json'), 'utf-8'));
 
-assert('I53-008', pluginJson.version === bkitConfig.version,
-  `plugin.json (${pluginJson.version}) matches bkit.config.json (${bkitConfig.version})`);
+assert('I53-008', pluginJson.version === rossiConfig.version,
+  `plugin.json (${pluginJson.version}) matches rossi.config.json (${rossiConfig.version})`);
 
 // I53-009: hooks.json description matches version
 assert('I53-009', hooksConfig.description.includes(pluginJson.version),

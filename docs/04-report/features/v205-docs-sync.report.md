@@ -1,7 +1,7 @@
 # v2.0.5 문서 동기화 완료 보고서
 
 > **Feature**: v205-docs-sync
-> **Project**: bkit-claude-code
+> **Project**: rossi-cto-agent-kit
 > **Version**: v2.0.5
 > **Author**: Claude Opus 4.6
 > **Date**: 2026-03-23
@@ -45,11 +45,11 @@
 | 파일 | 변경 위치 | 변경 내용 |
 |------|----------|----------|
 | `.claude-plugin/plugin.json` | version 필드 | `"2.0.4"` → `"2.0.5"` |
-| `bkit.config.json` | version 필드 | `"2.0.4"` → `"2.0.5"` |
+| `rossi.config.json` | version 필드 | `"2.0.4"` → `"2.0.5"` |
 | `hooks/hooks.json` | description 필드 | `v2.0.4` → `v2.0.5` |
 | `hooks/session-start.js` | systemMessage | `v2.0.4 activated` → `v2.0.5 activated` |
 | `hooks/startup/session-context.js` | additionalContext | `v2.0.4 - Session Startup` → `v2.0.5` |
-| `lib/audit/audit-logger.js` | BKIT_VERSION | `'2.0.4'` → `'2.0.5'` |
+| `lib/audit/audit-logger.js` | ROSSI_VERSION | `'2.0.4'` → `'2.0.5'` |
 | `README.md` | Version badge | `2.0.4` → `2.0.5` |
 | `test/helpers/report.js` | report header | `v2.0.4` → `v2.0.5` |
 | `test/run-all.js` | banner + header | `v2.0.4` → `v2.0.5` |
@@ -123,11 +123,11 @@ grep -r "2\.0\.4" --include="*.{js,json,md}" → 0 matches
 1. `.claude-plugin/plugin.json` — version bump
 2. `CHANGELOG.md` — v2.0.5 section
 3. `README.md` — version badge
-4. `bkit.config.json` — version bump
+4. `rossi.config.json` — version bump
 5. `hooks/hooks.json` — description version
 6. `hooks/session-start.js` — systemMessage version
 7. `hooks/startup/session-context.js` — additionalContext version
-8. `lib/audit/audit-logger.js` — BKIT_VERSION
+8. `lib/audit/audit-logger.js` — ROSSI_VERSION
 9. `lib/pdca/index.js` — session-guide exports
 10. `lib/pdca/status.js` — addPdcaHistory defense
 11. `test/helpers/report.js` — report header
@@ -136,7 +136,7 @@ grep -r "2\.0\.4" --include="*.{js,json,md}" → 0 matches
 14. `test/integration/export-compat.test.js` — export range
 15. `test/integration/v200-wiring.test.js` — config version
 16. `test/security/config-permissions.test.js` — config version
-17. `docs/04-report/features/bkit-v200-test.report.md` — auto-generated
+17. `docs/04-report/features/rossi-v200-test.report.md` — auto-generated
 
 ---
 

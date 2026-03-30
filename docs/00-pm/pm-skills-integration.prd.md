@@ -1,4 +1,4 @@
-# bkit × pm-skills Integration — Product Requirements Document
+# ROSSI × pm-skills Integration — Product Requirements Document
 
 > **Date**: 2026-03-21
 > **Author**: pm-skills frameworks applied
@@ -11,8 +11,8 @@
 
 | Perspective | Content |
 |-------------|---------|
-| **Problem** | AI 코딩 도구들이 "코드 생성"에만 집중하고 "무엇을 왜 만들지"에 대한 제품 의사결정은 사용자에게 떠넘김. bkit은 PM 분석을 시도하지만 9개 프레임워크로 피상적 수준 |
-| **Solution** | pm-skills의 65개 검증된 PM 프레임워크를 bkit의 PDCA 에이전트 시스템에 통합하여, AI가 제품 전략→실행→검증까지 일관된 PM 지원 제공 |
+| **Problem** | AI 코딩 도구들이 "코드 생성"에만 집중하고 "무엇을 왜 만들지"에 대한 제품 의사결정은 사용자에게 떠넘김. ROSSI은 PM 분석을 시도하지만 9개 프레임워크로 피상적 수준 |
+| **Solution** | pm-skills의 65개 검증된 PM 프레임워크를 ROSSI의 PDCA 에이전트 시스템에 통합하여, AI가 제품 전략→실행→검증까지 일관된 PM 지원 제공 |
 | **Target User** | 1인 개발자, 소규모 스타트업 PM, 사이드 프로젝트 빌더 — PM 전문성 없이 제품을 만드는 사람들 |
 | **Core Value** | "코드를 짜기 전에 생각하게 만드는 AI" — 제품 실패율을 줄이는 구조화된 의사결정 시스템 |
 
@@ -22,9 +22,9 @@
 
 ## 1.1 Discovery Context
 
-- **Product Stage**: Existing (bkit v1.6.2, 이미 PM Agent Team 운영 중)
+- **Product Stage**: Existing (ROSSI v1.6.2, 이미 PM Agent Team 운영 중)
 - **Discovery Question**: pm-skills를 어떻게 통합해야 사용자의 제품 의사결정 품질이 가장 크게 향상되는가?
-- **Prior Knowledge**: bkit 9개 프레임워크 vs pm-skills 65개 스킬, MIT 라이선스 확인 완료
+- **Prior Knowledge**: ROSSI 9개 프레임워크 vs pm-skills 65개 스킬, MIT 라이선스 확인 완료
 - **Decision to Inform**: 통합 범위, 우선순위, 아키텍처 결정
 
 ## 1.2 Brainstormed Ideas (PM × Designer × Engineer)
@@ -37,7 +37,7 @@
 | PM-2 | **Pre-mortem 기본 탑재** — 모든 PRD에 "12개월 후 실패 시나리오" 자동 생성 | PRD 품질의 가장 큰 갭. 성공만 가정하는 PRD는 위험 | High |
 | PM-3 | **User Stories + Test Scenarios 자동 도출** — PRD→스토리→테스트케이스 체인 | Plan→Do 전환 시 가장 많이 누락되는 부분. PDCA Check에 직결 | High |
 | PM-4 | **Market Scan 원클릭** — SWOT+PESTLE+Porter's 한번에 실행 | B2B/Enterprise 프로젝트에서 시장 환경 분석 수요 높음 | Medium |
-| PM-5 | **Pricing Strategy 모듈** — 수익화 전략 가이드 | SaaS MVP 빌더들의 핵심 고민이지만 bkit에 전혀 없음 | Medium |
+| PM-5 | **Pricing Strategy 모듈** — 수익화 전략 가이드 | SaaS MVP 빌더들의 핵심 고민이지만 ROSSI에 전혀 없음 | Medium |
 
 ### Designer Perspective (사용자 경험)
 
@@ -55,7 +55,7 @@
 |---|------|-----------|--------|
 | EN-1 | **에이전트 프롬프트 직접 확장** — 기존 .md 파일에 프레임워크 지식 추가 | 가장 단순, 배포 즉시 반영, 사이드 이펙트 최소 | Very High |
 | EN-2 | **컨텍스트 기반 조건부 로딩** — "When to run" 가이드로 토큰 절약 | 항상 8개 프레임워크 실행하면 토큰 낭비. 조건부 실행이 핵심 | High |
-| EN-3 | **pm-skills를 별도 CC 플러그인으로 설치** — bkit과 독립적으로 운영 | 유지보수 분리, 하지만 PDCA 연결이 끊어짐 | Low |
+| EN-3 | **pm-skills를 별도 CC 플러그인으로 설치** — ROSSI과 독립적으로 운영 | 유지보수 분리, 하지만 PDCA 연결이 끊어짐 | Low |
 | EN-4 | **Knowledge file 분리** — 프레임워크 상세를 별도 .md로 분리하고 필요 시 Read | 프롬프트 크기 관리에 유리하지만 에이전트 턴 소모 | Medium |
 | EN-5 | **Test Scenarios → qa-strategist 자동 연결** — PRD 테스트케이스를 PDCA Check에 주입 | PDCA 사이클 완결성. PRD에서 뽑은 시나리오로 검증 | High |
 
@@ -101,7 +101,7 @@
 | # | Assumption | What Could Go Wrong | Confidence | Test Method |
 |---|-----------|-------------------|:----------:|------------|
 | B-1 | MIT→Apache-2.0 라이선스 통합에 법적 문제가 없다 | MIT는 Apache-2.0에 포함 가능하지만, Attribution 누락 시 문제 | **High** | 법률 검토 (이미 확인됨) |
-| B-2 | pm-skills 원본이 업데이트되면 bkit도 따라가야 한다 | 의존성 관리 부담. pm-skills가 Breaking Change를 할 수 있음 | **Medium** | 프레임워크 지식은 스냅샷, 원본 의존 없음 |
+| B-2 | pm-skills 원본이 업데이트되면 ROSSI도 따라가야 한다 | 의존성 관리 부담. pm-skills가 Breaking Change를 할 수 있음 | **Medium** | 프레임워크 지식은 스냅샷, 원본 의존 없음 |
 
 ## 1.4 Assumption Prioritization (Impact × Risk Matrix)
 
@@ -159,7 +159,7 @@ Week 3: 결과 분석 → Go/No-Go 결정
 | S-3 | **pm-skills 이미 부분 적용** | Attribution 포함, OST/VP/Lean Canvas/Persona 등 핵심 뼈대 작동 중 |
 | S-4 | **MIT 라이선스 확보** | pm-skills 전체를 자유롭게 통합·수정·배포 가능 |
 | S-5 | **1M context window** | Opus 4.6 1M context로 확장된 에이전트 프롬프트 충분히 수용 |
-| S-6 | **다국어 지원** | 8개 언어 자동 감지, pm-skills는 영어 전용 → bkit이 글로벌 접근성에서 우위 |
+| S-6 | **다국어 지원** | 8개 언어 자동 감지, pm-skills는 영어 전용 → ROSSI이 글로벌 접근성에서 우위 |
 
 ### Weaknesses (Internal, Negative)
 
@@ -180,7 +180,7 @@ Week 3: 결과 분석 → Go/No-Go 결정
 | O-2 | **1인 창업자/소규모 팀 폭발적 증가** | No-code, AI 기반 개발로 비개발자의 제품 제작 증가 |
 | O-3 | **pm-skills가 검증한 프레임워크** | Pawel Huryn의 Product Compass 커뮤니티 10만+ 구독자가 검증 |
 | O-4 | **경쟁 도구의 PM 기능 빈약** | Cursor, Windsurf, Copilot 등 코드 생성에만 집중, PM 분석 없음 |
-| O-5 | **PDCA + PM의 유일한 조합** | Plan→Do→Check→Act에 PM Discovery를 연결한 도구는 bkit이 유일 |
+| O-5 | **PDCA + PM의 유일한 조합** | Plan→Do→Check→Act에 PM Discovery를 연결한 도구는 ROSSI이 유일 |
 
 ### Threats (External, Negative)
 
@@ -198,7 +198,7 @@ Week 3: 결과 분석 → Go/No-Go 결정
 |----------|---------|
 | **SO (강점×기회)** | S-2 PDCA 통합 + O-5 유일한 조합 → "코딩 전 생각하게 만드는 유일한 AI 도구"로 포지셔닝 |
 | **WO (약점×기회)** | W-1 Discovery 부족 + O-3 pm-skills 검증됨 → Discovery Chain 통합이 최우선 |
-| **ST (강점×위협)** | S-6 다국어 + T-2 pm-skills 독립 인기 → 다국어 PM 분석은 bkit만 가능한 차별점 |
+| **ST (강점×위협)** | S-6 다국어 + T-2 pm-skills 독립 인기 → 다국어 PM 분석은 ROSSI만 가능한 차별점 |
 | **WT (약점×위협)** | W-4 인터랙티브 부재 + T-1 PM 건너뜀 → **체크포인트 도입이 핵심** — 강제가 아닌 유도 |
 
 ## 2.2 Porter's Five Forces
@@ -217,9 +217,9 @@ Week 3: 결과 분석 → Go/No-Go 결정
 
 | Strategy | Opportunity | Risk | Priority |
 |----------|-----------|:----:|:--------:|
-| **Market Penetration** | 기존 bkit 사용자에게 PM 기능 인지도 향상. `/pdca pm` 사용률 15%→50% | Low | **1순위** |
-| **Product Development** | pm-skills 65개 → bkit 43개 프레임워크 확장 | Low-Med | **2순위** |
-| **Market Development** | 비개발자(PM, 디자이너)를 bkit 사용자로 확장 | Medium | 3순위 |
+| **Market Penetration** | 기존 ROSSI 사용자에게 PM 기능 인지도 향상. `/pdca pm` 사용률 15%→50% | Low | **1순위** |
+| **Product Development** | pm-skills 65개 → ROSSI 43개 프레임워크 확장 | Low-Med | **2순위** |
+| **Market Development** | 비개발자(PM, 디자이너)를 ROSSI 사용자로 확장 | Medium | 3순위 |
 | **Diversification** | Standalone PM 분석 도구 (CC 외부) | High | Out of Scope |
 
 ## 2.4 Cross-Framework Synthesis
@@ -251,7 +251,7 @@ Week 3: 결과 분석 → Go/No-Go 결정
 ### Value Proposition Statement
 
 > **For** 1인 개발자와 소규모 팀 **who** 코딩 전에 제품 방향을 검증하고 싶지만 PM 전문성이 없는,
-> **bkit PM Agent Team** is a **AI PM 컨설턴트** that **65개 검증된 PM 프레임워크로 5단계 체계적 제품 분석을 자동 실행하고 PDCA 사이클에 직결시킨다**.
+> **ROSSI PM Agent Team** is a **AI PM 컨설턴트** that **65개 검증된 PM 프레임워크로 5단계 체계적 제품 분석을 자동 실행하고 PDCA 사이클에 직결시킨다**.
 > Unlike **ChatGPT나 독립 PM 도구**, we **코드 생성과 PM 분석을 하나의 워크플로우로 연결하여 "생각→만들기→검증" 전체를 지원한다**.
 
 ---
@@ -299,7 +299,7 @@ Week 3: 결과 분석 → Go/No-Go 결정
 
 | Moat Type | Status | Strength |
 |-----------|:------:|:--------:|
-| **PDCA 통합** | Active | **Strong** — PM→Plan→Do→Check 연결은 bkit만 가능 |
+| **PDCA 통합** | Active | **Strong** — PM→Plan→Do→Check 연결은 ROSSI만 가능 |
 | **다국어** | Active | **Medium** — 8개 언어 자동 감지, pm-skills는 영어만 |
 | **Agent Orchestration** | Active | **Strong** — pm-lead가 4개 에이전트 병렬 조율, 단순 스킬 체인과 다름 |
 | **프레임워크 깊이** | Building | **Growing** — 9→43개, 지속 확장 가능 |
@@ -311,7 +311,7 @@ Week 3: 결과 분석 → Go/No-Go 결정
 |---|------|:------:|-----------|
 | 1 | 사용자가 PM 분석을 건너뜀 (T-1, V-1) | Very High | 인터랙티브 체크포인트 + "건너뛰기 가능하지만 권장" 패턴 |
 | 2 | 프레임워크 과부하 (V-2, T-4) | High | 조건부 실행 (기본 3개, 전체 8개는 선택) + Executive Summary |
-| 3 | pm-skills 독립 인기에 밀림 (T-2) | Medium | PDCA 통합이라는 bkit만의 가치에 집중 |
+| 3 | pm-skills 독립 인기에 밀림 (T-2) | Medium | PDCA 통합이라는 ROSSI만의 가치에 집중 |
 
 ---
 

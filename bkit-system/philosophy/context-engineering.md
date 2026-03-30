@@ -1,6 +1,6 @@
 # Context Engineering Principles
 
-> Optimal token curation for LLM inference — bkit v2.0.0 architecture
+> Optimal token curation for LLM inference — ROSSI v2.0.0 architecture
 >
 > **v2.0.0**: AI Native Development OS — State machine, workflow engine, controllable AI,
 > audit system, quality gates, CLI dashboard, MCP servers, 88 lib modules, ~620+ exports
@@ -16,7 +16,7 @@ Context Engineering:
    to provide LLMs with optimal context for inference"
 ```
 
-bkit is a **practical implementation of Context Engineering**, providing a systematic context management system for Claude Code with 37 skills, 32 agents, 18 hook events, and 2 MCP servers.
+ROSSI is a **practical implementation of Context Engineering**, providing a systematic context management system for Claude Code with 37 skills, 32 agents, 18 hook events, and 2 MCP servers.
 
 ---
 
@@ -24,13 +24,13 @@ bkit is a **practical implementation of Context Engineering**, providing a syste
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                    bkit v2.0.0 Context Engineering Architecture              │
+│                    ROSSI v2.0.0 Context Engineering Architecture              │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │  ┌────────────────────────────────────────────────────────────────────────┐  │
 │  │                 Multi-Level Context Hierarchy (FR-01)                  │  │
 │  │  L1: Plugin Policy ──→ L2: User Config ──→ L3: Project ──→ L4: Session│  │
-│  │     (bkit defaults)     (~/.claude/bkit/)   (.bkit/state/)  (runtime) │  │
+│  │     (ROSSI defaults)     (~/.claude/ROSSI/)   (.rossi/state/)  (runtime) │  │
 │  └────────────────────────────────────────────────────────────────────────┘  │
 │                                     │                                        │
 │                                     ▼                                        │
@@ -73,9 +73,9 @@ bkit is a **practical implementation of Context Engineering**, providing a syste
 │  │ Safety Layer     │  │ MCP Servers      │  │ Agent Teams             │   │
 │  │ (NEW v2.0.0)     │  │ (NEW v2.0.0)     │  │ (Enhanced v2.0.0)      │   │
 │  │                  │  │                  │  │                          │   │
-│  │ • Destructive    │  │ • bkit-pdca      │  │ • 32 agents             │   │
+│  │ • Destructive    │  │ • rossi-pdca      │  │ • 32 agents             │   │
 │  │   detector (8)   │  │   (10 tools)     │  │ • effort/maxTurns      │   │
-│  │ • Blast radius   │  │ • bkit-analysis  │  │ • disallowedTools      │   │
+│  │ • Blast radius   │  │ • rossi-analysis  │  │ • disallowedTools      │   │
 │  │ • Scope limiter  │  │   (6 tools)      │  │ • 3-tier security      │   │
 │  │ • Checkpoint/    │  │                  │  │                          │   │
 │  │   rollback       │  │                  │  │                          │   │
@@ -129,9 +129,9 @@ bkit is a **practical implementation of Context Engineering**, providing a syste
 │                                                                         │
 │  ┌─────────────┐  ┌─────────────┐  ┌──────────────┐  ┌─────────────┐  │
 │  │ Core (4)    │  │ Level (3)   │  │ Pipeline (10)│  │ PDCA (5)    │  │
-│  │ bkit-rules  │  │ starter     │  │ phase-1~9    │  │ pdca        │  │
-│  │ bkit-templ  │  │ dynamic     │  │ development  │  │ pdca-batch  │  │
-│  │ bkit (help) │  │ enterprise  │  │ -pipeline    │  │ plan-plus   │  │
+│  │ rossi-rules  │  │ starter     │  │ phase-1~9    │  │ pdca        │  │
+│  │ ROSSI-templ  │  │ dynamic     │  │ development  │  │ pdca-batch  │  │
+│  │ ROSSI (help) │  │ enterprise  │  │ -pipeline    │  │ plan-plus   │  │
 │  │ btw         │  │             │  │              │  │ rollback    │  │
 │  │             │  │             │  │              │  │ audit       │  │
 │  └─────────────┘  └─────────────┘  └──────────────┘  └─────────────┘  │
@@ -156,7 +156,7 @@ bkit is a **practical implementation of Context Engineering**, providing a syste
 
 | Model | Count | Agents | Characteristics |
 |-------|:-----:|--------|-----------------|
-| **opus** | 11 | cto-lead, code-analyzer, design-validator, gap-detector, enterprise-expert, infra-architect, security-architect, pm-lead, bkit-impact-analyst, cc-version-researcher, self-healing | Strategic leadership, complex analysis, 1M context |
+| **opus** | 11 | cto-lead, code-analyzer, design-validator, gap-detector, enterprise-expert, infra-architect, security-architect, pm-lead, rossi-impact-analyst, cc-version-researcher, self-healing | Strategic leadership, complex analysis, 1M context |
 | **sonnet** | 19 | bkend-expert, pdca-iterator, pipeline-guide, starter-guide, product-manager, frontend-architect, qa-strategist, pm-discovery, pm-strategy, pm-research, pm-prd, pm-lead-skill-patch, skill-needs-extractor, 6 pdca-eval-* agents | Execution, guidance, iteration |
 | **haiku** | 2 | qa-monitor, report-generator | Fast monitoring, document generation |
 
@@ -221,8 +221,8 @@ External tool integration via Model Context Protocol:
 
 | Server | Tools | Purpose |
 |--------|:-----:|---------|
-| **bkit-pdca** | 10 | bkit_pdca_status, bkit_pdca_history, bkit_feature_list, bkit_feature_detail, bkit_plan_read, bkit_design_read, bkit_analysis_read, bkit_report_read, bkit_metrics_get, bkit_metrics_history |
-| **bkit-analysis** | 6 | bkit_code_quality, bkit_gap_analysis, bkit_regression_rules, bkit_checkpoint_list, bkit_checkpoint_detail, bkit_audit_search |
+| **rossi-pdca** | 10 | rossi_pdca_status, rossi_pdca_history, rossi_feature_list, rossi_feature_detail, rossi_plan_read, rossi_design_read, rossi_analysis_read, rossi_report_read, rossi_metrics_get, rossi_metrics_history |
+| **rossi-analysis** | 6 | rossi_code_quality, rossi_gap_analysis, rossi_regression_rules, rossi_checkpoint_list, rossi_checkpoint_detail, rossi_audit_search |
 
 ---
 
@@ -230,15 +230,15 @@ External tool integration via Model Context Protocol:
 
 | Category | Path | Format | Purpose |
 |----------|------|--------|---------|
-| PDCA Status | `.bkit/state/pdca-status.json` | JSON (v3.0) | Feature states, phase tracking |
-| Trust Profile | `.bkit/state/trust-profile.json` | JSON | Trust score components, level history |
-| Memory Store | `.bkit/state/memory.json` | JSON | Cross-session bkit memory |
-| Control State | `.bkit/runtime/control-state.json` | JSON | Automation level, session stats |
-| Agent State | `.bkit/runtime/agent-state.json` | JSON | Agent Teams runtime state |
-| Agent Events | `.bkit/runtime/agent-events.jsonl` | JSONL | Agent team event log |
-| Audit Logs | `.bkit/audit/YYYY-MM-DD.jsonl` | JSONL | Daily audit trail |
-| Workflows | `.bkit/workflows/*.workflow.yaml` | YAML | PDCA workflow presets |
-| Config | `bkit.config.json` | JSON | Project-level configuration |
+| PDCA Status | `.rossi/state/pdca-status.json` | JSON (v3.0) | Feature states, phase tracking |
+| Trust Profile | `.rossi/state/trust-profile.json` | JSON | Trust score components, level history |
+| Memory Store | `.rossi/state/memory.json` | JSON | Cross-session ROSSI memory |
+| Control State | `.rossi/runtime/control-state.json` | JSON | Automation level, session stats |
+| Agent State | `.rossi/runtime/agent-state.json` | JSON | Agent Teams runtime state |
+| Agent Events | `.rossi/runtime/agent-events.jsonl` | JSONL | Agent team event log |
+| Audit Logs | `.rossi/audit/YYYY-MM-DD.jsonl` | JSONL | Daily audit trail |
+| Workflows | `.rossi/workflows/*.workflow.yaml` | YAML | PDCA workflow presets |
+| Config | `rossi.config.json` | JSON | Project-level configuration |
 | Plugin | `.claude-plugin/plugin.json` | JSON | Plugin manifest |
 
 ---
@@ -273,8 +273,8 @@ External tool integration via Model Context Protocol:
 | System | Path | Format |
 |--------|------|--------|
 | CC auto-memory | `~/.claude/projects/{path}/memory/MEMORY.md` | Markdown |
-| bkit memory-store | `.bkit/state/memory.json` | JSON |
-| bkit agent-memory | `.claude/agent-memory/{agent}/MEMORY.md` | Markdown |
+| ROSSI memory-store | `.rossi/state/memory.json` | JSON |
+| ROSSI agent-memory | `.claude/agent-memory/{agent}/MEMORY.md` | Markdown |
 | PLUGIN_DATA backup | `${CLAUDE_PLUGIN_DATA}/backup/` | JSON |
 
 ---
@@ -309,7 +309,7 @@ based on **permission rule syntax** — the same patterns used in `allowedTools`
 }
 ```
 
-**bkit current state**: bkit hooks do NOT use the `if` field.
+**ROSSI current state**: ROSSI hooks do NOT use the `if` field.
 - `unified-bash-pre.js`: handles all Bash commands internally with pattern branching
   (destructive detector, scope limiter, deployment safety, etc.)
 - Applying `if` would skip other important checks within the unified handler
@@ -328,7 +328,7 @@ CC v2.1.85 introduced `managed-settings.json` org policy support that can
 block specific plugin installation/activation. In Enterprise environments:
 
 - Org admins may block marketplace plugins via policy
-- bkit installation may require org admin approval in managed environments
+- ROSSI installation may require org admin approval in managed environments
 - Check with your organization's CC admin if plugin installation is blocked
 
 ---

@@ -2,7 +2,7 @@
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v2.0.5 (분석 시점)
 > **Author**: CC Version Analysis Workflow (Deep Re-analysis)
 > **Completion Date**: 2026-03-23
@@ -66,26 +66,26 @@
 
 #### 3.1 시스템 프롬프트 누락 (HIGH 4건)
 
-| ID | Version | 변경 내용 | bkit 영향 |
+| ID | Version | 변경 내용 | ROSSI 영향 |
 |----|---------|----------|-----------|
-| SP-78-5 | v2.1.78 | Auto mode rule #6 — 공개 서비스(gists, Pastebin 등) 무단 게시 금지 | bkit auto mode L3-L4에서 보안 정책 강화 |
-| SP-79-7 | v2.1.79 | Memory "do not save" 룰 강화 — 놀라운/비자명한 것만 저장 | bkit auto-memory 저장 정책에 직접 영향 |
+| SP-78-5 | v2.1.78 | Auto mode rule #6 — 공개 서비스(gists, Pastebin 등) 무단 게시 금지 | ROSSI auto mode L3-L4에서 보안 정책 강화 |
+| SP-79-7 | v2.1.79 | Memory "do not save" 룰 강화 — 놀라운/비자명한 것만 저장 | ROSSI auto-memory 저장 정책에 직접 영향 |
 | SP-81-6 | v2.1.81 | Security monitor — "silence is not consent" 원칙 | Automation Level 상위에서 보안 검증 강화 |
 | SP-81-7 | v2.1.81 | Security monitor — 내부 파일 기본 민감 분류 | scripts/, hooks/ 업로드 시 민감 처리 |
 
 #### 3.2 CLI 변경 누락 (HIGH 2건)
 
-| ID | Version | 변경 내용 | bkit 영향 |
+| ID | Version | 변경 내용 | ROSSI 영향 |
 |----|---------|----------|-----------|
-| C-78-5 | v2.1.78 | .git/.claude 보호 디렉토리 bypassPermissions 보안 수정 | bkit 플러그인 디렉토리 보안 강화 |
+| C-78-5 | v2.1.78 | .git/.claude 보호 디렉토리 bypassPermissions 보안 수정 | ROSSI 플러그인 디렉토리 보안 강화 |
 | C-78-8 | v2.1.78 | Silent sandbox disable 보안 경고 추가 | 보안 정책 인식 필요 |
 
 #### 3.3 신규 GitHub Issues (HIGH 2건)
 
-| Issue | 제목 | bkit 영향 |
+| Issue | 제목 | ROSSI 영향 |
 |-------|------|-----------|
 | **#37520** | 병렬 agent OAuth 401 회귀 | **CTO Team 직접 영향** — 3+ 병렬 agent spawn 시 인증 실패 |
-| **#37745** | PreToolUse hook 시 --dangerously-skip-permissions 리셋 | bkit PreToolUse hook 사용자 잠재적 영향 |
+| **#37745** | PreToolUse hook 시 --dangerously-skip-permissions 리셋 | ROSSI PreToolUse hook 사용자 잠재적 영향 |
 
 ### 4. 시스템 프롬프트 변경 전체 목록 (28건)
 
@@ -139,7 +139,7 @@
 
 ### 5. 신규 GitHub Issues (v2.1.81 이후)
 
-| Issue | 심각도 | bkit 영향 | 상태 |
+| Issue | 심각도 | ROSSI 영향 | 상태 |
 |-------|--------|-----------|------|
 | #37520 | **HIGH** | CTO Team 병렬 agent OAuth 401 | OPEN |
 | #37745 | **HIGH** | PreToolUse hook + --dangerously-skip-permissions 리셋 | OPEN |
@@ -271,7 +271,7 @@
 | **#37745** | **PreToolUse + skip-permissions 리셋** | **OPEN** | **HIGH** | **신규** |
 | **#37730** | **Subagents permission 미상속** | **OPEN** | **MEDIUM** | **신규** |
 | **#37729** | **SessionStart env /clear 미정리** | **OPEN** | **MEDIUM** | **신규** |
-| #37746 | Vertex AI hooks 호환 | OPEN | MEDIUM | 신규 (bkit 미영향) |
+| #37746 | Vertex AI hooks 호환 | OPEN | MEDIUM | 신규 (ROSSI 미영향) |
 | #37747 | MCP OAuth redirect 회귀 | OPEN | MEDIUM | 신규 (간접) |
 
 ---
@@ -281,7 +281,7 @@
 ```
 v2.1.34 ─────────────────────────────────────────────── v2.1.81
           47 consecutive compatible releases
-          0 breaking changes (bkit 기준)
+          0 breaking changes (ROSSI 기준)
           ~779+ total changes analyzed (정정: ~792+)
           +29,871 sys prompt tokens (v2.1.73~v2.1.81)
           Zero-downtime upgrade guaranteed

@@ -267,7 +267,7 @@ test('SEC-RT-015', 'Enterprise has security role in design and check phases', ()
 // SEC-RT-016: No team strategy exceeds config maxTeammates
 test('SEC-RT-016', 'Team strategies respect maxTeammates config', () => {
   const fs = require('fs');
-  const configPath = path.resolve(__dirname, '../../bkit.config.json');
+  const configPath = path.resolve(__dirname, '../../rossi.config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const maxFromConfig = config.team.maxTeammates; // 5
   // Enterprise strategy has 6 roles but config.team.maxTeammates is 5
@@ -330,7 +330,7 @@ console.log('\n=== Runtime Security: File Ownership Boundaries ===');
 // SEC-RT-020: PDCA doc paths stay within docs/ directory
 test('SEC-RT-020', 'PDCA doc paths are confined to docs/ directory', () => {
   const fs = require('fs');
-  const configPath = path.resolve(__dirname, '../../bkit.config.json');
+  const configPath = path.resolve(__dirname, '../../rossi.config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const allPaths = [
     ...config.pdca.docPaths.plan,

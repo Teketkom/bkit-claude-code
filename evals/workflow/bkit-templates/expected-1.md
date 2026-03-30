@@ -1,7 +1,7 @@
-# bkit-templates Expected Output - Process Steps
+# rossi-templates Expected Output - Process Steps
 
 ## Step 1: Template Selection
-1. Detect the keyword "plan document" to trigger the bkit-templates skill
+1. Detect the keyword "plan document" to trigger the rossi-templates skill
 2. Identify the document type as Plan based on user request
 3. Select plan.template.md from ${CLAUDE_PLUGIN_ROOT}/templates/
 4. Load the template content for Plan phase structure

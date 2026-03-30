@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * bkit Vibecoding Kit - SessionStart Hook (v2.0.0)
+ * ROSSI CTO Agent Kit - SessionStart Hook (v2.0.0)
  *
  * Thin orchestrator that delegates to startup modules:
- *   1. migration   - Legacy path migration (docs/ -> .bkit/)
+ *   1. migration   - Legacy path migration (docs/ -> .rossi/)
  *   2. restore     - PLUGIN_DATA backup restoration
  *   3. contextInit - Context Hierarchy, Memory Store, Import Resolver, Fork cleanup, ensureBkitDirs
  *   4. onboarding  - Onboarding message generation, env vars, trigger table
@@ -14,13 +14,13 @@
  *   9. staleDetect - v2.0.0 Stale feature detection (lifecycle.js)
  */
 
-const { BKIT_PLATFORM } = require('../lib/core/platform');
+const { ROSSI_PLATFORM } = require('../lib/core/platform');
 const { debugLog } = require('../lib/core/debug');
 
 // Log session start
 debugLog('SessionStart', 'Hook executed', {
   cwd: process.cwd(),
-  platform: BKIT_PLATFORM
+  platform: ROSSI_PLATFORM
 });
 
 // --- 1. Migration: Legacy path migration ---
@@ -92,7 +92,7 @@ try {
     let agentState = null;
     try {
       const fs = require('fs');
-      const agentStatePath = require('path').resolve(process.cwd(), '.bkit/runtime/agent-state.json');
+      const agentStatePath = require('path').resolve(process.cwd(), '.rossi/runtime/agent-state.json');
       if (fs.existsSync(agentStatePath)) {
         agentState = JSON.parse(fs.readFileSync(agentStatePath, 'utf-8'));
       }
@@ -117,7 +117,7 @@ try {
   let controlState = null;
   try {
     const fs = require('fs');
-    const controlStatePath = require('path').resolve(process.cwd(), '.bkit/runtime/control-state.json');
+    const controlStatePath = require('path').resolve(process.cwd(), '.rossi/runtime/control-state.json');
     if (fs.existsSync(controlStatePath)) {
       controlState = JSON.parse(fs.readFileSync(controlStatePath, 'utf-8'));
     }
@@ -156,7 +156,7 @@ try {
 
 // --- Output Response ---
 const response = {
-  systemMessage: `bkit Vibecoding Kit v2.0.8 activated (Claude Code)`,
+  systemMessage: `ROSSI CTO Agent Kit v2.0.8 activated (Claude Code)`,
   hookSpecificOutput: {
     hookEventName: "SessionStart",
     onboardingType: onboardingContext.onboardingData.type,

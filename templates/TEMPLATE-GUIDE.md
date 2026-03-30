@@ -1,4 +1,4 @@
-# bkit Template Selection Guide
+# ROSSI Template Selection Guide
 
 > Quick reference for choosing the right template for your task
 

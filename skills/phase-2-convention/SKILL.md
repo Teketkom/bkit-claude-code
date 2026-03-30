@@ -6,7 +6,7 @@ deprecation-risk: none
 description: |
   Define coding rules, conventions, and standards for AI collaboration.
   Triggers: convention, coding style, lint, rules, 코딩 규칙, 컨벤션, дизайн, проектирование, архитектура.
-agent: bkit:pipeline-guide
+agent: rossi:pipeline-guide
 allowed-tools:
   - Read
   - Write

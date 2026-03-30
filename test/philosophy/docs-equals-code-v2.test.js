@@ -41,7 +41,7 @@ try {
 
 console.log('\n=== docs-equals-code-v2.test.js ===\n');
 
-const workflowDir = path.join(PROJECT_ROOT, '.bkit', 'workflows');
+const workflowDir = path.join(PROJECT_ROOT, '.rossi', 'workflows');
 
 // =====================================================================
 // DC-001~005: Workflow YAML files are valid and parseable
@@ -95,7 +95,7 @@ assert('DC-005',
 // DC-006~010: Design document paths exist in pdca-status
 // =====================================================================
 
-const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'bkit.config.json'), 'utf-8'));
+const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'rossi.config.json'), 'utf-8'));
 
 // --- DC-006: docs/01-plan path exists ---
 assert('DC-006',
@@ -121,10 +121,10 @@ assert('DC-009',
   'docs/04-report/ directory exists (report phase deliverables path)'
 );
 
-// --- DC-010: bkit.config.json pdca section has matchRateThreshold ---
+// --- DC-010: rossi.config.json pdca section has matchRateThreshold ---
 assert('DC-010',
   typeof config.pdca.matchRateThreshold === 'number' && config.pdca.matchRateThreshold > 0,
-  'bkit.config.json pdca.matchRateThreshold is defined (quality gate config)'
+  'rossi.config.json pdca.matchRateThreshold is defined (quality gate config)'
 );
 
 // =====================================================================

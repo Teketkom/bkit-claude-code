@@ -1,5 +1,5 @@
 /**
- * bkit Vibecoding Kit - SessionStart: Session Context Builder Module (v2.0.0)
+ * ROSSI CTO Agent Kit - SessionStart: Session Context Builder Module (v2.0.0)
  *
  * Builds the additionalContext string for the SessionStart hook response.
  * Includes PDCA status injection, Feature Usage rules, Executive Summary rules,
@@ -38,7 +38,7 @@ function buildOnboardingContext(onboardingData) {
     ctx += `**AskUserQuestion tool** call required on user's first message.\n\n`;
     ctx += `${onboardingData.prompt}\n\n`;
     ctx += `### Actions by selection:\n`;
-    ctx += `- **Learn bkit** → Run /development-pipeline\n`;
+    ctx += `- **Learn ROSSI** → Run /development-pipeline\n`;
     ctx += `- **Learn Claude Code** → Run /claude-code-learning\n`;
     ctx += `- **Start new project** → Select level then run /starter, /dynamic, or /enterprise\n`;
     ctx += `- **Start freely** → General conversation mode\n\n`;
@@ -99,26 +99,26 @@ function buildOutputStylesAndMemoryContext(detectedLevel) {
 
   // Output Styles
   const levelStyleMap = {
-    'Starter': 'bkit-learning',
-    'Dynamic': 'bkit-pdca-guide',
-    'Enterprise': 'bkit-enterprise'
+    'Starter': 'rossi-learning',
+    'Dynamic': 'rossi-pdca-guide',
+    'Enterprise': 'rossi-enterprise'
   };
-  const suggestedStyle = levelStyleMap[detectedLevel] || 'bkit-pdca-guide';
+  const suggestedStyle = levelStyleMap[detectedLevel] || 'rossi-pdca-guide';
   ctx += `## Output Styles (v1.5.9)\n`;
   ctx += `- Recommended for ${detectedLevel} level: \`${suggestedStyle}\`\n`;
   ctx += `- Change anytime with \`/output-style\`\n`;
-  ctx += `- Available: bkit-learning, bkit-pdca-guide, bkit-enterprise, bkit-pdca-enterprise\n`;
+  ctx += `- Available: rossi-learning, rossi-pdca-guide, rossi-enterprise, rossi-pdca-enterprise\n`;
   ctx += `- If styles not visible in /output-style menu, run \`/output-style-setup\`\n\n`;
 
   // Memory Systems
   ctx += `## Memory Systems (v1.5.9)\n`;
-  ctx += `### bkit Agent Memory (Auto-Active)\n`;
+  ctx += `### ROSSI Agent Memory (Auto-Active)\n`;
   ctx += `- 19 agents use project scope, 2 agents (starter-guide, pipeline-guide) use user scope\n`;
   ctx += `- No configuration needed\n`;
   ctx += `### Claude Code Auto-Memory\n`;
   ctx += `- Claude automatically saves useful context to \`~/.claude/projects/*/memory/MEMORY.md\`\n`;
   ctx += `- Manage with \`/memory\` command (view, edit, delete entries)\n`;
-  ctx += `- bkit memory (\`.bkit/state/memory.json\`) and CC auto-memory are separate systems with no collision\n`;
+  ctx += `- ROSSI memory (\`.rossi/state/memory.json\`) and CC auto-memory are separate systems with no collision\n`;
   ctx += `- Tip: After PDCA completion, use \`/memory\` to save key learnings for future sessions\n\n`;
 
   return ctx;
@@ -235,9 +235,9 @@ function buildVersionEnhancementsContext(detectedLevel) {
   // v1.5.9: Studio Support
   ctx += `\n## v1.5.9 Enhancements (Studio Support)\n`;
   ctx += `- Path Registry: centralized state file path management (lib/core/paths.js)\n`;
-  ctx += `- State files migrated to \`.bkit/{state,runtime,snapshots}/\` structured directory\n`;
+  ctx += `- State files migrated to \`.rossi/{state,runtime,snapshots}/\` structured directory\n`;
   ctx += `- Auto-migration from v1.5.7 legacy paths on SessionStart\n`;
-  ctx += `- bkit memory path: \`.bkit/state/memory.json\` (was \`docs/.bkit-memory.json\`)\n`;
+  ctx += `- ROSSI memory path: \`.rossi/state/memory.json\` (was \`docs/.rossi-memory.json\`)\n`;
   ctx += `\n`;
 
   // v1.6.0: Skills 2.0
@@ -265,7 +265,7 @@ function buildVersionEnhancementsContext(detectedLevel) {
   ctx += `- Quality gates (7 stages) + metrics collector (M1-M10)\n`;
   ctx += `- Checkpoint/rollback per phase transition\n`;
   ctx += `- Destructive operation detector (8 rules) + blast radius analysis\n`;
-  ctx += `- MCP servers: bkit-pdca (10 tools) + bkit-analysis (6 tools)\n`;
+  ctx += `- MCP servers: rossi-pdca (10 tools) + rossi-analysis (6 tools)\n`;
   ctx += `- Hook events: 18 in hooks.json (+6 new)\n`;
   ctx += `- 45 consecutive CC compatible releases (v2.1.34~v2.1.79)\n`;
   ctx += `\n`;
@@ -308,10 +308,10 @@ Extract and display the Executive Summary section from the document, including:
 3. **Value Delivered 4-perspective table** (Problem / Solution / Function UX Effect / Core Value)
 
 ### Why:
-Users should see the summary immediately in the response without having to open the file. This is the same principle as bkit Feature Usage — mandatory inline output for key information.
+Users should see the summary immediately in the response without having to open the file. This is the same principle as ROSSI Feature Usage — mandatory inline output for key information.
 
 ### Position:
-- Output Executive Summary BEFORE the bkit Feature Usage report
+- Output Executive Summary BEFORE the ROSSI Feature Usage report
 - Both are required: Executive Summary (after document work) + Feature Usage (always)
 `;
 }
@@ -323,21 +323,21 @@ Users should see the summary immediately in the response without having to open 
 function buildFeatureUsageRule() {
   return `
 
-## 📊 bkit Feature Usage Report (v1.5.9 - Required for all responses)
+## 📊 ROSSI Feature Usage Report (v1.5.9 - Required for all responses)
 
-**Rule: Include the following format at the end of every response to report bkit feature usage.**
+**Rule: Include the following format at the end of every response to report ROSSI feature usage.**
 
 \`\`\`
 ─────────────────────────────────────────────────
-📊 bkit Feature Usage
+📊 ROSSI Feature Usage
 ─────────────────────────────────────────────────
-✅ Used: [bkit features used in this response]
+✅ Used: [ROSSI features used in this response]
 ⏭️ Not Used: [Major unused features] (reason)
 💡 Recommended: [Features suitable for next task]
 ─────────────────────────────────────────────────
 \`\`\`
 
-### bkit Features to Report:
+### ROSSI Features to Report:
 
 **1. PDCA Skill (Priority) - Unified PDCA Management:**
 /pdca plan, /pdca design, /pdca do, /pdca analyze, /pdca iterate, /pdca report, /pdca status, /pdca next
@@ -353,7 +353,7 @@ gap-detector, pdca-iterator, code-analyzer, report-generator, starter-guide, des
 - **Level**: /starter, /dynamic, /enterprise
 - **Pipeline**: /development-pipeline (start, next, status)
 - **Phase**: /phase-1-schema ~ /phase-9-deployment
-- **Utility**: /code-review, /zero-script-qa, /claude-code-learning, /mobile-app, /desktop-app, /bkit-templates, /bkit-rules
+- **Utility**: /code-review, /zero-script-qa, /claude-code-learning, /mobile-app, /desktop-app, /rossi-templates, /rossi-rules
 
 **5. Tools (when relevant):**
 AskUserQuestion, SessionStart Hook, Read, Write, Edit, Bash
@@ -361,7 +361,7 @@ AskUserQuestion, SessionStart Hook, Read, Write, Edit, Bash
 ### Reporting Rules:
 
 1. **Required**: Report at the end of every response (incomplete without report)
-2. **Used features**: List bkit features actually used in this response
+2. **Used features**: List ROSSI features actually used in this response
 3. **Unused explanation**: Briefly explain why major features were not used
 4. **Recommendation**: Suggest next skill based on current PDCA phase
 
@@ -389,7 +389,7 @@ function build(_input, context) {
   const { onboardingData, triggerTable } = context;
   const detectedLevel = detectLevel();
 
-  let additionalContext = `# bkit Vibecoding Kit v2.0.8 - Session Startup\n\n`;
+  let additionalContext = `# ROSSI CTO Agent Kit v2.0.8 - Session Startup\n\n`;
 
   additionalContext += buildOnboardingContext(onboardingData);
   additionalContext += buildAgentTeamsContext(detectedLevel);

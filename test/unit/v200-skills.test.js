@@ -4,7 +4,7 @@
  * Unit Test: v2.0.0 New Skills Verification (30 TC)
  * VS-001~030: Test 4+1 new v2.0.0 skills (control, audit, rollback, pdca-batch, btw)
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');

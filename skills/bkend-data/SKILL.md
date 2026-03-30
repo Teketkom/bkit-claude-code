@@ -7,7 +7,7 @@ description: |
   bkend.ai database — CRUD, column types, filtering, sorting, relations, indexing.
   Triggers: bkend table, CRUD, column, filter, sort, relation, 테이블, 데이터, таблица, данные, фильтрация.
 user-invocable: false
-agent: bkit:bkend-expert
+agent: rossi:bkend-expert
 allowed-tools:
   - Read
   - Write
@@ -132,7 +132,7 @@ Use `get_operation_schema` to get any tool's input/output schema.
 ## Official Documentation (Live Reference)
 
 For the latest database documentation, use WebFetch:
-- MCP Data Tools: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/mcp/05-data-tools.md
-- MCP Table Tools: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/mcp/04-table-tools.md
-- Database Guide: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/database/01-overview.md
-- Full TOC: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/SUMMARY.md
+- MCP Data Tools: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/mcp/05-data-tools.md
+- MCP Table Tools: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/mcp/04-table-tools.md
+- Database Guide: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/database/01-overview.md
+- Full TOC: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/SUMMARY.md

@@ -4,7 +4,7 @@
  * Integration Tests for PLUGIN_DATA session restore flow
  * 10 TC | SessionStart -> PLUGIN_DATA restore integration
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');
@@ -56,7 +56,7 @@ const { STATE_PATHS, backupToPluginData, restoreFromPluginData } = require('../.
 
 // SR-04: pluginDataBackup returns path when CLAUDE_PLUGIN_DATA is set
 const origPD = process.env.CLAUDE_PLUGIN_DATA;
-const TMP_DIR = path.join('/tmp', `bkit-test-sr-${Date.now()}`);
+const TMP_DIR = path.join('/tmp', `ROSSI-test-sr-${Date.now()}`);
 process.env.CLAUDE_PLUGIN_DATA = TMP_DIR;
 const backupPath = STATE_PATHS.pluginDataBackup();
 assert('SR-04',

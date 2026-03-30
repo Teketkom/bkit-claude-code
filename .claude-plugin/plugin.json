@@ -1,14 +1,14 @@
 {
-  "name": "bkit",
+  "name": "rossi-cto-agent-kit",
   "version": "2.0.8",
-  "displayName": "bkit — AI Native Development OS",
+  "displayName": "ROSSI CTO Agent Kit — AI Native Development OS",
   "description": "PDCA-driven development automation with CTO-Led Agent Teams. Living Context System with Self-Healing, 43 PM frameworks (pm-skills MIT), Interactive Checkpoints, Confidence-Based code analysis, workflow engine with state machine, 5-level controllable AI (L0-L4), CLI dashboard, quality gates, audit logging, and MCP servers. 9-language support. 37 Skills, 32 Agents, 18 Hook Events.",
   "author": {
-    "name": "POPUP STUDIO PTE. LTD.",
-    "email": "contact@popupstudio.ai",
-    "url": "https://popupstudio.ai"
+    "name": "Концерн РОССИ (ЗАО РОССИ)",
+    "email": "ds@rossi.ru",
+    "url": "https://rossi.ru"
   },
-  "repository": "https://github.com/popup-studio-ai/bkit-claude-code",
+  "repository": "https://github.com/rossi-dev/rossi-cto-agent-kit",
   "license": "Apache-2.0",
   "keywords": [
     "pdca", "development-automation", "agent-teams", "quality-gates",

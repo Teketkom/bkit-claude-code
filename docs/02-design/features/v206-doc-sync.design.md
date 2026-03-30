@@ -26,7 +26,7 @@
 
 ### File-by-File Change Map
 
-#### 1. `bkit.config.json` (line 3)
+#### 1. `rossi.config.json` (line 3)
 ```
 "version": "2.0.5" → "version": "2.0.6"
 ```
@@ -41,7 +41,7 @@
 ```
 "version": "2.0.5" → "version": "2.0.6" (top-level)
 "description": update counts: "37 Skills, 32 Agents"
-"version": "2.0.5" → "version": "2.0.6" (bkit plugin entry)
+"version": "2.0.5" → "version": "2.0.6" (ROSSI plugin entry)
 ```
 
 #### 4. `README.md`
@@ -97,7 +97,7 @@ New `[2.0.6]` entry documenting:
 
 Search and update any component count tables referencing old numbers.
 
-#### 8. `bkit-system/README.md`
+#### 8. `rossi-system/README.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -110,7 +110,7 @@ Search and update any component count tables referencing old numbers.
 | 383 | ~580+ exports (10 subdirectories) | ~620+ exports (11 subdirectories) |
 | Add v2.0.6 version note in header area |
 
-#### 9. `bkit-system/_GRAPH-INDEX.md`
+#### 9. `rossi-system/_GRAPH-INDEX.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -125,7 +125,7 @@ Search and update any component count tables referencing old numbers.
 | 430 | 54 scripts | 57 scripts |
 | 431 | 76 modules (~580+) | 88 modules (~620+) |
 
-#### 10. `bkit-system/philosophy/context-engineering.md`
+#### 10. `rossi-system/philosophy/context-engineering.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -138,7 +138,7 @@ Search and update any component count tables referencing old numbers.
 | 152 | 31 Agents | 32 Agents |
 | 183 | 10 subdirs | 11 subdirs |
 
-#### 11. `bkit-system/philosophy/core-mission.md`
+#### 11. `rossi-system/philosophy/core-mission.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -147,13 +147,13 @@ Search and update any component count tables referencing old numbers.
 | 151 | 36 Skills, 31 Agents | 37 Skills, 32 Agents |
 | 161 | 76 files across 10 subdirs (~465) | 88 files across 11 subdirs (~620+) |
 
-#### 12. `bkit-system/philosophy/ai-native-principles.md`
+#### 12. `rossi-system/philosophy/ai-native-principles.md`
 
 | Line | Old | New |
 |------|-----|-----|
 | 138 | 31 agents | 32 agents |
 
-#### 13. `bkit-system/components/skills/_skills-overview.md`
+#### 13. `rossi-system/components/skills/_skills-overview.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -161,7 +161,7 @@ Search and update any component count tables referencing old numbers.
 | 13 | 36 skills | 37 skills |
 | 68 | 36 skills | 37 skills |
 
-#### 14. `bkit-system/components/agents/_agents-overview.md`
+#### 14. `rossi-system/components/agents/_agents-overview.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -170,7 +170,7 @@ Search and update any component count tables referencing old numbers.
 | 272 | 31 agents | 32 agents |
 | Add self-healing agent entry to agent list |
 
-#### 15. `bkit-system/components/scripts/_scripts-overview.md`
+#### 15. `rossi-system/components/scripts/_scripts-overview.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -179,7 +179,7 @@ Search and update any component count tables referencing old numbers.
 | 240 | ~580+ | ~620+ |
 | 242 | ~580+ total exports … 10 subdirectories, 76 modules | ~620+ … 11 subdirectories, 88 modules |
 
-#### 16. `bkit-system/components/hooks/_hooks-overview.md`
+#### 16. `rossi-system/components/hooks/_hooks-overview.md`
 
 | Line | Old | New |
 |------|-----|-----|
@@ -187,9 +187,9 @@ Search and update any component count tables referencing old numbers.
 
 ## Implementation Order
 
-1. Config files (bkit.config.json, plugin.json, marketplace.json)
+1. Config files (rossi.config.json, plugin.json, marketplace.json)
 2. CHANGELOG.md (new section)
 3. README.md (version badge + counts)
 4. AI-NATIVE-DEVELOPMENT.md (counts)
 5. CUSTOMIZATION-GUIDE.md (counts)
-6. bkit-system/ files (README, GRAPH-INDEX, philosophy/, components/)
+6. rossi-system/ files (README, GRAPH-INDEX, philosophy/, components/)

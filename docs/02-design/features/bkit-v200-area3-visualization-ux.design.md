@@ -1,19 +1,19 @@
-# bkit v2.0.0 영역 3 — 워크플로우 시각화 UX 상세 설계
+# ROSSI v2.0.0 영역 3 — 워크플로우 시각화 UX 상세 설계
 
 | 항목 | 내용 |
 |------|------|
-| **Feature** | bkit v2.0.0 워크플로우 시각화 UX (영역 3) |
+| **Feature** | ROSSI v2.0.0 워크플로우 시각화 UX (영역 3) |
 | **Phase** | Design |
 | **Date** | 2026-03-19 |
 | **Author** | Frontend Architect Agent |
 | **Status** | Draft |
-| **Plan 참조** | `docs/01-plan/features/bkit-v200-enhancement.plan.md` §4.1 영역 3 |
+| **Plan 참조** | `docs/01-plan/features/rossi-v200-enhancement.plan.md` §4.1 영역 3 |
 
 ---
 
 ## 개요
 
-영역 3은 bkit v2.0.0의 "시각화 Gap"을 해소하는 핵심 컴포넌트 집합이다. PDCA 진행 상황, Agent Team 활동, 변경 영향, 제어 패널을 CLI 터미널에서 즉시 확인할 수 있게 한다. 순수 ANSI escape + Unicode Box Drawing 문자만 사용하며 외부 npm 패키지에 의존하지 않는다.
+영역 3은 ROSSI v2.0.0의 "시각화 Gap"을 해소하는 핵심 컴포넌트 집합이다. PDCA 진행 상황, Agent Team 활동, 변경 영향, 제어 패널을 CLI 터미널에서 즉시 확인할 수 있게 한다. 순수 ANSI escape + Unicode Box Drawing 문자만 사용하며 외부 npm 패키지에 의존하지 않는다.
 
 ### 설계 원칙
 
@@ -186,7 +186,7 @@ module.exports = {
 ```js
 /**
  * PDCA 진행 바 렌더링
- * @param {Object|null} pdcaStatus - .bkit/state/pdca-status.json 내용
+ * @param {Object|null} pdcaStatus - .rossi/state/pdca-status.json 내용
  * @param {Object} [opts]
  * @param {boolean} [opts.compact=false]    - true: 1줄 모드, false: 3줄 모드(기본)
  * @param {string}  [opts.feature]          - 표시할 feature 이름 (null이면 primaryFeature 사용)
@@ -203,13 +203,13 @@ module.exports = { renderPdcaProgressBar };
 **compact 모드 (1줄, 80컬럼)**
 
 ```
-[bkit-v200] PM✓ PLAN✓ DESIGN▶ DO· CHECK· REPORT·  42%  ████████░░░░░░░░░░░
+[rossi-v200] PM✓ PLAN✓ DESIGN▶ DO· CHECK· REPORT·  42%  ████████░░░░░░░░░░░
 ```
 
 **full 모드 (3줄, 80컬럼)**
 
 ```
-┌─── bkit-v200-enhancement ──────────────────────── 42% ────────────────────┐
+┌─── rossi-v200-enhancement ──────────────────────── 42% ────────────────────┐
 │  PM  ✓  PLAN  ✓  DESIGN ▶  DO  ·  CHECK ·  REPORT ·  ████████████░░░░░░  │
 └─ design: API 인터페이스 정의 중  ·  last: 3m ago  ·  iter: 2/5 ──────────┘
 ```
@@ -217,7 +217,7 @@ module.exports = { renderPdcaProgressBar };
 **full 모드 (3줄, 120컬럼)**
 
 ```
-┌─── bkit-v200-enhancement ─────────────────────────────────────────── 42% ─────────────────────┐
+┌─── rossi-v200-enhancement ─────────────────────────────────────────── 42% ─────────────────────┐
 │  PM ✓  PLAN ✓  DESIGN ▶  DO ·  CHECK ·  REPORT ·     ████████████████░░░░░░░░░░░░░░░░░░░░  │
 └─ Phase: design · 현재: API 인터페이스 정의 중 · 최근: 3분전 · Iter: 2/5 · matchRate: 87% ────┘
 ```
@@ -225,7 +225,7 @@ module.exports = { renderPdcaProgressBar };
 **승인 대기 상태 (full 모드)**
 
 ```
-┌─── bkit-v200-enhancement ──────────────────────── 42% ────────────────────┐
+┌─── rossi-v200-enhancement ──────────────────────── 42% ────────────────────┐
 │  PM  ✓  PLAN  ✓  DESIGN !  DO  ·  CHECK ·  REPORT ·  ████████████░░░░░░  │
 └─ ! 승인 대기: Design 완료 확인 필요  ·  /pdca approve 로 진행 ────────────┘
 ```
@@ -292,8 +292,8 @@ percent = Math.round(sum(weights) * 100)
 ```js
 /**
  * PDCA 워크플로우 맵 렌더링
- * @param {Object|null} pdcaStatus  - .bkit/state/pdca-status.json
- * @param {Object|null} agentState  - .bkit/runtime/agent-state.json
+ * @param {Object|null} pdcaStatus  - .rossi/state/pdca-status.json
+ * @param {Object|null} agentState  - .rossi/runtime/agent-state.json
  * @param {Object} [config]
  * @param {string}  [config.feature]       - 표시할 feature
  * @param {boolean} [config.showIteration] - iterationHistory 표시 여부 (기본: true)
@@ -311,7 +311,7 @@ module.exports = { renderWorkflowMap };
 **기본 워크플로우 맵 (80컬럼)**
 
 ```
-┌─── Workflow Map: bkit-v200-enhancement ───────────────────────────────────┐
+┌─── Workflow Map: rossi-v200-enhancement ───────────────────────────────────┐
 │                                                                             │
 │  [PM ✓]──→[PLAN ✓]──→[DESIGN ▶]──→[DO ·]──→[CHECK ·]──→[REPORT ·]      │
 │                            │                      │                         │
@@ -324,7 +324,7 @@ module.exports = { renderWorkflowMap };
 **병렬 swarm 서브트리 포함 (120컬럼, Agent Team 활성 상태)**
 
 ```
-┌─── Workflow Map: bkit-v200-enhancement ─────────────────────────────────────────────────────────┐
+┌─── Workflow Map: rossi-v200-enhancement ─────────────────────────────────────────────────────────┐
 │                                                                                                   │
 │  [PM ✓]──→[PLAN ✓]──→[DESIGN ▶]──→[DO ·]──────────→[CHECK ·]──→[REPORT ·]                    │
 │                            │            │                  │                                      │
@@ -403,7 +403,7 @@ DO 단계 아래에 서브트리 표시
 ```js
 /**
  * Agent Team 패널 렌더링
- * @param {Object|null} agentState - .bkit/runtime/agent-state.json
+ * @param {Object|null} agentState - .rossi/runtime/agent-state.json
  * @param {Object} [opts]
  * @param {number} [opts.maxMessages=5]    - 표시할 최근 메시지 수
  * @param {boolean} [opts.showPattern=true] - 오케스트레이션 패턴 표시 여부
@@ -420,7 +420,7 @@ module.exports = { renderAgentPanel };
 **Agent Team 패널 (80컬럼)**
 
 ```
-┌─── Agent Team: bkit-cto-team ──────────────── Pattern: leader ────────────┐
+┌─── Agent Team: rossi-cto-team ──────────────── Pattern: leader ────────────┐
 │                                                                             │
 │  ▶  CTO-Orchestrator  [working]   설계 검토 및 서브태스크 배분 중         │
 │  ○  FE-Architect      [spawning]  대기 중                                  │
@@ -497,7 +497,7 @@ module.exports = { renderAgentPanel };
 ```js
 /**
  * 변경 영향 분석 뷰 렌더링
- * @param {Object|null} pdcaStatus - .bkit/state/pdca-status.json
+ * @param {Object|null} pdcaStatus - .rossi/state/pdca-status.json
  * @param {Object|null} gitDiff    - git diff 분석 결과
  * @param {string[]}    [gitDiff.changedFiles]     - 변경된 파일 목록 (절대 경로)
  * @param {Object}      [gitDiff.stats]            - { insertions, deletions, filesChanged }
@@ -518,7 +518,7 @@ module.exports = { renderImpactView };
 **변경 영향 분석 뷰 (80컬럼)**
 
 ```
-┌─── Impact Analysis: bkit-v200-enhancement ────────────────────────────────┐
+┌─── Impact Analysis: rossi-v200-enhancement ────────────────────────────────┐
 │                                                                             │
 │  Match Rate  ████████████████████░░░░   87%  (목표: 90%)                 │
 │                                                                             │
@@ -607,7 +607,7 @@ bar_width = 20문자 고정 (narrow에서는 12문자)
 ```js
 /**
  * 제어 패널 렌더링
- * @param {Object|null} controlState     - .bkit/runtime/control-state.json (v2.0 신규 파일)
+ * @param {Object|null} controlState     - .rossi/runtime/control-state.json (v2.0 신규 파일)
  * @param {number|null} automationLevel  - 현재 자동화 레벨 (0~4), null이면 controlState에서 읽음
  * @param {Object} [opts]
  * @param {boolean} [opts.showShortcuts=true]  - 단축키 맵 표시 여부
@@ -644,7 +644,7 @@ module.exports = { renderControlPanel };
 │  /pdca team        Agent Team 패널 표시                                    │
 │  /control level 3  자동화 레벨 변경 (0~4)                                 │
 │                                                                              │
-│  긴급 중지: /control stop  또는  Ctrl+C → bkit이 안전하게 중단합니다     │
+│  긴급 중지: /control stop  또는  Ctrl+C → ROSSI이 안전하게 중단합니다     │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -692,13 +692,13 @@ pendingApprovals 배열 순회:
 ```
 항상 패널 하단에 표시:
   "긴급 중지: /control stop  또는  Ctrl+C"
-  → bkit이 현재 상태를 체크포인트로 저장 후 중단합니다
+  → ROSSI이 현재 상태를 체크포인트로 저장 후 중단합니다
 ```
 
 ### 데이터 소스
 
-- `.bkit/runtime/control-state.json` — `automationLevel`, `pendingApprovals`, `trustScore`
-- `bkit.config.json` — `automationLevel` 설정값 (fallback)
+- `.rossi/runtime/control-state.json` — `automationLevel`, `pendingApprovals`, `trustScore`
+- `rossi.config.json` — `automationLevel` 설정값 (fallback)
 
 ### control-state.json 구조 (v2.0 신규 파일)
 
@@ -749,10 +749,10 @@ pendingApprovals 배열 순회:
 
 ```
 ════════════════════════════════════════════════════════════════════════════════
-  bkit v2.0.0  ·  AI Native Development OS  ·  2026-03-19 09:41
+  ROSSI v2.0.0  ·  AI Native Development OS  ·  2026-03-19 09:41
 
   ─── Active Feature ───────────────────────────────────────────────────────
-  [bkit-v200-enhancement]  PM✓ PLAN✓ DESIGN▶ DO· CHECK· REPORT·  42%  ████████░░░░
+  [rossi-v200-enhancement]  PM✓ PLAN✓ DESIGN▶ DO· CHECK· REPORT·  42%  ████████░░░░
   마지막 활동: 3분 전  ·  Iter: 2/5  ·  matchRate: 87%
 
   ─── Next Action ──────────────────────────────────────────────────────────
@@ -768,7 +768,7 @@ pendingApprovals 배열 순회:
 
 ```
 ════════════════════════════════════════════════════════════════════════════════
-  bkit v2.0.0  ·  AI Native Development OS
+  ROSSI v2.0.0  ·  AI Native Development OS
 
   새 Feature 시작: /pdca pm {feature-name}
   기존 Feature 재개: /pdca resume {feature-name}
@@ -782,7 +782,7 @@ pendingApprovals 배열 순회:
 function buildSessionBanner(pdcaStatus, agentState, controlState) {
   const lines = [];
   lines.push(hline(termWidth, '═'));
-  lines.push(bkitHeader());
+  lines.push(rossiHeader());
 
   if (hasActiveFeature(pdcaStatus)) {
     lines.push(renderPdcaProgressBar(pdcaStatus, { compact: true }));
@@ -818,7 +818,7 @@ SessionStart hook 실행 시 1회 출력. 이후 갱신은 각 컴포넌트의 �
 ### 파일 경로
 
 `/lib/team/state-writer.js` (기존 파일 확장)
-런타임 파일: `.bkit/runtime/agent-state.json`
+런타임 파일: `.rossi/runtime/agent-state.json`
 
 ### v2.0 스키마 전체 구조
 

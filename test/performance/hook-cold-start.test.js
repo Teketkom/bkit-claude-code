@@ -5,7 +5,7 @@
  * HS-001~010: Each new module loads in <50ms
  * HS-011~020: Hook scripts load in <100ms
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const { performance } = require('perf_hooks');

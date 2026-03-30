@@ -1,8 +1,8 @@
-# bkit v1.6.1 Enhancement 완료 보고서
+# ROSSI v1.6.1 Enhancement 완료 보고서
 
 > **요약**: CC v2.1.69+ 호환성 복구 + Skills 2.0 품질 강화 + CE Level 5 진입
 >
-> **프로젝트**: bkit v1.6.0 → v1.6.1
+> **프로젝트**: ROSSI v1.6.0 → v1.6.1
 > **작성일**: 2026-03-08
 > **상태**: 완료 (100% Match Rate, 1 Iteration)
 > **팀 구성**: CTO 오케스트레이션 (Main Session) + 6개 전문가 팀 + 품질 검증
@@ -13,7 +13,7 @@
 
 ### 1.1 프로젝트 개요
 
-bkit v1.6.1 Enhancement는 CC (Claude Code) v2.1.69+ nested subagent 제한에 의해 완전히 비동작된 CTO/PM 팀 오케스트레이션을 복구하고, 핵심 철학(No Guessing, Automation First, Docs=Code)을 위반하는 P0 버그 4건을 즉시 수정하며, 스킬 품질 검증 시스템을 stub에서 실구현으로 전환하는 종합적 품질 강화 프로젝트입니다.
+ROSSI v1.6.1 Enhancement는 CC (Claude Code) v2.1.69+ nested subagent 제한에 의해 완전히 비동작된 CTO/PM 팀 오케스트레이션을 복구하고, 핵심 철학(No Guessing, Automation First, Docs=Code)을 위반하는 P0 버그 4건을 즉시 수정하며, 스킬 품질 검증 시스템을 stub에서 실구현으로 전환하는 종합적 품질 강화 프로젝트입니다.
 
 ### 1.2 핵심 지표
 
@@ -30,7 +30,7 @@ bkit v1.6.1 Enhancement는 CC (Claude Code) v2.1.69+ nested subagent 제한에 �
 | 관점 | 내용 |
 |------|------|
 | **Problem** | CC v2.1.69+에서 도입된 "subagents cannot spawn subagents" 제한으로 CTO/PM Team **완전 비동작**. P0 버그 4건(No Guessing, Automation First, Config 동기화, 보안 설정)이 핵심 철학 위반. Evals는 stub 상태로 28/28 스킬 품질 검증 불가. 팀 단위 채택 신뢰도 심각하게 손상. |
-| **Solution** | (1) Main Session CTO 오케스트레이션 패턴 도입으로 nested spawn 제한 우회. (2) 4개 P0 버그 정밀 수정(`shouldClarify`, `confidenceThreshold`, `phases` 배열, 보안 설정). (3) Evals 엔진 실구현(parseEvalYaml, evaluateAgainstCriteria, runEval). (4) Config-first 패턴으로 `bkit.config.json`을 Single Source of Truth 확립. (5) 9개 acceptEdits 에이전트 중 8개에 `disallowedTools` 추가. |
+| **Solution** | (1) Main Session CTO 오케스트레이션 패턴 도입으로 nested spawn 제한 우회. (2) 4개 P0 버그 정밀 수정(`shouldClarify`, `confidenceThreshold`, `phases` 배열, 보안 설정). (3) Evals 엔진 실구현(parseEvalYaml, evaluateAgainstCriteria, runEval). (4) Config-first 패턴으로 `rossi.config.json`을 Single Source of Truth 확립. (5) 9개 acceptEdits 에이전트 중 8개에 `disallowedTools` 추가. |
 | **Function/UX Effect** | `/pdca team` CTO 모드 즉시 복구. 모호한 사용자 요청 시 `shouldClarify` 플래그 자동 설정으로 clarification 유도. `node evals/runner.js --benchmark` 실행 시 28/28 스킬 품질 자동 검증. PDCA task chain(plan→design→do→check→act→report) 안정적 생성 및 실행. 파괴적 명령(rm -rf, git push --force) 자동 차단. |
 | **Core Value** | **CC v2.1.69+ 호환성 즉시 복구로 37 consecutive compatible releases streak 유지**. **Skills 2.0 아키텍처 90점대 CE Level 5 진입 기반 마련**. **Config-Code 동기화로 Docs=Code 신뢰도 회복**. Plugin 생태계 최고 수준 Context Engineering 달성. 5-50인 Tech Leads 팀 단위 채택 신뢰도 확보. |
 
@@ -39,14 +39,14 @@ bkit v1.6.1 Enhancement는 CC (Claude Code) v2.1.69+ nested subagent 제한에 �
 ## PDCA Cycle 개요
 
 ### 2.1 Plan 단계
-- **문서**: `docs/01-plan/features/bkit-v161-enhancement.plan.md` (v1.1)
+- **문서**: `docs/01-plan/features/rossi-v161-enhancement.plan.md` (v1.1)
 - **방식**: Plan-Plus (Brainstorming-Enhanced PDCA Planning)
 - **분석 기반**: PM Agent Team (4개 Sub-agent) + CTO 10-agent 병렬 분석
 - **산출물**: 8개 Must-Have 항목(M-01~M-08) + 2개 Optional 항목 선별
 - **기간**: 2026-03-07 (당일 완료)
 
 ### 2.2 Design 단계
-- **문서**: `docs/02-design/features/bkit-v161-enhancement.design.md` (v1.2)
+- **문서**: `docs/02-design/features/rossi-v161-enhancement.design.md` (v1.2)
 - **범위**: 26개 구현 항목 (Layer 0-4)
 - **아키텍처 핵심**:
   - Layer 0: CTO 오케스트레이션 재설계 (Issue #41 해결) — 13개 항목
@@ -63,7 +63,7 @@ bkit v1.6.1 Enhancement는 CC (Claude Code) v2.1.69+ nested subagent 제한에 �
 - **테스트**: 단위 테스트 + 통합 테스트 (E2E)
 
 ### 2.4 Check 단계
-- **분석 문서**: `docs/03-analysis/bkit-v161-enhancement.analysis.md` (v1.1)
+- **분석 문서**: `docs/03-analysis/rossi-v161-enhancement.analysis.md` (v1.1)
 - **분석 범위**: 설계 26개 항목 vs 구현 코드 매칭
 - **1차 분석 결과**: 96.2% (25/26, GAP-01 발견)
 - **GAP-01**: `skills/pdca/SKILL.md` agents.team/pm 값
@@ -147,10 +147,10 @@ return { score, factors, shouldClarify };  // ← 새 프로퍼티 추가
 // 수정 전: hardcoded confidence: 0.8
 // 수정 후:
 const confidenceThreshold = getConfig('triggers.confidenceThreshold', 0.7);
-const result = { agent: `bkit:${agent}`, confidence: Math.min(1, confidenceThreshold + 0.1) };
+const result = { agent: `rossi:${agent}`, confidence: Math.min(1, confidenceThreshold + 0.1) };
 ```
 
-**영향**: `bkit.config.json`의 `confidenceThreshold` 값 실제 반영
+**영향**: `rossi.config.json`의 `confidenceThreshold` 값 실제 반영
 
 #### M-02 + M-06: PDCA phases 배열 통일
 
@@ -189,7 +189,7 @@ function selectOrchestrationPattern(phase, level) {
 }
 ```
 
-**Docs=Code 원칙**: `bkit.config.json` 변경 시 코드가 자동 반영
+**Docs=Code 원칙**: `rossi.config.json` 변경 시 코드가 자동 반영
 
 ### 3.4 Layer 3: 에이전트 보안 강화 (6 항목)
 
@@ -288,8 +288,8 @@ node evals/runner.js --benchmark
 
 | # | 항목 | 설계값 | 발견값 | 상태 |
 |---|------|:---:|:---:|:---:|
-| GAP-01 | skills/pdca/SKILL.md agents.team | null | bkit:cto-lead | FAIL |
-| | skills/pdca/SKILL.md agents.pm | null | bkit:pm-lead | FAIL |
+| GAP-01 | skills/pdca/SKILL.md agents.team | null | rossi:cto-lead | FAIL |
+| | skills/pdca/SKILL.md agents.pm | null | rossi:pm-lead | FAIL |
 
 **원인**: Issue #41(CC v2.1.69+ nested spawn 제한)에 대한 초기 수정 시 SKILL.md의 agents 값 미갱신
 
@@ -344,7 +344,7 @@ node evals/runner.js --benchmark
 
 #### 2. Config-First Pattern 수립
 
-**핵심**: `bkit.config.json`을 Single Source of Truth로 확립 (M-05)
+**핵심**: `rossi.config.json`을 Single Source of Truth로 확립 (M-05)
 
 **영향**:
 - 설정 변경 시 코드 수정 불필요
@@ -564,10 +564,10 @@ v1.7.0 (2026-04-15 예정)
 
 ## Related Documents
 
-- **Plan**: [bkit-v161-enhancement.plan.md](../01-plan/features/bkit-v161-enhancement.plan.md)
-- **Design**: [bkit-v161-enhancement.design.md](../02-design/features/bkit-v161-enhancement.design.md)
-- **Analysis**: [bkit-v161-enhancement.analysis.md](../03-analysis/bkit-v161-enhancement.analysis.md)
-- **PRD**: [bkit-v161-enhancement.prd.md](../00-pm/bkit-v161-enhancement.prd.md)
+- **Plan**: [rossi-v161-enhancement.plan.md](../01-plan/features/rossi-v161-enhancement.plan.md)
+- **Design**: [rossi-v161-enhancement.design.md](../02-design/features/rossi-v161-enhancement.design.md)
+- **Analysis**: [rossi-v161-enhancement.analysis.md](../03-analysis/rossi-v161-enhancement.analysis.md)
+- **PRD**: [rossi-v161-enhancement.prd.md](../00-pm/rossi-v161-enhancement.prd.md)
 
 ---
 

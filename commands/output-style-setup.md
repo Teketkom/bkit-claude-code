@@ -1,8 +1,8 @@
 ---
 name: output-style-setup
 description: |
-  Install bkit output styles to your project or user directory.
-  Copies output style files from bkit plugin to the appropriate location.
+  Install ROSSI output styles to your project or user directory.
+  Copies output style files from ROSSI plugin to the appropriate location.
 
   Triggers: output style setup, install output style, setup style,
   아웃풋 스타일 설치, 스타일 설정, 出力スタイル設定,
@@ -19,16 +19,16 @@ allowed-tools:
 
 # Output Style Setup
 
-bkit의 Output Style을 설치합니다.
+ROSSI의 Output Style을 설치합니다.
 
 ## Available Styles
 
 | Style | Recommended For | Description |
 |-------|----------------|-------------|
-| bkit-learning | Starter | 학습 모드 - PDCA를 배우며 개발 |
-| bkit-pdca-guide | Dynamic | PDCA 워크플로우 가이드 + 자동 체크리스트 |
-| bkit-enterprise | Enterprise | CTO 관점 아키텍처/보안/성능 분석 |
-| bkit-pdca-enterprise | Enterprise | PDCA + CTO 통합 (가장 상세) |
+| rossi-learning | Starter | 학습 모드 - PDCA를 배우며 개발 |
+| rossi-pdca-guide | Dynamic | PDCA 워크플로우 가이드 + 자동 체크리스트 |
+| rossi-enterprise | Enterprise | CTO 관점 아키텍처/보안/성능 분석 |
+| rossi-pdca-enterprise | Enterprise | PDCA + CTO 통합 (가장 상세) |
 
 ## Instructions
 

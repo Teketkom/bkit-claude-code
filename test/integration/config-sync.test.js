@@ -4,7 +4,7 @@
  * @module test/integration/config-sync
  * @version 2.0.0
  *
- * Verifies bkit.config.json values are correctly consumed by runtime modules.
+ * Verifies rossi.config.json values are correctly consumed by runtime modules.
  * 30 TC (v1.6.1) + 15 TC (v2.0.0): Config → Code synchronization
  */
 
@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PROJECT_ROOT = path.resolve(__dirname, '..', '..');
-const CONFIG_PATH = path.join(PROJECT_ROOT, 'bkit.config.json');
+const CONFIG_PATH = path.join(PROJECT_ROOT, 'rossi.config.json');
 
 let passed = 0;
 let failed = 0;
@@ -49,13 +49,13 @@ const strategy = require(path.join(PROJECT_ROOT, 'lib/team/strategy'));
 // TC-CS-01: Config orchestrationPatterns.Dynamic exists
 assert('TC-CS-01',
   config.team?.orchestrationPatterns?.Dynamic != null,
-  'bkit.config.json has team.orchestrationPatterns.Dynamic'
+  'rossi.config.json has team.orchestrationPatterns.Dynamic'
 );
 
 // TC-CS-02: Config orchestrationPatterns.Enterprise exists
 assert('TC-CS-02',
   config.team?.orchestrationPatterns?.Enterprise != null,
-  'bkit.config.json has team.orchestrationPatterns.Enterprise'
+  'rossi.config.json has team.orchestrationPatterns.Enterprise'
 );
 
 // TC-CS-03: selectOrchestrationPattern reads Dynamic.plan from config
@@ -105,7 +105,7 @@ assert('TC-CS-08',
 // TC-CS-09: Config triggers.confidenceThreshold exists
 assert('TC-CS-09',
   config.triggers?.confidenceThreshold != null,
-  'bkit.config.json has triggers.confidenceThreshold'
+  'rossi.config.json has triggers.confidenceThreshold'
 );
 
 // TC-CS-10: Config triggers.confidenceThreshold is 0.7
@@ -166,7 +166,7 @@ assert('TC-CS-16',
 // TC-CS-17: Config permissions section exists
 assert('TC-CS-17',
   config.permissions != null && typeof config.permissions === 'object',
-  'bkit.config.json has permissions section'
+  'rossi.config.json has permissions section'
 );
 
 // TC-CS-18: Config denies Bash(rm -rf*)
@@ -280,7 +280,7 @@ assert('TC-CS-30',
 // CS-001: Config has automation section
 assert('CS-001',
   config.automation != null && typeof config.automation === 'object',
-  'bkit.config.json has automation section'
+  'rossi.config.json has automation section'
 );
 
 // CS-002: automation.defaultLevel exists

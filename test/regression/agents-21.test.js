@@ -3,7 +3,7 @@
  * Regression Test: 29 Agents Full Verification (58 TC)
  * Each agent: (1) frontmatter parseable (2) trigger keywords exist
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 const fs = require('fs');
 const path = require('path');

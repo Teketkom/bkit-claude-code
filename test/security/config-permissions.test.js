@@ -3,7 +3,7 @@
  * @module test/security/config-permissions
  * @version 1.6.1
  *
- * Validates bkit.config.json permissions section for the 3-Tier Security Model.
+ * Validates rossi.config.json permissions section for the 3-Tier Security Model.
  * Ensures destructive commands are denied/ask, while productive tools are allowed.
  */
 
@@ -11,10 +11,10 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
 
-const CONFIG_PATH = path.resolve(__dirname, '../../bkit.config.json');
+const CONFIG_PATH = path.resolve(__dirname, '../../rossi.config.json');
 
 /**
- * Load and parse bkit.config.json
+ * Load and parse rossi.config.json
  * @returns {Object} parsed config
  */
 function loadConfig() {
@@ -49,12 +49,12 @@ let config;
 try {
   config = loadConfig();
 } catch (e) {
-  console.error(`FATAL: Cannot load bkit.config.json: ${e.message}`);
+  console.error(`FATAL: Cannot load rossi.config.json: ${e.message}`);
   process.exit(1);
 }
 
 // SEC-CP-001: permissions section exists
-test('SEC-CP-001', 'bkit.config.json has permissions section', () => {
+test('SEC-CP-001', 'rossi.config.json has permissions section', () => {
   assert.ok(config.permissions, 'permissions section missing');
   assert.strictEqual(typeof config.permissions, 'object');
 });
@@ -178,7 +178,7 @@ test('SEC-CP-016', 'Config does NOT contain dangerouslyDisableSandbox', () => {
   const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
   assert.ok(
     !raw.includes('dangerouslyDisableSandbox'),
-    'bkit.config.json must NOT contain dangerouslyDisableSandbox'
+    'rossi.config.json must NOT contain dangerouslyDisableSandbox'
   );
 });
 
@@ -186,7 +186,7 @@ test('SEC-CP-017', 'Config does NOT contain sandbox.excludedCommands', () => {
   const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
   assert.ok(
     !raw.includes('excludedCommands'),
-    'bkit.config.json must NOT contain sandbox.excludedCommands'
+    'rossi.config.json must NOT contain sandbox.excludedCommands'
   );
 });
 
@@ -194,7 +194,7 @@ test('SEC-CP-018', 'Config does NOT contain autoAllowBashIfSandboxed', () => {
   const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
   assert.ok(
     !raw.includes('autoAllowBashIfSandboxed'),
-    'bkit.config.json must NOT contain autoAllowBashIfSandboxed'
+    'rossi.config.json must NOT contain autoAllowBashIfSandboxed'
   );
 });
 

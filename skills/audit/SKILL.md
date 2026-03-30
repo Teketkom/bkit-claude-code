@@ -39,7 +39,7 @@ task-template: "[Audit] {action}"
 
 Display recent audit log entries.
 
-1. Read today's audit log from `.bkit/audit/YYYY-MM-DD.jsonl`
+1. Read today's audit log from `.rossi/audit/YYYY-MM-DD.jsonl`
 2. If today's log is empty or has fewer than 20 entries, also read yesterday's log
 3. Parse JSONL entries (one JSON object per line)
 4. Display the last 20 entries in reverse chronological order
@@ -79,7 +79,7 @@ Total entries today: 45
 
 Show decision traces for a specific feature.
 
-1. Read decision trace files from `.bkit/decisions/YYYY-MM-DD.jsonl`
+1. Read decision trace files from `.rossi/decisions/YYYY-MM-DD.jsonl`
 2. Filter entries matching the specified feature
 3. Display chronological decision chain with rationale
 
@@ -167,7 +167,7 @@ Search audit logs by action type, feature name, or date range.
    - If query matches a feature name, filter by feature
    - If query matches a date (YYYY-MM-DD), filter by date
    - Otherwise, perform full-text search across all fields
-2. Read relevant JSONL files from `.bkit/audit/`
+2. Read relevant JSONL files from `.rossi/audit/`
 3. Apply filters and return matching entries (max 50 results)
 4. Display results in chronological order
 
@@ -190,9 +190,9 @@ Search audit logs by action type, feature name, or date range.
 
 | Path | Format | Purpose |
 |------|--------|---------|
-| `.bkit/audit/YYYY-MM-DD.jsonl` | JSONL | Daily audit log entries |
-| `.bkit/audit/summary/` | JSON | Pre-computed daily/weekly summaries |
-| `.bkit/decisions/YYYY-MM-DD.jsonl` | JSONL | Decision trace entries |
+| `.rossi/audit/YYYY-MM-DD.jsonl` | JSONL | Daily audit log entries |
+| `.rossi/audit/summary/` | JSON | Pre-computed daily/weekly summaries |
+| `.rossi/decisions/YYYY-MM-DD.jsonl` | JSONL | Decision trace entries |
 
 ## Module Dependencies
 

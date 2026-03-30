@@ -4,7 +4,7 @@
  * Unit Tests for stop-failure-handler.js
  * 15 TC | StopFailure hook handler error classification and recovery
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

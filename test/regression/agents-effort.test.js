@@ -4,7 +4,7 @@
  * Regression Test: 29 Agents effort/maxTurns Verification (29 TC)
  * Validates that all agent frontmatter has correct effort and maxTurns values
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

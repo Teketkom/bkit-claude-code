@@ -34,7 +34,7 @@ hooks:
 
 # Plan Plus — Brainstorming-Enhanced PDCA Planning
 
-> Combines brainstorming's intent discovery with bkit PDCA's structured planning to produce
+> Combines brainstorming's intent discovery with ROSSI PDCA's structured planning to produce
 > higher-quality Plan documents through collaborative dialogue.
 
 ## Overview
@@ -86,7 +86,7 @@ Before asking any questions, explore the current project state:
 1. Read CLAUDE.md, package.json, pom.xml, etc. for project information
 2. Check recent 5 git commits (understand current work direction)
 3. Check existing `docs/01-plan/` documents (prevent duplication)
-4. Check `.bkit-memory.json` (check ongoing PDCA status)
+4. Check `.rossi-memory.json` (check ongoing PDCA status)
 
 > Share exploration results briefly: "I've reviewed the current project state: ..."
 
@@ -177,7 +177,7 @@ Generate the Plan document using `plan-plus.template.md` with results from Phase
 
 After document generation, update PDCA status:
 - Create Task: `[Plan] {feature}`
-- Update .bkit-memory.json: phase = "plan"
+- Update .rossi-memory.json: phase = "plan"
 
 ### Phase 6: Next Steps
 

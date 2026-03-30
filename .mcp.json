@@ -1,14 +1,17 @@
 {
   "mcpServers": {
-    "bkit-pdca": {
-      "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/bkit-pdca-server/index.js"],
-      "env": {}
-    },
-    "bkit-analysis": {
-      "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/bkit-analysis-server/index.js"],
-      "env": {}
+    "agent_handler": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://agent-proxy.perplexity.ai/merge_mcp",
+        "--header",
+        "Authorization: Bearer ${AUTH_TOKEN}"
+      ],
+      "env": {
+        "AUTH_TOKEN": "agp_019d3d98-023a-75e1-a91c-3ef4bebd5c74"
+      }
     }
   }
 }

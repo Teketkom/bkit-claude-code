@@ -2,8 +2,8 @@
 
 > **요약**: PR #50 — PM Agent Team 프레임워크 9→43 확장 + PDCA Checkpoints + btw Team Integration 테스트
 >
-> **프로젝트**: bkit-claude-code
-> **PR**: [#50](https://github.com/popup-studio-ai/bkit-claude-code/pull/50) `feat/pm-skills-integration`
+> **프로젝트**: rossi-cto-agent-kit
+> **PR**: [#50](https://github.com/rossi-dev/rossi-cto-agent-kit/pull/50) `feat/pm-skills-integration`
 > **작성자**: Claude
 > **날짜**: 2026-03-22
 > **상태**: Completed

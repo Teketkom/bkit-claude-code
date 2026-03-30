@@ -72,12 +72,12 @@ assert('UX-EXEC-006',
   `report.template.md exists at ${reportTemplatePath}`
 );
 
-// --- UX-EXEC-007: bkit.config.json에 plan docPath가 정의되어야 함 ---
-const configPath = path.join(PROJECT_ROOT, 'bkit.config.json');
+// --- UX-EXEC-007: rossi.config.json에 plan docPath가 정의되어야 함 ---
+const configPath = path.join(PROJECT_ROOT, 'rossi.config.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 assert('UX-EXEC-007',
   Array.isArray(config.pdca.docPaths.plan) && config.pdca.docPaths.plan.length > 0,
-  'bkit.config.json defines plan docPaths array'
+  'rossi.config.json defines plan docPaths array'
 );
 
 // --- UX-EXEC-008: config의 primary plan path가 실제 docs 구조와 일치 ---

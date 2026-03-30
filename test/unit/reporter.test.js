@@ -55,7 +55,7 @@ const benchmarkResult = {
 // --- formatMarkdownReport ---
 const mdReport = mod.formatMarkdownReport(benchmarkResult);
 assert('U-RPT-004', typeof mdReport === 'string', 'Returns string');
-assert('U-RPT-005', mdReport.includes('# bkit Skill Evals Report'), 'Has title');
+assert('U-RPT-005', mdReport.includes('# ROSSI Skill Evals Report'), 'Has title');
 assert('U-RPT-006', mdReport.includes('2026-03-08'), 'Has timestamp');
 assert('U-RPT-007', mdReport.includes('1.6.0'), 'Has version');
 assert('U-RPT-008', mdReport.includes('claude-sonnet-4-6'), 'Has model');

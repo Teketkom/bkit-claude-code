@@ -7,7 +7,7 @@ variables:
   - feature: multi-session-incremental
   - date: 2026-03-23
   - author: Claude (Report Generator)
-  - project: bkit
+  - project: ROSSI
   - version: 2.0.4
 status: Completed
 ---
@@ -16,7 +16,7 @@ status: Completed
 
 > **Summary**: PDCA 세션 분리 + Context Anchor로 핸드오프 컨텍스트 손실을 30-40% → 70-80%로 개선
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: 2.0.4
 > **Feature Owner**: Claude
 > **Completion Date**: 2026-03-23
@@ -67,7 +67,7 @@ status: Completed
 
 **Key Outcomes**:
 - [x] Core Problem 정의: 4단계 핸드오프 시 누적 손실 30-40%
-- [x] Target Users: bkit Dynamic + Enterprise 사용자
+- [x] Target Users: ROSSI Dynamic + Enterprise 사용자
 - [x] Success Criteria: 70-80% 체감 결과물 + 기존 호환성
 - [x] 5파일 제한 내 구현 확인
 - [x] Functional Requirements 8개 정의 (FR-01 ~ FR-08)
@@ -261,7 +261,7 @@ Skills (MODIFIED)
   - Reason: Check 페이즈 개선 피처로 분리 필요
 
 - ⏸️ **세션 간 진행률 자동 추적**: v2 예정
-  - Reason: 복잡도 높음, .bkit/state 확장 필요, session-guide 안정화 후 추진
+  - Reason: 복잡도 높음, .rossi/state 확장 필요, session-guide 안정화 후 추진
 
 ---
 
@@ -392,7 +392,7 @@ Skills (MODIFIED)
    - gap-detector의 Plan 문서 참조
 
 5. **세션 진행률 추적** (v2.3)
-   - .bkit/state 확장으로 세션 간 진행 기록
+   - .rossi/state 확장으로 세션 간 진행 기록
    - /pdca status --sessions로 진행률 조회
 
 ---
@@ -523,14 +523,14 @@ This feature is **production-ready** and can be:
 - Merged to main branch
 - Documented in release notes
 - Tested with existing PDCA workflows
-- Recommended to bkit Dynamic/Enterprise users
+- Recommended to ROSSI Dynamic/Enterprise users
 
 ### Future Roadmap
 
 Deferred improvements for v2.0+:
 - LLM-based Context Anchor extraction (regex → semantic)
 - Dynamic estimatedTurns calculation
-- Session progress tracking in .bkit/state
+- Session progress tracking in .rossi/state
 - Through-context mechanism for commits and code comments
 
 ---

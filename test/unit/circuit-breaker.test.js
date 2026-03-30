@@ -4,7 +4,7 @@
  * Unit Tests for lib/pdca/circuit-breaker.js
  * 15 TC | States, failure threshold, cooldown, half-open, reset, API
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 
 const path = require('path');

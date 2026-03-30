@@ -163,15 +163,15 @@ assert('TC-HC-14',
 // ============================================================
 
 // TC-HC-15: SessionStart loads config via getBkitConfig
-const bkitConfig = common.getBkitConfig();
+const rossiConfig = common.getBkitConfig();
 assert('TC-HC-15',
-  bkitConfig != null && bkitConfig.pdca != null,
+  rossiConfig != null && rossiConfig.pdca != null,
   'getBkitConfig() returns config with pdca section'
 );
 
 // TC-HC-16: Config load includes triggers section
 assert('TC-HC-16',
-  bkitConfig.triggers != null && bkitConfig.triggers.confidenceThreshold != null,
+  rossiConfig.triggers != null && rossiConfig.triggers.confidenceThreshold != null,
   'getBkitConfig() includes triggers.confidenceThreshold'
 );
 

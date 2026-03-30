@@ -1,13 +1,13 @@
-# bkit v2.0.8 Clean Architecture Analysis
+# ROSSI v2.0.8 Clean Architecture Analysis
 
-> Analyst: bkit-impact-analyst | Date: 2026-03-28 | bkit v2.0.8 | ~40K LOC
+> Analyst: rossi-impact-analyst | Date: 2026-03-28 | ROSSI v2.0.8 | ~40K LOC
 
 ---
 
 ## 1. Full Structure Tree
 
 ```
-bkit-claude-code/                          # Plugin Root
+rossi-cto-agent-kit/                          # Plugin Root
 ├── .claude-plugin/
 │   └── plugin.json                        # Plugin manifest (v2.0.8)
 ├── hooks/
@@ -34,7 +34,7 @@ bkit-claude-code/                          # Plugin Root
 │   │   ├── io.js                          #   stdin/stdout hook I/O
 │   │   ├── hook-io.js                     #   Lightweight hook I/O (v2.0.0)
 │   │   ├── debug.js                       #   Debug logging
-│   │   ├── config.js                      #   bkit.config.json loader
+│   │   ├── config.js                      #   rossi.config.json loader
 │   │   ├── file.js                        #   File type detection
 │   │   ├── paths.js                       #   Path registry + PLUGIN_DATA
 │   │   ├── constants.js                   #   Centralized magic numbers (v2.0.0)
@@ -125,7 +125,7 @@ bkit-claude-code/                          # Plugin Root
 ├── servers/           (2 MCP servers)     # [Layer 4] MCP Server Interfaces
 ├── output-styles/     (4 styles)          # [Layer 3] Output Style Definitions
 ├── evals/             (29 evals)          # [Layer 4] Skill Evaluation Framework
-├── bkit-system/       (17 docs)           # [Meta] Philosophy & Component Catalog
+├── rossi-system/       (17 docs)           # [Meta] Philosophy & Component Catalog
 ├── test/              (119 test files)    # [Meta] 9-Category Test Suite
 │   ├── unit/          (56 files)
 │   ├── integration/   (15 files)
@@ -137,7 +137,7 @@ bkit-claude-code/                          # Plugin Root
 │   ├── e2e/           (4 files)
 │   ├── ux/            (11 files)
 │   └── architecture/  (4 files + hook-flow)
-└── bkit.config.json                       # Project-level configuration
+└── rossi.config.json                       # Project-level configuration
 ```
 
 **Summary Counts:**
@@ -267,7 +267,7 @@ bkit-claude-code/                          # Plugin Root
 | **output-styles/*.md** (4) | L3 Adapter | Output style definitions | None (declarative) |
 | **servers/*.js** (2) | L4 Framework | MCP server interfaces | L2/L3 (lib modules) |
 | **evals/** (29) | L4 Framework | Evaluation test harness | L3 (skills), CC CLI |
-| **bkit.config.json** | L4 Framework | Configuration input | External |
+| **rossi.config.json** | L4 Framework | Configuration input | External |
 | **hooks/hooks.json** | L4 Framework | Hook registration | CC Plugin API |
 
 ---
@@ -406,7 +406,7 @@ All managed via the `function getX() { if (!_x) { _x = require('...'); } return 
 
 ### 4.3 Liskov Substitution Principle (LSP) -- Score: 3.5/5
 
-**Context:** bkit uses plain JavaScript (CommonJS), not classes or interfaces, so LSP applies to function contracts and data shapes rather than class hierarchies.
+**Context:** ROSSI uses plain JavaScript (CommonJS), not classes or interfaces, so LSP applies to function contracts and data shapes rather than class hierarchies.
 
 **Strong compliance:**
 - **Hook I/O contracts** -- All hook scripts follow the same stdin JSON → stdout JSON protocol. Any script can be swapped for another that conforms to the protocol.
@@ -445,8 +445,8 @@ All managed via the `function getX() { if (!_x) { _x = require('...'); } return 
 
 **Strong compliance:**
 - **Layer direction** -- core/ (L1) has ZERO dependencies on L2/L3/L4 modules. Verified by test MD-011.
-- **Lazy require pattern** -- All potential upward dependencies are broken by lazy loading (`function getX() { if (!_x) { _x = require('...'); } return _x; }`). This is bkit's primary DIP mechanism.
-- **Configuration-driven** -- bkit.config.json drives behavior without code coupling. Automation levels, quality thresholds, team composition are all config-driven.
+- **Lazy require pattern** -- All potential upward dependencies are broken by lazy loading (`function getX() { if (!_x) { _x = require('...'); } return _x; }`). This is ROSSI's primary DIP mechanism.
+- **Configuration-driven** -- rossi.config.json drives behavior without code coupling. Automation levels, quality thresholds, team composition are all config-driven.
 - **Declarative hooks.json** -- Hook wiring is configured, not hard-coded.
 - **Data-driven quality gates** -- GATE_DEFINITIONS are configuration data, not procedural code.
 
@@ -537,7 +537,7 @@ The `lib/common.js` migration bridge re-exports 199 functions. Some of these may
 
 ---
 
-## 6. bkit 3 Philosophies Compliance
+## 6. ROSSI 3 Philosophies Compliance
 
 ### 6.1 Automation First -- Score: 5/5
 
@@ -558,9 +558,9 @@ The `lib/common.js` migration bridge re-exports 199 functions. Some of these may
 
 | Evidence | Detail |
 |----------|--------|
-| bkit.config.json | Comprehensive configuration with documented thresholds |
+| rossi.config.json | Comprehensive configuration with documented thresholds |
 | lib/core/constants.js | 36 named constants, zero magic numbers in code |
-| lib/core/errors.js | Standardized error codes (BKIT_{DOMAIN}_{DETAIL}) |
+| lib/core/errors.js | Standardized error codes (ROSSI_{DOMAIN}_{DETAIL}) |
 | 9-language trigger patterns | Explicit trigger keywords per agent/skill |
 | Ambiguity scoring | calculateAmbiguityScore() triggers clarifying questions |
 | REQUIRED_SECTIONS | Template validator checks document structure |
@@ -579,10 +579,10 @@ The `lib/common.js` migration bridge re-exports 199 functions. Some of these may
 | Match rate threshold | 90% match rate enforced at check phase |
 | Decision records | pdca/decision-record.js auto-documents decisions |
 | Audit logger | All actions logged in JSONL format |
-| Design references in JSDoc | Many modules cite their design doc (e.g., "Design: docs/02-design/features/bkit-v200-controllable-ai.design.md") |
+| Design references in JSDoc | Many modules cite their design doc (e.g., "Design: docs/02-design/features/rossi-v200-controllable-ai.design.md") |
 
 **Gaps:**
-- `audit-logger.js` BKIT_VERSION hardcoded to "2.0.6" while plugin.json is "2.0.8" (version drift)
+- `audit-logger.js` ROSSI_VERSION hardcoded to "2.0.6" while plugin.json is "2.0.8" (version drift)
 - Magic Word documentation vs. code mismatch (see No Guessing section)
 - Some lib/ root modules still version-tagged as "1.6.0" while plugin is "2.0.8"
 
@@ -660,11 +660,11 @@ PDCA workflow is governed by a formal finite state machine with 20 transitions, 
 
 ### W6. Version Tag Drift (Priority: P2)
 **Problem:** Multiple version inconsistencies:
-  - `audit-logger.js` BKIT_VERSION = "2.0.6" (should be "2.0.8")
+  - `audit-logger.js` ROSSI_VERSION = "2.0.6" (should be "2.0.8")
   - lib/ root modules still at "1.6.0" version tags
   - core/index.js at "2.0.0", pdca/index.js at "2.0.0"
 **Impact:** Violates Docs=Code philosophy. Version tags in code don't match plugin.json.
-**Recommendation:** Centralize version to a single source of truth (e.g., `core/constants.js` exports BKIT_VERSION read from plugin.json, or derive from CLAUDE_PLUGIN_ROOT/plugin.json at runtime).
+**Recommendation:** Centralize version to a single source of truth (e.g., `core/constants.js` exports ROSSI_VERSION read from plugin.json, or derive from CLAUDE_PLUGIN_ROOT/plugin.json at runtime).
 **Effort:** ~1h
 
 ### W7. pdca/index.js Barrel Export Size (Priority: P3)
@@ -682,7 +682,7 @@ PDCA workflow is governed by a formal finite state machine with 20 transitions, 
 | 1 | **P1** | Split pdca/status.js into 3 modules | L2 | 4h | SRP | Docs=Code |
 | 2 | **P2** | Migrate 6 lib/ root modules to subdirectories | L3 | 6h | SRP, ISP | Docs=Code |
 | 3 | **P2** | Eliminate common.js active consumers | L3 | 2h | DIP | Docs=Code |
-| 4 | **P2** | Centralize BKIT_VERSION (single source of truth) | L1 | 1h | SRP | Docs=Code |
+| 4 | **P2** | Centralize ROSSI_VERSION (single source of truth) | L1 | 1h | SRP | Docs=Code |
 | 5 | **P2** | Add tsc --checkJs for type checking | L1-L2 | 20h | LSP, DIP | Automation First |
 | 6 | **P3** | Convert unified scripts to registry pattern | L3 | 3h | OCP | Automation First |
 | 7 | **P3** | Document preferred import paths (direct vs barrel) | Meta | 1h | ISP | No Guessing |
@@ -708,7 +708,7 @@ PDCA workflow is governed by a formal finite state machine with 20 transitions, 
 
 ### Verdict
 
-bkit v2.0.8 demonstrates a **well-designed modular architecture** that achieves strong Clean Architecture compliance for a plain JavaScript codebase. The key architectural decisions -- zero external dependencies, data-driven design, lazy require cycle management, comprehensive test architecture, and strict DAG layer direction -- are sound and well-executed.
+ROSSI v2.0.8 demonstrates a **well-designed modular architecture** that achieves strong Clean Architecture compliance for a plain JavaScript codebase. The key architectural decisions -- zero external dependencies, data-driven design, lazy require cycle management, comprehensive test architecture, and strict DAG layer direction -- are sound and well-executed.
 
 The primary improvement areas are:
 1. **God module decomposition** (pdca/status.js) -- the single most impactful refactor

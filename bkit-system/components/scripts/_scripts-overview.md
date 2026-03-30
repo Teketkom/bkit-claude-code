@@ -1,6 +1,6 @@
 # Scripts Overview
 
-> 57 Node.js Scripts used by bkit hooks (v2.0.8)
+> 57 Node.js Scripts used by ROSSI hooks (v2.0.8)
 >
 > **v1.5.0**: Claude Code Exclusive - Gemini CLI support removed, simplified architecture
 > **v1.4.7**: Core Modularization - lib/ split into 4 modules, Task Management Integration
@@ -13,7 +13,7 @@
 > **v1.6.0**: Skills 2.0 integration, PM Agent Team
 > **v1.6.1**: CTO Orchestration Redesign, P0 Bug Fixes (4), Config-Code Sync, 3-Tier Agent Security, 208 exports, CC v2.1.71
 > **v1.6.2**: CC v2.1.78 Integration, 210 exports, 49 scripts
-> **v1.4.6**: Sub-agent call stability with `bkit:` prefix
+> **v1.4.6**: Sub-agent call stability with `rossi:` prefix
 > **v1.4.5**: `/pdca archive` action, 9-language trigger completion
 > **v1.4.4**: hooks-json-integration, unified handlers (unified-stop.js, unified-bash-pre.js, etc.)
 > **v1.4.2**: Added UserPromptSubmit + PreCompact hooks, Context Engineering library modules
@@ -31,7 +31,7 @@ Scripts are **the actual logic executed by Hooks**.
 
 ## Context Engineering Perspective (v1.4.1)
 
-Scripts and `lib/common.js` form bkit's **State Management Layer**, implementing dynamic context injection according to [[../../philosophy/context-engineering|Context Engineering]] principles.
+Scripts and `lib/common.js` form ROSSI's **State Management Layer**, implementing dynamic context injection according to [[../../philosophy/context-engineering|Context Engineering]] principles.
 
 ### Dynamic Context Injection Patterns
 
@@ -76,7 +76,7 @@ Scripts and `lib/common.js` form bkit's **State Management Layer**, implementing
 All scripts are at root level (not in .claude/):
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 ├── lib/                       # Modular Library (v2.0.6, ~620+ exports)
 │   ├── common.js              # Migration Bridge (re-exports all modules)
 │   ├── core/                  # Core utilities (7 files, 40 exports)
@@ -141,7 +141,7 @@ bkit-claude-code/
 │   │
 │   ├── user-prompt-handler.js     # Hook: UserPromptSubmit (v1.4.2)
 │   └── context-compaction.js      # Hook: PreCompact (v1.4.2)
-└── bkit.config.json           # Centralized configuration
+└── rossi.config.json           # Centralized configuration
 ```
 
 ## Script Categories
@@ -271,7 +271,7 @@ const pluginPath = common.getPluginPath();        // Plugin root path
 // ═══════════════════════════════════════════════════════════════════
 // Debug Logging (v1.4.0)
 // ═══════════════════════════════════════════════════════════════════
-common.debugLog('message', { data: 'value' });    // Writes to ~/.claude/bkit-debug.log
+common.debugLog('message', { data: 'value' });    // Writes to ~/.claude/ROSSI-debug.log
 
 // ═══════════════════════════════════════════════════════════════════
 // Input Helpers
@@ -282,7 +282,7 @@ const { toolName, filePath } = common.parseHookInput(input);
 // ═══════════════════════════════════════════════════════════════════
 // Configuration (with caching)
 // ═══════════════════════════════════════════════════════════════════
-const config = common.getBkitConfig();            // Load bkit.config.json (cached)
+const config = common.getBkitConfig();            // Load rossi.config.json (cached)
 const quickFix = common.getConfig('.pdca.thresholds.quickFix', 50);
 const sourceDirs = common.getConfigArray('.sourceDirectories');
 
@@ -408,8 +408,8 @@ common.generateAutoTrigger('check', { matchRate: 95 }); // Generate auto-trigger
 
 ```javascript
 // Override via environment variable
-process.env.BKIT_EXCLUDE_PATTERNS = 'node_modules .git dist build __pycache__ .venv target vendor';
-process.env.BKIT_FEATURE_PATTERNS = 'features modules packages apps services domains';
+process.env.ROSSI_EXCLUDE_PATTERNS = 'node_modules .git dist build __pycache__ .venv target vendor';
+process.env.ROSSI_FEATURE_PATTERNS = 'features modules packages apps services domains';
 ```
 
 ### Supported Languages by Tier
@@ -509,7 +509,7 @@ Actions (3 stages):
 
 1. Task Classification
    - Measure content size
-   - Reference bkit.config.json thresholds
+   - Reference rossi.config.json thresholds
    - < 50 chars → Quick Fix
    - < 200 chars → Minor Change
    - < 1000 chars → Feature (PDCA recommended)
@@ -616,7 +616,7 @@ common.outputAllow('Guidance message');
 ### Output Styles Directory
 
 4 output style files in `output-styles/`:
-- `bkit-learning.md` - Learning-focused response formatting
-- `bkit-pdca-guide.md` - PDCA workflow response formatting
-- `bkit-enterprise.md` - Enterprise architecture response formatting
-- `bkit-pdca-enterprise.md` - Enterprise PDCA response formatting (v1.5.3)
+- `rossi-learning.md` - Learning-focused response formatting
+- `rossi-pdca-guide.md` - PDCA workflow response formatting
+- `rossi-enterprise.md` - Enterprise architecture response formatting
+- `rossi-pdca-enterprise.md` - Enterprise PDCA response formatting (v1.5.3)

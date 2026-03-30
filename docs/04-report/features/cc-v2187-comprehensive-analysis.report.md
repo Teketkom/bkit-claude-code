@@ -1,13 +1,13 @@
-# CC v2.1.87 + bkit 종합 아키텍처 분석 보고서
+# CC v2.1.87 + ROSSI 종합 아키텍처 분석 보고서
 
 > **Status**: ✅ Complete
 >
-> **Project**: bkit Vibecoding Kit
+> **Project**: ROSSI CTO Agent Kit
 > **Version**: v2.0.8 (분석 시점)
 > **Author**: CC Version Analysis Workflow
 > **Completion Date**: 2026-03-29
 > **PDCA Cycle**: #26
-> **분석 범위**: CC v2.1.87 버전 분석 + bkit 전체 코드베이스 클린 아키텍처 분석 + CC CLI 기능 체계 + 향후 개선 방향
+> **분석 범위**: CC v2.1.87 버전 분석 + ROSSI 전체 코드베이스 클린 아키텍처 분석 + CC CLI 기능 체계 + 향후 개선 방향
 
 ---
 
@@ -17,18 +17,18 @@
 
 | 항목 | 내용 |
 |------|------|
-| **기능** | CC v2.1.87 영향 분석 + bkit 전체 아키텍처 종합 분석 |
+| **기능** | CC v2.1.87 영향 분석 + ROSSI 전체 아키텍처 종합 분석 |
 | **시작일** | 2026-03-29 |
 | **완료일** | 2026-03-29 |
 | **설치 CC 버전** | v2.1.87 (2026-03-29 발행) |
-| **분석 범위** | v2.1.86 → v2.1.87 + bkit 코드베이스 전체 |
+| **분석 범위** | v2.1.86 → v2.1.87 + ROSSI 코드베이스 전체 |
 | **연속 호환 릴리스** | **53개** (v2.1.34 ~ v2.1.87) |
 
 ### 1.2 성과 요약
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  CC v2.1.87 영향 분석 + bkit 종합 아키텍처 분석        │
+│  CC v2.1.87 영향 분석 + ROSSI 종합 아키텍처 분석        │
 ├──────────────────────────────────────────────────────┤
 │  📊 CC v2.1.87 변경 건수:     ~1건 (Cowork Dispatch fix) │
 │  ⚠️  Breaking Changes:        0건                     │
@@ -37,7 +37,7 @@
 │  📋 신규 ENH 기회:            0건 (v2.1.87 기반)       │
 │  🔢 연속 호환 릴리스:          53개                    │
 │  ──────────────────────────────────────────────────── │
-│  🏗️ bkit 아키텍처 분석                                │
+│  🏗️ ROSSI 아키텍처 분석                                │
 │  📦 lib/ 모듈:                88개 (13 subdirs)        │
 │  📊 lib/ LOC:                 22,734줄               │
 │  🤖 Agents:                   32개 (11 opus, 19 sonnet, 2 haiku) │
@@ -58,10 +58,10 @@
 
 | 관점 | 내용 |
 |------|------|
-| **문제** | CC v2.1.87 버전 호환성 확인 + bkit 코드베이스의 아키텍처 건전성 및 개선 여지 파악 필요 |
-| **해결 방법** | GitHub releases/issues/npm + bkit 전체 코드베이스 정적 분석 + 클린 아키텍처 매핑 |
+| **문제** | CC v2.1.87 버전 호환성 확인 + ROSSI 코드베이스의 아키텍처 건전성 및 개선 여지 파악 필요 |
+| **해결 방법** | GitHub releases/issues/npm + ROSSI 전체 코드베이스 정적 분석 + 클린 아키텍처 매핑 |
 | **기능/UX 효과** | 53개 연속 호환 확인으로 안정성 입증, 아키텍처 개선 로드맵 12건 도출 |
-| **핵심 가치** | bkit의 현재 아키텍처 강점 확인 + 클린 아키텍처 준수도 정량 평가 + 구체적 개선 방향 제시 |
+| **핵심 가치** | ROSSI의 현재 아키텍처 강점 확인 + 클린 아키텍처 준수도 정량 평가 + 구체적 개선 방향 제시 |
 
 ---
 
@@ -78,18 +78,18 @@
 
 ### 3. 변경 사항
 
-| # | 카테고리 | 변경 내용 | 영향도 | bkit 관련 |
+| # | 카테고리 | 변경 내용 | 영향도 | ROSSI 관련 |
 |---|---------|----------|--------|----------|
 | 1 | Fix | Cowork Dispatch 메시지 전달 수정 | LOW | N |
 
-**분석**: v2.1.87은 Cowork(새 협업 기능) 관련 마이너 패치. bkit은 Cowork를 사용하지 않으므로 영향 없음. 시스템 프롬프트 변동 없음(추정).
+**분석**: v2.1.87은 Cowork(새 협업 기능) 관련 마이너 패치. ROSSI은 Cowork를 사용하지 않으므로 영향 없음. 시스템 프롬프트 변동 없음(추정).
 
 ### 4. 모니터링 이슈 현황 (2026-03-29)
 
-| 이슈 | 상태 | 내용 | bkit 영향 |
+| 이슈 | 상태 | 내용 | ROSSI 영향 |
 |------|------|------|----------|
 | #29423 | 🔴 OPEN | Task subagents CLAUDE.md 무시 | HIGH — CTO Team workaround 유지 |
-| #34197 | 🔴 OPEN | CLAUDE.md 무시 | HIGH — bkit 핵심 의존성 |
+| #34197 | 🔴 OPEN | CLAUDE.md 무시 | HIGH — ROSSI 핵심 의존성 |
 | #37520 | 🔴 OPEN | 병렬 agent OAuth 401 | HIGH — CTO Team 직접 영향 |
 | #37745 | 🔴 OPEN | --dangerously-skip-permissions 리셋 | MEDIUM |
 | #37729 | 🔴 OPEN | SessionStart env /clear 미정리 | MEDIUM |
@@ -99,22 +99,22 @@
 
 ### 4.1 신규 주목 이슈 (2026-03-28~29)
 
-| 이슈 | 상태 | 내용 | bkit 영향 |
+| 이슈 | 상태 | 내용 | ROSSI 영향 |
 |------|------|------|----------|
-| #40506 | 🔴 OPEN | **PreToolUse hooks `-p` 모드 미작동** | HIGH — ENH-138(--bare 가이드) 관련, bkit hooks가 headless 모드에서 실행 안됨 |
+| #40506 | 🔴 OPEN | **PreToolUse hooks `-p` 모드 미작동** | HIGH — ENH-138(--bare 가이드) 관련, ROSSI hooks가 headless 모드에서 실행 안됨 |
 | #40502 | 🔴 OPEN | **Background agents write 작업 불가** | HIGH — CTO Team bg agents 영향 |
 | #40519 | 🔴 OPEN | auto-compact plan mode 크래시 | MEDIUM — VSCode only |
-| #40517 | 🔴 OPEN | Write tool read-before-write guard 과잉 | LOW — bkit 미영향 |
+| #40517 | 🔴 OPEN | Write tool read-before-write guard 과잉 | LOW — ROSSI 미영향 |
 
 ### 5. 신규 ENH 기회
 
 v2.1.87 자체는 ENH 기회 없음. 단, 신규 이슈 기반 기존 ENH 업데이트:
-- **ENH-138** (--bare CI/CD 가이드): #40506 확인으로 `-p` 모드에서 bkit hooks 미작동 문제 문서화 필요성 강화 → **P1 유지**
+- **ENH-138** (--bare CI/CD 가이드): #40506 확인으로 `-p` 모드에서 ROSSI hooks 미작동 문제 문서화 필요성 강화 → **P1 유지**
 - **ENH-143** (병렬 agent 문제): #40502 추가 발견으로 bg agent write 불가 이슈도 동일 범주 → **P1 유지**
 
 ---
 
-## Part B: bkit 코드베이스 전체 아키텍처 분석
+## Part B: ROSSI 코드베이스 전체 아키텍처 분석
 
 ### 6. 코드베이스 규모
 
@@ -127,14 +127,14 @@ v2.1.87 자체는 ENH 기회 없음. 단, 신규 이슈 기반 기존 ENH 업데
 | **Skills** | 37 | 18 Workflow + 18 Capability + 1 Hybrid |
 | **Scripts** | 57 | Hook 핸들러 |
 | **Hook Events** | 18/25 | CC 전체 25개 중 18개 구현 |
-| **MCP Servers** | 2 | bkit-pdca, bkit-analysis |
+| **MCP Servers** | 2 | rossi-pdca, rossi-analysis |
 | **Templates** | 다수 | PDCA 문서 + 인프라 |
 | **Tests** | 144 파일 / 3,376 TC | 12 카테고리 |
 
 ### 7. 디렉토리 구조 트리
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 ├── lib/                           # 핵심 라이브러리 (22,734 LOC)
 │   ├── core/         (13 modules) # 플랫폼, 캐시, I/O, 설정, 경로, 상수, 에러
 │   ├── pdca/         (23 modules) # PDCA 상태기계, 워크플로우, 자동화, 배치
@@ -158,7 +158,7 @@ bkit-claude-code/
 ├── evals/                         # A/B 테스트 프레임워크
 ├── output-styles/                 # 출력 스타일
 ├── docs/                          # PDCA 문서 (한국어)
-├── bkit-system/                   # 아키텍처 문서
+├── rossi-system/                   # 아키텍처 문서
 ├── skill-creator/                 # 스킬 생성기
 ├── commands/                      # 커맨드 정의 (3)
 └── .claude-plugin/                # 플러그인 설정
@@ -245,7 +245,7 @@ core (최하위 — 순수 유틸)
 
 #### 10.3 순환 의존성
 
-**0건** — 45개소의 lazy loading 패턴(`if (!_module) { _module = require(...); }`)으로 모든 순환 가능성을 차단. 이는 bkit의 가장 큰 아키텍처 강점 중 하나.
+**0건** — 45개소의 lazy loading 패턴(`if (!_module) { _module = require(...); }`)으로 모든 순환 가능성을 차단. 이는 ROSSI의 가장 큰 아키텍처 강점 중 하나.
 
 ### 11. 아키텍처 강점
 
@@ -275,19 +275,19 @@ core (최하위 — 순수 유틸)
 | **A7** | lib/ 모듈 크기 불균형 | LOW | pdca/(23) vs quality/(3). pdca에 과도한 책임 집중 |
 | **A8** | Agent frontmatter 비완전 | LOW | effort frontmatter가 skills에 미적용 (ENH-134) |
 | **A9** | 테스트-프로덕션 매핑 불명확 | LOW | test/ 디렉토리가 lib/ 구조와 1:1 매핑되지 않음 |
-| **A10** | MCP 서버 최소 구현 | MEDIUM | 2개 서버(16 tools)만 존재, 더 많은 bkit 기능을 MCP로 노출 가능 |
+| **A10** | MCP 서버 최소 구현 | MEDIUM | 2개 서버(16 tools)만 존재, 더 많은 ROSSI 기능을 MCP로 노출 가능 |
 | **A11** | 이벤트 시스템 부재 | MEDIUM | 모듈 간 직접 호출. EventEmitter 기반 느슨한 결합 가능 |
-| **A12** | 설정 스키마 분산 | LOW | bkit.config.json, plugin.json, hooks.json에 설정이 분산 |
+| **A12** | 설정 스키마 분산 | LOW | rossi.config.json, plugin.json, hooks.json에 설정이 분산 |
 
 ---
 
-## Part C: CC CLI 전체 기능 체계 및 bkit 활용 현황
+## Part C: CC CLI 전체 기능 체계 및 ROSSI 활용 현황
 
 ### 13. CC CLI 기능 인벤토리
 
 #### 13.1 Tools (30개)
 
-| # | Tool | bkit 활용 |
+| # | Tool | ROSSI 활용 |
 |---|------|----------|
 | 1 | Read | ✅ scripts에서 파일 읽기 |
 | 2 | Write | ✅ PreToolUse hook으로 감시 |
@@ -324,7 +324,7 @@ core (최하위 — 순수 유틸)
 
 #### 13.2 Hook Events (25개 CC 전체)
 
-| # | Hook Event | bkit 구현 | 매핑 스크립트 |
+| # | Hook Event | ROSSI 구현 | 매핑 스크립트 |
 |---|-----------|----------|-------------|
 | 1 | SessionStart | ✅ | session-start.js |
 | 2 | SessionEnd | ✅ | session-end-handler.js |
@@ -356,7 +356,7 @@ core (최하위 — 순수 유틸)
 
 #### 13.3 Agent Frontmatter (CC 지원 필드)
 
-| 필드 | bkit 활용 | 비고 |
+| 필드 | ROSSI 활용 | 비고 |
 |------|----------|------|
 | model | ✅ | 32 agents 모두 설정 |
 | effort | ✅ | self-healing 등 설정 (v2.0.8) |
@@ -366,7 +366,7 @@ core (최하위 — 순수 유틸)
 
 #### 13.4 Skill Frontmatter (CC 지원 필드)
 
-| 필드 | bkit 활용 | 비고 |
+| 필드 | ROSSI 활용 | 비고 |
 |------|----------|------|
 | description | ✅ | 37 skills 250자 최적화 (v2.0.8) |
 | allowed-tools | ✅ | 모든 스킬에 설정 |
@@ -393,28 +393,28 @@ core (최하위 — 순수 유틸)
 
 #### 14.2 향후 방향 추정 (에이전트 조사 결과 반영)
 
-| 방향 | 근거 | bkit 기회 |
+| 방향 | 근거 | ROSSI 기회 |
 |------|------|----------|
-| **Agent Teams GA** | #24316(custom agents as teammates), #25148(all plans), #30140(shared channel) | bkit 32 agents 자동 teammate 활용, CTO Team 고도화 |
-| **Auto Mode** | 2026-03-24 Research Preview 출시. AI classifier가 tool call 위험도 자동 판단 | bkit hook `if` 필드와 보완 관계. 호환성 검증 필요 (ENH-165 후보) |
+| **Agent Teams GA** | #24316(custom agents as teammates), #25148(all plans), #30140(shared channel) | ROSSI 32 agents 자동 teammate 활용, CTO Team 고도화 |
+| **Auto Mode** | 2026-03-24 Research Preview 출시. AI classifier가 tool call 위험도 자동 판단 | ROSSI hook `if` 필드와 보완 관계. 호환성 검증 필요 (ENH-165 후보) |
 | **Claude Mythos** | 2026-03-27 유출. Capybara 티어, Opus 4.6 대비 "극적으로 높은 점수" | agent frontmatter model 지정 옵션 준비. 모니터링 |
-| **Code Review** | 2026-03-09 Multi-agent PR 리뷰 출시 ($15~25/건) | bkit phase-8-review와 시너지. API 연동 검토 |
+| **Code Review** | 2026-03-09 Multi-agent PR 리뷰 출시 ($15~25/건) | ROSSI phase-8-review와 시너지. API 연동 검토 |
 | **Cowork 확장** | v2.1.87 fix, Dispatch + Computer Use(3/24) | 멀티유저 협업 지원 가능성 |
 | **Hook 시스템 완성** | `if` 필드(v2.1.85), 지속적 event 추가 | 미구현 7개 hook 순차 구현 |
-| **MCP 생태계 폭발** | SDK 월 9,700만 다운로드, 770+ 서버, Linux Foundation 기증 | bkit MCP 서버 확장 기회 |
+| **MCP 생태계 폭발** | SDK 월 9,700만 다운로드, 770+ 서버, Linux Foundation 기증 | ROSSI MCP 서버 확장 기회 |
 | **CI/CD 통합** | --bare, /schedule, RemoteTrigger, Copilot CLI GA | 자동화 파이프라인 강화 |
-| **보안 강화** | managed-settings, env scrub, 커뮤니티 보안 우려 증가 | bkit 차별화 포인트 |
+| **보안 강화** | managed-settings, env scrub, 커뮤니티 보안 우려 증가 | ROSSI 차별화 포인트 |
 
 #### 14.3 경쟁 환경 (2026년 3월 기준)
 
-| 도구 | 최신 동향 | bkit 시사점 |
+| 도구 | 최신 동향 | ROSSI 시사점 |
 |------|----------|------------|
-| **GitHub Copilot** | Agentic Code Review, CLI GA, SWE-bench 56%. 4/24부터 코드로 모델 훈련(개인정보 리스크) | bkit "코드 미전송" 철학이 보안 차별화 |
-| **Cursor** | Plugin 마켓플레이스, Background Agents, 10~50 파일 멀티파일 편집 | 기업 거버넌스 트렌드 → bkit org policy 대응 적절 |
+| **GitHub Copilot** | Agentic Code Review, CLI GA, SWE-bench 56%. 4/24부터 코드로 모델 훈련(개인정보 리스크) | ROSSI "코드 미전송" 철학이 보안 차별화 |
+| **Cursor** | Plugin 마켓플레이스, Background Agents, 10~50 파일 멀티파일 편집 | 기업 거버넌스 트렌드 → ROSSI org policy 대응 적절 |
 | **Windsurf** | Cascade 완전 에이전틱 전환, $15/월 | 가격 경쟁 심화 |
 | **Cline** | v3.51.0 GPT-5.2 Codex 지원, 5M+ 사용자, Apache 2.0 | 동일 라이선스, 오픈소스 노출 확대 고려 |
 
-**핵심 트렌드**: 모든 도구가 "agent" 카테고리로 수렴 → bkit의 31 Agents + CTO Team 패턴이 경쟁 우위
+**핵심 트렌드**: 모든 도구가 "agent" 카테고리로 수렴 → ROSSI의 31 Agents + CTO Team 패턴이 경쟁 우위
 
 #### 14.4 커뮤니티 감성 분석
 
@@ -439,7 +439,7 @@ core (최하위 — 순수 유틸)
 
 lib/adapters/
 ├── claude/
-│   ├── hook-adapter.js     # hooks.json ↔ bkit 이벤트 매핑
+│   ├── hook-adapter.js     # hooks.json ↔ ROSSI 이벤트 매핑
 │   ├── tool-adapter.js     # CC tool 호출 추상화
 │   ├── agent-adapter.js    # Agent/SendMessage 추상화
 │   └── mcp-adapter.js      # MCP server 통합
@@ -509,7 +509,7 @@ lib/core/event-bus.js
 목표: 모든 SKILL.md에 적절한 effort 값 추가
 
 분류 기준:
-  - effort: low → 단순 조회/안내 스킬 (bkit, skill-status, bkit-rules)
+  - effort: low → 단순 조회/안내 스킬 (ROSSI, skill-status, rossi-rules)
   - effort: medium → 대부분의 스킬
   - effort: high → 복합 분석 스킬 (cc-version-analysis, pdca, plan-plus)
 
@@ -527,8 +527,8 @@ lib/core/event-bus.js
 
 #### REC-7: --bare CI/CD 가이드 (ENH-138, P1)
 ```
-현재: --bare 모드에서 bkit hooks 동작 미문서화
-목표: CI/CD 파이프라인에서 bkit 사용 가이드 작성
+현재: --bare 모드에서 ROSSI hooks 동작 미문서화
+목표: CI/CD 파이프라인에서 ROSSI 사용 가이드 작성
 주의: #40506으로 PreToolUse hooks가 -p 모드에서 미작동 확인
       이 이슈가 해결될 때까지 workaround 문서 필요
 ```
@@ -537,11 +537,11 @@ lib/core/event-bus.js
 ```
 현재: 2개 서버, 16 tools
 확장 후보:
-  - bkit-team-server: Agent Teams 상태 조회/제어 (5 tools)
-  - bkit-control-server: 자동화 레벨, 체크포인트 관리 (4 tools)
-  - bkit-quality-server: 품질 메트릭스, 게이트 상태 (3 tools)
+  - ROSSI-team-server: Agent Teams 상태 조회/제어 (5 tools)
+  - ROSSI-control-server: 자동화 레벨, 체크포인트 관리 (4 tools)
+  - ROSSI-quality-server: 품질 메트릭스, 게이트 상태 (3 tools)
 
-가치: 외부 MCP 클라이언트에서 bkit 기능 접근 가능
+가치: 외부 MCP 클라이언트에서 ROSSI 기능 접근 가능
 ```
 
 #### REC-9: Plugin freshness 배포 전략 (ENH-139+142, P1)
@@ -627,9 +627,9 @@ Background: REC-4, REC-10, REC-11, REC-12 (기회적 개선)
 
 | ENH | 내용 | 우선순위 | 근거 |
 |-----|------|:--------:|------|
-| **ENH-165** | Auto Mode + bkit hook 호환성 검증 | P2 (모니터링) | Auto Mode Research Preview 출시(3/24). bkit hooks가 Auto Mode에서 정상 작동하는지 검증 필요 |
+| **ENH-165** | Auto Mode + ROSSI hook 호환성 검증 | P2 (모니터링) | Auto Mode Research Preview 출시(3/24). ROSSI hooks가 Auto Mode에서 정상 작동하는지 검증 필요 |
 | **ENH-166** | Claude Mythos/Capybara 모델 대비 | P3 (모니터링) | 3/27 유출. 새 모델 티어 출시 시 agent frontmatter model 옵션 확장 필요 |
-| **ENH-167** | BKIT_VERSION 중앙화 | P2 | audit-logger.js에 "2.0.6" 하드코딩 발견(bkit-impact-analyst). Docs=Code 원칙 위반 |
+| **ENH-167** | ROSSI_VERSION 중앙화 | P2 | audit-logger.js에 "2.0.6" 하드코딩 발견(rossi-impact-analyst). Docs=Code 원칙 위반 |
 
 ### 20. 전체 ENH 현황 (v2.1.87 기준)
 
@@ -649,7 +649,7 @@ Background: REC-4, REC-10, REC-11, REC-12 (기회적 개선)
 
 ## 결론
 
-### bkit v2.0.8 아키텍처 건강도 평가
+### ROSSI v2.0.8 아키텍처 건강도 평가
 
 | 지표 | 점수 | 평가 |
 |------|:----:|------|
@@ -670,10 +670,10 @@ Background: REC-4, REC-10, REC-11, REC-12 (기회적 개선)
 Anthropic은 2026년 3월 "미친 3월"을 보냈습니다:
 - **14건+ 주요 출시**: Auto Mode, Cowork Dispatch, Code Review, Claude Mythos 유출
 - **300% 사용량 성장**, MCP SDK **월 9,700만 다운로드**
-- 경쟁사 모두 "에이전트"로 수렴 중 — bkit의 31 Agents + CTO Team이 핵심 차별화
-- **bkit 포지셔닝**: Claude Code "most loved" 46%의 생태계에서 가장 포괄적인 PDCA 개발 자동화 플러그인
+- 경쟁사 모두 "에이전트"로 수렴 중 — ROSSI의 31 Agents + CTO Team이 핵심 차별화
+- **ROSSI 포지셔닝**: Claude Code "most loved" 46%의 생태계에서 가장 포괄적인 PDCA 개발 자동화 플러그인
 
 ### 참고 문서
 
-- **클린 아키텍처 상세 분석**: `docs/03-analysis/bkit-clean-architecture-analysis.md` (bkit-impact-analyst 생성)
+- **클린 아키텍처 상세 분석**: `docs/03-analysis/rossi-clean-architecture-analysis.md` (rossi-impact-analyst 생성)
 - **이 보고서**: `docs/04-report/features/cc-v2187-comprehensive-analysis.report.md`

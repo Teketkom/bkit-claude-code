@@ -156,7 +156,7 @@ gap-detector-stop.js
 
 ## Skill Description Triggers (Semantic Matching)
 
-> **Note**: The "Triggers:" keyword in description is a **bkit convention**, not an official Claude Code feature. Claude uses **semantic matching** on the entire description field to decide when to auto-invoke skills/agents. The "Triggers:" section helps Claude understand activation contexts through natural language.
+> **Note**: The "Triggers:" keyword in description is a **ROSSI convention**, not an official Claude Code feature. Claude uses **semantic matching** on the entire description field to decide when to auto-invoke skills/agents. The "Triggers:" section helps Claude understand activation contexts through natural language.
 
 Skills and Agents are activated by semantic matching on their description field.
 
@@ -186,8 +186,8 @@ Skills and Agents are activated by semantic matching on their description field.
 
 | Skill | Trigger Keywords |
 |-------|------------------|
-| [[../../skills/bkit-rules/SKILL|bkit-rules]] | bkit, PDCA, develop, implement, feature, bug, code, design |
-| [[../../skills/bkit-templates/SKILL|bkit-templates]] | template, plan document, design document, analysis document, report |
+| [[../../skills/rossi-rules/SKILL|rossi-rules]] | ROSSI, PDCA, develop, implement, feature, bug, code, design |
+| [[../../skills/rossi-templates/SKILL|rossi-templates]] | template, plan document, design document, analysis document, report |
 | [[../../skills/zero-script-qa/SKILL|zero-script-qa]] | zero script qa, log-based testing, docker logs, QA, testing |
 | [[../../skills/development-pipeline/SKILL|development-pipeline]] | development pipeline, phase, where to start, new project |
 | [[../../skills/mobile-app/SKILL|mobile-app]] | mobile app, React Native, Flutter, Expo, iOS, Android |
@@ -238,15 +238,15 @@ Each Skill is connected to specific Agents:
 | `development-pipeline` | [[../agents/pipeline-guide|pipeline-guide]] | |
 | `zero-script-qa` | [[../agents/qa-monitor|qa-monitor]] | |
 | `phase-8-review` | [[../agents/code-analyzer|code-analyzer]] | Code quality analysis |
-| `bkit-templates` | [[../agents/design-validator|design-validator]] | Document validation |
+| `rossi-templates` | [[../agents/design-validator|design-validator]] | Document validation |
 | `mobile-app` | [[../agents/pipeline-guide|pipeline-guide]] | |
 | `desktop-app` | [[../agents/pipeline-guide|pipeline-guide]] | |
 
 **Removed Connections (v1.2.0)**:
 - `evaluator-optimizer` → Removed (merged into pdca-iterator agent description)
 - `analysis-patterns` → Merged into phase-8-review
-- `pdca-methodology` → Removed (merged into bkit-rules)
-- `document-standards` → Merged into bkit-templates
+- `pdca-methodology` → Removed (merged into rossi-rules)
+- `document-standards` → Merged into rossi-templates
 
 ---
 
@@ -264,13 +264,13 @@ Each Skill is connected to specific Agents:
 
 | Trigger Point | Condition | Suggestion |
 |--------------|-----------|-----------|
-| SessionStart | Level = Starter | Suggest `bkit-learning` |
-| SessionStart | Level = Dynamic | Suggest `bkit-pdca-guide` |
-| SessionStart | Level = Enterprise | Suggest `bkit-enterprise` |
-| Level skill init | `/starter init` | Auto-suggest `bkit-learning` |
-| Level skill init | `/dynamic init` | Auto-suggest `bkit-pdca-guide` |
-| Level skill init | `/enterprise init` | Auto-suggest `bkit-enterprise` |
-| PDCA phase start | Any PDCA command | Suggest `bkit-pdca-guide` if not active |
+| SessionStart | Level = Starter | Suggest `rossi-learning` |
+| SessionStart | Level = Dynamic | Suggest `rossi-pdca-guide` |
+| SessionStart | Level = Enterprise | Suggest `rossi-enterprise` |
+| Level skill init | `/starter init` | Auto-suggest `rossi-learning` |
+| Level skill init | `/dynamic init` | Auto-suggest `rossi-pdca-guide` |
+| Level skill init | `/enterprise init` | Auto-suggest `rossi-enterprise` |
+| PDCA phase start | Any PDCA command | Suggest `rossi-pdca-guide` if not active |
 
 ### Agent Teams Triggers
 

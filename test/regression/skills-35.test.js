@@ -4,7 +4,7 @@
  * Regression Test: 35 Skills Full Verification (25 TC)
  * SK-001~025: Each of 35 skills (31 old + 4 new) has SKILL.md with valid frontmatter
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -19,7 +19,7 @@ console.log('\n=== skills-35.test.js (25 TC) ===\n');
 
 // --- Skill definitions (35 skills: 9W + 20C + 2H + 4 new) ---
 const WORKFLOW_SKILLS = [
-  'pdca', 'bkit-rules', 'bkit-templates', 'code-review',
+  'pdca', 'rossi-rules', 'rossi-templates', 'code-review',
   'development-pipeline', 'phase-2-convention', 'phase-8-review',
   'pm-discovery', 'zero-script-qa'
 ];

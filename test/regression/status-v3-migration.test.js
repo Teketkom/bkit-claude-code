@@ -6,7 +6,7 @@
  * MG-006~010: v3.0 has stateMachine, automation, team sections
  * MG-011~015: Feature-level stateMachine, metrics, phaseTimestamps added
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const path = require('path');

@@ -1,6 +1,6 @@
-# bkit v2.0.0 종합 테스트 — PDCA 완료 보고서
+# ROSSI v2.0.0 종합 테스트 — PDCA 완료 보고서
 
-> **Feature**: bkit v2.0.0 종합 테스트 확장 — 100% 모듈 커버리지
+> **Feature**: ROSSI v2.0.0 종합 테스트 확장 — 100% 모듈 커버리지
 > **Date**: 2026-03-21
 > **PDCA Cycle**: Plan → Do → Check → Report
 > **Duration**: 1 세션 (~1시간)
@@ -12,8 +12,8 @@
 
 | 관점 | 내용 |
 |------|------|
-| **Feature** | bkit v2.0.0 종합 테스트 확장 — 3,127 TC, 10 카테고리, 14 신규 테스트 파일 |
-| **Branch** | `feat/bkit-v2.0.0` (commit `a008a3e`) |
+| **Feature** | ROSSI v2.0.0 종합 테스트 확장 — 3,127 TC, 10 카테고리, 14 신규 테스트 파일 |
+| **Branch** | `feat/ROSSI-v2.0.0` (commit `a008a3e`) |
 | **Files Changed** | 22 files (+3,664 LOC / -14 LOC) |
 | **Test Results** | **3,127 TC | 3,115 PASS | 0 FAIL | 12 SKIP (99.6%)** |
 | **Status** | **완료** — 미테스트 모듈 46% → 0% 해소, 전체 모듈 테스트 커버 |
@@ -75,14 +75,14 @@ Security     ██████████ 205  (+156%)
 | `root-modules.test.js` | 30 | context-fork, context-hierarchy, memory-store, permission-manager, import-resolver | fork lifecycle, session context, memory cache, permissions, frontmatter parsing |
 | `index-modules.test.js` | 15 | 6 index.js re-export modules | core(61), pdca(116), intent(19), task(26), team(40), ui(5+) exports |
 | `v200-skills.test.js` | 30 | 5 new skills (control, audit, rollback, pdca-batch, btw) | frontmatter, triggers, commands, multilingual |
-| `v200-mcp-servers.test.js` | 25 | bkit-pdca-server, bkit-analysis-server | 16 tool handlers, JSON-RPC 2.0, package.json v2.0.0 |
+| `v200-mcp-servers.test.js` | 25 | rossi-pdca-server, rossi-analysis-server | 16 tool handlers, JSON-RPC 2.0, package.json v2.0.0 |
 | `v200-workflows.test.js` | 20 | 3 YAML workflows (default, hotfix, enterprise) | parse, validate, phase coverage, matchRate thresholds |
 
 ### 2.2 Integration Tests (+85 TC, 3 files)
 
 | 파일 | TC | 핵심 검증 |
 |------|:--:|---------|
-| `v200-wiring.test.js` | 40 | session-start→UI modules, unified-stop→state-machine, pre-write→destructive-detector, 5 agent stops→state-machine, hooks.json 18 events, 6 new handlers, bkit.config.json sections |
+| `v200-wiring.test.js` | 40 | session-start→UI modules, unified-stop→state-machine, pre-write→destructive-detector, 5 agent stops→state-machine, hooks.json 18 events, 6 new handlers, rossi.config.json sections |
 | `v200-dashboard.test.js` | 25 | 5 UI modules render functions, mock PDCA/agent/control state rendering, null input graceful handling |
 | `v200-common-bridge.test.js` | 20 | common.js 210+ exports, 5 submodule accessibility, direct vs bridge import identity, circular dependency absence |
 
@@ -197,7 +197,7 @@ lib/ 모듈 테스트 커버리지:
 | **Gap Analysis First** | 테스트 작성 전에 gap-finder 에이전트로 미테스트 모듈을 식별한 것이 핵심. 35개 모듈을 빠짐없이 커버할 수 있었음 |
 | **병렬 에이전트 효율** | 5개 테스트 작성 에이전트 병렬 실행으로 ~410 TC를 ~15분 만에 완료. 순차 실행 대비 5배 효율 |
 | **테스트가 버그를 잡음** | agents-31.test.js가 pdca-eval-* 6개 에이전트의 memory 필드 누락을 즉시 발견. 테스트 우선 접근의 가치 입증 |
-| **인라인 assert 패턴** | 외부 의존성 없는 인라인 assert 패턴이 bkit 테스트에 최적. 모듈 로드 실패도 graceful하게 처리 |
+| **인라인 assert 패턴** | 외부 의존성 없는 인라인 assert 패턴이 ROSSI 테스트에 최적. 모듈 로드 실패도 graceful하게 처리 |
 
 ---
 
@@ -212,7 +212,7 @@ lib/ 모듈 테스트 커버리지:
 +1,976 TC (vs v1.6.2)   │  172% TC growth        │  ~15 min total
 ```
 
-### bkit v2.0.0 테스트 완성도
+### ROSSI v2.0.0 테스트 완성도
 
 - **Unit 커버리지**: 76/76 모듈 (100%)
 - **Integration 커버리지**: Hook wiring, Dashboard, Common bridge 모두 검증

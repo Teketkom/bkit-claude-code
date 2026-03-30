@@ -1,4 +1,4 @@
-# PDCA Methodology in bkit v2.0.0
+# PDCA Methodology in ROSSI v2.0.0
 
 > Declarative state machine-driven PDCA with workflow engine, quality gates, and controllable automation
 

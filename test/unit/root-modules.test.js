@@ -5,7 +5,7 @@
  * 30 TC | context-fork.js, context-hierarchy.js, memory-store.js,
  *         permission-manager.js, import-resolver.js
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const path = require('path');

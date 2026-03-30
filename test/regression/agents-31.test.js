@@ -4,7 +4,7 @@
  * Regression Test: 31 Agents Full Verification (35 TC)
  * AG31-001~035: Each of 31 agents has valid frontmatter (model, memory, tools)
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const fs = require('fs');
@@ -39,7 +39,7 @@ const VALID_MEMORY = ['user', 'project', 'local', 'none'];
 
 // --- All 31 agents ---
 const ALL_AGENTS = [
-  'bkend-expert', 'bkit-impact-analyst', 'cc-version-researcher',
+  'bkend-expert', 'rossi-impact-analyst', 'cc-version-researcher',
   'code-analyzer', 'cto-lead', 'design-validator', 'enterprise-expert',
   'frontend-architect', 'gap-detector', 'infra-architect',
   'pdca-eval-act', 'pdca-eval-check', 'pdca-eval-design', 'pdca-eval-do',

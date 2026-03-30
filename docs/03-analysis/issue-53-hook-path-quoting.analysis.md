@@ -2,12 +2,12 @@
 
 > **요약**: hooks.json 경로 quoting 수정 — Gap Analysis 결과
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23
 > **상태**: Completed
-> **이슈**: [GitHub #53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53)
+> **이슈**: [GitHub #53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53)
 
 ---
 
@@ -17,7 +17,7 @@
 |------|------|
 | **문제** | hooks.json 18개 hook event (21개 command)에서 unquoted path로 인한 Windows 호환성 실패 |
 | **해결** | 모든 21개 command에 escaped double-quote 적용 + 13개 파일 버전 2.0.3→2.0.4 |
-| **기능/UX 효과** | Windows 괄호/공백 사용자명 환경에서 bkit 완전 정상 동작 |
+| **기능/UX 효과** | Windows 괄호/공백 사용자명 환경에서 ROSSI 완전 정상 동작 |
 | **핵심 가치** | 크로스 플랫폼 zero-config 호환성 |
 
 ---
@@ -31,14 +31,14 @@
 | hooks.json 21개 command quoting | ✅ 완료 | ✅ |
 | hooks.json description 버전 업데이트 | ✅ v2.0.4 | ✅ |
 | plugin.json 버전 | ✅ 2.0.4 | ✅ |
-| bkit.config.json 버전 | ✅ 2.0.4 | ✅ |
+| rossi.config.json 버전 | ✅ 2.0.4 | ✅ |
 | marketplace.json 버전 (2곳) | ✅ 2.0.4 | ✅ |
 | evals/config.json 버전 | ✅ 2.0.4 | ✅ |
 | MCP server packages 버전 (2개) | ✅ 2.0.4 | ✅ |
-| audit-logger.js BKIT_VERSION | ✅ 2.0.4 | ✅ |
+| audit-logger.js ROSSI_VERSION | ✅ 2.0.4 | ✅ |
 | session-start.js systemMessage | ✅ 2.0.4 | ✅ |
 | session-context.js | ✅ 2.0.4 | ✅ |
-| paths.js bkitVersion (2곳) | ✅ 2.0.4 | ✅ |
+| paths.js rossiVersion (2곳) | ✅ 2.0.4 | ✅ |
 | CHANGELOG.md v2.0.4 섹션 | ✅ 추가됨 | ✅ |
 
 ### 1.2 변경 통계

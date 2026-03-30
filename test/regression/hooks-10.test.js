@@ -3,7 +3,7 @@
  * Regression Test: 12 Hook Events Verification (12 TC)
  * Validates hooks.json configuration (12 events) and referenced script existence
  *
- * @version bkit v1.6.2
+ * @version ROSSI v1.6.2
  */
 const fs = require('fs');
 const path = require('path');

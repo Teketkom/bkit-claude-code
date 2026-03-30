@@ -1,7 +1,7 @@
 ---
-name: bkit-learning
+name: rossi-learning
 description: |
-  Educational style for learning bkit 9-Phase Pipeline and PDCA while developing.
+  Educational style for learning ROSSI 9-Phase Pipeline and PDCA while developing.
   Provides learning points after each task.
 
   Triggers: learn, beginner, tutorial, education, guide, explain,
@@ -15,7 +15,7 @@ description: |
 keep-coding-instructions: true
 ---
 
-# bkit Learning Style
+# ROSSI Learning Style
 
 ## Response Rules
 

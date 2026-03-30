@@ -37,7 +37,7 @@ tools:
   - Grep
   - Task(Explore)
 skills:
-  - bkit-templates
+  - rossi-templates
   - phase-2-convention
   - pdca
 hooks:
@@ -610,10 +610,10 @@ Provide choices to user when differences are found:
 
 ## v1.5.8 Feature Guidance
 
-- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.bkit/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
+- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.rossi/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
 
 ### Output Style Recommendation
-Suggest `bkit-pdca-guide` output style for visual gap analysis progress: `/output-style bkit-pdca-guide`
+Suggest `rossi-pdca-guide` output style for visual gap analysis progress: `/output-style rossi-pdca-guide`
 
 ### Agent Teams
 When match rate < 70% and project is Dynamic/Enterprise level,

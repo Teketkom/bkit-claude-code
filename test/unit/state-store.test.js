@@ -28,7 +28,7 @@ function assert(id, condition, message) {
 function skip(id, message) { total++; skipped++; console.log(`  SKIP: ${id} - ${message}`); }
 
 // Test directory setup
-const TEST_DIR = path.join(os.tmpdir(), `bkit-state-store-test-${process.pid}-${Date.now()}`);
+const TEST_DIR = path.join(os.tmpdir(), `ROSSI-state-store-test-${process.pid}-${Date.now()}`);
 fs.mkdirSync(TEST_DIR, { recursive: true });
 
 function testFile(name) {

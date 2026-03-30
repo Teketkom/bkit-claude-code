@@ -1,4 +1,4 @@
-# Каталог навыков bkit (37 Skills)
+# Каталог навыков ROSSI (37 Skills)
 
 ## Workflow Skills (17) — Постоянные
 
@@ -6,8 +6,8 @@
 |-------|----------|---------|
 | `pdca` | Управление PDCA циклом | `/pdca [action] [feature]` |
 | `pdca-batch` | Пакетная обработка PDCA | `/pdca-batch [features]` |
-| `bkit-rules` | Базовые правила bkit | автоматический |
-| `bkit-templates` | Шаблоны документов | `/bkit-templates` |
+| `rossi-rules` | Базовые правила ROSSI | автоматический |
+| `rossi-templates` | Шаблоны документов | `/rossi-templates` |
 | `code-review` | Ревью кода | `/code-review` |
 | `development-pipeline` | 9-фазный пайплайн | `/pipeline [phase]` |
 | `plan-plus` | Расширенное планирование | `/plan-plus [feature]` |

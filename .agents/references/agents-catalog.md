@@ -1,4 +1,4 @@
-# Каталог агентов bkit (32 Agents)
+# Каталог агентов ROSSI (32 Agents)
 
 ## Агенты уровня Opus (11)
 
@@ -36,7 +36,7 @@
 | `pm-strategy` | agents/pm-strategy.md | PM Strategy: стратегическое планирование |
 | `pm-prd` | agents/pm-prd.md | PM PRD: создание PRD документов |
 | `cc-version-researcher` | agents/cc-version-researcher.md | Исследование версий Claude Code |
-| `bkit-impact-analyst` | agents/bkit-impact-analyst.md | Анализ влияния изменений |
+| `rossi-impact-analyst` | agents/rossi-impact-analyst.md | Анализ влияния изменений |
 | `skill-needs-extractor` | agents/skill-needs-extractor.md | Извлечение потребностей в навыках |
 | `pdca-eval-do` | agents/pdca-eval-do.md | PDCA Evaluator: оценка фазы Do |
 

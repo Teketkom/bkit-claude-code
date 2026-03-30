@@ -2,7 +2,7 @@
 
 > **Summary**: CC v2.1.69 중첩 서브에이전트 차단 대응 — CTO/PM Lead 아키텍처 재구성
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: 1.6.1
 > **Author**: Claude (AI)
 > **Date**: 2026-03-07
@@ -25,14 +25,14 @@
 
 ### 1.1 Purpose
 
-Claude Code v2.1.69에서 도입된 "서브에이전트는 다른 서브에이전트를 생성할 수 없다" 정책으로 인해 bkit의 CTO-Led Agent Teams와 PM Agent Team이 완전히 작동 불가 상태이다. 이 문제를 해결하여 CC v2.1.69+ 환경에서 팀 오케스트레이션 기능을 정상 복구한다.
+Claude Code v2.1.69에서 도입된 "서브에이전트는 다른 서브에이전트를 생성할 수 없다" 정책으로 인해 ROSSI의 CTO-Led Agent Teams와 PM Agent Team이 완전히 작동 불가 상태이다. 이 문제를 해결하여 CC v2.1.69+ 환경에서 팀 오케스트레이션 기능을 정상 복구한다.
 
 ### 1.2 Background
 
-- **GitHub Issue**: [#41](https://github.com/popup-studio-ai/bkit-claude-code/issues/41) — CTO Lead Agent Teams broken by CC v2.1.69
+- **GitHub Issue**: [#41](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/41) — CTO Lead Agent Teams broken by CC v2.1.69
 - **CC v2.1.69 변경**: "Fixed teammates accidentally spawning nested teammates via the Agent tool's name parameter"
 - **CC 공식 문서**: "Subagents cannot spawn other subagents. Agent(agent_type) has no effect in subagent definitions."
-- **근본 원인**: bkit의 CTO/PM "Teams"는 이름만 Agent Teams이며, 실제로는 Task() 서브에이전트 중첩 호출을 사용. `TeamCreate`는 코드베이스에서 **0회** 사용.
+- **근본 원인**: ROSSI의 CTO/PM "Teams"는 이름만 Agent Teams이며, 실제로는 Task() 서브에이전트 중첩 호출을 사용. `TeamCreate`는 코드베이스에서 **0회** 사용.
 - v2.1.69 이전에는 중첩 호출이 "실수로 허용"되어 작동했으나, 이제 공식 차단됨
 - CC v2.1.71 (현재 최신)까지 이 제한에 대한 변경/완화 없음
 
@@ -41,7 +41,7 @@ Claude Code v2.1.69에서 도입된 "서브에이전트는 다른 서브에이�
 - GitHub Issue: #41 ([Bug] CTO Lead Agent Teams broken by Claude Code v2.1.69)
 - CC 공식 문서 (Sub-agents): https://code.claude.com/docs/en/sub-agents
 - CC 공식 문서 (Agent Teams): https://code.claude.com/docs/en/agent-teams
-- bkit v2.1.69 영향 분석: `docs/01-plan/features/claude-code-v2169-impact-analysis.plan.md`
+- ROSSI v2.1.69 영향 분석: `docs/01-plan/features/claude-code-v2169-impact-analysis.plan.md`
 
 ### 1.4 현재 아키텍처 문제 분석
 
@@ -71,14 +71,14 @@ Main → cto-lead(subagent) → pdca-iterator(Task=❌) → gap-detector(Task=�
 
 ```
 .claude/agent-memory/
-├── bkit-cto-lead/MEMORY.md                    ← 축적됨
-├── bkit-cto-lead/cc-compatibility-v2.1.34-v2.1.37.md
-├── bkit-qa-strategist/MEMORY.md               ← 축적됨
-├── bkit-gap-detector/MEMORY.md                ← 축적됨
-├── bkit-frontend-architect/MEMORY.md          ← 축적됨
-├── bkit-product-manager/MEMORY.md             ← 축적됨
-├── bkit-bkend-expert/MEMORY.md                ← 축적됨
-├── bkit-pm-discovery/MEMORY.md                ← 축적됨
+├── rossi-cto-lead/MEMORY.md                    ← 축적됨
+├── rossi-cto-lead/cc-compatibility-v2.1.34-v2.1.37.md
+├── rossi-qa-strategist/MEMORY.md               ← 축적됨
+├── rossi-gap-detector/MEMORY.md                ← 축적됨
+├── rossi-frontend-architect/MEMORY.md          ← 축적됨
+├── rossi-product-manager/MEMORY.md             ← 축적됨
+├── ROSSI-bkend-expert/MEMORY.md                ← 축적됨
+├── rossi-pm-discovery/MEMORY.md                ← 축적됨
 └── (21개 에이전트 × memory: project/user 설정)
 ```
 
@@ -95,7 +95,7 @@ Main → cto-lead(subagent) → pdca-iterator(Task=❌) → gap-detector(Task=�
 - [ ] lib/team/ 관련 코드 업데이트
 - [ ] 에이전트 메모리 호환성 보장 (기존 8개 축적 메모리 유지)
 - [ ] GitHub Issue #41 해결 및 클로즈
-- [ ] bkit 버전 1.6.0 → 1.6.1 업데이트
+- [ ] ROSSI 버전 1.6.0 → 1.6.1 업데이트
 
 ### 2.2 Out of Scope
 
@@ -271,7 +271,7 @@ CC 공식 문서에서 Agent Teams teammate 컨텍스트:
 | FR-07 | 기존 에이전트 정의(.md) 최소 변경 | Medium | ⚠️ A'시 변경 | ✅ |
 | FR-08 | lib/team/ 코드 업데이트 | Medium | ✅ | ✅ |
 | FR-09 | validate-plugin.js 통과 | Low | ✅ | ✅ |
-| FR-10 | bkit 버전 1.6.0 → 1.6.1 업데이트 | Low | ✅ | ✅ |
+| FR-10 | ROSSI 버전 1.6.0 → 1.6.1 업데이트 | Low | ✅ | ✅ |
 
 ### 4.2 Non-Functional Requirements
 

@@ -15,7 +15,7 @@ hooks:
     - type: command
       command: "node ${CLAUDE_PLUGIN_ROOT}/scripts/phase4-api-stop.js"
       timeout: 10000
-agent: bkit:qa-monitor
+agent: rossi:qa-monitor
 allowed-tools:
   - Read
   - Write

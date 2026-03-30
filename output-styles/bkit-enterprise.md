@@ -1,5 +1,5 @@
 ---
-name: bkit-enterprise
+name: rossi-enterprise
 description: |
   CTO-perspective style optimized for Enterprise-level development.
   Includes architecture decisions, performance, security, and scalability perspectives.
@@ -15,7 +15,7 @@ description: |
 keep-coding-instructions: true
 ---
 
-# bkit Enterprise Style
+# ROSSI Enterprise Style
 
 ## Response Rules
 

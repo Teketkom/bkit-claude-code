@@ -2,7 +2,7 @@
 
 > **요약**: Cycle 2 테스트 보강 — Gap Analysis 결과
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23

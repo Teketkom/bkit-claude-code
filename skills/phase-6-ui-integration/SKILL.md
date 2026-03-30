@@ -14,8 +14,8 @@ hooks:
       command: "node ${CLAUDE_PLUGIN_ROOT}/scripts/phase6-ui-stop.js"
       timeout: 10000
 agents:
-  default: bkit:pipeline-guide
-  frontend: bkit:frontend-architect
+  default: rossi:pipeline-guide
+  frontend: rossi:frontend-architect
 allowed-tools:
   - Read
   - Write

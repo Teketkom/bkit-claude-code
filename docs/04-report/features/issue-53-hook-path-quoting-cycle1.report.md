@@ -2,11 +2,11 @@
 
 > **PDCA Cycle**: 1/3 — 버그 수정
 >
-> **프로젝트**: bkit-claude-code
+> **프로젝트**: rossi-cto-agent-kit
 > **버전**: 2.0.4
 > **작성자**: Claude
 > **날짜**: 2026-03-23
-> **이슈**: [GitHub #53](https://github.com/popup-studio-ai/bkit-claude-code/issues/53)
+> **이슈**: [GitHub #53](https://github.com/rossi-dev/rossi-cto-agent-kit/issues/53)
 
 ---
 
@@ -63,15 +63,15 @@
 |---|------|-----------|
 | 1 | `hooks/hooks.json` | 21개 command path quoting + description v2.0.4 |
 | 2 | `.claude-plugin/plugin.json` | version 2.0.4 |
-| 3 | `bkit.config.json` | version 2.0.4 |
+| 3 | `rossi.config.json` | version 2.0.4 |
 | 4 | `.claude-plugin/marketplace.json` | version 2.0.4 (2곳) |
 | 5 | `evals/config.json` | version 2.0.4 |
-| 6 | `servers/bkit-pdca-server/package.json` | version 2.0.4 |
-| 7 | `servers/bkit-analysis-server/package.json` | version 2.0.4 |
-| 8 | `lib/audit/audit-logger.js` | BKIT_VERSION 2.0.4 |
+| 6 | `servers/rossi-pdca-server/package.json` | version 2.0.4 |
+| 7 | `servers/rossi-analysis-server/package.json` | version 2.0.4 |
+| 8 | `lib/audit/audit-logger.js` | ROSSI_VERSION 2.0.4 |
 | 9 | `hooks/session-start.js` | systemMessage v2.0.4 |
 | 10 | `hooks/startup/session-context.js` | additionalContext v2.0.4 |
-| 11 | `lib/core/paths.js` | bkitVersion 2.0.4 (2곳) |
+| 11 | `lib/core/paths.js` | rossiVersion 2.0.4 (2곳) |
 | 12 | `CHANGELOG.md` | v2.0.4 섹션 추가 |
 
 ---

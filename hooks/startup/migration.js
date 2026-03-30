@@ -1,7 +1,7 @@
 /**
- * bkit Vibecoding Kit - SessionStart: Migration Module (v2.0.0)
+ * ROSSI CTO Agent Kit - SessionStart: Migration Module (v2.0.0)
  *
- * Handles state file migration from legacy paths (docs/) to .bkit/ structured paths.
+ * Handles state file migration from legacy paths (docs/) to .rossi/ structured paths.
  * Includes LEGACY_PATHS detection, auto-migration, and version schema upgrades.
  */
 
@@ -10,7 +10,7 @@ const { debugLog } = require('../../lib/core/debug');
 
 /**
  * Run legacy path migration.
- * Migrates state files from docs/ flat paths to .bkit/ structured paths.
+ * Migrates state files from docs/ flat paths to .rossi/ structured paths.
  * @param {object} _input - Hook input (unused, reserved for future use)
  * @returns {{ migrated: string[], errors: string[] }} Migration result
  */

@@ -4,7 +4,7 @@
  * Performance Test: Module Loading - All 72+ Modules (10 TC)
  * ML-001~010: All modules load without error (require test)
  *
- * @version bkit v2.0.0
+ * @version ROSSI v2.0.0
  */
 
 const { performance } = require('perf_hooks');

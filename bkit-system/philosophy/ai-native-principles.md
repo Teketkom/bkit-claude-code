@@ -1,6 +1,6 @@
 # AI-Native Development Principles
 
-> Core principles and competencies of AI-Native development with bkit v2.0.0
+> Core principles and competencies of AI-Native development with ROSSI v2.0.0
 
 ## What is AI-Native Development?
 
@@ -23,11 +23,11 @@ A development approach where AI operates as **a controllable partner leading the
 
 ### v2.0.0 Implementation
 
-| Competency | bkit Feature |
+| Competency | ROSSI Feature |
 |------------|--------------|
 | Verification | gap-detector agent, quality gates (7 stages), metrics collector (M1-M10), regression guard |
 | Direction | State machine-driven PDCA, design-first workflow, PM Agent Team (5 agents), plan-plus brainstorming |
-| Quality | code-analyzer agent, bkit-rules skill, destructive-detector (8 rules), blast radius analysis |
+| Quality | code-analyzer agent, rossi-rules skill, destructive-detector (8 rules), blast radius analysis |
 
 ---
 
@@ -35,7 +35,7 @@ A development approach where AI operates as **a controllable partner leading the
 
 ### Development Process
 
-| Aspect | As-Is (Traditional) | To-Be (With bkit v2.0.0) |
+| Aspect | As-Is (Traditional) | To-Be (With ROSSI v2.0.0) |
 |--------|---------------------|--------------------------|
 | **Methodology** | Waterfall or Agile (manual) | Declarative PDCA state machine (20 transitions, 9 guards) |
 | **Automation** | All manual or all-or-nothing | 5-level controllable automation (L0-L4) |
@@ -47,7 +47,7 @@ A development approach where AI operates as **a controllable partner leading the
 
 ### Team Composition
 
-| Role | As-Is (10-person) | To-Be (bkit v2.0.0) | bkit Agents | Change |
+| Role | As-Is (10-person) | To-Be (ROSSI v2.0.0) | ROSSI Agents | Change |
 |------|-------------------|----------------------|-------------|--------|
 | **PM** | 1 | 0.3 | pm-lead + 4 PM agents | AI-driven product discovery |
 | **Senior Dev** | 2 | 1 | cto-lead (opus) | AI orchestrates architecture |
@@ -90,7 +90,7 @@ To-Be: Configure quality gates + Monitor metrics dashboard
 
 ## Speed Improvements
 
-| Feature Size | As-Is | To-Be (bkit v2.0.0) | Improvement |
+| Feature Size | As-Is | To-Be (ROSSI v2.0.0) | Improvement |
 |--------------|-------|----------------------|-------------|
 | Simple CRUD | 2-3 days | 2-4 hours | **80% faster** |
 | Medium complexity | 1-2 weeks | 2-3 days | **70% faster** |
@@ -101,7 +101,7 @@ To-Be: Configure quality gates + Monitor metrics dashboard
 
 ## Quality Metrics
 
-| Quality Metric | As-Is | To-Be (bkit v2.0.0) |
+| Quality Metric | As-Is | To-Be (ROSSI v2.0.0) |
 |----------------|-------|----------------------|
 | **Bug Discovery** | Post-release | During PDCA Check phase (quality gates) |
 | **Design-Implementation Gap** | 30-50% | Under 5% (gap-detector + pdca-iterator) |
@@ -129,7 +129,7 @@ To-Be: Configure quality gates + Monitor metrics dashboard
 
 | Model | Count | Roles |
 |-------|-------|-------|
-| **opus** | 10 | cto-lead, code-analyzer, design-validator, gap-detector, enterprise-expert, infra-architect, security-architect, pm-lead, bkit-impact-analyst, cc-version-researcher |
+| **opus** | 10 | cto-lead, code-analyzer, design-validator, gap-detector, enterprise-expert, infra-architect, security-architect, pm-lead, rossi-impact-analyst, cc-version-researcher |
 | **sonnet** | 19 | bkend-expert, pdca-iterator, pipeline-guide, starter-guide, product-manager, frontend-architect, qa-strategist, pm-discovery, pm-strategy, pm-research, pm-prd, pm-lead-skill-patch, skill-needs-extractor, 6 pdca-eval agents |
 | **haiku** | 2 | qa-monitor, report-generator |
 

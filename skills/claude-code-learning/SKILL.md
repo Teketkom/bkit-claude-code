@@ -48,7 +48,7 @@ Learning content by level:
 - **Level 2**: Automation - Commands, Hooks, Permission management
 - **Level 3**: Specialization - Agents, Skills, MCP integration
 - **Level 4**: Team Optimization - GitHub Action, Team rule standardization
-- **Level 5**: PDCA Methodology - bkit methodology learning
+- **Level 5**: PDCA Methodology - ROSSI methodology learning
 
 ### setup
 
@@ -192,22 +192,22 @@ Use /pdca skill to learn PDCA methodology.
 Customize how Claude responds based on your project level.
 
 Available styles:
-  bkit-learning     Best for beginners (learning points, TODO markers)
-  bkit-pdca-guide   Best for PDCA workflows (status badges, checklists)
-  bkit-enterprise   Best for architects (tradeoff analysis, cost impact)
+  rossi-learning     Best for beginners (learning points, TODO markers)
+  rossi-pdca-guide   Best for PDCA workflows (status badges, checklists)
+  rossi-enterprise   Best for architects (tradeoff analysis, cost impact)
 
 Usage:
   /output-style              Select interactively
-  /output-style bkit-learning  Apply directly
+  /output-style rossi-learning  Apply directly
 
 Auto-recommendation:
-  Starter → bkit-learning
-  Dynamic → bkit-pdca-guide
-  Enterprise → bkit-enterprise
+  Starter → rossi-learning
+  Dynamic → rossi-pdca-guide
+  Enterprise → rossi-enterprise
 
 ## Agent Memory
 
-All bkit agents automatically remember context across sessions.
+All ROSSI agents automatically remember context across sessions.
 No configuration needed.
 
 Memory scopes:

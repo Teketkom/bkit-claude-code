@@ -1,6 +1,6 @@
 # Agents Overview
 
-> List of 32 Agents defined in bkit and their roles (v2.0.8)
+> List of 32 Agents defined in ROSSI and their roles (v2.0.8)
 >
 > **v1.4.1**: Added Context Engineering perspective - Role-based Behavioral Rules Layer
 > **v1.5.0**: Claude Code Exclusive
@@ -12,7 +12,7 @@
 > **v1.6.0**: PM Agent Team (5 agents), 21 total agents
 > **v1.6.1**: 3-Tier Agent Security Model (9 acceptEdits agents with tiered disallowedTools), CTO Orchestration Redesign, 208 exports, CC v2.1.71
 > **v1.6.2**: Agent frontmatter effort/maxTurns native support (29 agents), CC v2.1.78
-> **v1.6.2+**: cc-version-researcher + bkit-impact-analyst agents (31 agents), CC version analysis workflow
+> **v1.6.2+**: cc-version-researcher + rossi-impact-analyst agents (31 agents), CC version analysis workflow
 > **v2.0.6**: self-healing agent (opus) added (32 agents, 11 opus / 19 sonnet / 2 haiku)
 
 ## What are Agents?
@@ -24,7 +24,7 @@ Agents are **AI sub-agents specialized for specific tasks**.
 
 ## Context Engineering Perspective (v1.4.1)
 
-Agents form bkit's **Behavioral Rules Layer**, designed according to [[../../philosophy/context-engineering|Context Engineering]] principles.
+Agents form ROSSI's **Behavioral Rules Layer**, designed according to [[../../philosophy/context-engineering|Context Engineering]] principles.
 
 ### Agent Context Engineering Patterns
 
@@ -57,7 +57,7 @@ Agents form bkit's **Behavioral Rules Layer**, designed according to [[../../phi
 
 | Model | Agents | Characteristics |
 |-------|--------|-----------------|
-| **opus** (10) | cto-lead, code-analyzer, design-validator, gap-detector, enterprise-expert, infra-architect, security-architect, cc-version-researcher, bkit-impact-analyst, + 1 more | Complex analysis, strategic decisions |
+| **opus** (10) | cto-lead, code-analyzer, design-validator, gap-detector, enterprise-expert, infra-architect, security-architect, cc-version-researcher, rossi-impact-analyst, + 1 more | Complex analysis, strategic decisions |
 | **sonnet** (19) | bkend-expert, pdca-iterator, pipeline-guide, starter-guide, product-manager, frontend-architect, qa-strategist, pm-lead, pm-discovery, pm-strategy, pm-research, pm-prd, + 7 more | Execution, guidance, iteration |
 | **haiku** (2) | qa-monitor, report-generator | Fast monitoring, document generation |
 
@@ -219,8 +219,8 @@ hooks:
 | enterprise | enterprise-expert, infra-architect |
 | development-pipeline | pipeline-guide |
 | zero-script-qa | qa-monitor |
-| bkit-rules | pdca-iterator (via /pdca-iterate) |
-| bkit-templates | design-validator, code-analyzer, gap-detector |
+| rossi-rules | pdca-iterator (via /pdca-iterate) |
+| rossi-templates | design-validator, code-analyzer, gap-detector |
 
 ---
 
@@ -229,7 +229,7 @@ hooks:
 Agents are at root level (not in .claude/):
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 └── agents/
     ├── starter-guide.md
     ├── bkend-expert.md

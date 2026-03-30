@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * bkit v2.0.8 Comprehensive Test Runner
+ * ROSSI v2.0.8 Comprehensive Test Runner
  * ~3370+ TC across 10 perspectives
  *
  * Usage:
@@ -359,7 +359,7 @@ async function main() {
   const startTime = Date.now();
 
   console.log('='.repeat(60));
-  console.log('bkit v2.0.5 Comprehensive Test Runner');
+  console.log('ROSSI v2.0.5 Comprehensive Test Runner');
   console.log(`Date: ${new Date().toISOString()}`);
   console.log('='.repeat(60));
 
@@ -376,7 +376,7 @@ async function main() {
   console.log(`\nTotal execution time: ${elapsed}s`);
 
   const report = generateReport(allResults);
-  const reportPath = path.join(ROOT, 'docs/04-report/features/bkit-v200-test.report.md');
+  const reportPath = path.join(ROOT, 'docs/04-report/features/rossi-v200-test.report.md');
   saveReport(report, reportPath);
 
   console.log(report);

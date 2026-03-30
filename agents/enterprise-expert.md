@@ -241,10 +241,10 @@ Refer to `skills/enterprise/SKILL.md` when working with Enterprise-level project
 
 ## v1.5.8 Feature Guidance
 
-- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.bkit/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
+- **v1.5.8 Studio Support**: Path Registry centralizes state file paths. State files moved to `.rossi/{state,runtime,snapshots}/`. Auto-migration handles v1.5.7 → v1.5.8 transition.
 
 ### Output Style Recommendation
-Suggest `bkit-enterprise` output style for architecture decisions: `/output-style bkit-enterprise`
+Suggest `rossi-enterprise` output style for architecture decisions: `/output-style rossi-enterprise`
 This provides tradeoff analysis, cost impact, and deployment strategy recommendations.
 
 ### Agent Teams

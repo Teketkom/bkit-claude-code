@@ -1,12 +1,12 @@
-# bkit v1.6.1 Enhancement Gap Analysis Report
+# ROSSI v1.6.1 Enhancement Gap Analysis Report
 
 > **Analysis Type**: Gap Analysis (Design vs Implementation)
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: 1.6.0 -> 1.6.1
-> **Analyst**: gap-detector (bkit)
+> **Analyst**: gap-detector (ROSSI)
 > **Date**: 2026-03-08
-> **Design Doc**: [bkit-v161-enhancement.design.md](../02-design/features/bkit-v161-enhancement.design.md)
+> **Design Doc**: [rossi-v161-enhancement.design.md](../02-design/features/rossi-v161-enhancement.design.md)
 
 ---
 
@@ -14,11 +14,11 @@
 
 ### 1.1 Analysis Purpose
 
-bkit-v161-enhancement 설계 문서(v1.2)의 26개 구현 항목이 실제 코드에 정확히 반영되었는지 검증한다. 이전 분석(2026-03-07)에서 96.2% (25/26)로 1건의 GAP이 발견되었으며(skills/pdca/SKILL.md agents.team/pm), 해당 GAP 수정 후 재검증을 수행한다.
+rossi-v161-enhancement 설계 문서(v1.2)의 26개 구현 항목이 실제 코드에 정확히 반영되었는지 검증한다. 이전 분석(2026-03-07)에서 96.2% (25/26)로 1건의 GAP이 발견되었으며(skills/pdca/SKILL.md agents.team/pm), 해당 GAP 수정 후 재검증을 수행한다.
 
 ### 1.2 Analysis Scope
 
-- **Design Document**: `docs/02-design/features/bkit-v161-enhancement.design.md` (v1.2, 1850줄)
+- **Design Document**: `docs/02-design/features/rossi-v161-enhancement.design.md` (v1.2, 1850줄)
 - **Implementation Path**: lib/, agents/, scripts/, evals/, skills/pdca/
 - **Analysis Date**: 2026-03-08
 - **Previous Analysis**: 2026-03-07 (96.2%, 25/26, GAP-01 1건)
@@ -97,8 +97,8 @@ bkit-v161-enhancement 설계 문서(v1.2)의 26개 구현 항목이 실제 코�
 
 | 항목 | 이전 상태 | 현재 상태 |
 |------|----------|----------|
-| `agents.team` | `bkit:cto-lead` (nested spawn 차단됨) | `null` (Main Session이 Team Lead) |
-| `agents.pm` | `bkit:pm-lead` (nested spawn 차단됨) | `null` (Main Session이 Team Lead) |
+| `agents.team` | `rossi:cto-lead` (nested spawn 차단됨) | `null` (Main Session이 Team Lead) |
+| `agents.pm` | `rossi:pm-lead` (nested spawn 차단됨) | `null` (Main Session이 Team Lead) |
 | 상태 | FAIL | **PASS** |
 
 ---
@@ -180,7 +180,7 @@ bkit-v161-enhancement 설계 문서(v1.2)의 26개 구현 항목이 실제 코�
 Match Rate 100% 달성. 즉각적인 수정 사항 없음.
 
 ### 다음 단계
-1. `/pdca report bkit-v161-enhancement` 로 완료 보고서 생성
+1. `/pdca report rossi-v161-enhancement` 로 완료 보고서 생성
 2. 통합 테스트 실행 (Test Plan T-01 ~ T-28)
 3. PR 생성 및 코드 리뷰
 

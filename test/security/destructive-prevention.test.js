@@ -4,7 +4,7 @@
  * @version 1.6.1
  *
  * Validates that destructive command patterns are correctly matched
- * by the permission system glob patterns defined in bkit.config.json.
+ * by the permission system glob patterns defined in rossi.config.json.
  *
  * Tests pattern matching for:
  * - rm -rf variants and bypass attempts

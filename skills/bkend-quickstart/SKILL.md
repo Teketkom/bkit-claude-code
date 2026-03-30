@@ -7,7 +7,7 @@ description: |
   bkend.ai onboarding — MCP setup, resource hierarchy, tenant/user model, first project.
   Triggers: bkend quickstart, onboarding, setup, MCP, 시작하기, 온보딩, бэкенд, быстрый старт, серверная часть.
 user-invocable: false
-agent: bkit:bkend-expert
+agent: rossi:bkend-expert
 allowed-tools:
   - Read
   - WebFetch
@@ -136,8 +136,8 @@ https://console.bkend.ai
 ## Official Documentation (Live Reference)
 
 For the latest bkend documentation, use WebFetch:
-- Quick Start: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/getting-started/02-quick-start.md
-- Core Concepts: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/getting-started/03-core-concepts.md
-- Claude Code Setup: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/ai-tools/04-claude-code-setup.md
-- MCP Overview: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/en/mcp/01-overview.md
-- Full TOC: https://raw.githubusercontent.com/popup-studio-ai/bkend-docs/main/SUMMARY.md
+- Quick Start: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/getting-started/02-quick-start.md
+- Core Concepts: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/getting-started/03-core-concepts.md
+- Claude Code Setup: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/ai-tools/04-claude-code-setup.md
+- MCP Overview: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/en/mcp/01-overview.md
+- Full TOC: https://raw.githubusercontent.com/rossi-dev/bkend-docs/main/SUMMARY.md

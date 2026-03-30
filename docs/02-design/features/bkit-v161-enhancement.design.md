@@ -1,14 +1,14 @@
-# bkit v1.6.1 Enhancement Technical Design
+# ROSSI v1.6.1 Enhancement Technical Design
 
 > **Summary**: CTO/PM 오케스트레이션 재설계 — Agent Teams (Issue #41) + P0 버그 3건 수정 + Evals 28/28 실구현 + Config-Code 동기화 + Agent Security 강화
 >
-> **Project**: bkit
+> **Project**: ROSSI
 > **Version**: 1.6.0 -> 1.6.1
 > **Author**: CTO Lead (10-agent parallel analysis)
 > **Date**: 2026-03-07
 > **Status**: Draft
-> **Planning Doc**: [bkit-v161-enhancement.plan.md](../01-plan/features/bkit-v161-enhancement.plan.md)
-> **PRD**: [bkit-v161-enhancement.prd.md](../00-pm/bkit-v161-enhancement.prd.md)
+> **Planning Doc**: [rossi-v161-enhancement.plan.md](../01-plan/features/rossi-v161-enhancement.plan.md)
+> **PRD**: [rossi-v161-enhancement.prd.md](../00-pm/rossi-v161-enhancement.prd.md)
 
 ---
 
@@ -19,7 +19,7 @@
 0. CTO 오케스트레이션 재설계 — CC v2.1.69+ nested spawn 제한 대응 (Issue #41)
 1. P0 버그 3건 즉시 수정 — 핵심 철학(No Guessing, Automation First, Docs=Code) 위반 해소
 2. Skill Evals 28/28 실구현 — stub에서 실행 가능한 평가 프레임워크로 전환
-3. Config→Code 단방향 동기화 — `bkit.config.json`이 Single Source of Truth
+3. Config→Code 단방향 동기화 — `rossi.config.json`이 Single Source of Truth
 4. Agent Security 일관성 — acceptEdits 에이전트 9개 중 8개의 보안 설정 보완
 
 ### 1.2 Design Principles
@@ -36,7 +36,7 @@
 ### 2.1 변경 영향 범위
 
 ```
-bkit-claude-code/
+rossi-cto-agent-kit/
 ├── lib/team/coordinator.js     ← M-08: Agent Teams 통합 (CTO+PM TeamCreate)
 ├── lib/team/orchestrator.js    ← M-08 + GAP-02: TeamCreate 호환 + Config-Code 동기화
 ├── skills/pdca/SKILL.md        ← M-08: team/pm 액션 Agent Teams 기반 재작성
@@ -95,7 +95,7 @@ Layer 4: Evals Implementation (독립)             ── Week 1, Day 3 ~ Week 2
 
 ### 3.0 M-08: CTO/PM 오케스트레이션 아키텍처 재설계 (Issue #41)
 
-**근본 원인**: CC v2.1.69에서 `Subagents cannot spawn other subagents` 하드 제한 도입. bkit의 CTO Lead와 PM Lead는 subagent로 spawn된 후 내부에서 `Task()`로 팀원을 spawn하는 **nested spawn 패턴**을 사용하여 **전면 차단**됨.
+**근본 원인**: CC v2.1.69에서 `Subagents cannot spawn other subagents` 하드 제한 도입. ROSSI의 CTO Lead와 PM Lead는 subagent로 spawn된 후 내부에서 `Task()`로 팀원을 spawn하는 **nested spawn 패턴**을 사용하여 **전면 차단**됨.
 
 **영향 범위**:
 
@@ -183,8 +183,8 @@ After (v1.6.1, B안 — CC Agent Teams):
 ```yaml
 # line 28-29
 agents:
-  team: bkit:cto-lead    # ← nested spawn으로 차단됨
-  pm: bkit:pm-lead        # ← nested spawn으로 차단됨
+  team: rossi:cto-lead    # ← nested spawn으로 차단됨
+  pm: rossi:pm-lead        # ← nested spawn으로 차단됨
 ```
 
 **수정 방안**: `agents.team`과 `agents.pm`을 모두 `null`로 변경. Main Session이 Team Lead로서 CC Agent Teams(TeamCreate)를 직접 사용.
@@ -192,9 +192,9 @@ agents:
 ```yaml
 # 수정 후
 agents:
-  analyze: bkit:gap-detector
-  iterate: bkit:pdca-iterator
-  report: bkit:report-generator
+  analyze: rossi:gap-detector
+  iterate: rossi:pdca-iterator
+  report: rossi:report-generator
   team: null              # ← Main Session이 Team Lead, TeamCreate로 팀 생성
   pm: null                # ← Main Session이 Team Lead, TeamCreate로 PM팀 생성
   default: null
@@ -220,7 +220,7 @@ delegation chain without flattening.
    - Dynamic: 3 teammates (developer, frontend, qa)
    - Enterprise: 5-6 teammates (architect, developer, qa, reviewer, security)
 4. **Create Agent Team** using TeamCreate:
-   - Team name: `bkit-cto-{feature}`
+   - Team name: `rossi-cto-{feature}`
    - Each teammate gets a rich spawn prompt with:
      - Role description from `agents/{name}.md`
      - PDCA phase context and orchestration pattern
@@ -264,13 +264,13 @@ Each teammate receives this context at creation:
 
     ## Quality Gates:
     - Match Rate >= 90% for Check phase approval
-    - All files must follow bkit conventions (English code, Korean docs/)
+    - All files must follow ROSSI conventions (English code, Korean docs/)
     - Do NOT modify files outside your ownership scope
 
 #### team status - Show Team Status
 
-1. Read team config from `~/.claude/teams/bkit-cto-{feature}/config.json`
-2. Read shared task list from `~/.claude/tasks/bkit-cto-{feature}/`
+1. Read team config from `~/.claude/teams/rossi-cto-{feature}/config.json`
+2. Read shared task list from `~/.claude/tasks/rossi-cto-{feature}/`
 3. Display: teammate names, current tasks, completion status
 
 #### team cleanup - Cleanup Team Resources
@@ -298,7 +298,7 @@ Run PM Agent Team for product discovery using CC Agent Teams.
 
 1. Verify Agent Teams is enabled
 2. **Create PM Agent Team** using TeamCreate:
-   - Team name: `bkit-pm-{feature}`
+   - Team name: `rossi-pm-{feature}`
    - 4 teammates: pm-discovery, pm-strategy, pm-research, pm-prd
 3. Team Lead (Main Session) orchestrates:
    - Phase 1: Context Collection (Team Lead does this directly)
@@ -341,7 +341,7 @@ function buildAgentTeamPlan(teamType, feature, options = {}) {
   }
   if (level === 'Starter') return null;
 
-  const teamName = `bkit-${teamType}-${feature}`;
+  const teamName = `ROSSI-${teamType}-${feature}`;
 
   if (teamType === 'pm') {
     return buildPmTeamPlan(teamName, feature);
@@ -449,7 +449,7 @@ function generateTeammatePrompt(role, phase, feature, level, pattern) {
     `- Mark tasks complete when finished`,
     ``,
     `## Quality Gates:`,
-    `- Follow bkit conventions (English code, Korean docs/)`,
+    `- Follow ROSSI conventions (English code, Korean docs/)`,
     `- Do NOT modify files outside your ownership scope`,
     `- Report blockers clearly rather than guessing`,
   ].join('\n');
@@ -584,7 +584,7 @@ function generateSpawnTeamCommand(phase, level, feature) {
 
   const command = {
     operation: 'TeamCreate',           // Changed from 'spawnTeam'
-    teamName: `bkit-cto-${feature}`,
+    teamName: `rossi-cto-${feature}`,
     teammates: team.teammates.map(t => ({
       name: t.name,
       agentType: t.agentType,
@@ -631,7 +631,7 @@ function generateSubagentSpawnPrompt(agentInfo, context) {
     `## Orchestration Pattern: ${pattern}`,
     ``, `## File Ownership:`, fileList, previousContext,
     `## Constraints:`,
-    `- Follow bkit conventions (English code, Korean docs/)`,
+    `- Follow ROSSI conventions (English code, Korean docs/)`,
     `- Do NOT modify files outside your ownership scope`,
     `- Output must be actionable`,
     ``, `## Specific Task:`, agentInfo.task,
@@ -710,14 +710,14 @@ contextParts.push(
 **현재 축적된 에이전트 메모리** (보존 필수):
 ```
 .claude/agent-memory/
-├── bkit-cto-lead/MEMORY.md                    ← 축적됨
-├── bkit-cto-lead/cc-compatibility-v2.1.34-v2.1.37.md
-├── bkit-qa-strategist/MEMORY.md               ← 축적됨
-├── bkit-gap-detector/MEMORY.md                ← 축적됨
-├── bkit-frontend-architect/MEMORY.md          ← 축적됨
-├── bkit-product-manager/MEMORY.md             ← 축적됨
-├── bkit-bkend-expert/MEMORY.md                ← 축적됨
-├── bkit-pm-discovery/MEMORY.md                ← 축적됨
+├── rossi-cto-lead/MEMORY.md                    ← 축적됨
+├── rossi-cto-lead/cc-compatibility-v2.1.34-v2.1.37.md
+├── rossi-qa-strategist/MEMORY.md               ← 축적됨
+├── rossi-gap-detector/MEMORY.md                ← 축적됨
+├── rossi-frontend-architect/MEMORY.md          ← 축적됨
+├── rossi-product-manager/MEMORY.md             ← 축적됨
+├── ROSSI-bkend-expert/MEMORY.md                ← 축적됨
+├── rossi-pm-discovery/MEMORY.md                ← 축적됨
 └── (21개 에이전트 × memory: project/user 설정)
 ```
 
@@ -751,7 +751,7 @@ contextParts.push(
 |-----------|:----------:|:------:|---------|
 | Subagents cannot spawn other subagents | v2.1.69+ | Permanent | B안에서 해결됨 (teammate는 subagent 아님) |
 | No nested teams | v2.1.69+ | Permanent | OK (단일 팀만 사용) |
-| Team agents ignore `skills`, `hooks` frontmatter | v2.1.69+ | Open [#30703](https://github.com/anthropics/claude-code/issues/30703) | ⚠️ teammate에서 bkit skills 미로딩 가능 |
+| Team agents ignore `skills`, `hooks` frontmatter | v2.1.69+ | Open [#30703](https://github.com/anthropics/claude-code/issues/30703) | ⚠️ teammate에서 ROSSI skills 미로딩 가능 |
 | Custom agent definitions as teammates | v2.1.64+ | Partial [#24316](https://github.com/anthropics/claude-code/issues/24316) | ⚠️ `model`, `disallowedTools` 동작, `skills`/`hooks` 미동작 |
 | One team per session | v2.1.69+ | Permanent | CTO팀과 PM팀은 순차 실행 필요 |
 | No session resumption for teammates | v2.1.69+ | Current | `/resume` 시 teammate 재생성 필요 |
@@ -853,11 +853,11 @@ Line 43에서 config를 읽지만 비교에만 사용하고, 결과값은 하드
 const confidenceThreshold = getConfig('triggers.confidenceThreshold', 0.7);
 
 // Line 48 — 하드코딩 0.8
-const result = { agent: `bkit:${agent}`, confidence: 0.8 };
+const result = { agent: `rossi:${agent}`, confidence: 0.8 };
 
 // Line 82-83 — 하드코딩 0.8
 const result = {
-  skill: `bkit:${skill}`,
+  skill: `rossi:${skill}`,
   level: levelMap[skill] || 'Dynamic',
   confidence: 0.8
 };
@@ -867,13 +867,13 @@ const result = {
 
 Line 48 교체:
 ```javascript
-      const result = { agent: `bkit:${agent}`, confidence: Math.min(1, confidenceThreshold + 0.1) };
+      const result = { agent: `rossi:${agent}`, confidence: Math.min(1, confidenceThreshold + 0.1) };
 ```
 
 Line 79-83 교체:
 ```javascript
       const result = {
-        skill: `bkit:${skill}`,
+        skill: `rossi:${skill}`,
         level: levelMap[skill] || 'Dynamic',
         confidence: Math.min(1, confidenceThreshold + 0.1)
       };
@@ -981,7 +981,7 @@ const phases = ['plan', 'design', 'do', 'check', 'report'];
 
 **현재 상태**:
 
-`PHASE_PATTERN_MAP` (line 19-34)이 `bkit.config.json`의 `team.orchestrationPatterns`과 동일한 값을 독립적으로 하드코딩:
+`PHASE_PATTERN_MAP` (line 19-34)이 `rossi.config.json`의 `team.orchestrationPatterns`과 동일한 값을 독립적으로 하드코딩:
 ```javascript
 // orchestrator.js line 19-34 (하드코딩)
 const PHASE_PATTERN_MAP = {
@@ -989,7 +989,7 @@ const PHASE_PATTERN_MAP = {
   Enterprise: { plan: 'leader', design: 'council', do: 'swarm', check: 'council', act: 'watchdog' },
 };
 
-// bkit.config.json line 99-114 (Config)
+// rossi.config.json line 99-114 (Config)
 "orchestrationPatterns": {
   "Dynamic": { "plan": "leader", "design": "leader", "do": "swarm", "check": "council", "act": "leader" },
   "Enterprise": { "plan": "leader", "design": "council", "do": "swarm", "check": "council", "act": "watchdog" }
@@ -1238,7 +1238,7 @@ async function runEval(skillName, evalName) {
 ```javascript
 /**
  * Parse eval YAML content
- * Simple parser for bkit eval.yaml structure (no external dependency)
+ * Simple parser for ROSSI eval.yaml structure (no external dependency)
  * @param {string} content - YAML content string
  * @returns {Object} Parsed eval definition
  */
@@ -1469,7 +1469,7 @@ async function runEval(skillName, evalName) {
 ```
 
 **핵심 설계 결정**:
-1. **Custom YAML Parser**: `parseEvalYaml()` — 외부 의존성 없이 bkit eval.yaml 구조만 파싱
+1. **Custom YAML Parser**: `parseEvalYaml()` — 외부 의존성 없이 ROSSI eval.yaml 구조만 파싱
 2. **Placeholder Detection**: 1줄 또는 50자 미만이면 자동 FAIL (현재 27/28이 여기에 해당)
 3. **Criteria-Based Evaluation**: eval.yaml의 criteria 리스트를 키워드 매칭으로 구조적 검증
 4. **80% Pass Threshold**: matchedCriteria / totalCriteria >= 0.8이면 pass
@@ -1491,7 +1491,7 @@ async function runEval(skillName, evalName) {
 - Project level: {Starter|Dynamic|Enterprise}
 - Current PDCA phase: {phase or none}
 - Existing documents: {list}
-- bkit.config.json: {relevant settings}
+- rossi.config.json: {relevant settings}
 
 ### Evaluation Criteria
 1. Must {process step 1 — 스킬의 핵심 프로세스}
@@ -1582,8 +1582,8 @@ Process Compliance + Output Quality 양쪽 기준 모두 적용.
 
 | # | Skill | Category | Prompt 핵심 시나리오 | Expected 핵심 검증 |
 |---|-------|----------|---------------------|-------------------|
-| 1 | bkit-rules | workflow | "새 기능 user-auth 구현" | Auto-apply rules 동작 확인 |
-| 2 | bkit-templates | workflow | "Plan 문서 생성" | 템플릿 구조 준수 확인 |
+| 1 | rossi-rules | workflow | "새 기능 user-auth 구현" | Auto-apply rules 동작 확인 |
+| 2 | rossi-templates | workflow | "Plan 문서 생성" | 템플릿 구조 준수 확인 |
 | 3 | pdca | workflow | "/pdca plan user-auth" | Phase transition + doc 생성 |
 | 4 | development-pipeline | workflow | "Phase 1부터 시작" | 9-phase pipeline 순서 |
 | 5 | phase-2-convention | workflow | "코딩 컨벤션 정리" | Convention 문서 구조 |
@@ -1695,12 +1695,12 @@ function formatDetailedReport(benchmarkResult) {
 | Risk | Probability | Impact | Mitigation |
 |------|:-----------:|:------:|-----------|
 | Agent Teams teammate의 `memory` frontmatter 미지원 | Medium | High | 사전 검증 스파이크 필수 + prompt 주입 fallback 준비 |
-| CC #30703 (skills/hooks 무시)로 teammate에서 bkit skills 미로딩 | High | Medium | Spawn prompt에 skill 핵심 내용 직접 포함하여 우회 |
+| CC #30703 (skills/hooks 무시)로 teammate에서 ROSSI skills 미로딩 | High | Medium | Spawn prompt에 skill 핵심 내용 직접 포함하여 우회 |
 | Agent Teams 실험적 기능 안정성 | Medium | Medium | A'안(평탄화) fallback 준비, CC v2.1.71 기준 테스트 |
 | 토큰 비용 선형 증가 (각 teammate = 독립 세션) | High | Low | 문서에 비용 가이드 제공, 팀 크기 3-5로 제한 |
 | One team per session 제한으로 CTO팀+PM팀 순차 실행 | High | Low | PM 완료 후 cleanup → CTO팀 시작 프로세스 문서화 |
 | `/resume` 시 teammate 미복원 | Medium | Medium | 팀 재생성 안내 + PDCA 상태에서 재개점 복구 |
-| Custom YAML parser edge cases | Medium | Low | bkit eval.yaml 구조가 단순하고 고정적 |
+| Custom YAML parser edge cases | Medium | Low | ROSSI eval.yaml 구조가 단순하고 고정적 |
 | Evals prompt/expected 품질 부족 | Medium | High | 카테고리별 템플릿 기반 작성 + CTO 리뷰 |
 | Config 파일 누락 시 fallback 미동작 | Low | Medium | DEFAULT_PHASE_PATTERN_MAP 유지 |
 | disallowedTools 과잉 제한 | Low | Low | 역할별 최소 제한 원칙 + Tier 3 유지 |

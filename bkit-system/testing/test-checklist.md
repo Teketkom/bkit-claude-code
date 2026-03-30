@@ -1,6 +1,6 @@
 # Test Checklist
 
-> Test checklist for verifying bkit features
+> Test checklist for verifying ROSSI features
 >
 > **v1.5.0**: Claude Code Exclusive - Gemini CLI tests removed
 
@@ -14,7 +14,7 @@
 
 ## 1. PreToolUse Hooks Tests
 
-### 1.1 bkit-rules (pre-write.js - unified hook)
+### 1.1 rossi-rules (pre-write.js - unified hook)
 
 | # | Test Case | Expected Result | Pass |
 |---|-----------|-----------------|------|
@@ -102,7 +102,7 @@
 
 ## 2. PostToolUse Hooks Tests
 
-### 2.1 bkit-rules (pdca-post-write.js)
+### 2.1 rossi-rules (pdca-post-write.js)
 
 | # | Test Case | Expected Result | Pass |
 |---|-----------|-----------------|------|
@@ -151,7 +151,7 @@
 |---|-------|-------------|-----------------|------|
 | 3.1 | phase-4-api | After API work completion | "Zero Script QA guidance" | [ ] |
 | 3.2 | phase-8-review | After review work completion | "Review completion summary" | [ ] |
-| 3.3 | bkit-templates (via gap-detector) | After gap analysis completion | "Analysis result guidance" | [ ] |
+| 3.3 | rossi-templates (via gap-detector) | After gap analysis completion | "Analysis result guidance" | [ ] |
 | 3.4 | zero-script-qa | QA session end | "Next steps guidance" | [ ] |
 
 ---
@@ -176,7 +176,7 @@
 | 5.1.3 | "Set up Kubernetes deployment" | enterprise, phase-9-deployment | [ ] |
 | 5.1.4 | "Design the API" | phase-4-api | [ ] |
 | 5.1.5 | "Build a design system" | phase-5-design-system | [ ] |
-| 5.1.6 | "Run gap analysis" | bkit-templates, gap-detector agent | [ ] |
+| 5.1.6 | "Run gap analysis" | rossi-templates, gap-detector agent | [ ] |
 | 5.1.7 | "Do QA" | zero-script-qa | [ ] |
 
 ### 5.2 Level Detection
@@ -219,7 +219,7 @@
 
 | # | Step | Verification Item | Pass |
 |---|------|-------------------|------|
-| 7.1.1 | Request | bkit-rules skill activated | [ ] |
+| 7.1.1 | Request | rossi-rules skill activated | [ ] |
 | 7.1.2 | Doc check | Check design doc existence | [ ] |
 | 7.1.3 | Write | pdca-pre-write fires | [ ] |
 | 7.1.4 | Write | task-classify fires | [ ] |
@@ -289,7 +289,7 @@ echo '{"tool_input":{"file_path":"src/features/auth/login.ts","content":"test"}}
 | 8.2.2 | outputBlock with special chars | Properly escaped in reason | [ ] |
 | 8.2.3 | session-start.js dynamic content | Feature name & phase properly handled | [ ] |
 
-> **Note (v1.5.0)**: Gemini CLI tests removed - bkit is now Claude Code exclusive.
+> **Note (v1.5.0)**: Gemini CLI tests removed - ROSSI is now Claude Code exclusive.
 
 ---
 
@@ -331,13 +331,13 @@ echo '{"tool_input":{"file_path":"src/features/auth/login.ts","content":"test"}}
 
 | ID | Test | Expected Result |
 |----|------|-----------------|
-| OS-T01 | Session start with Starter project | "Recommended: bkit-learning" in output |
-| OS-T02 | Session start with Dynamic project | "Recommended: bkit-pdca-guide" in output |
-| OS-T03 | Session start with Enterprise project | "Recommended: bkit-enterprise" in output |
-| OS-T04 | `/starter init` execution | bkit-learning style mentioned |
-| OS-T05 | `/dynamic init` execution | bkit-pdca-guide style mentioned |
-| OS-T06 | `/enterprise init` execution | bkit-enterprise style mentioned |
-| OS-T07 | `/pdca plan` execution | bkit-pdca-guide suggested if not active |
+| OS-T01 | Session start with Starter project | "Recommended: rossi-learning" in output |
+| OS-T02 | Session start with Dynamic project | "Recommended: rossi-pdca-guide" in output |
+| OS-T03 | Session start with Enterprise project | "Recommended: rossi-enterprise" in output |
+| OS-T04 | `/starter init` execution | rossi-learning style mentioned |
+| OS-T05 | `/dynamic init` execution | rossi-pdca-guide style mentioned |
+| OS-T06 | `/enterprise init` execution | rossi-enterprise style mentioned |
+| OS-T07 | `/pdca plan` execution | rossi-pdca-guide suggested if not active |
 
 ### Agent Teams Discovery Tests (AT-T)
 
@@ -369,7 +369,7 @@ echo '{"tool_input":{"file_path":"src/features/auth/login.ts","content":"test"}}
 
 | ID | Test | Expected Result |
 |----|------|-----------------|
-| SC-T01 | Verify 9 Workflow skills identified | pdca, pm-discovery, development-pipeline, bkit-rules, bkit-templates, phase-2-convention, phase-8-review, code-review, zero-script-qa |
+| SC-T01 | Verify 9 Workflow skills identified | pdca, pm-discovery, development-pipeline, rossi-rules, rossi-templates, phase-2-convention, phase-8-review, code-review, zero-script-qa |
 | SC-T02 | Verify 18 Capability skills identified | starter, dynamic, enterprise, phase-1/3/4/5/6/7/9, claude-code-learning, mobile-app, desktop-app, bkend-quickstart, bkend-data, bkend-auth, bkend-cookbook, bkend-storage |
 | SC-T03 | Verify 1 Hybrid skill identified | plan-plus |
 | SC-T04 | Total skill count = 28 | 9W + 18C + 1H |

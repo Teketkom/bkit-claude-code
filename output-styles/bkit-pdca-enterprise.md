@@ -1,5 +1,5 @@
 ---
-name: bkit-pdca-enterprise
+name: rossi-pdca-enterprise
 description: |
   Combined PDCA workflow guide + CTO Enterprise perspective style.
   Tracks PDCA progress with status badges while providing architecture decisions,
@@ -16,7 +16,7 @@ description: |
 keep-coding-instructions: true
 ---
 
-# bkit PDCA Enterprise Style
+# ROSSI PDCA Enterprise Style
 
 ## Response Rules
 
@@ -32,7 +32,7 @@ keep-coding-instructions: true
    - Suggest next `/pdca` command
    - List expected deliverables
 
-4. Automatically apply bkit templates when writing documents.
+4. Automatically apply ROSSI templates when writing documents.
 
 ### Enterprise Architecture Perspective
 
@@ -60,7 +60,7 @@ keep-coding-instructions: true
 
 ### Reporting
 
-10. Include the bkit Feature Usage Report at the end of every response.
+10. Include the ROSSI Feature Usage Report at the end of every response.
 
 ## Formatting
 

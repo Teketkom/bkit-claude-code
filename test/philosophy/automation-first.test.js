@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Philosophy Tests: Automation First Principle (15 TC)
- * Tests that bkit auto-detects, auto-suggests, and auto-creates
+ * Tests that ROSSI auto-detects, auto-suggests, and auto-creates
  * without requiring manual user intervention where possible
  *
  * @module test/philosophy/automation-first.test.js
@@ -150,14 +150,14 @@ assert('PHI-AF-014',
   'matchImplicitSkillTrigger returns null for null input (safe auto-detection)'
 );
 
-// --- PHI-AF-015: bkit.config.json automationLevel 설정 존재 확인 ---
+// --- PHI-AF-015: rossi.config.json automationLevel 설정 존재 확인 ---
 const fs = require('fs');
 const path = require('path');
-const configPath = path.join(__dirname, '../../bkit.config.json');
+const configPath = path.join(__dirname, '../../rossi.config.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 assert('PHI-AF-015',
   typeof config.pdca.automationLevel === 'string' && config.pdca.automationLevel.length > 0,
-  'bkit.config.json defines pdca.automationLevel (automation is configurable)'
+  'rossi.config.json defines pdca.automationLevel (automation is configurable)'
 );
 
 // 환경 변수 정리

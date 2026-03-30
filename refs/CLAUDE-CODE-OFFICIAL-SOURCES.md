@@ -213,9 +213,9 @@ hooks: hooks.json
 
 ---
 
-## 8. bkit Plugin Compatibility
+## 8. ROSSI Plugin Compatibility
 
-### Current bkit Version: 1.5.2
+### Current ROSSI Version: 1.5.2
 
 | Component | Count | Claude Code Compatibility |
 |-----------|-------|--------------------------|
@@ -233,7 +233,7 @@ hooks: hooks.json
   - Maximum 5 iterations per session with 90% pass threshold
   - Auto-invoked when Match Rate < 90%
 - **SessionStart Enhancement**: AskUserQuestion integration for session initialization
-  - 4 options: Learn bkit, Learn Claude Code, Continue Previous Work, Start New Project
+  - 4 options: Learn ROSSI, Learn Claude Code, Continue Previous Work, Start New Project
 - **Trigger Keyword Mapping**: Agent auto-triggering based on user keywords
 - **Task Size Rules**: PDCA application guidance based on change size
 - **New Commands**: /archive, /github-stats
@@ -259,7 +259,7 @@ hooks: hooks.json
 ### v1.2.0 Changes
 
 - Skills consolidated: 26 → 18 (8 merged into others)
-- New centralized config: `bkit.config.json`
+- New centralized config: `rossi.config.json`
 - New shared library: `lib/common.js`
 - `.claude/` removed from version control (override pattern for customization)
 
@@ -275,5 +275,5 @@ hooks: hooks.json
 
 ---
 
-*Document maintained by POPUP STUDIO PTE. LTD.*
-*https://popupstudio.ai*
+*Document maintained by Концерн РОССИ (ЗАО РОССИ)*
+*https://rossi.ru*
